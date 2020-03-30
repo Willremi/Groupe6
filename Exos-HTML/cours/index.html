@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Un essai du langage HTML</title>
+</head>
+<body>
+    <h2>Ce document</h2>
+    <h3>HTML</h3>
+    <h4>est encore très simple</h4>
+    <p>Son objectif est de montrer les principales balises de mise en forme du texte. Les lignes précédentes ont mis en évidence l'action des balises &lt;hxx&gt; qui permettent de créer et disposer des titres de taille plus ou moins grande.</p>
+
+    <hr>
+    
+    <p>La balise &lt;hr /&gt; permet l'affichage d'une ligne horizontale
+        <hr>
+    </p>
+
+    <div>La balise &lt;div&gt; : Voici un texte écrit dans une balise &lt;div&gt; . La balise div (pour division) peut être utilisée pour diviser un document en plusieurs sections qui seront, par exemple, présentée chacune de manière différente.
+        La présentation (alignement, couleur, marges, etc...) sera défini via des feuilles de style CSS.
+    </div>
+
+    <hr>
+
+    <p>La balise &lt;span&gt; permet d'identifier un bout de texte afin de lui appliquer un <span style="color: red;">style </span>(ici, la couleur rouge, à l'aide d'un style CSS dont on verra la syntaxe plus tard.)</p>
+
+    <hr>
+
+    <p>La balise &lt;p&gt; : permet de créer un nouveau paragraphe. La différence entre la balise p et div se situe au niveau du type d'enfants acceptés : à l'inverse de la division qui n'impose aucune restriction, un paragraphe ne peut contenir que des éléments de type inline.</p>
+
+    <hr>
+
+    <p align="center">On peut utiliser l'attribut align (ici center), </p>
+    <p align="center">mais ceci est déconseillée : </p>
+    <p align="center">il est préférable de passer par des styles CSS</p>
+
+    <hr>
+
+    <p>La balise &lt;br&gt; <br> permet un retour à la ligne.</p>
+
+    <p>Listes à puces</p>
+    <ul>
+        <li>Rouge</li>
+        <li type="circle">Vert</li>
+        <li type="square">Bleu</li>
+    </ul>
+
+    <p>Listes de définitions</p>
+    <dl>
+        <dt>Terme</dt>
+        <dd>def1</dd>
+        <dd>def2</dd>
+        <dd>def3</dd>
+    </dl>
+
+    <p>Combiner types de listes</p>
+    <ol type="i">
+        <li>item
+            <dl>
+                <dt>Terme</dt>
+                <dd>def1</dd>
+            </dl>
+        </li>
+    </ol>
+
+</body>
+</html>

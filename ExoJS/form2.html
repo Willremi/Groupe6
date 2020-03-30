@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contrôle Formulaire</title>
+    <script src="js/jquery-3.4.1.js"></script>
+    
+    <style>
+        form {
+            width: 50%;
+        }
+        legend {
+            font-size: 20px;
+            text-align: center;
+        }
+        fieldset {
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    
+    <form action="http://www.afpa.fr" id="formSaisie" method="GET">
+        <fieldset>
+            <legend>Contrôle de formulaire</legend>
+            <p>Saisissez un texte puis pressez le bouton 'Contrôle'</p>
+            <input type="text" name="txtSaisie" id="txt" size="50" value="">
+        <br><br>
+        
+        <input type="button" value="Contrôler" id="btnDom">
+        </fieldset>
+        
+    </form>
+    <script src="js/form1.js"></script>
+</body>
+</html>

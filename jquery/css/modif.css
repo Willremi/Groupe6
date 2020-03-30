@@ -1,0 +1,15 @@
+.rouge { color: red; }
+.vert { color: green; }
+.petit { font-size: 200%; }
+.grand { font-size: 350%; }
+
+div {
+    width: 250px;
+    height: 250px;
+    background-color: #AEEE00;
+    padding: 35px;
+    margin: 35px;
+    border-width: 6px;
+    border-color: black;
+    border-style: solid;
+}

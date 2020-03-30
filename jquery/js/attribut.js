@@ -1,0 +1,3 @@
+var dimensions = 'width=' + $('div').width() + ', innerWidth=' + $('div').innerWidth() + ', outerWidth=' + $('div').outerWidth() + ', outerWidth(true)=' + $('div').outerWidth(true);
+dimensions = dimensions + ', height=' + $('div').height() + ', innerHeight=' + $('div').innerHeight() + ', outerHeight=' + $('div').outerHeight() + ', outerHeight(true)=' + $('div').outerHeight(true);
+$('#resultat').text(dimensions);

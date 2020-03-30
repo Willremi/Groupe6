@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.4.1.js"></script>
+</head>
+<body>
+   <form>
+       <p>Cliquez sur les zones de texte</p>
+       <fieldset id="premier">
+           <legend>Premier groupe</legend>
+           <p><input type="text" id="Zone-de-texte-1" class="f"></p>
+           <input type="text" id="Zone-de-texte-2" class="f"><br>
+       </fieldset>
+       <fieldset id="deuxième">
+        <legend>Second groupe</legend>
+        <p><input type="text" id="Zone-de-texte-3" class="f"></p>
+        <input type="text" id="Zone-de-texte-4" class="f"><br>
+    </fieldset>
+   </form><br>
+   Focus : <span id="resultat"></span><br>
+   Perte de focus : <span id="resultat2"></span>
+
+   <hr>
+   <form>
+       Sélectionner une valeur dans la liste déroulante
+       <select>
+           <option>J'aime jQuery</option>
+           <option>J'adore jQuery</option>
+           <option>Je raffole de jQuery</option>
+           <option>jQuery ? Jamais entendu parlter !</option>
+       </select>
+   </form><br>
+   <span id="resultat3"></span>
+
+    <script src="js/position1.js"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Liste des clients</title>
+</head>
+<body>
+    <table border="1">
+        <caption>Liste des clients 1</caption>
+
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Adresse</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>DUPOND</td>
+                <td>Léon</td>
+                <td>3 rue de la paix, 38000 Grenoble</td>
+            </tr>
+            <tr>
+                <td>DUBOIS</td>
+                <td>Claire</td>
+                <td>3 place de la poste, 38000 Grenoble</td>
+            </tr>
+            <tr>
+                <td>DUBUIS</td>
+                <td>Julie</td>
+                <td>25 cours Berriat, 38000 Grenoble</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td>Nombre de clients</td>
+                <td>3</td>
+            </tr>
+        </tfoot>
+    </table>
+    <br>
+    <table border="1">
+        <caption>Liste des clients 2</caption>
+        <col><col><col>
+        <tbody>
+            <tr>
+                <th>Nom du client</th>
+                <th>Prénom du client</th>
+                <th>Adresse du client</th>
+            </tr>
+            <tr>
+                <td>DUPOND</td>
+                <td colspan="2">Léon / 3 rue de la paix, 38000 Grenoble</td> <!-- Cette cellule compte pour 2 sur cette ligne -->
+            </tr>
+            <tr>
+                <td>DUBOIS</td>
+                <td>Claire</td>
+                <td rowspan="2">même adresse : 25 cours Berriat, 38000 Grenoble</td> <!-- Cette cellule compte pour 2, sur 2 lignes-->
+            </tr>
+            <tr>
+                <td>DUBUIS</td>
+                <td>Julie</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

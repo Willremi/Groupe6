@@ -1,0 +1,15 @@
+.invisible {
+    display: none;
+}
+
+.visible {
+    display: inline-block;
+}
+
+.green {
+    color: green;
+}
+
+.blue {
+    color: blue;
+}

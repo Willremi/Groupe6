@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contrôle Formulaire</title>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script src="js/form.js" async></script>
+</head>
+<body>
+    <h1>Contrôle de formulaire</h1>
+    <p>Saisissez un texte puis pressez le bouton 'Contrôle'</p>
+    <br>
+    <form action="http://www.afpa.fr" id="formSaisie" method="GET">
+        <input type="text" name="txtSaisie" id="txt" size="20" value="">
+        <br><br>
+        <input type="submit" value="Contrôler1" onclick="return verifform(this.form.txtSaisie.value);">
+        <input type="button" value="Contrôler2" id="btnDom0">
+        <input type="button" value="Contrôler3" id="btnDom2">
+        
+    </form>
+</body>
+</html>

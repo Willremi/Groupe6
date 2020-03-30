@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire intéractif</title>
+    <script src="js/jquery-3.4.1.js"></script>
+</head>
+<body>
+    <div id="erreur">
+        <p>Vous n'avez pas rempli correctement les champs du formulaire !</p>
+    </div>
+
+    <form>
+        <label for="pseudo">Pseudo : </label><input type="text" id="pseudo" class="champ"><br><br>
+        <label for="mdp">Mot de passe : </label><input type="password" id="mdp" class="champ"><br><br>
+        <label for="confirmation">Confirmation : </label><input type="password" id="confirmation" class="champ"><br><br>
+        <label for="mail">E-mail : </label><input type="text" id="mail" class="champ"><br><br>
+        <input type="submit" value="Envoyer" id="envoi"><input type="reset" value="rafraichir" id="rafraichir">
+    </form>
+
+    <script src="js/formulaire.js"></script>
+</body>
+</html>
