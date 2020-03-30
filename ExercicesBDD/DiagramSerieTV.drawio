@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-03-30T08:03:23.324Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36" etag="q9Oip_OIi7HCzajueBvB" version="12.9.4" type="github">
+<mxfile host="app.diagrams.net" modified="2020-03-30T08:06:16.452Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36" etag="lo6QHpP4AY7DAekCBbwr" version="12.9.4" type="github">
   <diagram id="C_CapZNrdbjN5ygWCtcE" name="Page-1">
     <mxGraphModel dx="1773" dy="548" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -31,7 +31,7 @@
         <mxCell id="_Ngr6iUIybiltjpxE6eu-17" value="SérieTV" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="540" y="80" width="40" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="_Ngr6iUIybiltjpxE6eu-20" value="idSerie&lt;br&gt;TitreSerie&lt;br&gt;AnnéeSerie&lt;br&gt;genre" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+        <mxCell id="_Ngr6iUIybiltjpxE6eu-20" value="&lt;font style=&quot;vertical-align: inherit&quot;&gt;&lt;font style=&quot;vertical-align: inherit&quot;&gt;idSerie &lt;/font&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;vertical-align: inherit&quot;&gt;&lt;font style=&quot;vertical-align: inherit&quot;&gt;TitreSerie &lt;/font&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;vertical-align: inherit&quot;&gt;&lt;font style=&quot;vertical-align: inherit&quot;&gt;AnnéeSerie &lt;/font&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;vertical-align: inherit&quot;&gt;&lt;font style=&quot;vertical-align: inherit&quot;&gt;genreSerie&lt;/font&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="540" y="135" width="40" height="20" as="geometry" />
         </mxCell>
       </root>
