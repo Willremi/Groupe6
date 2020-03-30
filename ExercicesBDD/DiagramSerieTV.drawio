@@ -1,1 +1,40 @@
-<mxfile host="app.diagrams.net" modified="2020-03-30T07:48:07.541Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36" etag="1o4GtSt-8vAkp9v8jg3d" version="12.9.4" type="google"><diagram id="C_CapZNrdbjN5ygWCtcE" name="Page-1">3VjLbtswEPwaAe0hgd62j46Spj00COo0TU4FY20kthRp0HQs9+u7MinrQTnpw0EAn8wdLlfizGgp2QmSoryUZJF/Fikwx3fT0gnOHd/3RqMAfypko5EoHGsgkzQ1SQ0wo7/AgK5BVzSFZSdRCcEUXXTBueAc5qqDESnFupv2KFj3qguSgQXM5oTZ6DeaqlyjY3/U4B+BZnl9ZS+e6JmC1MlmJ8ucpGLdgoILJ0ikEEqPijIBVpFX86LXfdgzu7sxCVz9yYLvV5mM6ddPmwfK1I9FeRHD6sTXVZ4IW5kN0/SLkwTOdEJwccyw9NmDxFFWja5E8czstdRz/NmsKed6ElpJW4LUpmZdihVPobpxF1esc6pgtiDzanaNPkMsVwXDyMNhSiUqTwXHeClWFe1nNjmGryeQCsoWZMi6BFGAkhtMMbMntQWNc8NIh+vGBt7EpOQtC/gjk0iM9bJd6UYdHBiB/kKswBLr/4g7AEnhuEeSa5M0GiKpXndwkqKXSQKeTqvWgBEXHLqkQEnVXcXfaTiKTXyP8Yl76rqRAc5Lw/A22NQBxw3ctYP7baGoDptl22jTKnINkiIBIA22Vxt0uJzDy4+0IjID9bKbIO00QFvplpTRgJI1JoERRZ+6bXNIXXOFa0FxZzsjBZOukQKvZxC9b7Oq3eZ6hcKwW8iPe4U0MVahrdl22/53/8WW/97hDSTee8uG+IiprveWSoqfkAgmZOPNR8pYDyKMZlW3m6M5KsecVQ8sxUNraiYKmqbVZQY7QLdHHKAJeD3tvIEuEA41gdfqASNbA9xBwo9YgzDoaTB5Yw3Glga7454uwe7JjOEr3T66Dnto7VpCzVUwcLT7A2S92qE1eY4somAlj9e5cdQT442N69ndY6bFkBRubo9XiKh3co7fWIi6cOfjZIbvSWB/VNxQJWHPXPPBsSchAy7tjnS0ug61uwMJi2HzQavfqJq/BYKL3w==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2020-03-30T07:58:02.412Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36" etag="sOXt81Cj-ZhoVS_8VgJb" version="12.9.4" type="github">
+  <diagram id="C_CapZNrdbjN5ygWCtcE" name="Page-1">
+    <mxGraphModel dx="1773" dy="548" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="_Ngr6iUIybiltjpxE6eu-2" value="&lt;font style=&quot;vertical-align: inherit&quot;&gt;&lt;font style=&quot;vertical-align: inherit&quot;&gt;idRéal &lt;/font&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;vertical-align: inherit&quot;&gt;&lt;font style=&quot;vertical-align: inherit&quot;&gt;NomRéal &lt;/font&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;vertical-align: inherit&quot;&gt;&lt;font style=&quot;vertical-align: inherit&quot;&gt;PrénomRéal &lt;/font&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;vertical-align: inherit&quot;&gt;&lt;font style=&quot;vertical-align: inherit&quot;&gt;DateNaissanceRéal&lt;/font&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;direction=south;" parent="1" vertex="1">
+          <mxGeometry x="-10" y="45" width="190" height="275" as="geometry" />
+        </mxCell>
+        <mxCell id="_Ngr6iUIybiltjpxE6eu-3" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="480" y="40" width="170" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="_Ngr6iUIybiltjpxE6eu-5" value="" style="endArrow=none;html=1;exitX=0.476;exitY=-0.005;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitPerimeter=0;" parent="1" source="_Ngr6iUIybiltjpxE6eu-2" target="_Ngr6iUIybiltjpxE6eu-3" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="310" as="sourcePoint" />
+            <mxPoint x="440" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_Ngr6iUIybiltjpxE6eu-6" value="(0,1)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="190" y="140" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="_Ngr6iUIybiltjpxE6eu-7" value="(1,n)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="430" y="190" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="_Ngr6iUIybiltjpxE6eu-8" value="Réalise" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="260" y="135" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="_Ngr6iUIybiltjpxE6eu-9" value="Réalisateur" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="65" y="130" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="_Ngr6iUIybiltjpxE6eu-17" value="SérieTV" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="540" y="80" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="_Ngr6iUIybiltjpxE6eu-20" value="idSerie&lt;br&gt;TitreSerie&lt;br&gt;AnnéeSerie&lt;br&gt;genre" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="540" y="135" width="40" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
