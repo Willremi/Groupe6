@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-03-31T06:08:33.720Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36" etag="NngwHyA-3zz0k42BI-vz" version="12.9.5" type="github">
+<mxfile host="app.diagrams.net" modified="2020-03-31T06:22:21.394Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36" etag="Ua0cfmDnpLqlHM6Quohy" version="12.9.5" type="github">
   <diagram id="jEuXmXIv4p6gIk_5oJhH" name="Page-1">
     <mxGraphModel dx="1773" dy="548" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -78,6 +78,12 @@
         </mxCell>
         <mxCell id="UMJbszNfp7T79C8Wnxz_-34" value="idTypeProd&lt;br&gt;TypeProd&lt;br&gt;matiereProd" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="-90" y="247.5" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="9tUXxpxgBFinTvFr-a4o-14" value="" style="endArrow=none;html=1;entryX=0.992;entryY=0.342;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.008;exitY=0.541;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="UMJbszNfp7T79C8Wnxz_-25" target="UMJbszNfp7T79C8Wnxz_-30">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="290" y="300" as="sourcePoint" />
+            <mxPoint x="340" y="250" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
