@@ -89,3 +89,18 @@ SELECT prod.name AS Nom,
 FROM products AS prod
 WHERE prod.price > 500
 AND prod.price < 1500
+
+-- Question 4 
+SELECT prod.name AS Nom, 
+       prod.model_year AS Année, 
+	   prod.price AS PrixHT, 
+       brands.brand_name AS Marque
+FROM products AS prod, brands
+WHERE brands.brand_name LIKE 'H%'
+
+-- Question 5
+SELECT prod.name AS Nom, 
+       prod.model_year AS Année, 
+	prod.price AS PrixHT
+FROM products AS prod
+WHERE prod.name LIKE '%lce%'
