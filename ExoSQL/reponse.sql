@@ -57,3 +57,35 @@ SELECT prod.price AS PrixHT,
        prod.price / (100 * 20) AS Montant20prcent, 
        prod.price + (prod.price / (100 * 20)) AS prixTTC
 FROM products AS prod
+
+
+SELECT prod.name AS Nom, 
+       prod.model_year AS Année, 
+	prod.price AS PrixHT, 
+       prod.price / (100 * 20) AS Montant20prcent, 
+       prod.price + (prod.price / (100 * 20)) AS prixTTC,   
+       cat.nameCat AS typeVélo,  
+       brands.brand_name AS Marque
+FROM products AS prod, categories AS cat, brands
+WHERE cat.idCat = 5
+AND brands.brand_id = 2
+
+-- prix ttc (deux chiffres après la virgule)
+SELECT prod.name AS Nom, 
+       prod.model_year AS Année, 
+	prod.price AS PrixHT, 
+       prod.price / (100 * 20) AS Montant20prcent, 
+       ROUND(prod.price + (prod.price / (100 * 20)), 2) AS prixTTC,   
+       cat.nameCat AS typeVélo,  
+       brands.brand_name AS Marque
+FROM products AS prod, categories AS cat, brands
+WHERE cat.idCat = 5
+AND brands.brand_id = 2
+
+-- Question 3
+SELECT prod.name AS Nom, 
+       prod.model_year AS Année, 
+	   prod.price AS PrixHT
+FROM products AS prod
+WHERE prod.price > 500
+AND prod.price < 1500
