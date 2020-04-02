@@ -32,9 +32,20 @@ AND prod.name LIKE '%smart%'
 -- requêtes SQL de l'exercice TravailSurSQL.docx
 SELECT prod.name AS Nom, 
        prod.model_year AS Année, 
-	   prod.price,
+	   prod.price, 
        cat.idCat, 
-       cat.nameCat, 
+       cat.nameCat AS typeVélo, 
        brands.brand_id, 
-       brands.brand_name
+       brands.brand_name AS Marque
 FROM products AS prod, categories AS cat, brands
+WHERE cat.nameCat = 'Electric Bikes'
+AND brands.brand_name = 'Haro'
+
+SELECT prod.name AS Nom, 
+       prod.model_year AS Année, 
+	   prod.price,  
+       cat.nameCat AS typeVélo,  
+       brands.brand_name AS Marque
+FROM products AS prod, categories AS cat, brands
+WHERE cat.idCat = 5
+AND brands.brand_id = 2
