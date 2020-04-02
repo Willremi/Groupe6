@@ -144,3 +144,28 @@ AND anim.race_idrace = r.idrace
 
 
 
+SELECT 	
+		proprios.nom_proprio AS Nom, 
+        proprios.prenom_proprio AS Prénom,
+        adresse.code_postal AS CP,
+        adresse.ville,
+        animals.nom_animal AS NomAnimal,
+        DATE_FORMAT(animals.date_naissance, "%Y") AS Annee,
+        race.nom_race,
+        TIMESTAMPDIFF(year, animals.date_naissance, NOW()) AS Diff
+FROM adresse
+INNER JOIN proprios ON proprios.adresse_idadresse = adresse.idadresse
+INNER JOIN animals ON animals.Proprios_idProprios = proprios.idProprios
+INNER JOIN race ON race.idrace = animals.race_idrace
+
+
+
+SELECT 	
+		proprios.nom_proprio AS Nom, 
+        proprios.prenom_proprio AS Prénom,
+        adresse.code_postal AS CP,
+        adresse.ville
+FROM adresse 
+RIGHT JOIN proprios ON proprios.adresse_idadresse = adresse.idadresse  
+
+
