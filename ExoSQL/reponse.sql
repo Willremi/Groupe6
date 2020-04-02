@@ -30,6 +30,7 @@ AND prod.name LIKE '%smart%'
 
 
 -- requêtes SQL de l'exercice TravailSurSQL.docx
+-- Question 1
 SELECT prod.name AS Nom, 
        prod.model_year AS Année, 
 	   prod.price, 
@@ -49,3 +50,10 @@ SELECT prod.name AS Nom,
 FROM products AS prod, categories AS cat, brands
 WHERE cat.idCat = 5
 AND brands.brand_id = 2
+
+-- Question 2
+-- calcul prix HT, TVA 20%, prix TTC
+SELECT prod.price AS PrixHT, 
+       prod.price / (100 * 20) AS Montant20prcent, 
+       prod.price + (prod.price / (100 * 20)) AS prixTTC
+FROM products AS prod
