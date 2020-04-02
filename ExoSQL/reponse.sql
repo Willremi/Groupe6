@@ -30,5 +30,11 @@ AND prod.name LIKE '%smart%'
 
 
 -- requêtes SQL de l'exercice TravailSurSQL.docx
-SELECT prod.name AS Nom, prod.model_year AS Année, prod.price
-FROM products AS prod
+SELECT prod.name AS Nom, 
+       prod.model_year AS Année, 
+	   prod.price,
+       cat.idCat, 
+       cat.nameCat, 
+       brands.brand_id, 
+       brands.brand_name
+FROM products AS prod, categories AS cat, brands
