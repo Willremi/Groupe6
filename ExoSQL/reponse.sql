@@ -138,3 +138,8 @@ WHERE products.brand_id = 9
 -- Question 7
 DELETE FROM products
 WHERE products.category_id = 6
+
+-- Question 8
+UPDATE products
+SET products.price = '1499'
+WHERE products.id = 9
