@@ -115,9 +115,26 @@ SELECT prod.name AS Nom,
 FROM products AS prod, brands
 WHERE brands.brand_name LIKE 'H%'
 
+SELECT  products.name,
+        products.model_year,
+        products.price,
+        brands.brand_name
+ FROM  products
+ INNER JOIN brands ON products.brand_id = brands.brand_id
+ WHERE brands.brand_name LIKE 'H%'
+
 -- Question 5
 SELECT prod.name AS Nom, 
        prod.model_year AS Année, 
 	prod.price AS PrixHT
 FROM products AS prod
 WHERE prod.name LIKE '%lce%'
+
+
+-- Question 6
+DELETE FROM products
+WHERE products.brand_id = 9
+
+-- Question 7
+DELETE FROM products
+WHERE products.category_id = 6
