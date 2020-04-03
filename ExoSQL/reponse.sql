@@ -147,3 +147,7 @@ WHERE products.id = 9
 -- Question 9
 INSERT INTO categories (categories.nameCat)
 VALUES ('Roller skates')
+
+-- Question 10
+INSERT INTO products (products.name, products.brand_id, products.category_id, products.model_year, products.price)
+VALUES ('roller skates cool', (SELECT brands.brand_id FROM brands WHERE brands.brand_name = 'Haro'), (SELECT categories.idCat FROM categories WHERE categories.nameCat = 'Roller skates'), '2020', 258)
