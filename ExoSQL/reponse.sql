@@ -130,14 +130,13 @@ SELECT prod.name AS Nom,
 FROM products AS prod
 WHERE prod.name LIKE '%lce%'
 
-
 -- Question 6
 DELETE FROM products
-WHERE products.brand_id = 9
+WHERE products.brand_id = (SELECT brands.brand_id FROM brands WHERE brands.brand_name = "Trek");
 
 -- Question 7
 DELETE FROM products
-WHERE products.category_id = 6
+WHERE products.category_id = (SELECT categories.category_id FROM categories WHERE categories.nameCat = 'Mountain Bikes')
 
 -- Question 8
 UPDATE products
