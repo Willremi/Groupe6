@@ -143,3 +143,7 @@ WHERE products.category_id = 6
 UPDATE products
 SET products.price = '1499'
 WHERE products.id = 9
+
+-- Question 9
+INSERT INTO categories (categories.nameCat)
+VALUES ('Roller skates')
