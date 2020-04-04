@@ -159,8 +159,7 @@ INNER JOIN race ON race.idrace = animals.race_idrace
 
 
 
-SELECT 	
-		proprios.nom_proprio AS Nom, 
+SELECT 	proprios.nom_proprio AS Nom, 
         proprios.prenom_proprio AS Prénom,
         adresse.code_postal AS CP,
         adresse.ville
