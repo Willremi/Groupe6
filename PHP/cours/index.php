@@ -28,9 +28,22 @@ define('TVA55', 5.5);
 $tab1 = [];
 $tab2 = array();
 
+// Dim simple
 $tab1 = array('toto', 'tata', '23', 19);
 $tab2 = [11, 'a', 19, 'B'];
 
+// tableau associatif
+$tabVehicule = array(
+                    "X1" => "BMW", 
+                    "X2" => "Mercedes"
+                );
+
+
+$tab3 = array(
+                array("A", "B"), 
+                array(1, 2)
+        );
+/*
 // 1ere méthode
 for($i = 0; $i < count($tab1); $i++) {
     // echo $tab1[$i].'<br>';
@@ -45,11 +58,24 @@ foreach($tab1 as $key => $value) {
 foreach($tab1 as $value) {
     echo "La valeur : ".$value."<br>";
 }
+*/
+// var_dump($tab1);
+// echo $b;
+// var_dump($tab2);
+// var_dump($tabVehicule);
 
-var_dump($tab1);
-echo $b;
-var_dump($tab2);
+foreach($tabVehicule as $key => $value) {
+    echo $key." ".$value."<br>";
+}
 
+foreach($tab3 as $key => $value) {
+    // var_dump($value);
+    foreach($value as $k => $v) {
+    echo $k." ".$v;
+    echo $b;
+    }
+    
+}
 // echo
 // var_dump() // servir uniqument dour les développeur
 
