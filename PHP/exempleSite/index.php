@@ -7,6 +7,6 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <h1>Marques de voitures</h1>
+    <h1>Marques de voitures et modèles</h1>
     <a href="mesVehicules.php" target="_blank">cliquez ici</a>
 </html>

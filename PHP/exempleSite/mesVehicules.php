@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-   <?php 
-   $tabVoiture = array (
+    <h1>Marques de voitures et modèles</h1>
+    <?php 
+    $tabVoiture = array (
                         "Fiat" => "Panda 4x4", 
                         "Ferrari" => "Testarossa", 
                         "Citroën" => "2CV", 
@@ -18,8 +19,8 @@
                         "Jeep" => "Wrangler", 
                         "Plymouth" => "Barracuda"
        );
-   ?> 
-   <table>
+    ?> 
+    <table>
        <thead>
            <tr>
                <th>Marques de voiture</th>
@@ -34,6 +35,6 @@
             </tr>
            <?php } ?>
        </tbody>
-   </table>
+    </table>
 </body>
 </html>
