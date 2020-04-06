@@ -65,14 +65,14 @@ foreach($tab1 as $value) {
 // var_dump($tabVehicule);
 
 foreach($tabVehicule as $key => $value) {
-    echo $key." ".$value."<br>";
+    // echo $key." ".$value."<br>";
 }
 
 foreach($tab3 as $key => $value) {
     // var_dump($value);
     foreach($value as $k => $v) {
-    echo $k." ".$v;
-    echo $b;
+    // echo $k." ".$v;
+    // echo $b;
     }
     
 }
