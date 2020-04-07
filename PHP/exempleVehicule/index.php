@@ -15,13 +15,21 @@
         $sqlInsertMarq = "INSERT INTO marque(nomMarque) VALUES (:inputMarq)";
 
         $reqMarq = $db->prepare($sqlInsertMarq);
+        $reqMarq->bindParam(":inputMarq", $inputMarq, PDO::PARAM_STR);
+        $reqMarq->execute();
+
+        $sqlInsertMod = "INSERT INTO modele(nomModele) VALUES (:inputMod)";
+
+        $reqMod = $db->prepare($sqlInsertMod);
+        $reqMod->bindParam(":inputMod", $inputMod, PDO::PARAM_STR);
+        $reqMod->execute();
     }
 
 ?>
     <h1>Site de mes véhicules</h1>
     <hr>
     <div>
-        <form method="post" action="views/mesVehicules.php">
+        <form method="post" action="src/views/mesVehicules.php">
             <div class="form-group">
             <label for="marque">Marque de la voiture</label>
             <input type="text" name="marq" id="marque" class="form-control">
