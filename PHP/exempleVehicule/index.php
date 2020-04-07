@@ -1,6 +1,8 @@
 <?php 
     require_once 'src/views/elements/head.php';
     require_once 'src/views/elements/footer.php';
+    require 'src/config/config.php';
+    require 'src/models/connect.php';
     
     head();
 ?>
@@ -8,11 +10,15 @@
     <hr>
     <div>
 
-        <a href="src/views/mesVehicules.php">
-            <button type="button" class="btn btn-outline-dark">
-                Mes véhicules
-            </button>
-        </a>
+        <form method="post">
+            <div class="form-group">
+            <label for="marque">Marque de la voiture</label>
+            <input type="text" name="marq" id="marque" class="form-control">
+            <label for="model">Modèle de la voiture</label>
+            </div>
+            <button type="submit" class="btn btn-outline-dark">Envoyer</button>
+            
+        </form>
 
     </div>
 </div>

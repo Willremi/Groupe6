@@ -1,6 +1,6 @@
 <?php
 
 define('LOCALHOST', 'localhost');
-define('DBNAME', 'produits');
+define('DBNAME', 'vehicule');
 define('DBID', 'root');
 define('DBMDP', 'root');
