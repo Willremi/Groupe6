@@ -47,7 +47,27 @@ if(isset($_POST["marq"]) && isset($_POST["mod"])) {
     $reqVehicule->execute();
 }
 
+$marque = array();
+$modele = array();
 
+$sqlSelect1 = "SELECT nomMarque FROM vehicule
+INNER JOIN marque ON marque.idMarque = vehicule.marque_idMarque";
+$reqSelect1 = $db->prepare($sqlSelect1);
+$reqSelect1->execute();
+
+while($data1 = $reqSelect1->fetchObject()) {
+    array_push($marque, $data1);
+}
+
+
+$sqlSelect2 = "SELECT nomModele FROM vehicule
+INNER JOIN modele ON modele.idModele = vehicule.modele_idModele";
+$reqSelect2 = $db->prepare($sqlSelect2);
+$reqSelect2->execute();
+
+while($data2 = $reqSelect2->fetchObject()) {
+    array_push($modele, $data2);
+}
 
 ?>
 
@@ -63,15 +83,17 @@ if(isset($_POST["marq"]) && isset($_POST["mod"])) {
         <tbody>
         <tr>
             <?php
-            // foreach ($vehiculeMarque as $marque=>$modele){
+            foreach ($marque as $mrq){
             ?>
-            <td><?= $marque ?></td>
-            <td><?= $modele ?></td>
-        </tr>
-        <?php
-        // }
+            <td><?= $mrq->marque; ?></td>
+            <?php
+        } 
+        foreach($modele as $mod) {
         ?>
-
+             <td><?= $mod->model; ?></td>
+        <?php } ?>
+        </tr>
+        
         </tbody>
     </table>
     <div>
