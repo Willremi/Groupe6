@@ -39,10 +39,12 @@ if(isset($_POST["marq"]) && isset($_POST["mod"])) {
     $reqMod->execute();
     $idMode = $db->lastInsertId();
 
-    $sqlInsertVehicule = "INSERT INTO vehicule(modele_idModele, marque_idMarque) VALUES (idMode, idMarq)";
+    $sqlInsertVehicule = "INSERT INTO vehicule(modele_idModele, marque_idMarque) VALUES (:idMode, :idMarq)";
 
     $reqVehicule = $db->prepare($sqlInsertVehicule);
-    
+    $reqVehicule->bindParam(":idMode", $idMode);
+    $reqVehicule->bindParam(":idMarq", $idMarq);
+    $reqVehicule->execute();
 }
 
 
