@@ -36,13 +36,13 @@ head();
         <tbody>
         <tr>
             <?php
-            foreach ($vehiculeMarque as $marque=>$modele){
+            // foreach ($vehiculeMarque as $marque=>$modele){
             ?>
             <td><?= $marque ?></td>
             <td><?= $modele ?></td>
         </tr>
         <?php
-        }
+        // }
         ?>
 
         </tbody>
