@@ -5,7 +5,7 @@ require '../config/config.php';
 require '../models/connect.php';
 
 $db = connect();
-var_dump($db);
+// var_dump($db);
 
 head();
 
@@ -30,13 +30,23 @@ if(isset($_POST["marq"]) && isset($_POST["mod"])) {
     $reqMarq = $db->prepare($sqlInsertMarq);
     $reqMarq->bindParam(":inputMarq", $inputMarq, PDO::PARAM_STR);
     $reqMarq->execute();
+    $idMarq = $db->lastInsertId();
 
     $sqlInsertMod = "INSERT INTO modele(nomModele) VALUES (:inputMod)";
 
     $reqMod = $db->prepare($sqlInsertMod);
     $reqMod->bindParam(":inputMod", $inputMod, PDO::PARAM_STR);
     $reqMod->execute();
+    $idMode = $db->lastInsertId();
+
+    $sqlInsertVehicule = "INSERT INTO vehicule(modele_idModele, marque_idMarque) VALUES (idMode, idMarq)";
+
+    $reqVehicule = $db->prepare($sqlInsertVehicule);
+    
 }
+
+
+
 ?>
 
     <h1>Liste de mes véhicules</h1>

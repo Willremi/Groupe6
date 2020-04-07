@@ -8,22 +8,7 @@
 
     $db = connect();
 
-    if(isset($_POST["marq"]) && isset($_POST["mod"])) {
-        $inputMarq = htmlspecialchars(trim($_POST["marq"]));
-        $inputMod = htmlspecialchars(trim($_POST["mod"]));
-
-        $sqlInsertMarq = "INSERT INTO marque(nomMarque) VALUES (:inputMarq)";
-
-        $reqMarq = $db->prepare($sqlInsertMarq);
-        $reqMarq->bindParam(":inputMarq", $inputMarq, PDO::PARAM_STR);
-        $reqMarq->execute();
-
-        $sqlInsertMod = "INSERT INTO modele(nomModele) VALUES (:inputMod)";
-
-        $reqMod = $db->prepare($sqlInsertMod);
-        $reqMod->bindParam(":inputMod", $inputMod, PDO::PARAM_STR);
-        $reqMod->execute();
-    }
+    
 
 ?>
     <h1>Site de mes véhicules</h1>
