@@ -15,6 +15,7 @@
             <label for="marque">Marque de la voiture</label>
             <input type="text" name="marq" id="marque" class="form-control">
             <label for="model">Modèle de la voiture</label>
+            <input type="text" name="mod" id="model" class="form-control">
             </div>
             <button type="submit" class="btn btn-outline-dark">Envoyer</button>
             
