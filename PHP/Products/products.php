@@ -7,6 +7,19 @@ require 'src/models/connect.php';
 $db = connect();
 
 head();
+
+$sqlSelect = "SELECT * FROM products 
+INNER JOIN categories ON products.category_id = categories.id";
+
+$reqSelect = $db->prepare($sqlSelect);
+$reqSelect->execute();
+
+$listProd = array();
+
+while ($data = $reqSelect->fetchObject()) {
+	array_push($listProd, $data);
+}
+
 ?>
 
 	<h2>Products</h2>
