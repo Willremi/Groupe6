@@ -8,7 +8,7 @@ $db = connect();
 
 head();
 
-$sqlSelect = "SELECT * FROM products 
+$sqlSelect = "SELECT products.id AS idProd, products.name AS nomProd, products.price AS prixProd, categories.name AS nomCat FROM products 
 INNER JOIN categories ON products.category_id = categories.id";
 
 $reqSelect = $db->prepare($sqlSelect);
@@ -19,7 +19,7 @@ $listProd = array();
 while ($data = $reqSelect->fetchObject()) {
 	array_push($listProd, $data);
 }
-
+// var_dump($listProd);
 ?>
 
 	<h2>Products</h2>
@@ -28,14 +28,29 @@ while ($data = $reqSelect->fetchObject()) {
 		<thead class="thead-dark">
 		<tr>
 			<th scope="col">#</th>
-			<th scope="col">Description</th>
+			<th scope="col">Name</th>
 			<th scope="col">Price</th>
 			<th scope="col">Category</th>
 			<th scope="col">Actions</th>
 		</tr>
 		</thead>
 		<tbody>
-		<tr>
+			<?php foreach($listProd as $produit) { ?>
+			<tr>
+				<th scope="row"><?= $produit->idProd; ?></th>
+				<td><?= $produit->nomProd; ?></td>
+				<td><?= $produit->prixProd; ?></td>
+				<td><?= $produit->nomCat; ?></td>
+			
+				<td>
+				<a href="#"><button class="btn btn-primary" type="submit"><i class="fa fa-bars" aria-hidden="true"></i> Lire</button></a>
+				<a href="#"><button class="btn btn-warning" type="submit"><i class="fa fa-spinner" aria-hidden="true"></i> Modifier</button></a>
+				<a href="#"><button class="btn btn-danger" type="submit"><i class="fa fa-minus-square" aria-hidden="true"></i> Supprimer</button></a>
+				</td>
+				<?php } ?>
+			</tr>
+		<!-- <tr>
+
 			<th scope="row">1</th>
 			<td>LG P880 4X HD</td>
 			<td>336</td>
@@ -97,7 +112,7 @@ while ($data = $reqSelect->fetchObject()) {
 					<button class="btn btn-danger" type="submit"><i class="fa fa-minus-square" aria-hidden="true"></i> Supprimer</button>
 				</a>
 			</td>
-		</tr>
+		</tr> -->
 		</tbody>
 	</table>
 </div>

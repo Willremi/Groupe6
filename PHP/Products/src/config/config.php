@@ -3,4 +3,4 @@
 define('LOCALHOST', 'localhost');
 define('DBNAME', 'products');
 define('DBID', 'root');
-define('DBMP', 'root');
+define('DBMDP', 'root');
