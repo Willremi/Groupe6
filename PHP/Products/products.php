@@ -24,6 +24,30 @@ while ($data = $reqSelect->fetchObject()) {
 
 	<h2>Products</h2>
 
+	<form action="" method="post">
+		<div class="form-row">
+		<div class="form-group col-md-3">
+			<label for="nomProd">Nom du produit : </label>
+			<input type="text" name="nomProduit" id="nomProd" class="form-control">
+			</div>
+			<div class="form-group col-md-3">
+			<label for="prixProd">Prix du produit : </label>
+			<input type="text" name="prix" id="prixProd" class="form-control">
+			</div>
+			<div class="form-group col-md-3">
+				<label for="selCat">Sélectionnez la catégorie </label>
+				<select name="cat" id="selCat" class="custom-select">
+					<option value="">1</option>
+					<option value="">2</option>
+					<option value="">3</option>
+				</select>
+			</div>
+			
+			<button type="submit" class="btn btn-success">Ajouter</button>
+			
+		</div>
+	</form>
+
 	<table class="table table-hover">
 		<thead class="thead-dark">
 		<tr>
