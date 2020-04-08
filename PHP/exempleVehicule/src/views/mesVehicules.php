@@ -50,24 +50,10 @@ if(isset($_POST["marq"]) && isset($_POST["mod"])) {
 $marque = array();
 $modele = array();
 
-$sqlSelect1 = "SELECT nomMarque FROM vehicule
-INNER JOIN marque ON marque.idMarque = vehicule.marque_idMarque";
-$reqSelect1 = $db->prepare($sqlSelect1);
-$reqSelect1->execute();
-
-while($data1 = $reqSelect1->fetchObject()) {
-    array_push($marque, $data1);
-}
-
-
-$sqlSelect2 = "SELECT nomModele FROM vehicule
+$sqlSelect = "SELECT idVehicule, nomMarque, nomModele FROM vehicule
+INNER JOIN marque ON marque.idMarque = vehicule.marque_idMarque 
 INNER JOIN modele ON modele.idModele = vehicule.modele_idModele";
-$reqSelect2 = $db->prepare($sqlSelect2);
-$reqSelect2->execute();
 
-while($data2 = $reqSelect2->fetchObject()) {
-    array_push($modele, $data2);
-}
 
 ?>
 
@@ -76,21 +62,22 @@ while($data2 = $reqSelect2->fetchObject()) {
     <table class="table table-hover mt-5 mb-5">
         <thead class="thead-dark">
         <tr>
+            <th>ID</th>
             <th>Marque</th>
             <th>Modèle</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
             <?php
-            foreach ($marque as $mrq){
+            $reqSelect = $db->prepare($sqlSelect);
+            $reqSelect->execute();
+            
+            while($data = $reqSelect->fetch()) {
             ?>
-            <td><?= $mrq->marque; ?></td>
-            <?php
-        } 
-        foreach($modele as $mod) {
-        ?>
-             <td><?= $mod->model; ?></td>
+        <tr>
+            <td><?= $data['idVehicule']; ?></td>
+            <td><?= $data['nomMarque']; ?></td>
+            <td><?= $data['nomModele']; ?></td>
         <?php } ?>
         </tr>
         
