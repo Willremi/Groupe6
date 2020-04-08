@@ -11,6 +11,7 @@ if(empty($_POST['nomProduit']) || empty($_POST['prix']) || $_POST['cat'] == '---
 if(isset($_POST['nomProduit']) && isset($_POST['prix'])) {
     $nomProd = htmlspecialchars(trim($_POST['nomProduit']));
     $prix = htmlspecialchars(trim(is_numeric($_POST['prix'])));
+    $description = htmlspecialchars(trim($_POST['descript']));
 }
 // Vérification si le produit existe
 $sqlExiste = "SELECT COUNT(*) as nb 
@@ -26,5 +27,15 @@ $reqVerif->execute();
 $nb = $reqVerif->fetchObject();
 
 if($nb->nb == 0) {
-    $insertProd = "INSERT INTO () VALUES ()";
+    $sqlProd = "SELECT categories.id AS idCate FROM products INNER JOIN categories ON products.category_id = categories.id";
+
+
+    $insertProd = "INSERT INTO products(name, description, price) VALUES (:insertNomProd, :insertDescProd, :insertPrixProd)";
+    $reqProd = $db->prepare($insertProd);
+    $reqProd->bindParam(':insertNomProd', $nomProd);
+    $reqProd->bindParam(':insertDescProd', $description);
+    $reqProd->bindParam(':insertPrixProd', $prix);
+    $reqProd->execute();
+
+    // $lastInsertIdProd = $db->lastInsertId();
 }

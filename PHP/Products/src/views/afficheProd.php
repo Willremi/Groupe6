@@ -18,7 +18,11 @@ $reqCat->execute();
 		<div class="form-group col-md-3">
 			<label for="nomProd">Nom du produit : </label>
 			<input type="text" name="nomProduit" id="nomProd" class="form-control">
-			</div>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="description">Description : </label>
+                <input type="text" name="descript" id="description" class="form-control">
+            </div>
 			<div class="form-group col-md-3">
 			<label for="prixProd">Prix du produit : </label>
 			<input type="text" name="prix" id="prixProd" class="form-control">
