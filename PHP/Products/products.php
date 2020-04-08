@@ -24,31 +24,9 @@ while ($data = $reqSelect->fetchObject()) {
 
 	<h2>Products</h2>
 
-	<form action="" method="post">
-		<div class="form-row">
-		<div class="form-group col-md-3">
-			<label for="nomProd">Nom du produit : </label>
-			<input type="text" name="nomProduit" id="nomProd" class="form-control">
-			</div>
-			<div class="form-group col-md-3">
-			<label for="prixProd">Prix du produit : </label>
-			<input type="text" name="prix" id="prixProd" class="form-control">
-			</div>
-			<div class="form-group col-md-3">
-				<label for="selCat">Sélectionnez la catégorie </label>
-				<select name="cat" id="selCat" class="custom-select">
-					<option value="">1</option>
-					<option value="">2</option>
-					<option value="">3</option>
-				</select>
-			</div>
-			
-			<button type="submit" class="btn btn-success">Ajouter</button>
-			
-		</div>
-	</form>
+	<a href="src/views/afficheProd.php"><button type="button" class="btn btn-primary">Ajouter un produit</button></a>
 
-	<table class="table table-hover">
+	<table class="table table-hover mt-3">
 		<thead class="thead-dark">
 		<tr>
 			<th scope="col">#</th>
@@ -73,72 +51,10 @@ while ($data = $reqSelect->fetchObject()) {
 				</td>
 				<?php } ?>
 			</tr>
-		<!-- <tr>
 
-			<th scope="row">1</th>
-			<td>LG P880 4X HD</td>
-			<td>336</td>
-			<td>Fashion</td>
-			<td>
-				<a href="#"><button class="btn btn-primary" type="submit"><i class="fa fa-bars" aria-hidden="true"></i> Lire</button></a>
-				<a href="#"><button class="btn btn-warning" type="submit"><i class="fa fa-spinner" aria-hidden="true"></i> Modifier</button></a>
-				<a href="#"><button class="btn btn-danger" type="submit"><i class="fa fa-minus-square" aria-hidden="true"></i> Supprimer</button></a>
-			</td>
-		</tr>
-		<tr>
-			<th scope="row">2</th>
-			<td>Google Nexus 4</td>
-			<td>299</td>
-			<td>Electronics</td>
-			<td>
-				<a href="#">
-<button class="btn btn-primary" type="submit"><i class="fa fa-bars" aria-hidden="true"></i> Lire</button>
-				</a>
-				<a href="#">
-					<button class="btn btn-warning" type="submit"><i class="fa fa-spinner" aria-hidden="true"></i> Modifier</button>
-				</a>
-				<a href="#">
-					<button class="btn btn-danger" type="submit"><i class="fa fa-minus-square" aria-hidden="true"></i> Supprimer</button>
-				</a>
-			</td>
-		</tr>
-		<tr>
-			<th scope="row">3</th>
-			<td>Samsung Galaxy S4</td>
-			<td>600</td>
-			<td>Motors</td>
-			<td>
-				<a href="#">
-					<button class="btn btn-primary" type="submit"><i class="fa fa-bars" aria-hidden="true"></i> Lire</button>
-				</a>
-				<a href="#">
-					<button class="btn btn-warning" type="submit"><i class="fa fa-spinner" aria-hidden="true"></i> Modifier</button>
-				</a>
-				<a href="#">
-					<button class="btn btn-danger" type="submit"><i class="fa fa-minus-square" aria-hidden="true"></i> Supprimer</button>
-				</a>
-			</td>
-		</tr>
-
-		<tr>
-			<th scope="row">3</th>
-			<td>Bench Shirt</td>
-			<td>29</td>
-			<td>Fashion</td>
-			<td>
-				<a href="#">
-					<button class="btn btn-primary" type="submit"><i class="fa fa-bars" aria-hidden="true"></i> Lire</button>
-				</a>
-				<a href="#">
-					<button class="btn btn-warning" type="submit"><i class="fa fa-spinner" aria-hidden="true"></i> Modifier</button>
-				</a>
-				<a href="#">
-					<button class="btn btn-danger" type="submit"><i class="fa fa-minus-square" aria-hidden="true"></i> Supprimer</button>
-				</a>
-			</td>
-		</tr> -->
 		</tbody>
 	</table>
+	<a href="src/views/afficheProd.php"><button type="button" class="btn btn-primary">Ajouter un produit</button></a>
 </div>
 <?php
 
