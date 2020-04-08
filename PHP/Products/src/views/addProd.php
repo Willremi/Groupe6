@@ -53,5 +53,6 @@ if($nb->nb == 0) {
 }
 ?>
 Vous avez ajouté votre produit
+<a href="../../products.php"><button type="button" class="btn btn-danger">Retour</button></a>
 <?php 
 footer();
