@@ -7,6 +7,8 @@ head();
 
 $db = connect();
 
+$idProd = $_GET['id'];
+
 $sqlDetailProd = "SELECT products.id AS idProd, 
 products.name AS nom,  
 products.description AS descrip, 
@@ -15,12 +17,11 @@ categories.name AS categorie,
 DATE_FORMAT(products.created, '%d/%m/%Y à %H:%i') AS dateAjout
 FROM products
 INNER JOIN categories ON products.category_id = categories.id
-WHERE products.id = 1";
+WHERE products.id =".$idProd;
 
 $reqDet = $db->prepare($sqlDetailProd);
 $reqDet->execute();
 $data = $reqDet->fetchObject();
-
 ?>
 <h2>Détails du Produit</h2>
 

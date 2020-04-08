@@ -1,0 +1,36 @@
+## Exercice
+### Consignes :
+
+- Affichez les valeurs dans le tableau en fonction des éléments figurants dans la base de données (servez vous du fichier sql ci joint),
+- Créez des liens vers les fichiers qui permettront de modifier, ajouter, supprimer et afficher (complétez le fichier products.php).
+- Créez les fichiers nécessaires pour les traitements correspondants,
+- Affichez le tableau (fichier products.php) après les modifications.
+
+
+// Ajout produit 
+nom du produit
+prix du produit
+
+
+INSERT INTO products(name, price, description, category_id, created) VALUES ('Iphone', '1000', 'top', 2, '2020-04-08')
+
+
+SELECT products.id, products.name, products.price, products.description, categories.name
+FROM products 
+INNER JOIN categories ON products.category_id = categories.id
+
+SELECT categories.id AS idCate 
+FROM products 
+INNER JOIN categories ON products.category_id = categories.id
+
+// DetailProd
+SELECT products.id AS idProd,  
+       products.description AS description, 
+       products.price AS prix,
+       categories.name AS catégorie, 
+       products.created AS dateAjout
+FROM products
+INNER JOIN categories ON products.category_id = categories.id
+
+SELECT DATE_FORMAT(created, '%d/%m/%Y à %H:%i') AS dateAjout
+FROM products

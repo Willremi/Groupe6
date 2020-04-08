@@ -45,8 +45,8 @@ while ($data = $reqSelect->fetchObject()) {
 				<td><?= $produit->nomCat; ?></td>
 			
 				<td>
-				<a href="src/views/afficheDetailProd.php"><button class="btn btn-primary" type="submit"><i class="fa fa-bars" aria-hidden="true"></i> Lire</button></a>
-				<a href="src/views/modifProd.php"><button class="btn btn-warning" type="submit"><i class="fa fa-spinner" aria-hidden="true"></i> Modifier</button></a>
+				<a href="src/views/afficheDetailProd.php?id=<?= $produit->idProd; ?>"><button class="btn btn-primary" type="submit"><i class="fa fa-bars" aria-hidden="true"></i> Lire</button></a>
+				<a href="src/views/modifProd.php?id=<?= $produit->idProd; ?>"><button class="btn btn-warning" type="submit"><i class="fa fa-spinner" aria-hidden="true"></i> Modifier</button></a>
 				<a href="#"><button class="btn btn-danger" type="submit"><i class="fa fa-minus-square" aria-hidden="true"></i> Supprimer</button></a>
 				</td>
 				<?php } ?>
