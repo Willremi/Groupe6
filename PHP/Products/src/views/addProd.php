@@ -4,14 +4,16 @@ include_once 'elements/footer.php';
 require '../config/config.php';
 require '../models/connect.php';
 
-head();
+// head();
 $db = connect();
 
 if(empty($_POST['nomProduit']) || empty($_POST['descript']) || empty($_POST['prix'])) {
+    
     header('Location: ../../products.php?empty=true');
+    
 }
 
-if(isset($_POST['nomProduit']) && isset($_POST['prix'])) {
+if(isset($_POST['nomProduit']) && isset($_POST['prix']) && isset($_POST['descript'])) {
     $nomProd = htmlspecialchars(trim($_POST['nomProduit']));
     $prix = htmlspecialchars(trim($_POST['prix']));
     $description = htmlspecialchars(trim($_POST['descript']));
@@ -29,17 +31,17 @@ $reqVerif->execute();
 
 $nb = $reqVerif->fetchObject();
 
-if($nb->nb == 0) {
+
     $categories = $_POST['cat'];
 
-    $sqlIdCat = "SELECT * FROM categories WHERE name = :nameCat";
+    $sqlIdCat = "SELECT id FROM categories WHERE name = :nameCat";
     $reqCate = $db->prepare($sqlIdCat);
     $reqCate->bindParam(':nameCat', $categories);
     $reqCate->execute();
 
     $data = $reqCate->fetchObject();
     $idCat = $data->id;
-
+    
 
     $insertProd = "INSERT INTO products(name, description, price, category_id, created) VALUES (:insertNomProd, :insertDescProd, :insertPrixProd, :insertCatProd, NOW())";
     $reqProd = $db->prepare($insertProd);
@@ -49,8 +51,8 @@ if($nb->nb == 0) {
     $reqProd->bindParam(':insertCatProd', $idCat);
     $reqProd->execute();
 
-    
-}
+    header('Location: ../../products.php');
+
 ?>
 
 <a href="../../products.php"><button type="button" class="btn btn-danger">Retour</button></a>

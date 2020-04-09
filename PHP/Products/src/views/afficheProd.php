@@ -33,7 +33,7 @@ $reqCat->execute();
 					<!-- <option value="">1</option>
 					<option value="">2</option>
                     <option value="">3</option> -->
-                    <option value="---">---</option>
+                    <!-- <option value="---">---</option> -->
                     <?php
                     $listCat = array();
 

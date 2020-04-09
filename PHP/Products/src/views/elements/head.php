@@ -1,6 +1,7 @@
-<?php 
-function head() {
-    ?>
+<?php
+
+function head(){
+?>
 
 <!doctype html>
 <html lang="fr">
@@ -17,5 +18,7 @@ function head() {
 </head>
 <body>
 <div class="container">
+
 <?php
+
 }
