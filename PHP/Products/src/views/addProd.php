@@ -7,7 +7,7 @@ require '../models/connect.php';
 head();
 $db = connect();
 
-if(empty($_POST['nomProduit']) || empty($_POST['prix']) || $_POST['cat'] == '---') {
+if(empty($_POST['nomProduit']) || empty($_POST['descript']) || empty($_POST['prix'])) {
     header('Location: ../../products.php?empty=true');
 }
 
@@ -49,10 +49,10 @@ if($nb->nb == 0) {
     $reqProd->bindParam(':insertCatProd', $idCat);
     $reqProd->execute();
 
-    // $lastInsertIdProd = $db->lastInsertId();
+    
 }
 ?>
-Vous avez ajouté votre produit
+
 <a href="../../products.php"><button type="button" class="btn btn-danger">Retour</button></a>
 <?php 
 footer();

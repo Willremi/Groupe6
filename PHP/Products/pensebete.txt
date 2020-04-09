@@ -34,3 +34,7 @@ INNER JOIN categories ON products.category_id = categories.id
 
 SELECT DATE_FORMAT(created, '%d/%m/%Y à %H:%i') AS dateAjout
 FROM products
+
+SELECT categories.id AS idCate, categories.name AS nomCate, products.category_id 
+FROM products 
+INNER JOIN categories ON products.category_id = categories.id

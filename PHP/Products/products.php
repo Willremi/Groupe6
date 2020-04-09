@@ -23,6 +23,17 @@ while ($data = $reqSelect->fetchObject()) {
 ?>
 
 	<h2>Products</h2>
+	<?php
+            if(isset($_GET['empty'])){
+                if($_GET['empty'] == true){
+                    ?>
+                    <div class="alert alert-danger" role="alert">
+                        Ces champs ne peuvent pas être vides.
+                    </div>
+                    <?php
+                }
+            }
+        ?>
 
 	<a href="src/views/afficheProd.php"><button type="button" class="btn btn-primary">Ajouter un produit</button></a>
 
