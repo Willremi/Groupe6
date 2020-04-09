@@ -36,7 +36,7 @@ $sqlUp = "UPDATE products SET name = :nameUp, price = :priceUp, category_id = :c
 $reqUp = $db->prepare($sqlUp);
 $reqUp->bindParam(":nameUp", $nomUp);
 $reqUp->bindParam(":priceUp", $prixUp);
-$reqUp->bindParam(":cat", $cat);
+$reqUp->bindParam(":catUp", $cat);
 $reqUp->bindParam(":idProd", $idUp);
 $reqUp->execute();
 
