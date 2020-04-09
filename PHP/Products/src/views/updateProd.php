@@ -16,13 +16,35 @@ if(isset($_GET['nomProd']) && isset($_GET['prixProd'])) {
     $prixUp = htmlspecialchars(trim($_GET['prixProd']));
 }
 $idUp = $_GET['idProd'];
-$cat = $_GET['catProd'];
+$catUp = $_GET['catProd'];
 
-echo $idUp.'<br>'.$nomUp.'<br>'.$prixUp.'<br>'.$catUp;
+// echo $idUp.'<br>'.$nomUp.'<br>'.$prixUp.'<br>'.$catUp.'<br>';
+
+$sqlCat = "SELECT id FROM categories WHERE name = :catUp";
+
+$reqCat = $db->prepare($sqlCat);
+$reqCat->bindParam(':catUp', $catUp);
+$reqCat->execute();
+
+$idCat = $reqCat->fetchObject();
+$cat = $idCat->id;
+
+// var_dump($cat);
+
+$sqlUp = "UPDATE products SET name = :nameUp, price = :priceUp, category_id = :catUp, modified = NOW() WHERE id = :idProd";
+
+$reqUp = $db->prepare($sqlUp);
+$reqUp->bindParam(":nameUp", $nomUp);
+$reqUp->bindParam(":priceUp", $prixUp);
+$reqUp->bindParam(":cat", $cat);
+$reqUp->bindParam(":idProd", $idUp);
+
+var_dump($reqUp);
+// if ($reqUp->rowCount()>0) {
+//     header('Location: ../../products.php');
+// }
 
 
-
-// $sqlUp = "UPDATE products SET name = :nameUp, price = :priceUp, category_id = :catUp, modified = NOW() WHERE id = :idProd";
 ?>
 
 <hr>

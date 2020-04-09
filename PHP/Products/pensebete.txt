@@ -38,3 +38,9 @@ FROM products
 SELECT categories.id AS idCate, categories.name AS nomCate, products.category_id 
 FROM products 
 INNER JOIN categories ON products.category_id = categories.id
+
+
+//Update
+UPDATE products 
+SET name = 'TOTO', price = '20', category_id = 1, modified = NOW() 
+WHERE id = 47
