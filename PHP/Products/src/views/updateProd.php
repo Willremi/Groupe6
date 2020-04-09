@@ -7,7 +7,7 @@ require '../models/connect.php';
 
 $db = connect();
 
-if(empty($_GET['nomProd']) || empty($_GET['prixProd']) || empty($_GET('descProd'))) {
+if(empty($_GET['nomProd']) || empty($_GET['prixProd']) || empty($_GET['descProd'])) {
     header('Location: modifProd.php?empty=true');
 }
 
