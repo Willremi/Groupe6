@@ -7,13 +7,14 @@ require '../models/connect.php';
 
 $db = connect();
 
-if(empty($_GET['nomProd']) || empty($_GET['prixProd'])) {
+if(empty($_GET['nomProd']) || empty($_GET['prixProd']) || empty($_GET('descProd'))) {
     header('Location: modifProd.php?empty=true');
 }
 
-if(isset($_GET['nomProd']) && isset($_GET['prixProd'])) {
+if(isset($_GET['nomProd']) && isset($_GET['prixProd']) && isset($_GET['descProd'])) {
     $nomUp = htmlspecialchars(trim($_GET['nomProd']));
     $prixUp = htmlspecialchars(trim($_GET['prixProd']));
+    $descUp = htmlspecialchars(trim($_GET['descProd']));
 }
 $idUp = $_GET['idProd'];
 $catUp = $_GET['catProd'];
@@ -31,10 +32,11 @@ $cat = $idCat->id;
 
 // var_dump($cat);
 
-$sqlUp = "UPDATE products SET name = :nameUp, price = :priceUp, category_id = :catUp, modified = NOW() WHERE id = :idProd";
+$sqlUp = "UPDATE products SET name = :nameUp, description = :descripUp, price = :priceUp, category_id = :catUp, modified = NOW() WHERE id = :idProd";
 
 $reqUp = $db->prepare($sqlUp);
 $reqUp->bindParam(":nameUp", $nomUp);
+$reqUp->bindParam(":descripUp", $descUp);
 $reqUp->bindParam(":priceUp", $prixUp);
 $reqUp->bindParam(":catUp", $cat);
 $reqUp->bindParam(":idProd", $idUp);

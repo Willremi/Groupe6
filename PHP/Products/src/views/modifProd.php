@@ -55,6 +55,10 @@ $reqCat->execute();
         <input type="text" name="prixProd" id="prixProd" value="<?= $data->prix; ?>"> €
     </div>
     <div class="form-group">
+        <label for="descProd">Description du produit :</label>
+        <input type="text" name="descProd" id="descProd" value="<?= $data->descrip ?>">
+    </div>
+    <div class="form-group">
         <label for="catProd">Catégorie :</label>
         <select name="catProd" id="catProd" class="">
             <?php 
