@@ -87,5 +87,5 @@ $reqCat->execute();
 
 <hr>
 <a href="../../products.php"><button type="button" class="btn btn-danger">Retour</button></a>
-<?
+<?php
 footer();
