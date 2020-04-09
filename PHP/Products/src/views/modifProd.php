@@ -28,35 +28,44 @@ $reqCat->execute();
 
 ?>
 <h2>Modifier votre produit</h2>
-<form action="" method="get">
+<form action="updateProd.php" method="get">
     <div class="form-group">
     <label for="idProd">ID du produit :</label>
     <input type="text" name="idProd" id="idProd" class="d-none" value="<?= $data->idProd; ?>"><?= $data->idProd; ?>
     </div>
     <div class="form-group">
         <label for="nomProd">Nom du produit :</label>
-        <input type="text" name="nomProd" id="nomProd" class="d-none" value="<?= $data->nom; ?>"><?= $data->nom; ?>
+        <input type="text" name="nomProd" id="nomProd" value="<?= $data->nom; ?>">
     </div>
     <div class="form-group">
         <label for="prixProd">Prix du produit :</label>
-        <input type="text" name="prixProd" class="d-none" id="prixProd" value="<?= $data->prix; ?>"><?= $data->prix; ?> €
+        <input type="text" name="prixProd" id="prixProd" value="<?= $data->prix; ?>"> €
     </div>
     <div class="form-group">
         <label for="catProd">Catégorie :</label>
-        <select name="catProd" id="catProd" class="form-control">
+        <select name="catProd" id="catProd" class="">
             <?php 
             $listSeletCat = array();
             while($dataCat = $reqCat->fetchObject()) {
                 array_push($listSeletCat, $dataCat);
             }
             foreach ($listSeletCat as $cat) {
+                
                 ?>
-            <option value=""></option>
+            <option <?php 
+                if($cat->name == $data->categorie) {
+                    echo 'value="'.$cat->name.'" selected';
+                } else {
+                    echo 'value="'.$cat->name.'"';
+                }
+            ?>><?= $cat->name; ?></option>
+            <!-- <option value=""><?= $cat->name; ?></option> -->
             <?php
             }
             ?>
         </select>
     </div>
+    <button class="btn btn-warning" type="submit"><i class="fa fa-spinner" aria-hidden="true"></i> Modifier</button>
 </form>
 
 <hr>
