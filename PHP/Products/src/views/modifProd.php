@@ -28,6 +28,19 @@ $reqCat->execute();
 
 ?>
 <h2>Modifier votre produit</h2>
+
+<?php
+            if(isset($_GET['empty'])){
+                if($_GET['empty'] == true){
+                    ?>
+                    <div class="alert alert-danger" role="alert">
+                        Ces champs ne peuvent pas être vides.
+                    </div>
+                    <?php
+                }
+            }
+        ?>
+
 <form action="updateProd.php" method="get">
     <div class="form-group">
     <label for="idProd">ID du produit :</label>

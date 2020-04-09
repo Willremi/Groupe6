@@ -3,7 +3,7 @@ include_once 'elements/head.php';
 include_once 'elements/footer.php';
 require '../config/config.php';
 require '../models/connect.php';
-head();
+// head();
 
 $db = connect();
 
@@ -38,11 +38,11 @@ $reqUp->bindParam(":nameUp", $nomUp);
 $reqUp->bindParam(":priceUp", $prixUp);
 $reqUp->bindParam(":cat", $cat);
 $reqUp->bindParam(":idProd", $idUp);
+$reqUp->execute();
 
-var_dump($reqUp);
-// if ($reqUp->rowCount()>0) {
-//     header('Location: ../../products.php');
-// }
+if ($reqUp->rowCount()>0) {
+    header('Location: ../../products.php');
+}
 
 
 ?>
