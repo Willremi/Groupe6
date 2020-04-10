@@ -7,15 +7,47 @@ require '../models/connect.php';
 head();
 
 $db = connect();
+
+$sqlSelect = "SELECT * FROM maison";
+$reqSelect = $db->prepare($sqlSelect);
+$reqSelect->execute();
+
+$listeMaison = array();
+
+while ($data = $reqSelect->fetchObject()) {
+    array_push($listeMaison, $data);
+}
 ?>
 
     <div class="row">
         <h1>Voici une sélection de nos biens immobiliers </h1>
     </div>
 
-
     <div class="card-group">
+        <?php
+            foreach ($listeMaison as $maison) {
+                # code...
+            
+        ?>
         <div class="card">
+            <img class="card-img-top" src="../../public/img/<?= $maison->photoMaison ?>" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title"><?= $maison->nomMaison ?></h5>
+                <p class="card-text"><?= $maison->resumeMaison ?></p>
+                <div class="row">
+                    <a href="./detail.php">
+                        <span class="btn btn-outline-secondary">Voir +</span>
+                    </a>
+                </div>
+            </div>
+            <div class="card-footer">
+                <h6><?= $maison->prixMaison ?> Euros net vendeur</h6>
+            </div>
+        </div>
+        <?php
+        }
+        ?>
+        <!-- <div class="card">
             <img class="card-img-top" src="../../public/img/cabane.jpg" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">La cabane au fond du jardin</h5>
@@ -59,7 +91,7 @@ $db = connect();
             <div class="card-footer">
                 <h6>1 800 000 Euro (frais d'agences offerts)</h6>
             </div>
-        </div>
+        </div> -->
     </div>
 
 
