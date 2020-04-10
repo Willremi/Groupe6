@@ -20,7 +20,7 @@ $db = connect();
                 </div>
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label for="prenom">Nom</label>
+                        <label for="prenom">Prénom</label>
                         <input type="text" class="form-control" id="prenom" placeholder="Prénom">
                     </div>
                 </div>
@@ -44,25 +44,26 @@ $db = connect();
                 </div>
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label for="inputCity">City</label>
-                        <input type="text" class="form-control" id="inputCity">
+                        <label for="inputCp">Code postal</label>
+                        <input type="text" class="form-control" id="inputCp">
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label for="inputState">State</label>
-                        <select id="inputState" class="form-control">
+                        <label for="inputVille">ville</label>
+                        <input type="text" class="form-control" id="inputVille">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label for="inputPays">Pays</label>
+                        <select id="inputPays" class="form-control">
                             <option selected>Choose...</option>
                             <option>...</option>
                         </select>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="form-group col-md-12">
-                        <label for="inputZip">Zip</label>
-                        <input type="text" class="form-control" id="inputZip">
-                    </div>
-                </div>
+                
                 <button type="submit" class="btn btn-outline-secondary">Sign in</button>
             </form>
         </div>
