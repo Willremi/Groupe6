@@ -14,6 +14,18 @@ $db = connect();
             <form class="mt-5">
                 <div class="row">
                     <div class="form-group col-md-12">
+                        <label for="nom">Nom</label>
+                        <input type="text" class="form-control" id="nom" placeholder="Nom">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label for="prenom">Nom</label>
+                        <input type="text" class="form-control" id="prenom" placeholder="Prénom">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
                         <label for="email">Email</label>
                         <input type="email" class="form-control" id="email" placeholder="Email">
                     </div>
