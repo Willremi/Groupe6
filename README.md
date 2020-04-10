@@ -6,7 +6,8 @@ Mon projet personnel :
 https://github.com/Willremi/projetRetro  
 
 Exercices PHP :  
--baseHtml : https://github.com/Willremi/Groupe6/tree/master/PHP/baseHtml
+-baseHtml : https://github.com/Willremi/Groupe6/tree/master/PHP/baseHtml  
+-products : https://github.com/Willremi/Groupe6/tree/master/PHP/Products
 
 
 dossier jquery en autoformation
