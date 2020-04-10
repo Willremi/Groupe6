@@ -32,13 +32,13 @@ $db = connect();
                 </div>
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label for="adresse">Address</label>
+                        <label for="adresse">Adresse</label>
                         <input type="text" class="form-control" id="adresse" placeholder="1234 Main St">
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label for="inputAddress2">Address 2</label>
+                        <label for="inputAddress2">Adresse 2</label>
                         <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
                     </div>
                 </div>
