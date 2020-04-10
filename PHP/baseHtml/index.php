@@ -1,8 +1,12 @@
 <?php
 require_once 'src/views/elements/head.php';
 require_once 'src/views/elements/footer.php';
+require 'src/config/config.php';
+require 'src/models/connect.php';
 
 head();
+
+$db = connect();
 ?>
 <div class="row mt-5 d-flex justify-content-center">
         <div class="col-xs-5 col-sm-5 col-md-5  col-lg-4  col-xl-4 ">
