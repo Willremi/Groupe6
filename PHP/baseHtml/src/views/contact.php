@@ -8,10 +8,9 @@ head();
 
 $db = connect();
 ?>
-
-    <div class="row">
+<div class="row">
         <div class="col-xs-12 col-sm-12 col-md-6  col-lg-6  col-xl-6">
-            <form class="mt-5">
+            <form class="mt-5" method="post">
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label for="nom">Nom</label>
