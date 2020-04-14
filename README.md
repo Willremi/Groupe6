@@ -6,7 +6,7 @@ Mon projet personnel :
 https://github.com/Willremi/projetRetro  
 
 Exercices PHP :  
--baseHtml : https://github.com/Willremi/Groupe6/tree/master/PHP/baseHtml  
+-projetImmo : https://github.com/Willremi/Groupe6/tree/master/PHP/projetImmo  
 -products : https://github.com/Willremi/Groupe6/tree/master/PHP/Products
 
 
