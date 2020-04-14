@@ -9,7 +9,7 @@ head();
 $db = connect();
 
 $idMaison = $_GET['id'];
-var_dump($idMaison);
+// var_dump($idMaison);
 
 $sqlHouseDetail = "SELECT maison.idMaison AS ID, 
 maison.nomMaison AS Nom, 
@@ -34,13 +34,33 @@ $reqDet->execute();
 $data = $reqDet->fetchObject();
 
 ?>
-<h1><?= $data->Nom ?></h1>
-<div class="col-sm-12 mb-5">
+<div class="col-sm-12 mt-3 mb-5">
 <div class="card">
+<h1 class="card-title"><?= $data->Nom ?></h1>
   <img src="../../public/img/<?= $data->photo ?>" class="card-img-top" alt="<?= $data->Nom ?>">
   <div class="card-body">
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <div class="row">
+    <p class="card-text col-4">Prix : <?= $data->Prix ?> €</p>
+    <p class="card-text col-4">Nombre de pièce(s) : <?= $data->nbPiece ?></p>
+    </div>
+    <div class="row">
+        <p class="card-text col-4">Surface de la maison : <?= $data->surfMaison ?> m²</p>
+        <p class="card-text col-4">Surface du terrain : <?= $data->surfArea ?> m²</p>
+    </div>
+    <div class="row">
+        <p class="card-text col-6">Adresse de la maison : <?php echo $data->Rue.' rue '.$data->Adresse.', '.$data->cp.' '.$data->Ville; ?></p>
+    </div>
+    <hr>
+    <div class="row">
+        <p class="card-text col-12">Résumé : <?= $data->intro ?></p>
+    </div>
+    <hr>
+    <div class="row">
+    <p class="card-text col-4">Agence : <?= $data->Agence ?></p>
+    <p class="card-text col-4">Disponibilité : <?= $data->Type ?></p>
+    </div>
   </div>
+  
 </div>
 </div>
 <a href="gererMesBiens.php"><button type="button" class="btn btn-danger">Retour</button></a>
