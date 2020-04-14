@@ -9,7 +9,7 @@ head();
 $db = connect();
 
 ?>
-<h2>Ajout une agence</h2>
+<h2>Ajout d'une agence</h2>
 <form action="addAgence.php" method="post">
   <div class="form-row">
     <div class="col-md-12 mb-3">

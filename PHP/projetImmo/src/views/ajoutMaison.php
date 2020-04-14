@@ -19,7 +19,7 @@ $reqSelTypes->execute();
 
  ?>
 <h2>Ajout un bien</h2>
-<form action="addBien.php" method="post">
+<form action="addMaison.php" method="post">
   <div class="form-row">
     <div class="col-md-12 mb-3">
         <label for="nomBien">Nom du bien</label>
@@ -84,9 +84,9 @@ $reqSelTypes->execute();
           <label for="nomType">Type</label>
           <select name="nomType" id="nomType">
               <?php 
-              while($type = $reqSelAgences->fetchObject()) {
+              while($type = $reqSelTypes->fetchObject()) {
                 ?>
-                <option value="<?= $type->idType ?>"><?= $agence->nomType ?></option>
+                <option value="<?= $type->idType ?>"><?= $type->nomType ?></option>
             <?php
               }
               ?>
