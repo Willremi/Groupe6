@@ -32,7 +32,7 @@ while ($data = $reqSelect->fetchObject()) {
         }
     }
         ?>
-<a href="addMaison.php"><button type="button" class="btn btn-primary">Ajouter un bien</button></a>
+<a href="afficheMaison.php"><button type="button" class="btn btn-primary">Ajouter un bien</button></a>
 <div class="row">
         <h2>Voici une sélection de nos biens immobiliers </h2>
     </div>

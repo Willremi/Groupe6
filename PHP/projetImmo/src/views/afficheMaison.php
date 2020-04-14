@@ -10,7 +10,7 @@ $db = connect();
 
  ?>
 <h2>Ajout un bien</h2>
-<form method="post">
+<form action="addBien.php" method="post">
   <div class="form-row">
     <div class="col-md-12 mb-3">
         <label for="nomBien">Nom du bien</label>
@@ -54,8 +54,18 @@ $db = connect();
         <input type="text" name="villeBien" id="villeBien" class="form-control">
     </div>
   </div>
-  
+  <div class="form-row">
+      <div class="col-md-6 mb-3">
+          <label for="resumeBien">Résumé du bien</label>
+          <textarea type="text" name="resumeBien" id="resumeBien" class="form-control" cols="30" rows="5"></textarea>
+      </div>
+      <div class="col-md-2 mb-3">
+        <label for="imageBien">Photo du bien</label>
+        <input type="text" name="imageBien" id="imageBien" class="form-control" placeholder="photo.jpg">
+    </div>
+  </div>
   <button class="btn btn-primary" type="submit">Ajouter</button>
+  <a href="gererMesBiens.php"><button type="button" class="btn btn-danger">Annuler</button></a>
 </form>
 
 
