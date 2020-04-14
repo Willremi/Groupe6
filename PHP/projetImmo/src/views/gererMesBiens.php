@@ -8,7 +8,7 @@ head();
 
 $db = connect();
 
-$sqlSelect = "SELECT * FROM maison LIMIT 3";
+$sqlSelect = "SELECT * FROM maison INNER JOIN agence ON agence.idAgence = maison.agence_idAgence INNER JOIN type ON type.idType = maison.type_idType";
 $reqSelect = $db->prepare($sqlSelect);
 $reqSelect->execute();
 
@@ -40,9 +40,32 @@ while ($data = $reqSelect->fetchObject()) {
     <div class="card-group">
         <?php
             foreach ($listeMaison as $maison) {
-                # code...
+                
             
         ?>
+
+
+        <table class="table mt-5">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom du bien</th>
+                <th scope="col">Prix du bien</th>
+                <th scope="col">Nombre de pièces</th>
+                <th scope="col">Surface de la maison</th>
+                <th scope="col">Surface du terrain</th>
+                <th scope="col">N° de la rue</th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Code Postal</th>
+                <th scope="col">Ville</th>  
+                <th scope="col">Nom de l'agence</th>  
+                <th scope="col">Disponabilité</th>  
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
 
         <div class="card">
             <img class="card-img-top" src="../../public/img/<?= $maison->photoMaison ?>" alt="Card image cap">
