@@ -1,6 +1,6 @@
 <?php
 
 define('LOCALHOST', 'localhost');
-define('DBNAME', 'maisonLoca');
+define('DBNAME', 'immodb');
 define('DBID', 'root');
 define('DBMDP', 'root');

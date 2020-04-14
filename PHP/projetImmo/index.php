@@ -46,6 +46,7 @@ while ($data = $reqSelect->fetchObject()) {
                 # code...
             
         ?>
+
         <div class="card">
             <img class="card-img-top" src="../../public/img/<?= $maison->photoMaison ?>" alt="Card image cap">
             <div class="card-body">
