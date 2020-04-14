@@ -8,7 +8,7 @@ head();
 
 $db = connect();
 
-$sqlSelect = "SELECT * FROM maison INNER JOIN agence ON agence.idAgence = maison.agence_idAgence INNER JOIN type ON type.idType = maison.type_idType";
+$sqlSelect = "SELECT * FROM maison INNER JOIN agence ON agence.idAgence = maison.agence_idAgence INNER JOIN type ON type.idType = maison.type_idType ORDER BY idMaison";
 $reqSelect = $db->prepare($sqlSelect);
 $reqSelect->execute();
 
@@ -35,17 +35,10 @@ while ($data = $reqSelect->fetchObject()) {
 <a href="ajoutMaison.php"><button type="button" class="btn btn-primary">Ajouter un bien</button></a>
 <div class="row">
         <h2>Voici une sélection de nos biens immobiliers </h2>
-    </div>
+</div>
 
-    <div class="card-group">
-        <?php
-            foreach ($listeMaison as $maison) {
-                
-            
-        ?>
-
-
-        <table class="table mt-5">
+    
+  <table class="table mt-5">
             <thead>
             <tr>
                 <th scope="col">#</th>
@@ -63,29 +56,32 @@ while ($data = $reqSelect->fetchObject()) {
             </tr>
             </thead>
             <tbody>
-
+            <?php
+            foreach ($listeMaison as $maison) {
+                ?>
+            <tr>
+                <th><?= $maison->idMaison ?></th>
+                <th><?= $maison->nomMaison ?></th>
+                <th><?= $maison->prixMaison ?>€</th>
+                <th><?= $maison->nbPiece ?></th>
+                <th><?= $maison->surfMaison ?> m²</th>
+                <th><?= $maison->surfArea ?> m²</th>
+                <th><?= $maison->numRue ?></th>
+                <th><?= $maison->nomRue ?></th>
+                <th><?= $maison->cpVille ?></th>
+                <th><?= $maison->nomVille ?></th>
+                <th><?= $maison->nomAgence ?></th>
+                <th><?= $maison->nomType ?></th>
+                </tr>
+                <?php
+            }
+                ?>
             </tbody>
         </table>
 
-        <div class="card">
-            <img class="card-img-top" src="../../public/img/<?= $maison->photoMaison ?>" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title"><?= $maison->nomMaison ?></h5>
-                <p class="card-text"><?= $maison->resumeMaison ?></p>
-                <div class="row">
-                    <a href="./detail.php">
-                        <span class="btn btn-outline-secondary">Voir +</span>
-                    </a>
-                </div>
-            </div>
-            <div class="card-footer">
-                <h6><?= $maison->prixMaison ?> Euros net vendeur</h6>
-            </div>
-        </div>
-        <?php
-        }
-        ?>
-    </div>
+        
+       
+    
 
 <?php
 footer();

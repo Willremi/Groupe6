@@ -27,9 +27,10 @@ while ($data = $reqSelect->fetchObject()) {
     <div class="card-group">
         <?php
             foreach ($listeMaison as $maison) {
-                # code...
+                
             
         ?>
+        <div class="col-sm-4">
         <div class="card">
             <img class="card-img-top" src="../../public/img/<?= $maison->photoMaison ?>" alt="Card image cap">
             <div class="card-body">
@@ -44,6 +45,7 @@ while ($data = $reqSelect->fetchObject()) {
             <div class="card-footer">
                 <h6><?= $maison->prixMaison ?> Euros net vendeur</h6>
             </div>
+        </div>
         </div>
         <?php
         }
