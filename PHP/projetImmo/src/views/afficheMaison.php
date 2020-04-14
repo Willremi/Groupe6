@@ -8,6 +8,15 @@ head();
 
 $db = connect();
 
+// Les agences
+$sqlAgences = "SELECT * FROM agence";
+$reqSelAgences =  $db->prepare($sqlAgences);
+$reqSelAgences->execute();
+// les types
+$sqlTypes = "SELECT * FROM type";
+$reqSelTypes =  $db->prepare($sqlTypes);
+$reqSelTypes->execute();
+
  ?>
 <h2>Ajout un bien</h2>
 <form action="addBien.php" method="post">
@@ -58,6 +67,30 @@ $db = connect();
       <div class="col-md-6 mb-3">
           <label for="resumeBien">Résumé du bien</label>
           <textarea type="text" name="resumeBien" id="resumeBien" class="form-control" cols="30" rows="5"></textarea>
+      </div>
+      <div class="col-md-3 mb-3">
+          <label for="nomAgence">Nom de l'agence</label>
+          <select name="nomAgence" id="nomAgence">
+              <?php 
+              while($agence = $reqSelAgences->fetchObject()) {
+                ?>
+                <option value="<?= $agence->idAgence ?>"><?= $agence->nomAgence ?></option>
+            <?php
+              }
+              ?>
+          </select>
+      </div>
+      <div class="col-md-3  mb-3">
+          <label for="nomType">Type</label>
+          <select name="nomType" id="nomType">
+              <?php 
+              while($type = $reqSelAgences->fetchObject()) {
+                ?>
+                <option value="<?= $type->idType ?>"><?= $agence->nomType ?></option>
+            <?php
+              }
+              ?>
+          </select>
       </div>
       <div class="col-md-2 mb-3">
         <label for="imageBien">Photo du bien</label>
