@@ -37,7 +37,7 @@ while ($data = $reqSelect->fetchObject()) {
                 <h5 class="card-title"><?= $maison->nomMaison ?></h5>
                 <p class="card-text"><?= $maison->resumeMaison ?></p>
                 <div class="row">
-                    <a href="./detail.php">
+                    <a href="description.php?id=<?= $maison->idMaison ?>">
                         <span class="btn btn-outline-secondary">Voir +</span>
                     </a>
                 </div>

@@ -44,15 +44,14 @@ while ($data = $reqSelect->fetchObject()) {
                 <th scope="col">#</th>
                 <th scope="col">Nom du bien</th>
                 <th scope="col">Prix du bien</th>
-                <th scope="col">Nombre de pièces</th>
-                <th scope="col">Surface de la maison</th>
-                <th scope="col">Surface du terrain</th>
+                
                 <th scope="col">N° de la rue</th>
                 <th scope="col">Adresse</th>
                 <th scope="col">Code Postal</th>
                 <th scope="col">Ville</th>  
                 <th scope="col">Nom de l'agence</th>  
-                <th scope="col">Disponabilité</th>  
+                <th scope="col">Disponabilité</th>
+                <th scope="col">Action</th> 
             </tr>
             </thead>
             <tbody>
@@ -63,15 +62,18 @@ while ($data = $reqSelect->fetchObject()) {
                 <th><?= $maison->idMaison ?></th>
                 <th><?= $maison->nomMaison ?></th>
                 <th><?= $maison->prixMaison ?>€</th>
-                <th><?= $maison->nbPiece ?></th>
-                <th><?= $maison->surfMaison ?> m²</th>
-                <th><?= $maison->surfArea ?> m²</th>
+                
+                
                 <th><?= $maison->numRue ?></th>
                 <th><?= $maison->nomRue ?></th>
                 <th><?= $maison->cpVille ?></th>
                 <th><?= $maison->nomVille ?></th>
                 <th><?= $maison->nomAgence ?></th>
                 <th><?= $maison->nomType ?></th>
+                <th>
+                 <a href="description.php?id=<?= $maison->idMaison ?>"><button class="btn btn-primary"><i class="fa fa-bars" aria-hidden="true"></i>Lire</button>
+                </a>   
+                </th>
                 </tr>
                 <?php
             }
