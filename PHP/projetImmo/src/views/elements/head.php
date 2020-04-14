@@ -33,6 +33,9 @@ function head() {
                 <a class="nav-link" href="/src/views/location.php">Location</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="/src/views/agence.php">Agence</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="/src/views/contact.php">Contact</a>
             </li>
         </ul>
