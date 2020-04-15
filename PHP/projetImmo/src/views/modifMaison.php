@@ -12,9 +12,9 @@ $idMaison = $_GET['id'];
 var_dump($idMaison);
 
 $sqlHouse = "SELECT maison.idMaison AS ID, 
-maison.nomBien AS Nom, 
-maison.resumeBien AS intro, 
-maison.prixBien AS Prix, 
+maison.nomMaison AS Nom, 
+maison.resumeMaison AS intro, 
+maison.prixMaison AS Prix, 
 maison.nbPiece AS nbPiece, 
 maison.surfMaison AS surfMaison, 
 maison.surfArea AS surfArea, 
@@ -68,16 +68,25 @@ if(isset($_GET['empty'])){
         <input type="text" name="idMaison" id="idMaison" class="d-none" value="<?= $dataHouse->ID; ?>"><?= $dataHouse->ID; ?>
     </div>
     <div class="form-group">
-        <label for="nomBien">Nom de la maison : </label>
-        <input type="text" name="nomBien" id="nomBien" value="<?= $dataHouse->Nom; ?>">
+        <label for="nomMaison">Nom de la maison : </label>
+        <input type="text" name="nomMaison" id="nomMaison" value="<?= $dataHouse->Nom; ?>">
     </div>
     <div class="form-group">
-        <label for="prixBien">Prix de la maison : </label>
-        <input type="text" name="prixBien" id="prixBien" value="<?= $dataHouse->Prix; ?>">
+        <label for="prixMaison">Prix de la maison : </label>
+        <input type="text" name="prixMaison" id="prixMaison" value="<?= $dataHouse->Prix; ?>">
     </div>
     <div class="form-group">
         <label for="nbPieces">Nombre de pièce(s) : </label>
         <input type="text" name="nbPieces" id="nbPieces" value="<?= $dataHouse->nbPiece; ?>">
+    </div>
+    <div class="form-group">
+        <label for="surfHouse">Surface de la maison :</label>
+        <input type="text" name="surfHouse" id="surfHouse" value="<?= $dataHouse->surfMaison; ?>">
+        <label for="surfArea">Surface du terrain :</label>
+        <input type="text" name="surfArea" id="surfArea" value="<?= $dataHouse->surfArea; ?>">
+    </div>
+    <div class="form-group">
+        
     </div>
     <div class="form-group">
         <label for="numRue">Numéro de la rue : </label>
@@ -92,8 +101,8 @@ if(isset($_GET['empty'])){
         <input type="text" name="nomVille" id="nomVille" value="<?= $dataHouse->Ville; ?>">
     </div>
     <div class="form-group">
-        <label for="resumeBien">Introduction : </label>
-        <input type="text" name="resumeBien" id="resumeBien" value="<?= $dataHouse->intro; ?>">
+        <label for="resumeMaison">Introduction : </label>
+        <input type="text" name="resumeMaison" id="resumeMaison" value="<?= $dataHouse->intro; ?>">
     </div>
     <div class="form-group">
         <label for="typeDisp">Disponibilité : </label>
@@ -107,6 +116,7 @@ if(isset($_GET['empty'])){
               ?>
         </select>
     </div>
+    <button class="btn btn-warning" type="submit"><i class="fa fa-spinner" aria-hidden="true"></i> Modifier</button>
 </form>
 <a href="gererMesBiens.php"><button type="button" class="btn btn-danger">Retour</button></a>
 <?php
