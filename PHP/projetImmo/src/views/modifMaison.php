@@ -33,6 +33,7 @@ $reqHouse = $db->prepare($sqlHouse);
 $reqHouse->execute();
 $dataHouse = $reqHouse->fetchObject();
 
+
 $sqlAgence = "SELECT * FROM agence";
 
 $reqAgence = $db->prepare($sqlAgence);
