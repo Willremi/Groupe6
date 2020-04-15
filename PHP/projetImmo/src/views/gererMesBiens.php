@@ -73,7 +73,8 @@ while ($data = $reqSelect->fetchObject()) {
                 <th>
                  <a href="description.php?id=<?= $maison->idMaison ?>"><button class="btn btn-primary"><i class="fa fa-bars" aria-hidden="true"></i>Lire</button>
                 </a>
-                <a href="modifMaison.php?id=<?= $maison->idMaison ?>"><button class="btn btn-warning" type="submit"><i class="fa fa-spinner" aria-hidden="true"></i> Modifier</button></a>   
+                <a href="modifMaison.php?id=<?= $maison->idMaison ?>"><button class="btn btn-warning" type="submit"><i class="fa fa-spinner" aria-hidden="true"></i> Modifier</button></a>
+                <a href="suppMaison.php?id=<?= $maison->idMaison; ?>"><button class="btn btn-danger" type="submit"><i class="fa fa-minus-square" aria-hidden="true"></i> Supprimer</button></a>  
                 </th>
                 </tr>
                 <?php

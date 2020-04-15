@@ -8,7 +8,12 @@ head();
 
 $db = connect();
 
-$sqlSelect = "SELECT * FROM maison LIMIT 3";
+$sqlSelect = "SELECT * 
+FROM maison 
+INNER JOIN agence ON agence.idAgence = maison.agence_idAgence 
+INNER JOIN type ON type.idType = maison.type_idType 
+ORDER BY idMaison DESC
+LIMIT 3";
 $reqSelect = $db->prepare($sqlSelect);
 $reqSelect->execute();
 

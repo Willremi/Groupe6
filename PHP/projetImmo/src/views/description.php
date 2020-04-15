@@ -62,7 +62,7 @@ $data = $reqDet->fetchObject();
   </div>
   
 </div>
-</div>
+</div> 
 <a href="gererMesBiens.php"><button type="button" class="btn btn-danger">Retour</button></a>
 <?php
 footer();
