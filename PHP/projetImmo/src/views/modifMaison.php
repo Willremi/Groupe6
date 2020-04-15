@@ -73,6 +73,28 @@ if(isset($_GET['empty'])){
         <label for="prixMaison">Prix de la maison : </label>
         <input type="text" name="prixMaison" id="prixMaison" value="<?= $dataHouse->Prix; ?>">
     </div>
+    <div class="form-group">
+        <label for="nbPieces">Nombre de pièce(s) : </label>
+        <input type="text" name="nbPieces" id="nbPieces" value="<?= $dataHouse->nbPiece; ?>">
+    </div>
+    <div class="form-group">
+        <label for="numRue">Numéro de la rue : </label>
+        <input type="text" name="numRue" id="numRue" value="<?= $dataHouse->Rue; ?>">
+        <label for="nomRue">Adresse : </label>
+        <input type="text" name="nomRue" id="nomRue" value="<?= $dataHouse->Adresse; ?>">
+    </div>
+    <div class="form-group">
+        <label for="cpVille">Code postal : </label>
+        <input type="text" name="cpVille" id="cpVille" value="<?= $dataHouse->cp; ?>">
+        <label for="nomVille">Ville : </label>
+        <input type="text" name="nomVille" id="nomVille" value="<?= $dataHouse->Ville; ?>">
+    </div>
+    <div class="form-group">
+        <label for="resumeMaison">Introduction : </label>
+        <input type="text" name="resumeMaison" id="resumeMaison" value="<?= $dataHouse->intro; ?>">
+    </div>
+    
 </form>
+<a href="gererMesBiens.php"><button type="button" class="btn btn-danger">Retour</button></a>
 <?php
 footer();
