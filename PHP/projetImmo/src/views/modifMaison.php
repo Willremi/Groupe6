@@ -12,9 +12,9 @@ $idMaison = $_GET['id'];
 var_dump($idMaison);
 
 $sqlHouse = "SELECT maison.idMaison AS ID, 
-maison.nomMaison AS Nom, 
-maison.resumeMaison AS intro, 
-maison.prixMaison AS Prix, 
+maison.nomBien AS Nom, 
+maison.resumeBien AS intro, 
+maison.prixBien AS Prix, 
 maison.nbPiece AS nbPiece, 
 maison.surfMaison AS surfMaison, 
 maison.surfArea AS surfArea, 
@@ -44,7 +44,8 @@ $sqlType = "SELECT * FROM type";
 
 $reqType = $db->prepare($sqlType);
 $reqType->execute();
-$dataType = $reqType->fetchObject();
+
+
 
 ?>
 <h2>Modifier les informations de l'habitation</h2>
@@ -67,12 +68,12 @@ if(isset($_GET['empty'])){
         <input type="text" name="idMaison" id="idMaison" class="d-none" value="<?= $dataHouse->ID; ?>"><?= $dataHouse->ID; ?>
     </div>
     <div class="form-group">
-        <label for="nomMaison">Nom de la maison : </label>
-        <input type="text" name="nomMaison" id="nomMaison" value="<?= $dataHouse->Nom; ?>">
+        <label for="nomBien">Nom de la maison : </label>
+        <input type="text" name="nomBien" id="nomBien" value="<?= $dataHouse->Nom; ?>">
     </div>
     <div class="form-group">
-        <label for="prixMaison">Prix de la maison : </label>
-        <input type="text" name="prixMaison" id="prixMaison" value="<?= $dataHouse->Prix; ?>">
+        <label for="prixBien">Prix de la maison : </label>
+        <input type="text" name="prixBien" id="prixBien" value="<?= $dataHouse->Prix; ?>">
     </div>
     <div class="form-group">
         <label for="nbPieces">Nombre de pièce(s) : </label>
@@ -91,11 +92,20 @@ if(isset($_GET['empty'])){
         <input type="text" name="nomVille" id="nomVille" value="<?= $dataHouse->Ville; ?>">
     </div>
     <div class="form-group">
-        <label for="resumeMaison">Introduction : </label>
-        <input type="text" name="resumeMaison" id="resumeMaison" value="<?= $dataHouse->intro; ?>">
+        <label for="resumeBien">Introduction : </label>
+        <input type="text" name="resumeBien" id="resumeBien" value="<?= $dataHouse->intro; ?>">
     </div>
     <div class="form-group">
-    <?php echo $dataAgence->nomAgence; ?>
+        <label for="typeDisp">Disponibilité : </label>
+        <select name="typeDisp" id="typeDisp">
+        <?php 
+              while($dataType = $reqType->fetchObject()) {
+                ?>
+                <option value="<?= $dataType->idType ?>"><?= $dataType->nomType ?></option>
+            <?php
+              }
+              ?>
+        </select>
     </div>
 </form>
 <a href="gererMesBiens.php"><button type="button" class="btn btn-danger">Retour</button></a>
