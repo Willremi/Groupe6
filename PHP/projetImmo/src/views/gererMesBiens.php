@@ -50,7 +50,7 @@ while ($data = $reqSelect->fetchObject()) {
                 <th scope="col">Code Postal</th>
                 <th scope="col">Ville</th>  
                 <th scope="col">Nom de l'agence</th>  
-                <th scope="col">Disponabilité</th>
+                <th scope="col">Disponibilité</th>
                 <th scope="col">Action</th> 
             </tr>
             </thead>

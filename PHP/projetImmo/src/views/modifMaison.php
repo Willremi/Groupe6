@@ -93,7 +93,9 @@ if(isset($_GET['empty'])){
         <label for="resumeMaison">Introduction : </label>
         <input type="text" name="resumeMaison" id="resumeMaison" value="<?= $dataHouse->intro; ?>">
     </div>
-    
+    <div class="form-group">
+    <?php echo $dataAgence->nomAgence; ?>
+    </div>
 </form>
 <a href="gererMesBiens.php"><button type="button" class="btn btn-danger">Retour</button></a>
 <?php
