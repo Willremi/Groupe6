@@ -42,7 +42,9 @@ $typeDisp = $_GET['typeDisp'];
 // echo $idUp.'<br>';
 // echo $typeDisp.'<br>';
 
-$sqlUp = "UPDATE maison SET nomMaison = :nomBienUp, resumeMaison = :resumeBienUp, prixMaison = :prixBienUp, nbPiece = :nbPieceUp, surfMaison = :surfHouseUp";
+$sqlUp = "UPDATE maison SET nomMaison = :nomBienUp, resumeMaison = :resumeBienUp, prixMaison = :prixBienUp, nbPiece = :nbPieceUp, surfMaison = :surfHouseUp, surfArea = :surfAreaUp, numRue = :numRueUp, nomRue = :nomRueUp, cpVille = :cpVilleUp, nomVille = :nomVilleUp, type_idType = :idTypeUp";
+
+$reqUp = $db->prepare($sqlUp);
 
 ?>
 <a href="gererMesBiens.php"><button type="button" class="btn btn-danger">Retour</button></a>
