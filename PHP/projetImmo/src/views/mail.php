@@ -9,6 +9,15 @@ head();
 $db = connect();
 
 
+// Le message
+$message = "Line 1\r\nLine 2\r\nLine 3";
+
+// Dans le cas où nos lignes comportent plus de 70 caractères, nous les coupons en utilisant wordwrap()
+$message = wordwrap($message, 70, "\r\n");
+
+// Envoi du mail
+mail('willremi@gmail.com', 'Mon Sujet', $message);
+
 
 // if (isset($_POST['message'])) {
 //         $position_arobase = strpos($_POST['_replyto'], '@');
