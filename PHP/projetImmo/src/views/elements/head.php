@@ -1,5 +1,15 @@
 <?php 
+
+
 function head() {
+    session_start();
+
+    if(isset($_SESSION['login'])) {
+        $pseudo = $_SESSION['login'];
+    } else {
+        
+        $pseudo = '';
+    }
 
 
 ?>
@@ -32,15 +42,37 @@ function head() {
             <li class="nav-item">
                 <a class="nav-link" href="/src/views/location.php">Location</a>
             </li>
+            <?php 
+            if($pseudo === "willremi") {
+                ?>
+                <li class="nav-item">
+                <a class="nav-link" href="/src/views/gererMesBiens.php">Gérer Mes Biens</a>
+            </li>
+                <?php
+            }
+            ?>
             <li class="nav-item">
                 <a class="nav-link" href="/src/views/agence.php">Agence</a>
             </li>
+            
             <li class="nav-item">
                 <a class="nav-link" href="/src/views/contact.php">Contact</a>
             </li>
+            <?php 
+                if ($pseudo === "willremi") {
+                    ?>
             <li class="nav-item">
-                <a class="nav-link" href="/src/views/login.php">Abonné</a>
-            </li>
+            <a class="nav-link" href="/src/views/logout.php">Logout</a>
+                </li>
+            <?php
+                } else {
+                    ?>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/src/views/login.php">Abonné</a>
+                </li>  
+            <?php
+            } 
+            ?>
         </ul>
     </div>
 </nav>

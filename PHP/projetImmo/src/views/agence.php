@@ -4,6 +4,16 @@ require_once 'elements/footer.php';
 require '../config/config.php';
 require '../models/connect.php';
 
+session_start();
+
+    if(isset($_SESSION['login'])) {
+        $pseudo = $_SESSION['login'];
+    } else {
+        
+        $pseudo = '';
+    }
+
+
 head();
 
 $db = connect();

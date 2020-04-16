@@ -4,9 +4,21 @@ require_once 'elements/footer.php';
 require '../config/config.php';
 require '../models/connect.php';
 
+session_start();
+
+    if(isset($_SESSION['login'])) {
+        $pseudo = $_SESSION['login'];
+    } else {
+        
+        $pseudo = '';
+    }
+
+
 head();
 
 $db = connect();
+
+
 ?>
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-6  col-lg-6  col-xl-6">

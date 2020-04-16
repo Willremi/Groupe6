@@ -4,6 +4,16 @@ require_once 'elements/footer.php';
 require '../config/config.php';
 require '../models/connect.php';
 
+session_start();
+
+    if(isset($_SESSION['login'])) {
+        $pseudo = $_SESSION['login'];
+    } else {
+        
+        $pseudo = '';
+    }
+
+
 head();
 
 $db = connect();
@@ -18,7 +28,7 @@ while ($data = $reqSelect->fetchObject()) {
     array_push($listeMaison, $data);
 }
 ?>
-    <a href="gererMesBiens.php"><button type="button" class="btn btn-primary">Gérer les biens</button></a>
+    <!-- <a href="gererMesBiens.php"><button type="button" class="btn btn-primary">Gérer les biens</button></a> -->
 </form>
     <div class="row">
         <h1>Voici une sélection de nos biens immobiliers </h1>

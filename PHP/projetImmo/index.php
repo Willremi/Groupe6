@@ -4,9 +4,19 @@ require_once 'src/views/elements/footer.php';
 require 'src/config/config.php';
 require 'src/models/connect.php';
 
+session_start();
+if(isset($_SESSION['login'])) {
+    $pseudo = $_SESSION['login'];
+} else {
+    $_SESSION['login'] = $_POST['inputPseudo'];
+    $pseudo = $_SESSION['login'];
+}
+
 head();
 
 $db = connect();
+
+
 
 $sqlSelect = "SELECT * 
 FROM maison 
