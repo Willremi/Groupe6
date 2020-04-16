@@ -10,13 +10,15 @@ $db = connect();
 
 
 // Le message
-$message = "Line 1\r\nLine 2\r\nLine 3";
+$message = $_POST['message'];
+
+$headers = 'From: '.$_POST['_replyto'].'X-Mailer: PHP/' . phpversion();
 
 // Dans le cas où nos lignes comportent plus de 70 caractères, nous les coupons en utilisant wordwrap()
 $message = wordwrap($message, 70, "\r\n");
 
 // Envoi du mail
-mail('willremi@gmail.com', 'Mon Sujet', $message);
+mail('willremi@gmail.com', 'Mon Sujet :'.$_POST['Subject'], $message, $headers);
 
 
 // if (isset($_POST['message'])) {
