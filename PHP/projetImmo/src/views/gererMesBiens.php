@@ -1,8 +1,16 @@
 <?php
+session_start();
 require_once 'elements/head.php';
 require_once 'elements/footer.php';
 require '../config/config.php';
 require '../models/connect.php';
+
+    if(isset($_SESSION['login'])) {
+        $pseudo = $_SESSION['login'];
+    } else {
+        
+        $pseudo = '';
+    }
 
 head();
 
@@ -20,7 +28,9 @@ while ($data = $reqSelect->fetchObject()) {
 }
 
  ?>
-
+<?php 
+  if ($_SESSION['login'] === 'willremi') {
+      ?> 
 <h1>Gérer les biens</h1>
 <?php
     if(isset($_GET['empty'])){
@@ -38,7 +48,7 @@ while ($data = $reqSelect->fetchObject()) {
         <h2>Voici une sélection de nos biens immobiliers </h2>
 </div>
 
-    
+   
   <table class="table mt-5">
             <thead>
             <tr>
@@ -79,14 +89,13 @@ while ($data = $reqSelect->fetchObject()) {
                 </th>
                 </tr>
                 <?php
-            }
-                ?>
+            } ?>
             </tbody>
         </table>
 
-        
-       
-    
-
 <?php
+  } else {
+      echo 'Vous n\'êtes pas autorisés';
+  }
+  
 footer();

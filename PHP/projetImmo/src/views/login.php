@@ -1,4 +1,5 @@
 <?php 
+session_start();
 require_once 'elements/head.php';
 require_once 'elements/footer.php';
 require '../config/config.php';
@@ -8,7 +9,7 @@ head();
 
 $db = connect();
 
-session_start();
+
 if(isset($_SESSION['login'])) {
     $pseudo = $_SESSION['login'];
 } else {

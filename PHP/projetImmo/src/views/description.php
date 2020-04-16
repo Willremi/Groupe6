@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'elements/head.php';
 require_once 'elements/footer.php';
 require '../config/config.php';
@@ -7,6 +8,12 @@ require '../models/connect.php';
 head();
 
 $db = connect();
+if(isset($_SESSION['login'])) {
+  $pseudo = $_SESSION['login'];
+} else {
+  
+  $pseudo = '';
+}
 
 $idMaison = $_GET['id'];
 // var_dump($idMaison);
