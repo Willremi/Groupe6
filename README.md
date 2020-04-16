@@ -1,6 +1,5 @@
 CV version web :  
-https://www.wiremi.fr  
-https://willremi.github.io/cv/
+https://www.wiremi.fr
 
 Exercices HTML/CSS :  
 https://github.com/Willremi/AFPA-exoHTML  
