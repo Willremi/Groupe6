@@ -21,9 +21,11 @@ if (isset($_POST['message']) && isset($_POST['_replyto'])) {
 $message = wordwrap($message, 70, "\r\n");
 
 // Envoi du mail
-mail('willremi@gmail.com', 'Mon Sujet :'.$_POST['Subject'], $message, $headers);
+mail('willremi@gmail.com', 'Sujet de '.$_POST['name']. ' : '.$_POST['Subject'], $message, $headers);
 
 echo 'Votre message a été envoyé';
+} else {
+    echo 'Les champs nom, mail et message ne sont pas remplis';
 }
 
 ?>
