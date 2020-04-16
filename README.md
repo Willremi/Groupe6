@@ -14,4 +14,5 @@ Exercices PHP :
 -products : https://github.com/Willremi/Groupe6/tree/master/PHP/Products
 
 
-dossier jquery en autoformation
+dossier jquery en autoformation  
+https://github.com/Willremi/Groupe6/tree/master/jquery
