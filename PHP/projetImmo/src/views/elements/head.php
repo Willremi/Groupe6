@@ -38,6 +38,9 @@ function head() {
             <li class="nav-item">
                 <a class="nav-link" href="/src/views/contact.php">Contact</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/src/views/login.php">Abonné</a>
+            </li>
         </ul>
     </div>
 </nav>
