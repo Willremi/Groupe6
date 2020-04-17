@@ -1,9 +1,7 @@
 <?php 
-session_start();
-
 function head() {
     
-
+    session_start();
     if(isset($_SESSION['login'])) {
         $pseudo = $_SESSION['login'];
     } else {

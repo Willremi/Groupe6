@@ -11,7 +11,6 @@ require '../models/connect.php';
         
         $pseudo = '';
     }
-
 head();
 
 $db = connect();

@@ -16,7 +16,7 @@ head();
 
 $db = connect();
 
-
+var_dump($_POST['inputPseudo']);
 
 $sqlSelect = "SELECT * 
 FROM maison 
