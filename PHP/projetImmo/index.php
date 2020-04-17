@@ -4,19 +4,46 @@ require_once 'src/views/elements/footer.php';
 require 'src/config/config.php';
 require 'src/models/connect.php';
 
-session_start();
+if(password_verify($_POST['inputPassword'], '$2y$10$nMiwTI4M82/s5.DOmH6Tz.kAXMChkCf/h9J8ToHJEd2Mt6DkxLqIa')) {
+    session_start();
 if(isset($_SESSION['login'])) {
-    $pseudo = $_SESSION['login'];
-} else {
-    $_SESSION['login'] = $_POST['inputPseudo'];
-    $pseudo = $_SESSION['login'];
+        $pseudo = $_SESSION['login'];
+    } else {
+        $_SESSION['login'] = $_POST['inputPseudo'];
+        $pseudo = $_SESSION['login'];
+    }
 }
+
 
 head();
 
 $db = connect();
 
-var_dump($_POST['inputPseudo']);
+// Ajout d'un pseudo
+// if(isset($_POST['inputPassword'])) {
+//     $mdp = password_hash(htmlspecialchars(trim($_POST['inputPassword'])), PASSWORD_BCRYPT);
+// } else {
+//     $mdp = '';
+// }
+
+// if(isset($_POST['inputPseudo'])) {
+//     $pseudo = htmlspecialchars(trim($_POST['inputPseudo']));
+// } else {
+//     $pseudo = '';
+// }
+// if(isset($_POST['inputRole'])) {
+//     $role = htmlspecialchars(trim($_POST['inputRole']));
+// } else {
+//     $role = '';
+// }
+
+// $sqlUser = "INSERT INTO user (pseudoUser, mdpUser, roleUser) VALUES (:insertPseudo, :insertMdp, :insertRole)";
+// $reqInsertUser = $db->prepare($sqlUser);
+// $reqInsertUser->bindParam(':insertPseudo', $pseudo);
+// $reqInsertUser->bindParam(':insertMdp', $mdp);
+// $reqInsertUser->bindParam(':insertRole', $role);
+// $reqInsertUser->execute();
+
 
 $sqlSelect = "SELECT * 
 FROM maison 

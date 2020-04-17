@@ -28,6 +28,10 @@ if(isset($_SESSION['login'])) {
             <label for="inputPassword">Mot de Passe</label>
       <input type="password" class="form-control" id="inputPassword" name="inputPassword"> 
             </div>
+            <div class="form-group col-md-4">
+            <label for="inputRole">Role</label>
+            <input type="text" name="inputRole" id="inputRole" class="form-control">
+            </div>
         </div>
         <button type="submit" class="btn btn-primary">Envoyer</button>
     </fieldset>
