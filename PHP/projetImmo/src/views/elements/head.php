@@ -9,7 +9,6 @@ function head() {
         $pseudo = '';
     }
 
-
 ?>
 
 <!doctype html>

@@ -4,7 +4,19 @@ require_once 'src/views/elements/footer.php';
 require 'src/config/config.php';
 require 'src/models/connect.php';
 
-if(password_verify($_POST['inputPassword'], '$2y$10$nMiwTI4M82/s5.DOmH6Tz.kAXMChkCf/h9J8ToHJEd2Mt6DkxLqIa')) {
+// head();
+
+$db = connect();
+
+
+$sqlSelUser = "SELECT * FROM user";
+$reqSelUser = $db->prepare($sqlSelUser);
+$reqSelUser->execute();
+
+$data = $reqSelUser->fetchObject();
+
+
+if(password_verify($_POST['inputPassword'], $data->mdpUser)) {
     session_start();
 if(isset($_SESSION['login'])) {
         $pseudo = $_SESSION['login'];
@@ -17,7 +29,7 @@ if(isset($_SESSION['login'])) {
 
 head();
 
-$db = connect();
+// $db = connect();
 
 // Ajout d'un pseudo
 // if(isset($_POST['inputPassword'])) {
