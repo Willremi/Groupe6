@@ -29,33 +29,6 @@ if(isset($_SESSION['login'])) {
 
 head();
 
-// $db = connect();
-
-// Ajout d'un pseudo
-// if(isset($_POST['inputPassword'])) {
-//     $mdp = password_hash(htmlspecialchars(trim($_POST['inputPassword'])), PASSWORD_BCRYPT);
-// } else {
-//     $mdp = '';
-// }
-
-// if(isset($_POST['inputPseudo'])) {
-//     $pseudo = htmlspecialchars(trim($_POST['inputPseudo']));
-// } else {
-//     $pseudo = '';
-// }
-// if(isset($_POST['inputRole'])) {
-//     $role = htmlspecialchars(trim($_POST['inputRole']));
-// } else {
-//     $role = '';
-// }
-
-// $sqlUser = "INSERT INTO user (pseudoUser, mdpUser, roleUser) VALUES (:insertPseudo, :insertMdp, :insertRole)";
-// $reqInsertUser = $db->prepare($sqlUser);
-// $reqInsertUser->bindParam(':insertPseudo', $pseudo);
-// $reqInsertUser->bindParam(':insertMdp', $mdp);
-// $reqInsertUser->bindParam(':insertRole', $role);
-// $reqInsertUser->execute();
-
 
 $sqlSelect = "SELECT * 
 FROM maison 

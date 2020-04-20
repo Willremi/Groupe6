@@ -37,7 +37,7 @@ if(isset($_SESSION['login'])) {
     </fieldset>
 </form>
 <hr>
-<!-- <form method="POST" action="addAbonne.php">
+<form method="POST" action="addUser.php">
     <fieldset>
         <legend>Inscription</legend>
         <div class="form-row">
@@ -52,6 +52,10 @@ if(isset($_SESSION['login'])) {
         <div class="form-group col-md-4">
         <label for="inputPseudo">Pseudo</label>
             <input type="text" name="inputPseudo" id="inputPseudo" class="form-control">
+        </div>
+        <div class="form-group col-md-4">
+        <label for="inputRole">Rôle</label>
+            <input type="text" name="inputRole" id="inputRole" class="form-control">
         </div>
     </div>
   <div class="form-row">
@@ -85,7 +89,7 @@ if(isset($_SESSION['login'])) {
   </div>
   <button type="submit" class="btn btn-primary">Envoyer</button>
     </fieldset>
-</form> -->
+</form>
 
 <?php
 footer();
