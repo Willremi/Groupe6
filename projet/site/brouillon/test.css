@@ -1,0 +1,74 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #CCC;
+}
+
+th {
+    background-color: #000;
+    color: #FFF;
+}
+
+tr:nth-child(odd) {
+    background-color: #EEE;
+}
+
+@media only screen and (max-width: 700px) {
+    table, thead, tbody, tr, th, td {
+        display: block;
+    }
+
+    thead {
+        display: none;
+    }
+
+    td  {
+        padding-left: 150px;
+        position: relative;
+        margin-top: -1px;
+        background: #FFF;
+    }
+
+    td:nth-child(odd) {
+        background-color: #EEE;
+    }
+
+    td::before {
+        padding: 10px;
+        content: attr(data-label);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 130px;
+        bottom: 0;
+        background-color: #000;
+        color: #FFF;
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+    }
+
+    tr {
+        margin-bottom: 1rem;
+    }
+
+    th > td {
+        padding-left: 10px;
+    }
+    th > td::before {
+        display: none;
+    }
+}
+
+#annee50 {
+    display: none;
+}
