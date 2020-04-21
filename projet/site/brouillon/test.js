@@ -15,13 +15,20 @@ document.addEventListener('DOMContentLoaded', function () {
     });
      
 $annee50 = $('#annee50');
+$annee60 = $('#annee60');
 $btn = $('.btn50');
+$btn60 = $('.btn60');
 
 
 $btn.click(function () {
-    $annee50.toggle("slide");;
+    $annee50.toggle("slide");
+    $annee60.hide();
 });
-    
+
+$btn60.click(function() {
+    $annee60.toggle("slide");
+    $annee50.hide();
+});
 
 });
 
