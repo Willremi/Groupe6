@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rétro Série</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="public/css/style.css">
     <link rel="shortcut icon" href="public/img/LogoTV.png">
 </head>
 <body>
-   <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+   
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <a class="navbar-brand" href="/">
             <img src="public/img/LogoTV.png" alt="Logo du site">
         </a>
@@ -30,7 +31,16 @@
             <li class="nav-item">
               <a class="nav-link" href="src/views/genres.html">Genres</a>
             </li>
-            
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Extras</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                  <a class="dropdown-item" href="#">Streaming/Blu-ray</a>
+                  <a class="dropdown-item" href="#">Musique</a>
+                  <a class="dropdown-item" href="#">Stickers</a>
+                  <a class="dropdown-item" href="#">Acteur</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link">Contact</a></li>
           </ul>
           <ul class="navbar-nav ml-auto nav-flex-icons">
             <li class="nav-item">
@@ -38,7 +48,7 @@
               </a>
             </li>
             <li class="nav-item avatar dropdown">
-              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
+              <a class="nav-link" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 pseudo
               </a>
@@ -52,8 +62,33 @@
           </ul>
         </div>
       </nav>
-   </header>
+      <header>
+        <div class="jumbotron jumbotron-fluid" id="jumbotron">
+            <div class="container">
+              <h1 class="display-4">RétroSérie</h1>
+            </div>
+          </div>
+      </header>
     
+      <div class="container">
+          <div class="row">
+              <div class="col-sm-6 col-md-6">
+                  <h1 id="titleIndex">Bienvenu sur le site</h1>
+                  <hr>
+                  <img class="rounded" src="public/img/generiqo.jpg" alt="image de TV">
+                  <p class="mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores veniam velit officia itaque vel aliquid! Impedit ullam eligendi nemo soluta itaque perferendis voluptate, sequi, vitae, esse iste quos dignissimos. Ut obcaecati accusamus autem mollitia beatae, tempore quam, quibusdam minus id, amet qui! Tempora enim consectetur odit et quibusdam quae, fuga veniam dignissimos quis perferendis id soluta culpa maiores qui? Molestias delectus atque quidem numquam. Quis, modi. Vel atque mollitia soluta laborum nemo delectus modi nam unde, enim distinctio aspernatur eum tenetur quis facere deserunt impedit recusandae autem voluptas ex iusto animi aliquid inventore voluptates! Similique voluptatem iusto explicabo fugiat doloribus aliquid deserunt quae animi, neque incidunt mollitia, qui beatae illo non possimus porro. Excepturi neque quasi delectus aliquam dicta praesentium expedita corporis quis aspernatur perspiciatis error molestiae eaque perferendis nisi, vitae qui enim id ut fugit ipsum velit saepe. Possimus tempore, rem dolorem aspernatur cum labore, molestias accusantium dignissimos ullam pariatur similique doloremque recusandae voluptas quaerat aut neque nihil adipisci, sint obcaecati expedita earum ab perferendis! Nihil et assumenda necessitatibus, quam, sunt explicabo recusandae voluptatum, repellat labore rem quas. Quis aliquam, blanditiis quos quasi iste autem tenetur ratione consectetur voluptas sed dolores fugiat repellat laboriosam nobis? Error, odit nobis consequatur architecto sint ab fugit autem quasi asperiores quia. Sint, quibusdam eveniet sapiente laudantium adipisci mollitia porro aliquid iste officiis libero praesentium a, enim dignissimos ipsum velit perspiciatis maiores commodi similique! Rem accusamus tempore mollitia voluptates quibusdam eligendi ipsa culpa repudiandae veniam optio adipisci nam, nemo, quo dolore harum cum ut vitae explicabo quis eius dolor commodi delectus quae exercitationem. Distinctio repellendus fugit sit unde, labore necessitatibus aut! Consequatur, odit neque modi illo accusamus atque ducimus velit temporibus eos, repellat voluptatum sapiente magnam. Accusamus distinctio odit amet sed. Error, nobis doloremque?</p>
+              </div>
+              <div class="offset-sm-3 offset-md-3">
+                  <h1>Ajouts récents</h1>
+                  <hr>
+                  <ul>
+                      <li>La saison 3 Highlander</li>
+                      <li>BOF de la série Highlander</li>
+                      <li>La série complète de Bioman</li>
+                  </ul>
+              </div>
+            </div> <!-- fin de row -->
+        </div> <!-- fin de container -->
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
