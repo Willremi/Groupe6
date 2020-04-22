@@ -95,6 +95,18 @@ tr:nth-child(odd) {
   th > td::before {
     display: none;
   }
+
+  .col-sm-3 {
+    text-align: center;
+  }
+
+  strong, p {
+    font-size: 24px;
+  }
+
+  strong {
+    text-decoration: underline;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
