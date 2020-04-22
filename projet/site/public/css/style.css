@@ -123,6 +123,10 @@ iframe {
   iframe {
     width: 300px;
   }
+
+  .col-md-4 {
+    text-align: center;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
