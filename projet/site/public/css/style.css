@@ -52,6 +52,14 @@ tr:nth-child(odd) {
   text-align: center;
 }
 
+#distribution {
+  text-align: center;
+}
+
+#ligne {
+  visibility: hidden;
+}
+
 @media only screen and (max-width: 700px) {
   table, thead, tbody, tr, th, td {
     display: block;
@@ -100,12 +108,12 @@ tr:nth-child(odd) {
     text-align: center;
   }
 
-  strong, p {
-    font-size: 24px;
-  }
-
   strong {
     text-decoration: underline;
+  }
+
+  #ligne {
+    visibility: visible;
   }
 }
 
