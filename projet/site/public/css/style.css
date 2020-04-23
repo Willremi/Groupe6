@@ -48,6 +48,16 @@ tr:nth-child(odd) {
   background-color: #EEE;
 }
 
+fieldset {
+  border: 1px solid black;
+  padding: 2%;
+  border-radius: 5px;
+}
+
+legend, .mt-2 {
+  text-align: center;
+}
+
 .col-12 h1, h3 {
   text-align: center;
 }
