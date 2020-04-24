@@ -45,4 +45,9 @@ var continents = [
     'Océanie'
 ];
 
-console.log(continents);
+var pays = $('#pays').html();
+console.log(pays);
+
+for (var i = 0; i < continents.length; i++) {
+    console.log(continents[i]);
+}

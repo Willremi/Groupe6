@@ -58,6 +58,11 @@ legend, .mt-2 {
   text-align: center;
 }
 
+select#genres {
+  width: 50%;
+  margin-left: 25%;
+}
+
 .col-12 h1, h3 {
   text-align: center;
 }
