@@ -83,4 +83,21 @@ $btn2000.click(function () {
     $annee90.hide();
 });
 
+
+var Asie = ['Japon', 'Corée du Sud'];
+var AmeriqueNord = ['Canada', 'Etats Unis'];
+var Europe = ['Allemagne', 'France', 'Royaume-Uni'];
+
+var continents = [
+    'Afrique', 
+    Asie, 
+    AmeriqueNord, 
+    'Amérique du Sud', 
+    Europe, 
+    'Océanie'
+];
+
+console.log(continents);
+
+
 });
