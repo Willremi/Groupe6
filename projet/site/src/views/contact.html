@@ -64,7 +64,7 @@
       </header>
     
       <div class="container-fluid">
-        <form>
+        <form action="mail.php" method="POST">
             <div class="form-row">
               <div class="col-md-4 mb-3">
                 <label for="nom">Nom</label>
@@ -75,12 +75,12 @@
                 <input type="text" class="form-control" id="prenom" name="prenom" required>
               </div>
               <div class="col-md-4 mb-3">
-                <label for="mail">E-Mail</label>
+                <label for="email">E-Mail</label>
                 <div class="input-group">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" id="mailPrepend">@</span>
+                    <span class="input-group-text" id="emailPrepend">@</span>
                   </div>
-                  <input type="text" class="form-control" id="mail" aria-describedby="mailPrepend" name="mail" required>
+                  <input type="text" class="form-control" id="email" aria-describedby="emailPrepend" name="email" required>
                   
                 </div>
               </div>
@@ -88,11 +88,11 @@
             <div class="form-row">
               <div class="col-md-3 mb-3">
                 <label for="sujet">Sujet</label>
-                <input type="text" class="form-control" id="sujet" required>
+                <input type="text" class="form-control" id="sujet" name="sujet">
               </div>
               <div class="col-md-6 mb-3">
                 <label for="message">Message</label>
-                <textarea type="text" class="form-control" id="message" required></textarea>
+                <textarea type="text" class="form-control" id="message" name="message"></textarea>
                 
               </div>
             </div>
