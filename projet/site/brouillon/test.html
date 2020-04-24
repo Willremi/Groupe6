@@ -81,6 +81,43 @@
         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
       </div>
 
+      <br><br>
+
+      <form>
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="nom">Nom</label>
+            <input type="text" class="form-control" id="nom" name="nom" required>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="prenom">Prénom</label>
+            <input type="text" class="form-control" id="prenom" name="prenom" required>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="mail">E-Mail</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="mailPrepend">@</span>
+              </div>
+              <input type="text" class="form-control" id="mail" aria-describedby="mailPrepend" name="mail" required>
+              
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-3 mb-3">
+            <label for="sujet">Sujet</label>
+            <input type="text" class="form-control" id="sujet" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="message">Message</label>
+            <textarea type="text" class="form-control" id="message" required></textarea>
+            
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit form</button>
+      </form>
+
       
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

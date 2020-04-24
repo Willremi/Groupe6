@@ -32,22 +32,24 @@ $btn60.click(function() {
 
 });
 
-var Asie = ['Japon', 'Corée du Sud'];
-var AmeriqueNord = ['Canada', 'USA'];
-var Europe = ['Allemagne', 'France', 'Royaume-Uni'];
+// var Asie = ['Japon', 'Corée du Sud'];
+// var AmeriqueNord = ['Canada', 'USA'];
+// var Europe = ['Allemagne', 'France', 'Royaume-Uni'];
 
-var continents = [
-    'Afrique', 
-    Asie, 
-    AmeriqueNord, 
-    'Amérique du Sud', 
-    Europe, 
-    'Océanie'
-];
+// var continents = [
+//     'Afrique', 
+//     Asie, 
+//     AmeriqueNord, 
+//     'Amérique du Sud', 
+//     Europe, 
+//     'Océanie'
+// ];
 
-var pays = $('#pays').html();
-console.log(pays);
+// var pays = $('#pays').html();
+// console.log(pays);
 
-for (var i = 0; i < continents.length; i++) {
-    console.log(continents[i]);
-}
+// for (var i = 0; i < continents.length; i++) {
+//     console.log(continents[i]);
+// }
+
+
