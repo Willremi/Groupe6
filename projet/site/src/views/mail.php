@@ -31,9 +31,9 @@ try {
     
 
     //Recipients
-    $mail->setFrom($email, 'Formulaire de contact');
-    $mail->addAddress('willremi@yahoo.fr', 'Webmaster du site');     // Add a recipient
-    $mail->addReplyTo($email, $prenom.' '.$nom);
+    $mail->setFrom($email, 'Fiche de contact transmis par '.$prenom.' '.$nom);
+    $mail->addAddress('willremi@live.fr', 'Webmaster du site');     // Add a recipient
+    // $mail->addReplyTo($email, $prenom.' '.$nom);
     // Content
     $mail->isHTML(true);    // Set email format to HTML
     $mail->Subject = $sujet; //.' de '.$prenom.' '.$nom;
