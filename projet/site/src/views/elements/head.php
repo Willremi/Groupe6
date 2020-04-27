@@ -47,7 +47,7 @@ function head() {
           </ul>
           <ul class="navbar-nav ml-auto nav-flex-icons">
             <li class="nav-item">
-              <a class="nav-link waves-effect waves-light">Panier : <span>1</span>
+              <a class="nav-link waves-effect waves-light">Panier : <span>0</span>
               </a>
             </li>
             <li class="nav-item avatar dropdown">
@@ -57,7 +57,7 @@ function head() {
               </a>
               <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"
                 aria-labelledby="navbarDropdownMenuLink-55">
-                <a class="dropdown-item" href="#">Connexion</a>
+                <a class="dropdown-item" href="/src/views/login.php">Connexion</a>
                 <a class="dropdown-item" href="/src/views/inscription.php">Inscription</a>
                 
               </div>
