@@ -24,6 +24,7 @@ if(isset($_POST['message'])) {
 
 // PHP Mailer
 $mail = new PHPMailer(true);
+$mail->CharSet = "UTF-8";
 
 try {
     //Server settings
@@ -31,8 +32,9 @@ try {
     
 
     //Recipients
-    $mail->setFrom($email, 'Fiche de contact transmis par '.$prenom.' '.$nom);
-    $mail->addAddress('willremi@live.fr', 'Webmaster du site');     // Add a recipient
+    $mail->setFrom($email, 'Fiche de contact RetroSérie');
+    $mail->addAddress('willremi@yahoo.fr', 'Webmaster du site');     // Add a recipient
+    $mail->addAddress('willremi@live.fr');
     // $mail->addReplyTo($email, $prenom.' '.$nom);
     // Content
     $mail->isHTML(true);    // Set email format to HTML
@@ -42,7 +44,7 @@ try {
 
     $mail->send();
     echo '<p>Votre message a été envoyé</p>';
-    echo '<a href="contact.html"><button>Retour</button></a>';
+    echo '<a href="contact.php"><button>Retour</button></a>';
     
 } catch (Exception $e) {
     echo "Le message n'a pas pu être envoyé. Le message d'erreur : {$mail->ErrorInfo}";
