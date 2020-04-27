@@ -53,7 +53,19 @@ function head() {
             <li class="nav-item avatar dropdown">
               <a class="nav-link" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                pseudo
+                Se connecter/S'inscrire
+              </a>
+              <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"
+                aria-labelledby="navbarDropdownMenuLink-55">
+                <a class="dropdown-item" href="#">Connexion</a>
+                <a class="dropdown-item" href="/src/views/inscription.php">Inscription</a>
+                
+              </div>
+            </li>
+            <!-- <li class="nav-item avatar dropdown">
+              <a class="nav-link" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Pseudo
               </a>
               <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"
                 aria-labelledby="navbarDropdownMenuLink-55">
@@ -61,7 +73,7 @@ function head() {
                 <a class="dropdown-item" href="#">Déconnexion</a>
                 
               </div>
-            </li>
+            </li> -->
           </ul>
         </div>
       </nav>
