@@ -6,7 +6,8 @@ head();
 ?>
     
       <div class="container-fluid">
-        <form action="mail.php" method="POST">
+        <h1>Formulaire de contact</h1>
+        <form action="mail.php" method="POST" class="offset-md-1 col-md-10">
             <div class="form-row">
               <div class="col-md-4 mb-3">
                 <label for="nom">Nom</label>
@@ -27,19 +28,20 @@ head();
                 </div>
               </div>
             </div>
-            <div class="form-row">
-              <div class="col-md-3 mb-3">
+            <div class="form-group">
                 <label for="sujet">Sujet</label>
                 <input type="text" class="form-control" id="sujet" name="sujet">
               </div>
-              <div class="col-md-6 mb-3">
+              <div class="form-group">
                 <label for="message">Message</label>
                 <textarea type="text" class="form-control" id="message" name="message"></textarea>
                 
               </div>
-            </div>
             <button class="btn btn-primary" type="submit">Envoyer</button>
           </form>
+
+
+          
       </div> <!-- fin container -->
     
 <?php
