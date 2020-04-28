@@ -3,6 +3,7 @@
         "symfony/var-dumper": "^5.0"
     },
     "require": {
-        "altorouter/altorouter": "^2.0"
+        "altorouter/altorouter": "^2.0",
+        "phpmailer/phpmailer": "^6.1"
     }
 }

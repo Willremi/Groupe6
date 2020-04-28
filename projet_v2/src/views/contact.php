@@ -1,6 +1,6 @@
 <div class="container-fluid">
         <h1>Formulaire de contact</h1>
-        <form action="mail.php" method="POST" class="offset-md-1 col-md-10">
+        <form action="<?php echo $router->generate('mail') ?>" method="POST" class="offset-md-1 col-md-10">
             <div class="form-row">
               <div class="col-md-4 mb-3">
                 <label for="nom">Nom</label>

@@ -58,7 +58,7 @@ function head() {
               <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"
                 aria-labelledby="navbarDropdownMenuLink-55">
                 <a class="dropdown-item" href="connexion">Connexion</a>
-                <a class="dropdown-item" href="/src/views/inscription.php">Inscription</a>
+                <a class="dropdown-item" href="inscription">Inscription</a>
                 
               </div>
             </li>
