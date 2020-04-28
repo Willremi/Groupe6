@@ -6,7 +6,9 @@ https://github.com/Willremi/AFPA-exoHTML
 https://github.com/Willremi/AFPA-exoCSS
 
 Projet afpa :  
-https://github.com/Willremi/Groupe6/tree/master/projet
+https://github.com/Willremi/Groupe6/tree/master/projet  
+Projet v2 afpa (altorouter) :  
+https://github.com/Willremi/Groupe6/tree/master/projet_v2
 
 Mon projet personnel :
 https://github.com/Willremi/projetRetro  
