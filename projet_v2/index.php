@@ -9,6 +9,7 @@ $router = new AltoRouter();
 
 $router->map('GET', '/', '/', 'base');
 $router->map('GET|POST', '/Recherche', 'Recherche', 'Recherche');
+$router->map('GET|POST', '/incorruptibles', 'incorruptibles', 'incorruptibles');
 $router->map('GET|POST', '/contact', 'contact', 'contact');
 $router->map('GET|POST', '/mail', 'mail', 'mail');
 $router->map('GET|POST', '/connexion', 'connexion', 'connexion');
@@ -22,7 +23,9 @@ if($match['target'] === '/') {
     require 'src/views/home.php';
 } elseif ($match['target'] === 'Recherche') {
     require 'src/views/listSeries.php';
-} elseif ($match['target'] === 'contact') {
+} elseif ($match['target'] === 'incorruptibles') {
+    require 'src/views/incorrup.php';
+}elseif ($match['target'] === 'contact') {
     require 'src/views/contact.php';
 } elseif ($match['target'] === 'mail') {
     require 'src/views/mail.php';

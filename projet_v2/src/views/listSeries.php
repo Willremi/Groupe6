@@ -62,7 +62,7 @@
                       </thead>
                       <tbody>
                           <tr>
-                              <td><a href="incorrup.html">Les Incorruptibles</a></td>
+                              <td><a href="<?php echo $router->generate('incorruptibles') ?>">Les Incorruptibles</a></td>
                               <td>Policier</td>
                               <td>Robert Stack, Abel Fernandez</td>
                               <td>Quinn Martin</td>
