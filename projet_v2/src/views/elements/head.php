@@ -37,9 +37,9 @@ function head() {
             <li class="nav-item">
               <a class="nav-link" href="#">Musiques</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="#">Stickers</a>
-            </li>
+            </li> -->
             <li class="nav-item">
               <a class="nav-link" href="#">Acteurs</a>
             </li>
