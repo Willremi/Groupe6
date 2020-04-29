@@ -1,0 +1,88 @@
+{
+    "page": 1,
+    "total_results": 4,
+    "total_pages": 1,
+    "results": [
+      {
+        "original_name": "Highlander: The Series",
+        "genre_ids": [
+          18,
+          10759,
+          10765
+        ],
+        "name": "Highlander",
+        "popularity": 15.975,
+        "origin_country": [
+          "US"
+        ],
+        "vote_count": 104,
+        "first_air_date": "1992-10-03",
+        "backdrop_path": null,
+        "original_language": "en",
+        "id": 4414,
+        "vote_average": 7,
+        "overview": "Duncan MacLeod est un immortel issu du même clan que Connor MacLeod, le héros des films. Il a plus de quatre cents ans et travaille comme antiquaire avec sa compagne Tessa Noël entre la ville fictive de Seacouver (contraction de Vancouver, ville de Colombie-Britannique, où a été partiellement tournée la série, et Seattle, ville au Nord-Ouest des États-Unis), et Paris. Il protège également un jeune voyou prénommé Richie. La vie quotidienne de Duncan est ponctuée de duels à l'épée avec d'autres immortels qui veulent l'éliminer. En effet, chaque immortel qui en décapite un autre libère son « quickening », et s'approprie ainsi ses connaissances et ses pouvoirs.\n\nMacLeod va donc devoir affronter des ennemis de plus en plus puissants, qu'il connaît souvent depuis plusieurs siècles (la série, comme les films, a souvent recours aux flashbacks).",
+        "poster_path": "/vb2WG1ba6SS9a6UT16odtMtUuj6.jpg"
+      },
+      {
+        "original_name": "Highlander: The Raven",
+        "genre_ids": [
+          18,
+          10759
+        ],
+        "name": "L'Immortelle",
+        "popularity": 4.164,
+        "origin_country": [
+          "US",
+          "CA"
+        ],
+        "vote_count": 5,
+        "first_air_date": "1998-09-26",
+        "backdrop_path": "/6kdTizjSvi6Xl4i00myDjLC5YIL.jpg",
+        "original_language": "en",
+        "id": 4377,
+        "vote_average": 4.6,
+        "overview": "Jolie femme, voleuse à ses heures, et âgée de 1200 ans : Amanda est immortelle ! En s'alliant à Nick Wolfe, ex-policier devenu détective privé, elle décide de se battre pour la justice, en l'aidant sur ses enquêtes.",
+        "poster_path": "/v0joxipbytcnOVJjS89Ju2gIupY.jpg"
+      },
+      {
+        "original_name": "Highlander: The Animated Series",
+        "genre_ids": [
+          16,
+          18
+        ],
+        "name": "Highlander, le dessin animé",
+        "popularity": 1.636,
+        "origin_country": [
+          "US"
+        ],
+        "vote_count": 3,
+        "first_air_date": "1994-09-18",
+        "backdrop_path": "/3IqqkrmZsCaLqitp6YhInHyMcEI.jpg",
+        "original_language": "en",
+        "id": 12304,
+        "vote_average": 4.7,
+        "overview": "Dans un futur indéterminé, une grande catastrophe s'abat sur Terre... Le monde s'enfonce peu à peu dans le chaos.\n\nLes derniers immortels décident alors de prêter serment : ils choisissent de renoncer aux combats et au Jeu pour mettre au profit de l'humanité leurs connaissances accumulées depuis des siècles.\n\nCependant un immortel refuse de prêter ce serment, il s'auto-proclame comme vainqueur du prix, il s'agit de Kortan.\n\nConnor McLeod refuse de laisser Kortan vaincre. Il s'interpose et combat le tyran mais perd... À la suite de sa mort, l'un des jetators Mangus, promet qu'un jour, un immortel de la nouvelle génération, qui ne sera pas soumis au serment, viendra et libèrera l'humanité de Kortan... Cet immortel sera un MacLeod, le dernier fils du clan MacLeod...\n\nSept siècles plus tard, Kortan est devenu un tyran et a pris, peu à peu, le contrôle du monde grâce à son armée.\n\nDans ce monde, on retrouve Quentin Dundee, un jeune adolescent accompagné de sa jeune sœur Clyde. Un jour, un homme mystérieux montant un saurien à deux pattes lui pose une question : « Connais-tu ton nom ? ».\n\nLorsque les troupes de Kortan débarquent dans le village de Quentin, ce dernier est mortellement blessé par le bras armé de Kortan, Arac et découvre qu'il est immortel et que son vrai nom est Quentin Macleod du clan des Macleod. Les événements s'enchaînent alors, l'homme mystérieux n'est autre que Ramirez qui va guider Quentin pour que celui-ci accomplisse son destin.",
+        "poster_path": "/uSKhBiIW4WQvkTa4BbWvWuVnuLj.jpg"
+      },
+      {
+        "original_name": "Highlanders",
+        "id": 43204,
+        "name": "Highlanders",
+        "popularity": 0.6,
+        "vote_count": 0,
+        "vote_average": 0,
+        "first_air_date": "",
+        "poster_path": null,
+        "genre_ids": [
+          
+        ],
+        "original_language": "en",
+        "backdrop_path": null,
+        "overview": "",
+        "origin_country": [
+          "GB"
+        ]
+      }
+    ]
+  }

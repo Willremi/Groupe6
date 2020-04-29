@@ -28,6 +28,27 @@
             showDataByPaysName($nomPays);
         }
         ?>
+
+        <form action="" method="get">
+            <div class="form-group">
+                <label for="nomContinent">Nom du continent :</label>
+                <input type="text" name="nomContinent" id="nomContinent" class="form-control">
+            </div>
+            <input type="submit" class="btn btn-success">
+        </form>
+        <?php 
+        require 'api_list_pays.php';
+
+        if(isset($_GET['nomContinent'])) {
+            $nomContinent = $_GET['nomContinent'];
+        } else {
+            $nomContinent = null;
+        }
+
+        if($nomContinent !== null) {
+            showDataByPaysList($nomContinent);
+        }
+        ?>
     </div>
 <!-- JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

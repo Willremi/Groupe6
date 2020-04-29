@@ -46,7 +46,7 @@ function transformToUpperCase($monString) {
     // $newString = implode($nouveauTableau, ' ');
     
     // return $newString;
-    return implode($nouveauTableau, ' ');
+    return implode($nouveauTableau, '-');
 }
 
 function test($ex) {
@@ -59,6 +59,6 @@ function test($ex) {
 }
 
 // Utilisation de la fonction
-echo transformToUpperCase("Voici mon 2 string");
+echo transformToUpperCase($monTexte);
 
 // echo test($existe);

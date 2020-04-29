@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * showDataByPaysName
+ *
+ * @param  mixed $nomPays
+ * @return void
+ */
+
 function showDataByPaysName($nomPays) {
     $url = file_get_contents("https://restcountries.eu/rest/v2/name/".$nomPays);
 
@@ -8,8 +15,10 @@ function showDataByPaysName($nomPays) {
 
     
     foreach($tab_country as $key => $country) {
-        echo $country->translations->fr.'<br>';
+        $trad = $country->translations;
+        echo $trad->fr.'<br>';
     }
 }
+
 
     
