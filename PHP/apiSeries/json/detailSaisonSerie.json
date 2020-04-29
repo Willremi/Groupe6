@@ -1,0 +1,2248 @@
+{
+    "_id": "52576867760ee36aaa3a8122",
+    "air_date": "1992-10-03",
+    "episodes": [
+      {
+        "air_date": "1992-10-03",
+        "episode_number": 1,
+        "id": 307263,
+        "name": "La Rencontre",
+        "overview": "",
+        "production_code": "",
+        "season_number": 1,
+        "show_id": 4414,
+        "still_path": null,
+        "vote_average": 7.0,
+        "vote_count": 1,
+        "crew": [
+          {
+            "id": 8573,
+            "credit_id": "5cd99a0b92514111ded32356",
+            "name": "Thomas J. Wright",
+            "department": "Directing",
+            "job": "Director",
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 54972,
+            "credit_id": "5cd99af8c3a36877cfc38bcf",
+            "name": "Dan Gordon",
+            "department": "Writing",
+            "job": "Writer",
+            "gender": 2,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": [
+          {
+            "id": 38559,
+            "name": "Christopher Lambert",
+            "credit_id": "5cd99bb19251412f6bd12875",
+            "character": "Connor MacLeod",
+            "order": 6,
+            "gender": 2,
+            "profile_path": "/qKmxieTgzvsA5hSA7w1VoHizmmE.jpg"
+          },
+          {
+            "id": 13591,
+            "name": "Richard Moll",
+            "credit_id": "5cd99bd50e0a26045ccc3239",
+            "character": "Slan Quinse",
+            "order": 7,
+            "gender": 2,
+            "profile_path": "/3HOinzl5zZKZvIVuTe2VBOkoeZg.jpg"
+          },
+          {
+            "id": 134082,
+            "name": "Amy Pietz",
+            "credit_id": "5cd9b33cc3a36831dec41c77",
+            "character": "Reporter",
+            "order": 19,
+            "gender": 1,
+            "profile_path": "/yt9SEBl3gd29YZoDl2qCGOs0mhN.jpg"
+          },
+          {
+            "id": 1672429,
+            "name": "Wendell Wright",
+            "credit_id": "5cd9b43fc3a3683c67c38363",
+            "character": "Sgt. Powell",
+            "order": 27,
+            "gender": 2,
+            "profile_path": null
+          }
+        ]
+      },
+      {
+        "air_date": "1992-10-10",
+        "episode_number": 2,
+        "id": 307264,
+        "name": "Jeux dangereux",
+        "overview": "",
+        "production_code": "",
+        "season_number": 1,
+        "show_id": 4414,
+        "still_path": null,
+        "vote_average": 6.0,
+        "vote_count": 1,
+        "crew": [
+          {
+            "id": 175726,
+            "credit_id": "5cd99dd79251413606cdf24b",
+            "name": "Jorge Montesi",
+            "department": "Directing",
+            "job": "Director",
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 57258,
+            "credit_id": "5cd99e0a9251412f6bd12cca",
+            "name": "Kevin Droney",
+            "department": "Writing",
+            "job": "Writer",
+            "gender": 2,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": [
+          {
+            "id": 118463,
+            "name": "Peter DeLuise",
+            "credit_id": "5cd99ea50e0a2604afcc30d9",
+            "character": "Clinch",
+            "order": 8,
+            "gender": 2,
+            "profile_path": "/cxQ9hgXGWiL0taDnamGaoJ8JQgd.jpg"
+          },
+          {
+            "id": 5169,
+            "name": "J.E. Freeman",
+            "credit_id": "5cd99ebbc3a3683c67c35878",
+            "character": "Joe Scanlon",
+            "order": 9,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 27115,
+            "name": "Tamsin Kelsey",
+            "credit_id": "5cd99ef3c3a3684a97c418ad",
+            "character": "Mrs. Gustavson",
+            "order": 10,
+            "gender": 1,
+            "profile_path": "/mkAZo3lO1fHG2ZVZriS4oRxUKvT.jpg"
+          },
+          {
+            "id": 1219890,
+            "name": "Walter Marsh",
+            "credit_id": "5cd9ae75c3a36836f6c1b3fa",
+            "character": "Mr. Stubbs",
+            "order": 12,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 2312110,
+            "name": "Jessica Van der Veen",
+            "credit_id": "5cd9aeb292514111ded34658",
+            "character": "Secretary",
+            "order": 13,
+            "gender": 1,
+            "profile_path": "/bZOOJ1NGBeLi2FfnV8Hou3H6I7I.jpg"
+          },
+          {
+            "id": 1239258,
+            "name": "Mary McDonald",
+            "credit_id": "5cd9af1f0e0a2604afcc4fca",
+            "character": "Old Peasant",
+            "order": 15,
+            "gender": 1,
+            "profile_path": null
+          },
+          {
+            "id": 1475768,
+            "name": "Aurelio Dinunzio",
+            "credit_id": "5cd9b03b0e0a265585cc5b0d",
+            "character": "Security Guard",
+            "order": 15,
+            "gender": 2,
+            "profile_path": "/hLspquESQQdSKii27l7xvERy5ph.jpg"
+          },
+          {
+            "id": 27122,
+            "name": "Matthew Walker",
+            "credit_id": "5cdb1a1dc3a36875bcc934d3",
+            "character": "Ian MacLeod",
+            "order": 677,
+            "gender": 2,
+            "profile_path": "/rY1CEJXmbgF2wmnKGNu8ww7AzNV.jpg"
+          }
+        ]
+      },
+      {
+        "air_date": "1992-10-17",
+        "episode_number": 3,
+        "id": 307265,
+        "name": "Dose mortelle",
+        "overview": "",
+        "production_code": "",
+        "season_number": 1,
+        "show_id": 4414,
+        "still_path": null,
+        "vote_average": 6.0,
+        "vote_count": 2,
+        "crew": [
+          {
+            "id": 8573,
+            "credit_id": "5cd99a0b92514111ded32356",
+            "name": "Thomas J. Wright",
+            "department": "Directing",
+            "job": "Director",
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 2173907,
+            "credit_id": "5cd9b21e92514111ded34c60",
+            "name": "Terry D. Nelson",
+            "department": "Writing",
+            "job": "Writer",
+            "gender": 2,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": [
+          {
+            "id": 10345,
+            "name": "Soon-Tek Oh",
+            "credit_id": "5cd9b13d0e0a265f60cb5807",
+            "character": "Kiem Sun",
+            "order": 16,
+            "gender": 2,
+            "profile_path": "/AmGOXn78x9v2vuRUlVWXlNuXtPX.jpg"
+          },
+          {
+            "id": 61632,
+            "name": "Dustin Nguyen",
+            "credit_id": "5cd9b16b925141301dcf671a",
+            "character": "Chu Lin",
+            "order": 17,
+            "gender": 2,
+            "profile_path": "/o1y5EHoF3GWGkM5za7oNhdF3ywh.jpg"
+          },
+          {
+            "id": 159575,
+            "name": "Lisa Bunting",
+            "credit_id": "5cd9b38c0e0a2666decb6273",
+            "character": "Woman Hostage",
+            "order": 20,
+            "gender": 1,
+            "profile_path": "/tqUKuDpFPCCizwPhPFPaj75HswI.jpg"
+          },
+          {
+            "id": 27141,
+            "name": "Kim Kondrashoff",
+            "credit_id": "5cd9b3a4c3a36875bcc68350",
+            "character": "Forks",
+            "order": 21,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 52703,
+            "name": "Alan C. Peterson",
+            "credit_id": "5cd9b3cf9251412b3fd133cf",
+            "character": "Bartender",
+            "order": 22,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 2103006,
+            "name": "Paul Stafford",
+            "credit_id": "5cd9b4060e0a265c8dce9970",
+            "character": "First Officer",
+            "order": 23,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 1672429,
+            "name": "Wendell Wright",
+            "credit_id": "5cd9b43fc3a3683c67c38363",
+            "character": "Sgt. Powell",
+            "order": 27,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 117084,
+            "name": "Christianne Hirt",
+            "credit_id": "5cd9e7679251410c9dcf61a9",
+            "character": "Angie Burke",
+            "order": 71,
+            "gender": 1,
+            "profile_path": null
+          }
+        ]
+      },
+      {
+        "air_date": "1992-10-24",
+        "episode_number": 4,
+        "id": 307266,
+        "name": "Coupable d'innocence",
+        "overview": "",
+        "production_code": "",
+        "season_number": 1,
+        "show_id": 4414,
+        "still_path": null,
+        "vote_average": 6.5,
+        "vote_count": 2,
+        "crew": [
+          {
+            "id": 54972,
+            "credit_id": "5cd99af8c3a36877cfc38bcf",
+            "name": "Dan Gordon",
+            "department": "Writing",
+            "job": "Writer",
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 175726,
+            "credit_id": "5cd99dd79251413606cdf24b",
+            "name": "Jorge Montesi",
+            "department": "Directing",
+            "job": "Director",
+            "gender": 2,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": [
+          {
+            "id": 3418,
+            "name": "Vincent Schiavelli",
+            "credit_id": "5cd9b5ac0e0a265f60cb630d",
+            "character": "Leo Atkins",
+            "order": 25,
+            "gender": 2,
+            "profile_path": "/zCBZ9Atpnx11rWp2jlmc6rhH8Cp.jpg"
+          },
+          {
+            "id": 37431,
+            "name": "John Novak",
+            "credit_id": "5cd9b6600e0a265585cc6aeb",
+            "character": "Sheriff Crowley",
+            "order": 26,
+            "gender": 2,
+            "profile_path": "/xh8EyWCDggvZkyAlNGsTvH6KarE.jpg"
+          },
+          {
+            "id": 1672429,
+            "name": "Wendell Wright",
+            "credit_id": "5cd9b43fc3a3683c67c38363",
+            "character": "Sgt. Powell",
+            "order": 27,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 1212933,
+            "name": "Victor A. Young",
+            "credit_id": "5cd9b6bfc3a36875bcc68b0a",
+            "character": "Lucas Desiree",
+            "order": 27,
+            "gender": 2,
+            "profile_path": "/cdg8hUCaHdiYiAr1qgGaVBgTmji.jpg"
+          },
+          {
+            "id": 185205,
+            "name": "Todd Duckworth",
+            "credit_id": "5cd9b6f90e0a265585cc6bf8",
+            "character": "Deputy Struthers",
+            "order": 28,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 26089,
+            "name": "Garry Chalk",
+            "credit_id": "5cd9b7429251412f6bd1600a",
+            "character": "Lemoyne",
+            "order": 29,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 158400,
+            "name": "Colleen Winton",
+            "credit_id": "5cd9b77c0e0a265585cc6cdb",
+            "character": "Gwenn",
+            "order": 30,
+            "gender": 1,
+            "profile_path": "/rxYhik2gFqIffIHYQCyeYf0j094.jpg"
+          },
+          {
+            "id": 106828,
+            "name": "Jason Michas",
+            "credit_id": "5cd9b7cbc3a3684a97c444b0",
+            "character": "Confederate Guard",
+            "order": 31,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 13656,
+            "name": "Amanda Wyss",
+            "credit_id": "5cd9b5920e0a265f60cb62ef",
+            "character": "Randi MacFarland",
+            "order": 120,
+            "gender": 1,
+            "profile_path": "/n9RwPdbitByiUEd5Lw1Vpyo8mXj.jpg"
+          }
+        ]
+      },
+      {
+        "air_date": "1992-10-31",
+        "episode_number": 5,
+        "id": 307267,
+        "name": "Chute libre",
+        "overview": "",
+        "production_code": "",
+        "season_number": 1,
+        "show_id": 4414,
+        "still_path": null,
+        "vote_average": 6.0,
+        "vote_count": 1,
+        "crew": [
+          {
+            "id": 8573,
+            "credit_id": "5cd99a0b92514111ded32356",
+            "name": "Thomas J. Wright",
+            "department": "Directing",
+            "job": "Director",
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 166096,
+            "credit_id": "5cd9b8440e0a265585cc6e23",
+            "name": "Philip John Taylor",
+            "department": "Writing",
+            "job": "Writer",
+            "gender": 2,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": [
+          {
+            "id": 21730,
+            "name": "Joan Jett",
+            "credit_id": "5cd9b87c0e0a26407dce54fa",
+            "character": "Felicia Martins",
+            "order": 32,
+            "gender": 1,
+            "profile_path": "/uTAMNcNDBaJQINGtOr9DTBEqB9T.jpg"
+          },
+          {
+            "id": 1218930,
+            "name": "Eli Gabay",
+            "credit_id": "5cd9b8e19251410c9dcf0852",
+            "character": "Devereux",
+            "order": 34,
+            "gender": 2,
+            "profile_path": "/eu7F3sS18dYyoMQfl21UVTYTrXr.jpg"
+          },
+          {
+            "id": 7007,
+            "name": "Claudia Ferri",
+            "credit_id": "5cd9b9560e0a2666decb77ba",
+            "character": "Devereux's Woman",
+            "order": 36,
+            "gender": 1,
+            "profile_path": "/mWFY9va5C9w7MRZZzfd0nGk0i1r.jpg"
+          },
+          {
+            "id": 2312137,
+            "name": "Patricia Vonk",
+            "credit_id": "5cd9b9cf9251413606ce29f5",
+            "character": "Female Executive",
+            "order": 37,
+            "gender": 1,
+            "profile_path": null
+          },
+          {
+            "id": 185209,
+            "name": "Ron Chartier",
+            "credit_id": "5cd9ba0a0e0a265c8dceae99",
+            "character": "M.E. Assistant",
+            "order": 38,
+            "gender": 0,
+            "profile_path": "/xjXQxKU6qDGajkQ9Nb6TBU6pK8b.jpg"
+          },
+          {
+            "id": 63791,
+            "name": "Jay Brazeau",
+            "credit_id": "5cd9b8adc3a3684a97c446d6",
+            "character": "Commissioner Cominski",
+            "order": 40,
+            "gender": 2,
+            "profile_path": "/3AJhDjSA8eQ7xDZV5Rf5cnFoKRw.jpg"
+          },
+          {
+            "id": 12716,
+            "name": "Leslie Carlson",
+            "credit_id": "5cd9b9219251412f6bd16456",
+            "character": "Sam Thompson",
+            "order": 58,
+            "gender": 2,
+            "profile_path": null
+          }
+        ]
+      },
+      {
+        "air_date": "1992-11-07",
+        "episode_number": 6,
+        "id": 307268,
+        "name": "Sale journée pour les otages",
+        "overview": "",
+        "production_code": "",
+        "season_number": 1,
+        "show_id": 4414,
+        "still_path": null,
+        "vote_average": 6.0,
+        "vote_count": 1,
+        "crew": [
+          {
+            "id": 175726,
+            "credit_id": "5cd99dd79251413606cdf24b",
+            "name": "Jorge Montesi",
+            "department": "Directing",
+            "job": "Director",
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 57258,
+            "credit_id": "5cd99e0a9251412f6bd12cca",
+            "name": "Kevin Droney",
+            "department": "Writing",
+            "job": "Writer",
+            "gender": 2,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": [
+          {
+            "id": 36218,
+            "name": "Andrew Divoff",
+            "credit_id": "5cd9bb3ac3a3683c67c392a8",
+            "character": "Bryan Slade",
+            "order": 39,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 63791,
+            "name": "Jay Brazeau",
+            "credit_id": "5cd9b8adc3a3684a97c446d6",
+            "character": "Commissioner Cominski",
+            "order": 40,
+            "gender": 2,
+            "profile_path": "/3AJhDjSA8eQ7xDZV5Rf5cnFoKRw.jpg"
+          },
+          {
+            "id": 14595,
+            "name": "Duncan Fraser",
+            "credit_id": "5cd9bc07c3a3684a97c4501d",
+            "character": "SWAT Commander",
+            "order": 40,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 16562,
+            "name": "Don MacKay",
+            "credit_id": "5cd9bc61c3a36877cfc3d036",
+            "character": "Stanley",
+            "order": 41,
+            "gender": 2,
+            "profile_path": "/5fx6xGUOM6WmKCwkVVihpNPmO2.jpg"
+          },
+          {
+            "id": 16559,
+            "name": "Alf Humphreys",
+            "credit_id": "5cd9bca9c3a3684a97c45288",
+            "character": "Janitor",
+            "order": 42,
+            "gender": 2,
+            "profile_path": "/pIyPSnI8Uf5sikyyhku2VzxG4HN.jpg"
+          },
+          {
+            "id": 74368,
+            "name": "Andrea Libman",
+            "credit_id": "5cd9bcdb0e0a26407dce5d58",
+            "character": "Belinda",
+            "order": 43,
+            "gender": 1,
+            "profile_path": null
+          },
+          {
+            "id": 5494,
+            "name": "Gary Jones",
+            "credit_id": "5cd9bd18c3a36836f6c1d911",
+            "character": "Klein",
+            "order": 44,
+            "gender": 2,
+            "profile_path": "/rsGrGMghGU9BD0K94Eo4GbSbWJq.jpg"
+          },
+          {
+            "id": 1235532,
+            "name": "Bill Croft",
+            "credit_id": "5cd9bd550e0a265585cc7749",
+            "character": "Mancuso",
+            "order": 45,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 50094,
+            "name": "Ken Kirzinger",
+            "credit_id": "5cd9bee2c3a3680fd4c09d26",
+            "character": "Kirby",
+            "order": 46,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 19898,
+            "name": "Vladimir Kulich",
+            "credit_id": "5cd9bf100e0a265f60cb7b57",
+            "character": "Pauling",
+            "order": 47,
+            "gender": 0,
+            "profile_path": "/z6pfLx4kJvqWj501SIxExu6rYFi.jpg"
+          },
+          {
+            "id": 13656,
+            "name": "Amanda Wyss",
+            "credit_id": "5cd9b5920e0a265f60cb62ef",
+            "character": "Randi MacFarland",
+            "order": 120,
+            "gender": 1,
+            "profile_path": "/n9RwPdbitByiUEd5Lw1Vpyo8mXj.jpg"
+          }
+        ]
+      },
+      {
+        "air_date": "1992-11-14",
+        "episode_number": 7,
+        "id": 307269,
+        "name": "Prise au piège",
+        "overview": "",
+        "production_code": "",
+        "season_number": 1,
+        "show_id": 4414,
+        "still_path": null,
+        "vote_average": 6.0,
+        "vote_count": 1,
+        "crew": [
+          {
+            "id": 8573,
+            "credit_id": "5cd99a0b92514111ded32356",
+            "name": "Thomas J. Wright",
+            "department": "Directing",
+            "job": "Director",
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 2312144,
+            "credit_id": "5cd9bfc9c3a36877cfc3d6ad",
+            "name": "Marie-Chantal Droney",
+            "department": "Writing",
+            "job": "Writer",
+            "gender": 1,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": [
+          {
+            "id": 15853,
+            "name": "Wes Studi",
+            "credit_id": "5cd9c02f9251417580d13464",
+            "character": "Sheriff Benson",
+            "order": 48,
+            "gender": 2,
+            "profile_path": "/hIi9rjpOR4az0oJfvlx0FnKSJLv.jpg"
+          },
+          {
+            "id": 85869,
+            "name": "John Dennis Johnston",
+            "credit_id": "5cd9c05ec3a36836f6c1e045",
+            "character": "Carl the Hermit",
+            "order": 49,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 35350,
+            "name": "Marc Singer",
+            "credit_id": "5cd9c0959251417580d134e6",
+            "character": "Caleb Cole",
+            "order": 50,
+            "gender": 2,
+            "profile_path": "/npgKM5FfPKnAukzV11pXOlLeBnZ.jpg"
+          },
+          {
+            "id": 27129,
+            "name": "Byron Lucas",
+            "credit_id": "5cd9c11e0e0a2666decb8def",
+            "character": "Joshua Cole",
+            "order": 51,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 27127,
+            "name": "Brent Stait",
+            "credit_id": "5cd9c15892514111ded368ae",
+            "character": "Eddie Doyle",
+            "order": 52,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 1748608,
+            "name": "Rick Poltaruk",
+            "credit_id": "5cd9c1840e0a263868ced30f",
+            "character": "Big John",
+            "order": 53,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 27138,
+            "name": "Doug Abrahams",
+            "credit_id": "5cd9c1d20e0a2604afcc7adb",
+            "character": "Benson's Deputy",
+            "order": 54,
+            "gender": 2,
+            "profile_path": null
+          }
+        ]
+      },
+      {
+        "air_date": "1992-11-21",
+        "episode_number": 8,
+        "id": 307270,
+        "name": "Médecine mortelle",
+        "overview": "",
+        "production_code": "",
+        "season_number": 1,
+        "show_id": 4414,
+        "still_path": null,
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [
+          {
+            "id": 1213670,
+            "credit_id": "5cd9c7e7c3a3680fd4c0b394",
+            "name": "Ray Austin",
+            "department": "Directing",
+            "job": "Director",
+            "gender": 2,
+            "profile_path": "/9WjyaTH7qgkzzZlOnBU3SrIlrcR.jpg"
+          },
+          {
+            "id": 365247,
+            "credit_id": "5cd9ca650e0a265c8dcecfff",
+            "name": "Robert McCullough",
+            "department": "Writing",
+            "job": "Writer",
+            "gender": 2,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": [
+          {
+            "id": 532,
+            "name": "Joe Pantoliano",
+            "credit_id": "5cd9cad1c3a36836f6c1f6d7",
+            "character": "Doctor Wilder",
+            "order": 55,
+            "gender": 2,
+            "profile_path": "/wlkrWOaC75mtcLAUnEz4kErzf0F.jpg"
+          },
+          {
+            "id": 92763,
+            "name": "Beverley Hendry",
+            "credit_id": "5cd9cb100e0a265f60cb9526",
+            "character": "Barbara Madison",
+            "order": 56,
+            "gender": 1,
+            "profile_path": null
+          },
+          {
+            "id": 75467,
+            "name": "Stephen E. Miller",
+            "credit_id": "5cd9cb670e0a2604afcc9363",
+            "character": "Sgt. Herrald",
+            "order": 57,
+            "gender": 2,
+            "profile_path": "/6tN1SKohgVKTgWbai8tJq1Re20o.jpg"
+          },
+          {
+            "id": 12716,
+            "name": "Leslie Carlson",
+            "credit_id": "5cd9b9219251412f6bd16456",
+            "character": "Sam Thompson",
+            "order": 58,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 77622,
+            "name": "Catherine Lough Haggquist",
+            "credit_id": "5cd9cbb392514121dad1849c",
+            "character": "Carol",
+            "order": 58,
+            "gender": 1,
+            "profile_path": null
+          },
+          {
+            "id": 175722,
+            "name": "Stephen Fanning",
+            "credit_id": "5cd9cc39c3a36877cfc3f0d1",
+            "character": "Jack",
+            "order": 59,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 13656,
+            "name": "Amanda Wyss",
+            "credit_id": "5cd9b5920e0a265f60cb62ef",
+            "character": "Randi MacFarland",
+            "order": 120,
+            "gender": 1,
+            "profile_path": "/n9RwPdbitByiUEd5Lw1Vpyo8mXj.jpg"
+          }
+        ]
+      },
+      {
+        "air_date": "1992-12-05",
+        "episode_number": 9,
+        "id": 307271,
+        "name": "Le Sea Witch",
+        "overview": "",
+        "production_code": "",
+        "season_number": 1,
+        "show_id": 4414,
+        "still_path": null,
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [
+          {
+            "id": 8573,
+            "credit_id": "5cd99a0b92514111ded32356",
+            "name": "Thomas J. Wright",
+            "department": "Directing",
+            "job": "Director",
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 1851716,
+            "credit_id": "5cd9ccad9251412f6bd18f3c",
+            "name": "David Tynan",
+            "department": "Writing",
+            "job": "Writer",
+            "gender": 2,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": [
+          {
+            "id": 41274,
+            "name": "Stephen Macht",
+            "credit_id": "5cd9cd099251412b3fd1683f",
+            "character": "Alexei Voshin",
+            "order": 60,
+            "gender": 2,
+            "profile_path": "/6FTqfNoPKfnRhD2HkH3MqPpH5eA.jpg"
+          },
+          {
+            "id": 99208,
+            "name": "Johannah Newmarch",
+            "credit_id": "5cd9cd3c0e0a2666decba9c5",
+            "character": "Nikki",
+            "order": 61,
+            "gender": 1,
+            "profile_path": "/ba9BTfZy83x4I0nn4uoVcGgvGc9.jpg"
+          },
+          {
+            "id": 976171,
+            "name": "Philip Maurice Hayes",
+            "credit_id": "5cd9cd7492514121dad1898f",
+            "character": "Marco",
+            "order": 62,
+            "gender": 2,
+            "profile_path": "/gK7Vs6W6acXXWJZCNpWjXLmeHEa.jpg"
+          },
+          {
+            "id": 27143,
+            "name": "John Tench",
+            "credit_id": "5cd9e4000e0a263868cf1fac",
+            "character": "Reese",
+            "order": 63,
+            "gender": 2,
+            "profile_path": "/g1aajd4vizblxNYzYKMsfcrwVKZ.jpg"
+          },
+          {
+            "id": 2312189,
+            "name": "Brooklyn Brown",
+            "credit_id": "5cd9e4310e0a263868cf1fda",
+            "character": "Melinda",
+            "order": 64,
+            "gender": 1,
+            "profile_path": null
+          },
+          {
+            "id": 74363,
+            "name": "Scott McNeil",
+            "credit_id": "5cd9e470c3a3680fd4c0f326",
+            "character": "Dennis",
+            "order": 65,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 1377637,
+            "name": "Gina Brunton",
+            "credit_id": "5cd9e57ec3a3683c67c3e5af",
+            "character": "Niva",
+            "order": 66,
+            "gender": 1,
+            "profile_path": null
+          },
+          {
+            "id": 1006133,
+            "name": "Garry Davey",
+            "credit_id": "5cd9e5b2c3a3683c67c3e5f9",
+            "character": "Soviet Major",
+            "order": 67,
+            "gender": 0,
+            "profile_path": "/kdf1u1ONL3KTDHPeij461tG6x5c.jpg"
+          },
+          {
+            "id": 1235343,
+            "name": "Rob Morton",
+            "credit_id": "5cd9e5dcc3a36877cfc42955",
+            "character": "Owner",
+            "order": 68,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 33348,
+            "name": "Adrian Holmes",
+            "credit_id": "5cd9e649c3a3680fd4c0f582",
+            "character": "Street Kid",
+            "order": 69,
+            "gender": 2,
+            "profile_path": "/8gfuxasIm5nPx0FccAJQ6JaYxcy.jpg"
+          }
+        ]
+      },
+      {
+        "air_date": "1992-12-12",
+        "episode_number": 10,
+        "id": 307272,
+        "name": "Froide Vengeance",
+        "overview": "",
+        "production_code": "",
+        "season_number": 1,
+        "show_id": 4414,
+        "still_path": null,
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [
+          {
+            "id": 1213670,
+            "credit_id": "5cd9c7e7c3a3680fd4c0b394",
+            "name": "Ray Austin",
+            "department": "Directing",
+            "job": "Director",
+            "gender": 2,
+            "profile_path": "/9WjyaTH7qgkzzZlOnBU3SrIlrcR.jpg"
+          },
+          {
+            "id": 2312197,
+            "credit_id": "5cd9e6c29251412f6bd1bf23",
+            "name": "Loraine Despres",
+            "department": "Writing",
+            "job": "Writer",
+            "gender": 1,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": [
+          {
+            "id": 45481,
+            "name": "Vanity",
+            "credit_id": "5a66ceb892514169bb0058a9",
+            "character": "Rebecca Lord",
+            "order": 1,
+            "gender": 1,
+            "profile_path": "/h658FXl2lShOPmiOeuQPlQsuOS8.jpg"
+          },
+          {
+            "id": 27320,
+            "name": "Christoph M. Ohrt",
+            "credit_id": "5cd9e70fc3a3683c67c3e8e0",
+            "character": "Walter Reinhardt",
+            "order": 70,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 117084,
+            "name": "Christianne Hirt",
+            "credit_id": "5cd9e7679251410c9dcf61a9",
+            "character": "Angie Burke",
+            "order": 71,
+            "gender": 1,
+            "profile_path": null
+          },
+          {
+            "id": 106950,
+            "name": "Ken Kramer",
+            "credit_id": "5cd9e9a1c3a36831dec498bf",
+            "character": "Dr. Kramer",
+            "order": 72,
+            "gender": 2,
+            "profile_path": "/75Z35C7Nd376ZHOVpAkj55hJ2Ct.jpg"
+          },
+          {
+            "id": 27111,
+            "name": "Kevin McNulty",
+            "credit_id": "5cd9e9d20e0a26407dceb99e",
+            "character": "Harry Dawes",
+            "order": 73,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 2312200,
+            "name": "Elizabeth Claridge",
+            "credit_id": "5cd9e9fec3a36875bcc6fc7c",
+            "character": "Molly Parker",
+            "order": 74,
+            "gender": 1,
+            "profile_path": null
+          },
+          {
+            "id": 1930345,
+            "name": "Mike Cavers",
+            "credit_id": "5cd9ea3a9251412f6bd1c2dd",
+            "character": "Nobleman",
+            "order": 75,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 1711358,
+            "name": "Shirley Broderick",
+            "credit_id": "5cd9ea93c3a3683c67c3ee0e",
+            "character": "Noblewoman",
+            "order": 76,
+            "gender": 1,
+            "profile_path": null
+          },
+          {
+            "id": 175203,
+            "name": "Patrick Stevenson",
+            "credit_id": "5cd9eac2c3a3681443c24fa8",
+            "character": "Street Punk",
+            "order": 77,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 27771,
+            "name": "Tim Reid",
+            "credit_id": "5cd9e7d392514121dad1bcd0",
+            "character": "Sgt. Bennett",
+            "order": 87,
+            "gender": 2,
+            "profile_path": null
+          }
+        ]
+      },
+      {
+        "air_date": "1992-12-19",
+        "episode_number": 11,
+        "id": 307273,
+        "name": "Meurtres en série",
+        "overview": "",
+        "production_code": "",
+        "season_number": 1,
+        "show_id": 4414,
+        "still_path": null,
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [
+          {
+            "id": 8573,
+            "credit_id": "5cd99a0b92514111ded32356",
+            "name": "Thomas J. Wright",
+            "department": "Directing",
+            "job": "Director",
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 26128,
+            "credit_id": "5cd9eb8e0e0a26045cccca4a",
+            "name": "Brian Clemens",
+            "department": "Writing",
+            "job": "Writer",
+            "gender": 2,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": [
+          {
+            "id": 31527,
+            "name": "J.G. Hertzler",
+            "credit_id": "5cd9ec1d0e0a265f60cbd69e",
+            "character": "Marcus Korolus",
+            "order": 78,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 1223198,
+            "name": "Moira Walley-Beckett",
+            "credit_id": "5cd9eca90e0a263868cf2ce5",
+            "character": "Natalie Ward",
+            "order": 79,
+            "gender": 1,
+            "profile_path": null
+          },
+          {
+            "id": 42526,
+            "name": "Dee McCafferty",
+            "credit_id": "5cd9ecf70e0a26407dcebcde",
+            "character": "Michael 'The Scalper'",
+            "order": 80,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 65808,
+            "name": "Fulvio Cecere",
+            "credit_id": "5cd9ed450e0a265f60cbd816",
+            "character": "Tony Graffini",
+            "order": 81,
+            "gender": 2,
+            "profile_path": "/7Jc4LeoA0ND0stFqDiPzBeQ9SXt.jpg"
+          },
+          {
+            "id": 51528,
+            "name": "Kelli Fox",
+            "credit_id": "5cd9ed969251412b3fd19ff9",
+            "character": "Police Woman",
+            "order": 82,
+            "gender": 1,
+            "profile_path": "/rWbfvKrINW9EZHF7sCif7ZxiKIk.jpg"
+          },
+          {
+            "id": 1816628,
+            "name": "Raimund Stamm",
+            "credit_id": "5cd9edc20e0a2666decbe3e5",
+            "character": "Herbie",
+            "order": 83,
+            "gender": 2,
+            "profile_path": "/nUoQP1mBGzuxXkVkuTcCaoV93u.jpg"
+          },
+          {
+            "id": 1224651,
+            "name": "Wanda Wilkinson",
+            "credit_id": "5cd9edf90e0a2604afccd5ae",
+            "character": "Helen",
+            "order": 84,
+            "gender": 1,
+            "profile_path": null
+          },
+          {
+            "id": 1991202,
+            "name": "Glynda Fitzgerald",
+            "credit_id": "5cd9ee46c3a3683c67c3f3e0",
+            "character": "Brunette Woman",
+            "order": 85,
+            "gender": 1,
+            "profile_path": null
+          },
+          {
+            "id": 27771,
+            "name": "Tim Reid",
+            "credit_id": "5cd9e7d392514121dad1bcd0",
+            "character": "Sgt. Bennett",
+            "order": 87,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 13656,
+            "name": "Amanda Wyss",
+            "credit_id": "5cd9b5920e0a265f60cb62ef",
+            "character": "Randi MacFarland",
+            "order": 120,
+            "gender": 1,
+            "profile_path": "/n9RwPdbitByiUEd5Lw1Vpyo8mXj.jpg"
+          }
+        ]
+      },
+      {
+        "air_date": "1993-02-06",
+        "episode_number": 12,
+        "id": 307274,
+        "name": "Témoin oculaire",
+        "overview": "",
+        "production_code": "",
+        "season_number": 1,
+        "show_id": 4414,
+        "still_path": null,
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [
+          {
+            "id": 1213670,
+            "credit_id": "5cd9c7e7c3a3680fd4c0b394",
+            "name": "Ray Austin",
+            "department": "Directing",
+            "job": "Director",
+            "gender": 2,
+            "profile_path": "/9WjyaTH7qgkzzZlOnBU3SrIlrcR.jpg"
+          },
+          {
+            "id": 1851716,
+            "credit_id": "5cd9ccad9251412f6bd18f3c",
+            "name": "David Tynan",
+            "department": "Writing",
+            "job": "Writer",
+            "gender": 2,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": [
+          {
+            "id": 85922,
+            "name": "Tom Butler",
+            "credit_id": "5cd9ef4bc3a36836f6c23856",
+            "character": "Andrew Ballin",
+            "order": 86,
+            "gender": 2,
+            "profile_path": "/sMDuFSvna90gGV0jkOK7PDzQC8g.jpg"
+          },
+          {
+            "id": 27771,
+            "name": "Tim Reid",
+            "credit_id": "5cd9e7d392514121dad1bcd0",
+            "character": "Sgt. Bennett",
+            "order": 87,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 53716,
+            "name": "Sheila Paterson",
+            "credit_id": "5cd9efbd0e0a265c8dcf0e53",
+            "character": "Greta",
+            "order": 87,
+            "gender": 1,
+            "profile_path": null
+          },
+          {
+            "id": 1230529,
+            "name": "Diana Barrington",
+            "credit_id": "5cd9eff9c3a36831dec4a23e",
+            "character": "Anne Wheeler",
+            "order": 88,
+            "gender": 1,
+            "profile_path": "/vL0RiInRrv3pvQJG5So2nzFv43H.jpg"
+          },
+          {
+            "id": 74367,
+            "name": "Christopher Gaze",
+            "credit_id": "5cd9f035c3a3683c67c3f6f4",
+            "character": "Martin Sorrel",
+            "order": 89,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 16564,
+            "name": "David Petersen",
+            "credit_id": "5cd9f06592514121dad1c7c5",
+            "character": "Detective Taylor",
+            "order": 90,
+            "gender": 2,
+            "profile_path": "/5Nfz5d8WiJmgl05iyRJ83VkYOXF.jpg"
+          },
+          {
+            "id": 13656,
+            "name": "Amanda Wyss",
+            "credit_id": "5cd9b5920e0a265f60cb62ef",
+            "character": "Randi MacFarland",
+            "order": 120,
+            "gender": 1,
+            "profile_path": "/n9RwPdbitByiUEd5Lw1Vpyo8mXj.jpg"
+          }
+        ]
+      },
+      {
+        "air_date": "1993-02-13",
+        "episode_number": 13,
+        "id": 307275,
+        "name": "Combat sans merci",
+        "overview": "",
+        "production_code": "",
+        "season_number": 1,
+        "show_id": 4414,
+        "still_path": null,
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [
+          {
+            "id": 2312144,
+            "credit_id": "5cd9bfc9c3a36877cfc3d6ad",
+            "name": "Marie-Chantal Droney",
+            "department": "Writing",
+            "job": "Writer",
+            "gender": 1,
+            "profile_path": null
+          },
+          {
+            "id": 24547,
+            "credit_id": "5cd9f0e19251412f6bd1cb48",
+            "name": "René Manzor",
+            "department": "Directing",
+            "job": "Director",
+            "gender": 2,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": [
+          {
+            "id": 53587,
+            "name": "Peter Diamond",
+            "credit_id": "5cd9f1a3c3a36836f6c23dc8",
+            "character": "Brigand Leader",
+            "order": 91,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 94926,
+            "name": "James Horan",
+            "credit_id": "5cd9f1df0e0a26045cccd234",
+            "character": "Grayson",
+            "order": 92,
+            "gender": 2,
+            "profile_path": "/jDYotaLeffsHv4WxTbb4vo5zrRm.jpg"
+          },
+          {
+            "id": 33050,
+            "name": "Terry Howson",
+            "credit_id": "5cd9f2309251412f6bd1cc56",
+            "character": "Hoestler",
+            "order": 93,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 26093,
+            "name": "Earl Pastko",
+            "credit_id": "5cd9f2720e0a2666decbea3a",
+            "character": "Victor Paulus",
+            "order": 94,
+            "gender": 2,
+            "profile_path": "/6YdIrYSFxSFvdbGChAqrDgCZVRe.jpg"
+          },
+          {
+            "id": 13656,
+            "name": "Amanda Wyss",
+            "credit_id": "5cd9b5920e0a265f60cb62ef",
+            "character": "Randi MacFarland",
+            "order": 120,
+            "gender": 1,
+            "profile_path": "/n9RwPdbitByiUEd5Lw1Vpyo8mXj.jpg"
+          },
+          {
+            "id": 23697,
+            "name": "Werner Stocker",
+            "credit_id": "5cd9f2a0c3a36877cfc43c7d",
+            "character": "Darius",
+            "order": 145,
+            "gender": 2,
+            "profile_path": null
+          }
+        ]
+      },
+      {
+        "air_date": "1993-02-20",
+        "episode_number": 14,
+        "id": 307276,
+        "name": "À la santé du diable",
+        "overview": "",
+        "production_code": "",
+        "season_number": 1,
+        "show_id": 4414,
+        "still_path": null,
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [
+          {
+            "id": 1213670,
+            "credit_id": "5cd9c7e7c3a3680fd4c0b394",
+            "name": "Ray Austin",
+            "department": "Directing",
+            "job": "Director",
+            "gender": 2,
+            "profile_path": "/9WjyaTH7qgkzzZlOnBU3SrIlrcR.jpg"
+          },
+          {
+            "id": 96678,
+            "credit_id": "5cd9f3b90e0a26045cccd4cb",
+            "name": "Fabrice Ziolkowski",
+            "department": "Writing",
+            "job": "Story",
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 86785,
+            "credit_id": "5cd9f4ddc3a36877cfc43f79",
+            "name": "David Abramowitz",
+            "department": "Writing",
+            "job": "Teleplay",
+            "gender": 2,
+            "profile_path": "/cL15dcZe7krynLM3BJF7bLOuQFu.jpg"
+          }
+        ],
+        "guest_stars": [
+          {
+            "id": 649,
+            "name": "Vernon Dobtcheff",
+            "credit_id": "5cd9f5170e0a265f60cbe320",
+            "character": "Carlo Luchesi",
+            "order": 96,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 1230252,
+            "name": "Peter Howitt",
+            "credit_id": "5cd9f547c3a3680fd4c10ddb",
+            "character": "Kuyler",
+            "order": 97,
+            "gender": 2,
+            "profile_path": "/rULzO7TsxYzdfgevc2kILxsoYWN.jpg"
+          },
+          {
+            "id": 582901,
+            "name": "Jérôme Keen",
+            "credit_id": "5cd9f5d40e0a2666decbf16d",
+            "character": "Anthony",
+            "order": 98,
+            "gender": 2,
+            "profile_path": "/l4STBYg6Ujycfoob7S11kjjXaOJ.jpg"
+          },
+          {
+            "id": 1707502,
+            "name": "Gérard Touroul",
+            "credit_id": "5cd9f66b9251410c9dcf7536",
+            "character": "Inspector Sole",
+            "order": 100,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 68056,
+            "name": "Michel Voletti",
+            "credit_id": "5cd9f69e9251412b3fd1ac5f",
+            "character": "Baron Deshields",
+            "order": 101,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 2312211,
+            "name": "Hugues Leforestier",
+            "credit_id": "5cd9f63b0e0a26407dceca73",
+            "character": "Inspector LeBrun",
+            "order": 117,
+            "gender": 2,
+            "profile_path": null
+          }
+        ]
+      },
+      {
+        "air_date": "1993-02-27",
+        "episode_number": 15,
+        "id": 307277,
+        "name": "Le Poison redoutable",
+        "overview": "",
+        "production_code": "",
+        "season_number": 1,
+        "show_id": 4414,
+        "still_path": null,
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [
+          {
+            "id": 166096,
+            "credit_id": "5cd9b8440e0a265585cc6e23",
+            "name": "Philip John Taylor",
+            "department": "Writing",
+            "job": "Writer",
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 35522,
+            "credit_id": "5cd9f6f5c3a3681443c261a4",
+            "name": "Robin Davis",
+            "department": "Directing",
+            "job": "Director",
+            "gender": 2,
+            "profile_path": "/yuP0da61ZCOYtDqf6CXBY8FQuOB.jpg"
+          }
+        ],
+        "guest_stars": [
+          {
+            "id": 185222,
+            "name": "Philippe Agael",
+            "credit_id": "5cd9f7aa0e0a265585cce57f",
+            "character": "Medical Examiner",
+            "order": 102,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 185223,
+            "name": "Crystel Amsalem",
+            "credit_id": "5cd9f82292514111ded3be64",
+            "character": "Young Girl",
+            "order": 103,
+            "gender": 1,
+            "profile_path": null
+          },
+          {
+            "id": 185219,
+            "name": "Sandrine Caron",
+            "credit_id": "5cd9f85392514111ded3beb4",
+            "character": "Nathalie",
+            "order": 104,
+            "gender": 1,
+            "profile_path": "/teooYeOcAgJ0KDP3Wsmg75hOiej.jpg"
+          },
+          {
+            "id": 17900,
+            "name": "Thierry de Carbonnières",
+            "credit_id": "5cd9f87cc3a3680fd4c113dd",
+            "character": "Francois Bertrand",
+            "order": 105,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 103119,
+            "name": "Mapi Galán",
+            "credit_id": "5cd9f906c3a3681443c264bb",
+            "character": "Renee de Tassigny",
+            "order": 107,
+            "gender": 1,
+            "profile_path": null
+          },
+          {
+            "id": 2312212,
+            "name": "Tanguy Gouasdoue",
+            "credit_id": "5cd9f98b92514111ded3c043",
+            "character": "Stan",
+            "order": 109,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 1386230,
+            "name": "Francine Olivier",
+            "credit_id": "5cd9fa010e0a265c8dcf19c3",
+            "character": "Madame Bertrand",
+            "order": 110,
+            "gender": 1,
+            "profile_path": null
+          },
+          {
+            "id": 2312211,
+            "name": "Hugues Leforestier",
+            "credit_id": "5cd9f63b0e0a26407dceca73",
+            "character": "Inspector LeBrun",
+            "order": 117,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 23697,
+            "name": "Werner Stocker",
+            "credit_id": "5cd9f2a0c3a36877cfc43c7d",
+            "character": "Darius",
+            "order": 145,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 25103,
+            "name": "Jean-Claude Deret",
+            "credit_id": "5cd9f8b8c3a36836f6c249da",
+            "character": "Georges Dalou",
+            "order": 483,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 185224,
+            "name": "Roland Gift",
+            "credit_id": "5cd9f9560e0a265f60cbea2c",
+            "character": "Xavier St. Cloud",
+            "order": 649,
+            "gender": 2,
+            "profile_path": "/zUUjr8lAsWL9AQ8cZmaKwLLgWZY.jpg"
+          }
+        ]
+      },
+      {
+        "air_date": "1993-03-06",
+        "episode_number": 16,
+        "id": 307278,
+        "name": "Meurtre à l'opéra",
+        "overview": "",
+        "production_code": "",
+        "season_number": 1,
+        "show_id": 4414,
+        "still_path": null,
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [
+          {
+            "id": 2312144,
+            "credit_id": "5cd9bfc9c3a36877cfc3d6ad",
+            "name": "Marie-Chantal Droney",
+            "department": "Writing",
+            "job": "Writer",
+            "gender": 1,
+            "profile_path": null
+          },
+          {
+            "id": 38494,
+            "credit_id": "5cd9fa9b0e0a265585cce90b",
+            "name": "Daniel Vigne",
+            "department": "Directing",
+            "job": "Director",
+            "gender": 2,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": [
+          {
+            "id": 112766,
+            "name": "Dee Dee Bridgewater",
+            "credit_id": "5cd9fb2e0e0a26407dced0d6",
+            "character": "Carolyn",
+            "order": 111,
+            "gender": 1,
+            "profile_path": null
+          },
+          {
+            "id": 108563,
+            "name": "François Guétary",
+            "credit_id": "5cd9fb700e0a263868cf427c",
+            "character": "Detective",
+            "order": 112,
+            "gender": 2,
+            "profile_path": "/gNi5hdsOkjz256H3cuJXNEl8J7I.jpg"
+          },
+          {
+            "id": 65409,
+            "name": "Fay Masterson",
+            "credit_id": "5cd9fbbec3a36831dec4b540",
+            "character": "Jenny Harris",
+            "order": 113,
+            "gender": 1,
+            "profile_path": "/gKG30bketELJ7d22KIbX62djSKc.jpg"
+          },
+          {
+            "id": 12983,
+            "name": "Joe Sheridan",
+            "credit_id": "5cd9fbf29251412b3fd1b2cb",
+            "character": "Frank Wells",
+            "order": 114,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 2312219,
+            "name": "Christian van Acker",
+            "credit_id": "5cd9fc369251412f6bd1d91d",
+            "character": "Ursa",
+            "order": 115,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 23697,
+            "name": "Werner Stocker",
+            "credit_id": "5cd9f2a0c3a36877cfc43c7d",
+            "character": "Darius",
+            "order": 145,
+            "gender": 2,
+            "profile_path": null
+          }
+        ]
+      },
+      {
+        "air_date": "1993-03-13",
+        "episode_number": 17,
+        "id": 307279,
+        "name": "Une passion immortelle",
+        "overview": "",
+        "production_code": "",
+        "season_number": 1,
+        "show_id": 4414,
+        "still_path": null,
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [
+          {
+            "id": 1213670,
+            "credit_id": "5cd9c7e7c3a3680fd4c0b394",
+            "name": "Ray Austin",
+            "department": "Directing",
+            "job": "Director",
+            "gender": 2,
+            "profile_path": "/9WjyaTH7qgkzzZlOnBU3SrIlrcR.jpg"
+          },
+          {
+            "id": 24538,
+            "credit_id": "5cd9fcafc3a36831dec4b678",
+            "name": "Elizabeth Baxter",
+            "department": "Writing",
+            "job": "Story",
+            "gender": 0,
+            "profile_path": null
+          },
+          {
+            "id": 24538,
+            "credit_id": "5cd9fcc70e0a26045ccce09f",
+            "name": "Elizabeth Baxter",
+            "department": "Writing",
+            "job": "Teleplay",
+            "gender": 0,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": [
+          {
+            "id": 35529,
+            "name": "Georges Corraface",
+            "credit_id": "5cd9fe4bc3a36875bcc715a0",
+            "character": "Carlo Seandaro",
+            "order": 116,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 2312211,
+            "name": "Hugues Leforestier",
+            "credit_id": "5cd9f63b0e0a26407dceca73",
+            "character": "Inspector LeBrun",
+            "order": 117,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 72328,
+            "name": "Bruce Myers",
+            "credit_id": "5cd9febac3a3683c67c40779",
+            "character": "Paul Warren",
+            "order": 117,
+            "gender": 2,
+            "profile_path": "/8ZxGn8K1Jh8q9G9c6plSqMQRmsh.jpg"
+          },
+          {
+            "id": 185225,
+            "name": "Julia Stemberger",
+            "credit_id": "5cd9ff079251412b3fd1b75c",
+            "character": "Grace",
+            "order": 118,
+            "gender": 1,
+            "profile_path": null
+          },
+          {
+            "id": 8293,
+            "name": "Marion Cotillard",
+            "credit_id": "5cd9ffc792514121dad1dba9",
+            "character": "Girl Giving Birth (uncredited)",
+            "order": 119,
+            "gender": 1,
+            "profile_path": "/1RAG22zsofkiAJkZm0qb5q4OQaT.jpg"
+          },
+          {
+            "id": 23697,
+            "name": "Werner Stocker",
+            "credit_id": "5cd9f2a0c3a36877cfc43c7d",
+            "character": "Darius",
+            "order": 145,
+            "gender": 2,
+            "profile_path": null
+          }
+        ]
+      },
+      {
+        "air_date": "1993-04-24",
+        "episode_number": 18,
+        "id": 307280,
+        "name": "Double Jeu",
+        "overview": "",
+        "production_code": "",
+        "season_number": 1,
+        "show_id": 4414,
+        "still_path": null,
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [
+          {
+            "id": 166096,
+            "credit_id": "5cd9b8440e0a265585cc6e23",
+            "name": "Philip John Taylor",
+            "department": "Writing",
+            "job": "Writer",
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 35522,
+            "credit_id": "5cd9f6f5c3a3681443c261a4",
+            "name": "Robin Davis",
+            "department": "Directing",
+            "job": "Director",
+            "gender": 2,
+            "profile_path": "/yuP0da61ZCOYtDqf6CXBY8FQuOB.jpg"
+          }
+        ],
+        "guest_stars": [
+          {
+            "id": 13656,
+            "name": "Amanda Wyss",
+            "credit_id": "5cd9b5920e0a265f60cb62ef",
+            "character": "Randi MacFarland",
+            "order": 120,
+            "gender": 1,
+            "profile_path": "/n9RwPdbitByiUEd5Lw1Vpyo8mXj.jpg"
+          },
+          {
+            "id": 11355,
+            "name": "Jason Isaacs",
+            "credit_id": "5257686c760ee36aaa3a8c35",
+            "character": "Zachary Blaine",
+            "order": 121,
+            "gender": 2,
+            "profile_path": "/3MMWgwpFG6IKv43nQ9OOqQn7oz4.jpg"
+          },
+          {
+            "id": 185226,
+            "name": "Fred Pearson",
+            "credit_id": "5cda01cd0e0a263868cf4ac6",
+            "character": "Pierre",
+            "order": 122,
+            "gender": 2,
+            "profile_path": "/8JXrXOyF7qewObcNMLFzbk1Incj.jpg"
+          },
+          {
+            "id": 580190,
+            "name": "Pierre Gérald",
+            "credit_id": "5cda0207c3a3684a97c4d73a",
+            "character": "Henry Lamartine",
+            "order": 123,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 71305,
+            "name": "Bertie Cortez",
+            "credit_id": "5cda02509251413606cea9ce",
+            "character": "Ringmaster",
+            "order": 124,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 180969,
+            "name": "Michael Hofland",
+            "credit_id": "5cda02bc925141301dcfffd9",
+            "character": "Bavarian Officer",
+            "order": 125,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 180906,
+            "name": "David Lowe",
+            "credit_id": "5cda03249251412b3fd1bdac",
+            "character": "Clown",
+            "order": 126,
+            "gender": 2,
+            "profile_path": "/gggCHHhKP8XcWvsSsjSddmb3Xd5.jpg"
+          },
+          {
+            "id": 154716,
+            "name": "Elizabeth Gracen",
+            "credit_id": "5cda012a0e0a265585ccf2fb",
+            "character": "Amanda Darieux",
+            "order": 902,
+            "gender": 1,
+            "profile_path": null
+          }
+        ]
+      },
+      {
+        "air_date": "1993-05-01",
+        "episode_number": 19,
+        "id": 307281,
+        "name": "Une collection convoitée",
+        "overview": "",
+        "production_code": "",
+        "season_number": 1,
+        "show_id": 4414,
+        "still_path": null,
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [
+          {
+            "id": 39677,
+            "credit_id": "5cda0559c3a3680fd4c12a2d",
+            "name": "Dennis Berry",
+            "department": "Directing",
+            "job": "Director",
+            "gender": 2,
+            "profile_path": "/cmfVM2u3JyLipIH1Mpl99poeHP5.jpg"
+          },
+          {
+            "id": 1786723,
+            "credit_id": "5cda06099251417580d1a5b3",
+            "name": "Christian Bouveron",
+            "department": "Writing",
+            "job": "Writer",
+            "gender": 2,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": [
+          {
+            "id": 31431,
+            "name": "Nigel Terry",
+            "credit_id": "5cda06540e0a265585ccfc02",
+            "character": "Gabriel Piton",
+            "order": 127,
+            "gender": 2,
+            "profile_path": "/oSGakLqaffiEqZSQ6QqiJ5dumy7.jpg"
+          },
+          {
+            "id": 2312237,
+            "name": "Katia Douvalian",
+            "credit_id": "5cda06839251410c9dcf8eba",
+            "character": "Maya",
+            "order": 128,
+            "gender": 1,
+            "profile_path": null
+          },
+          {
+            "id": 42742,
+            "name": "Rachel Palmieri",
+            "credit_id": "5cda06b4c3a3681443c278af",
+            "character": "Cynthia Hampton",
+            "order": 129,
+            "gender": 1,
+            "profile_path": null
+          },
+          {
+            "id": 1252290,
+            "name": "Thomas Kaufman",
+            "credit_id": "5cda07330e0a26407dcee5c7",
+            "character": "Police Detective",
+            "order": 130,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 144865,
+            "name": "Olivier Pierre",
+            "credit_id": "5cda0776c3a36831dec4c6b4",
+            "character": "Waiter",
+            "order": 131,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 131983,
+            "name": "Edwin Gerard",
+            "credit_id": "5cda07b39251416b5bcd60f0",
+            "character": "Lawyer",
+            "order": 132,
+            "gender": 0,
+            "profile_path": null
+          },
+          {
+            "id": 1563193,
+            "name": "Manault Deva",
+            "credit_id": "5cda07d29251413606ceb10b",
+            "character": "Duchess",
+            "order": 133,
+            "gender": 1,
+            "profile_path": null
+          }
+        ]
+      },
+      {
+        "air_date": "1993-05-08",
+        "episode_number": 20,
+        "id": 307282,
+        "name": "L'Ange exterminateur",
+        "overview": "",
+        "production_code": "",
+        "season_number": 1,
+        "show_id": 4414,
+        "still_path": null,
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [
+          {
+            "id": 113889,
+            "credit_id": "5cda0854c3a36875bcc727de",
+            "name": "Paolo Barzman",
+            "department": "Directing",
+            "job": "Director",
+            "gender": 2,
+            "profile_path": "/bGK7CZ8YoAG0Hzldp3zkHqRUEHQ.jpg"
+          },
+          {
+            "id": 96678,
+            "credit_id": "5cda08a79251416b5bcd6257",
+            "name": "Fabrice Ziolkowski",
+            "department": "Writing",
+            "job": "Writer",
+            "gender": 2,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": [
+          {
+            "id": 1114614,
+            "name": "Yan Brian",
+            "credit_id": "5cda08f99251417580d1aaa7",
+            "character": "Charles Bagnot",
+            "order": 134,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 48416,
+            "name": "Patrick Floersheim",
+            "credit_id": "5cda09849251410c9dcf9253",
+            "character": "Battini",
+            "order": 135,
+            "gender": 2,
+            "profile_path": "/7BUbjtLsVirGgCYAWogPidVWxzK.jpg"
+          },
+          {
+            "id": 47652,
+            "name": "Martin Kemp",
+            "credit_id": "5cda0a45c3a3684a97c4e836",
+            "character": "Alfred Cahill",
+            "order": 136,
+            "gender": 2,
+            "profile_path": "/cex68RbEL5FW6VbcL1e52shUF1p.jpg"
+          },
+          {
+            "id": 78017,
+            "name": "Sandra Nelson",
+            "credit_id": "5cda0a77c3a3681443c27f5f",
+            "character": "Elaine",
+            "order": 137,
+            "gender": 1,
+            "profile_path": null
+          },
+          {
+            "id": 1786809,
+            "name": "Nathalie Presles",
+            "credit_id": "5cda0aa50e0a265f60cc0443",
+            "character": "Claudine",
+            "order": 138,
+            "gender": 1,
+            "profile_path": null
+          }
+        ]
+      },
+      {
+        "air_date": "1993-05-15",
+        "episode_number": 21,
+        "id": 307283,
+        "name": "État de siège",
+        "overview": "",
+        "production_code": "",
+        "season_number": 1,
+        "show_id": 4414,
+        "still_path": null,
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [
+          {
+            "id": 39677,
+            "credit_id": "5cda0559c3a3680fd4c12a2d",
+            "name": "Dennis Berry",
+            "department": "Directing",
+            "job": "Director",
+            "gender": 2,
+            "profile_path": "/cmfVM2u3JyLipIH1Mpl99poeHP5.jpg"
+          },
+          {
+            "id": 86785,
+            "credit_id": "5cda0b16c3a3684a97c4e98a",
+            "name": "David Abramowitz",
+            "department": "Writing",
+            "job": "Writer",
+            "gender": 2,
+            "profile_path": "/cL15dcZe7krynLM3BJF7bLOuQFu.jpg"
+          }
+        ],
+        "guest_stars": [
+          {
+            "id": 27172,
+            "name": "Peter Guinness",
+            "credit_id": "5cda0b4d9251416b5bcd6536",
+            "character": "Col. Bellian",
+            "order": 139,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 34257,
+            "name": "Anthony Stewart Head",
+            "credit_id": "5cda0b859251416b5bcd65e4",
+            "character": "Allan Rothwood",
+            "order": 140,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 1523993,
+            "name": "Jason Riddington",
+            "credit_id": "5cda0bb4c3a36836f6c2706b",
+            "character": "Mark Rothwood",
+            "order": 141,
+            "gender": 2,
+            "profile_path": "/2IppU9jsg2DecY3l4G5ILQ5FBNs.jpg"
+          },
+          {
+            "id": 8293,
+            "name": "Marion Cotillard",
+            "credit_id": "5257686c760ee36aaa3a8bfb",
+            "character": "Lori Bellian",
+            "order": 142,
+            "gender": 1,
+            "profile_path": "/1RAG22zsofkiAJkZm0qb5q4OQaT.jpg"
+          }
+        ]
+      },
+      {
+        "air_date": "1993-05-22",
+        "episode_number": 22,
+        "id": 307284,
+        "name": "La Traque",
+        "overview": "",
+        "production_code": "",
+        "season_number": 1,
+        "show_id": 4414,
+        "still_path": null,
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [
+          {
+            "id": 57258,
+            "credit_id": "5cd99e0a9251412f6bd12cca",
+            "name": "Kevin Droney",
+            "department": "Writing",
+            "job": "Writer",
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 113889,
+            "credit_id": "5cda0854c3a36875bcc727de",
+            "name": "Paolo Barzman",
+            "department": "Directing",
+            "job": "Director",
+            "gender": 2,
+            "profile_path": "/bGK7CZ8YoAG0Hzldp3zkHqRUEHQ.jpg"
+          }
+        ],
+        "guest_stars": [
+          {
+            "id": 2312251,
+            "name": "Tony Sagastizado I",
+            "credit_id": "5cda0f959251413606cebb07",
+            "character": "Peruvian Hunter",
+            "order": 144,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 23697,
+            "name": "Werner Stocker",
+            "credit_id": "5cd9f2a0c3a36877cfc43c7d",
+            "character": "Darius",
+            "order": 145,
+            "gender": 2,
+            "profile_path": null
+          },
+          {
+            "id": 47096,
+            "name": "Roger Daltrey",
+            "credit_id": "5a7261c7c3a36859d3000a79",
+            "character": "Hugh Fitzcairn",
+            "order": 902,
+            "gender": 2,
+            "profile_path": "/5hXMDGmnHLYrbSZp82CECz0m1I8.jpg"
+          },
+          {
+            "id": 1277975,
+            "name": "Peter Hudson",
+            "credit_id": "5cda0d119251417580d1b10b",
+            "character": "James Horton",
+            "order": 903,
+            "gender": 2,
+            "profile_path": null
+          }
+        ]
+      }
+    ],
+    "name": "Saison 1",
+    "overview": "",
+    "id": 13169,
+    "poster_path": "/3fgbeCEGwYaJdj2cnIwuoCS1HjB.jpg",
+    "season_number": 1
+  }

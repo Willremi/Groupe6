@@ -15,9 +15,13 @@ function showDataBySerieTitle($titreSerie) {
     // var_dump($tab_serie[0]);
 
     $serie = $tab_serie[0];
+    $dateSerie = $serie->first_air_date;
+    $dateSerieExplode = explode('-', $dateSerie);
+    $annee = $dateSerieExplode[0];
+
     echo '<p>ID : '.$serie->id.'</p>';
     echo '<p>Titre : '.$serie->name.'</p>';
     echo '<p>Résumé : '.$serie->overview.'</p>';
-    echo '<p>Date de production : '.$serie->first_air_date.'</p>';
+    echo '<p>Année de production : '.$annee.'</p>';
 
  }

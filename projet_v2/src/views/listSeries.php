@@ -1,3 +1,7 @@
+<?php 
+$pageTitle = 'Recherche de série';
+?>
+
 <div class="container-fluid">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item">
