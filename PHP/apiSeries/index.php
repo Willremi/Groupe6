@@ -21,12 +21,13 @@ require 'api_serie.php';
 
 if(isset($_GET['nomSerie'])){
     $nomSerie = $_GET['nomSerie'];
+    $nomSerieExplode = explode(' ', $nomSerie);
+    $titreSerie = implode ($nomSerieExplode, '-');
 }else{
     $nomSerie = null;
 }
 
-$nomSerieExplode = explode(' ', $nomSerie);
-$titreSerie = implode ($nomSerieExplode, '-');
+
 
 if($titreSerie !== null) {
     showDataBySerieTitle($titreSerie);
