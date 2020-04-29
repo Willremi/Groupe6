@@ -1,0 +1,70 @@
+{
+    "air_date": "1992-10-03",
+    "crew": [
+      {
+        "id": 8573,
+        "credit_id": "5cd99a0b92514111ded32356",
+        "name": "Thomas J. Wright",
+        "department": "Directing",
+        "job": "Director",
+        "gender": 2,
+        "profile_path": null
+      },
+      {
+        "id": 54972,
+        "credit_id": "5cd99af8c3a36877cfc38bcf",
+        "name": "Dan Gordon",
+        "department": "Writing",
+        "job": "Writer",
+        "gender": 2,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 1,
+    "guest_stars": [
+      {
+        "id": 38559,
+        "name": "Christopher Lambert",
+        "credit_id": "5cd99bb19251412f6bd12875",
+        "character": "Connor MacLeod",
+        "order": 6,
+        "gender": 2,
+        "profile_path": "/qKmxieTgzvsA5hSA7w1VoHizmmE.jpg"
+      },
+      {
+        "id": 13591,
+        "name": "Richard Moll",
+        "credit_id": "5cd99bd50e0a26045ccc3239",
+        "character": "Slan Quinse",
+        "order": 7,
+        "gender": 2,
+        "profile_path": "/3HOinzl5zZKZvIVuTe2VBOkoeZg.jpg"
+      },
+      {
+        "id": 134082,
+        "name": "Amy Pietz",
+        "credit_id": "5cd9b33cc3a36831dec41c77",
+        "character": "Reporter",
+        "order": 19,
+        "gender": 1,
+        "profile_path": "/yt9SEBl3gd29YZoDl2qCGOs0mhN.jpg"
+      },
+      {
+        "id": 1672429,
+        "name": "Wendell Wright",
+        "credit_id": "5cd9b43fc3a3683c67c38363",
+        "character": "Sgt. Powell",
+        "order": 27,
+        "gender": 2,
+        "profile_path": null
+      }
+    ],
+    "name": "La Rencontre",
+    "overview": "",
+    "id": 307263,
+    "production_code": "",
+    "season_number": 1,
+    "still_path": null,
+    "vote_average": 7.0,
+    "vote_count": 1
+  }
