@@ -1,0 +1,491 @@
+{
+    "created_by": "willremi",
+    "description": "Liste des séries des années 50",
+    "favorite_count": 0,
+    "id": "140995",
+    "items": [
+      {
+        "original_name": "The Twilight Zone",
+        "genre_ids": [
+          18,
+          9648,
+          10765
+        ],
+        "media_type": "tv",
+        "name": "La Quatrième Dimension",
+        "popularity": 13.157,
+        "origin_country": [
+          "US"
+        ],
+        "vote_count": 336,
+        "first_air_date": "1959-10-02",
+        "backdrop_path": "/7ZhZfdCCz4VkbcmolLs3uDxQC7O.jpg",
+        "original_language": "en",
+        "id": 6357,
+        "vote_average": 8.3,
+        "overview": "Nous sommes transportés dans une autre dimension, une dimension faite non seulement de paysages et de sons, mais surtout d'esprits. Un voyage dans une contrée sans fin dont les frontières sont notre imagination. Un voyage au bout des ténèbres où il n'y a qu'une destination : la Quatrième Dimension.",
+        "poster_path": "/90xgbHss7aCMUOsdUaBvSUFEd8Q.jpg"
+      },
+      {
+        "original_name": "Perry Mason",
+        "id": 4177,
+        "media_type": "tv",
+        "name": "Perry Mason",
+        "popularity": 42.454,
+        "vote_count": 54,
+        "vote_average": 8.3,
+        "first_air_date": "1957-09-21",
+        "poster_path": "/uoQh6JAYUYWVw4P99DV5HgKGNmI.jpg",
+        "genre_ids": [
+          9648,
+          18,
+          80
+        ],
+        "original_language": "en",
+        "backdrop_path": "/iq4BjyVsDxzg24XnjoGP0Xi2Tz5.jpg",
+        "overview": "La série met en scène les affaires traitées par Perry Mason, célèbre avocat de Los Angeles.",
+        "origin_country": [
+          "US"
+        ]
+      },
+      {
+        "original_name": "I Love Lucy",
+        "genre_ids": [
+          35
+        ],
+        "media_type": "tv",
+        "name": "I Love Lucy",
+        "popularity": 12.854,
+        "origin_country": [
+          "US"
+        ],
+        "vote_count": 118,
+        "first_air_date": "1951-10-15",
+        "backdrop_path": "/jAgxwUKNBD0AwvTQHmVGyPGuvNB.jpg",
+        "original_language": "en",
+        "id": 2730,
+        "vote_average": 8.2,
+        "overview": "",
+        "poster_path": "/wiSUn1FagPee5h4nR7GNmhBDjFK.jpg"
+      },
+      {
+        "original_name": "Maverick",
+        "genre_ids": [
+          35,
+          37
+        ],
+        "media_type": "tv",
+        "name": "Maverick",
+        "popularity": 18.242,
+        "origin_country": [
+          "US"
+        ],
+        "vote_count": 15,
+        "first_air_date": "1957-09-22",
+        "backdrop_path": null,
+        "original_language": "en",
+        "id": 953,
+        "vote_average": 8.2,
+        "overview": "Brett Maverick et Bart sont des joueurs affutés qui migrent de ville en ville à la recherche d'une bonne partie de poker. Le poker (à 5 cartes de tirage) est leur occupation favorite, le spectacle se fait autour des Mavericks, mais généralement la partie tourne autour du personnage principal.",
+        "poster_path": "/gzr0IYNAou72f3LwF7jcmwgyYK9.jpg"
+      },
+      {
+        "original_name": "Zorro",
+        "genre_ids": [
+          35,
+          18,
+          37,
+          10751,
+          10759
+        ],
+        "media_type": "tv",
+        "name": "Zorro",
+        "popularity": 8.491,
+        "origin_country": [
+          "US"
+        ],
+        "vote_count": 26,
+        "first_air_date": "1957-10-10",
+        "backdrop_path": "/ojTsdDY0iukK1ExwLStufGgvggs.jpg",
+        "original_language": "en",
+        "id": 4681,
+        "vote_average": 8,
+        "overview": "Au début du xixe siècle, de retour d'Espagne où il faisait ses études, don Diego de la Vega découvre que Los Angeles est tyrannisée par le commandant de la garnison de cette petite ville de la Californie espagnole. Le jeune noble décide alors de combattre ces abus de pouvoir et prend les armes sous le nom de Zorro (renard en espagnol), un cavalier masqué vêtu de noir. Don Diego est aidé par son fidèle serviteur muet (qui se fait également passer pour sourd), Bernardo et par son cheval noir, Tornado…",
+        "poster_path": "/4kOrfLTUw1PnnD0TWO9sBLVjiHJ.jpg"
+      },
+      {
+        "original_name": "Peter Gunn",
+        "id": 10305,
+        "media_type": "tv",
+        "name": "Peter Gunn",
+        "popularity": 8.753,
+        "vote_count": 8,
+        "vote_average": 8,
+        "first_air_date": "1958-09-22",
+        "poster_path": "/hE0Un65f1k11GUQTCqk7s0hzokY.jpg",
+        "genre_ids": [
+          80
+        ],
+        "original_language": "en",
+        "backdrop_path": "/kNgdev5dOyp7QVXA9SqBGifwC0o.jpg",
+        "overview": "Peter Gunn, amateur de jolies femmes tout autant que de jazz, a quitté la police. Il est aujourd'hui un privé célèbre à Chicago. Une certaine Daisy Jane, tenancière d'une maison close de luxe, fait appel à Gunn pour qu'il retrouve Nick Fusco. Daisy est convaincue que celui-ci est l'auteur de l'assassinat de l'«Empereur des gangs», Julio Scarlotti, mais elle ne dispose d'aucune preuve. Elle prie donc le détective de faire la lumière sur cette affaire. Esprit frondeur, toujours prêt à secourir une belle femme, Gunn s'attelle donc à la tâche et commence son enquête. Comme à son habitude, il ne tarde pas à s'attirer les pires ennuis...",
+        "origin_country": [
+          "US"
+        ]
+      },
+      {
+        "original_name": "Alfred Hitchcock Presents",
+        "genre_ids": [
+          18,
+          9648
+        ],
+        "media_type": "tv",
+        "name": "Alfred Hitchcock présente",
+        "popularity": 12.072,
+        "origin_country": [
+          "US"
+        ],
+        "vote_count": 92,
+        "first_air_date": "1955-10-02",
+        "backdrop_path": "/sLbbYQpGbVAli2PLaUwG634XbLM.jpg",
+        "original_language": "en",
+        "id": 5273,
+        "vote_average": 8,
+        "overview": "Immortalisée par la silhouette d'Alfred Hitchcock apparaissant sur l'écran au son de la Marche funèbre d'une marionnette de Charles Gounod, cette série est en fait une anthologie de petites histoires noires, à la chute souvent inattendue. Au début de chaque épisode et avant d'en faire la présentation, toujours teintée d'humour noir, Alfred Hitchcock saluait les téléspectateurs d'un sévère « Bonsoir ». Il revenait en épilogue pour exposer sa morale de l'histoire. (source : Wikipédia)",
+        "poster_path": "/sHzG8lDfn5wKiieBsh0Qg5DXWNQ.jpg"
+      },
+      {
+        "original_name": "The Untouchables",
+        "genre_ids": [
+          18
+        ],
+        "media_type": "tv",
+        "name": "Les Incorruptibles",
+        "popularity": 6.804,
+        "origin_country": [
+          "US"
+        ],
+        "vote_count": 10,
+        "first_air_date": "1959-10-15",
+        "backdrop_path": "/j4F3iDMZp9QFOKmuVoLX0ivfLhz.jpg",
+        "original_language": "en",
+        "id": 2774,
+        "vote_average": 7.9,
+        "overview": "Les Incorruptibles demeure sans contredit l'émission de télévision la plus violente dans les années 1960. Il faut dire que le théâtre s'y prêtait bien. Située à Chicago au temps de la prohibition, la série suivait les exploits de l'agent spécial du Trésor Eliot Ness et de son petit groupe d'agents dans leur lutte inlassable contre les membres de la pègre.\n\nLes Incorruptibles (The Untouchables) est une série télévisée policière américaine en un pilote de 90 minutes et 118 épisodes de 50 minutes, créée par Quinn Martin et diffusée entre le 20 avril 1959 et le 21 mai 1963 sur le réseau ABC. Elle y a rencontré un très grand succès : à son apogée, elle était suivie par un ménage américain sur trois1.\n\nEn France, la série a été diffusée à partir du 5 janvier 1964 sur R.T.F. Télévision puis sur la première chaîne de l'O.R.T.F.",
+        "poster_path": "/7ZgedMcpmvOBwljPNjcacRTj8Ma.jpg"
+      },
+      {
+        "original_name": "The Honeymooners",
+        "id": 4439,
+        "media_type": "tv",
+        "name": "The Honeymooners",
+        "popularity": 12.259,
+        "vote_count": 40,
+        "vote_average": 7.8,
+        "first_air_date": "1952-09-20",
+        "poster_path": "/vBXD45yVIjvucXAwes8vu7SqgSy.jpg",
+        "genre_ids": [
+          35
+        ],
+        "original_language": "en",
+        "backdrop_path": null,
+        "overview": "",
+        "origin_country": [
+          "US"
+        ]
+      },
+      {
+        "original_name": "Wanted: Dead or Alive",
+        "id": 13837,
+        "media_type": "tv",
+        "name": "Au nom de la loi",
+        "popularity": 15.837,
+        "vote_count": 16,
+        "vote_average": 7.5,
+        "first_air_date": "1958-09-06",
+        "poster_path": "/2mj63Ofc1HiPepiywCcnARQ3eAK.jpg",
+        "genre_ids": [
+          37
+        ],
+        "original_language": "en",
+        "backdrop_path": "/9xyvcN6sA4XvZswc0droVTKSGay.jpg",
+        "overview": "Josh Randall est un chasseur de primes. Ses deux crédos sont l'honnêteté et la morale. Cet homme prudent choisira d'utiliser la ruse plutôt que sa fameuse Winchester modèle 1892 calibre 40/44 à crosse et canon sciés qu'il appelle \"Mare's Laig\" (patte de jument). Ce \"héros\" est loin de l'image traditionnelle du cow-boy car s'il reste solitaire et indépendant, ses affaires ne sont pas forcément des plus glorieuses. Il est au service de la justice et de toutes les justices... ",
+        "origin_country": [
+          "US"
+        ]
+      },
+      {
+        "original_name": "The Rifleman",
+        "genre_ids": [
+          37,
+          10759
+        ],
+        "media_type": "tv",
+        "name": "The Rifleman",
+        "popularity": 20.175,
+        "origin_country": [
+          "US"
+        ],
+        "vote_count": 23,
+        "first_air_date": "1958-09-30",
+        "backdrop_path": "/yNa8wfIwLOSVI0pzkioM4Ll60CI.jpg",
+        "original_language": "en",
+        "id": 13859,
+        "vote_average": 7.5,
+        "overview": "",
+        "poster_path": "/tYf5Sc83chWG2nBlo5xKdpBBwlI.jpg"
+      },
+      {
+        "original_name": "Dennis the Menace",
+        "genre_ids": [
+          35,
+          10751
+        ],
+        "media_type": "tv",
+        "name": "Dennis the Menace",
+        "popularity": 8.696,
+        "origin_country": [
+          "US"
+        ],
+        "vote_count": 15,
+        "first_air_date": "1959-10-04",
+        "backdrop_path": null,
+        "original_language": "en",
+        "id": 9985,
+        "vote_average": 7,
+        "overview": "",
+        "poster_path": "/1zpYhxqz9SUGMB3Q9HnyKTh31E4.jpg"
+      },
+      {
+        "original_name": "Bonanza",
+        "id": 1018,
+        "media_type": "tv",
+        "name": "Bonanza",
+        "popularity": 18.228,
+        "vote_count": 62,
+        "vote_average": 6.9,
+        "first_air_date": "1959-09-12",
+        "poster_path": "/7mo9b85wyEAUQqCvk1j0RfjZphf.jpg",
+        "genre_ids": [
+          37,
+          10759
+        ],
+        "original_language": "en",
+        "backdrop_path": "/sgCr36Emd8PgdUghmkxJ2uA1KHM.jpg",
+        "overview": "La série se déroule à la fin du XIXe siècle (après la guerre de Sécession) dans une petite ville (née lors du Gold Rush, La ruée vers l'Or) du Nevada, Virginia City, et dans le ranch de la famille Cartwright, le Ponderosa situé en périphérie. La famille est formée d'un veuf, Ben Cartwright, et des trois fils qu'il a eus de trois mariages différents. L'action, comme celle de la plupart des séries télévisées western4, est déclenchée par l'arrivée de visiteurs venus de l'extérieur, « qui viennent troubler l'harmonie organique du ranch et de la ville »5, et résolue par l'intervention d'au moins l'un de ses membres (épisode à référencer) ou, le plus souvent, par l'action de la famille Cartwright au grand complet. La seule source de tensions internes est la façon dont les habitants de Virginia City, définis comme de braves gens, sont susceptibles de céder au mal, contrairement aux Cartwright, moralement intègres.",
+        "origin_country": [
+          "US"
+        ]
+      },
+      {
+        "original_name": "Adventures of Superman",
+        "genre_ids": [
+          35,
+          18,
+          10759,
+          10765
+        ],
+        "media_type": "tv",
+        "name": "Adventures of Superman",
+        "popularity": 7.029,
+        "origin_country": [
+          "US"
+        ],
+        "vote_count": 26,
+        "first_air_date": "1952-09-19",
+        "backdrop_path": "/pIql7oT1SWcSKVCWMzPaObNRLMi.jpg",
+        "original_language": "en",
+        "id": 12662,
+        "vote_average": 6.7,
+        "overview": "",
+        "poster_path": "/n4mBP1AqL2dmdsxBVt2SKtFdKiI.jpg"
+      },
+      {
+        "original_name": "Lassie",
+        "id": 5368,
+        "media_type": "tv",
+        "name": "Lassie",
+        "popularity": 12,
+        "vote_count": 29,
+        "vote_average": 6.2,
+        "first_air_date": "1954-09-12",
+        "poster_path": "/wdYwnnUJvaFME5U0zZMdtVARdLC.jpg",
+        "genre_ids": [
+          10759,
+          18
+        ],
+        "original_language": "en",
+        "backdrop_path": "/7CsBCmjrgwARTy4emFrb2hqWKRR.jpg",
+        "overview": "Lassie, un collet, est adopté par la famille Miller, des fermiers dont le fils Jeff devient vite le meilleur ami de l'animal. Le chien et l'enfant grandissent au travers d'aventures tantôt drôles, tantôt touchantes.",
+        "origin_country": [
+          "US"
+        ]
+      },
+      {
+        "original_name": "Mazzaropi - Uma série de causos",
+        "genre_ids": [
+          
+        ],
+        "media_type": "tv",
+        "name": "Mazzaropi - Uma série de causos",
+        "popularity": 0.6,
+        "origin_country": [
+          
+        ],
+        "vote_count": 0,
+        "first_air_date": "1952-03-06",
+        "backdrop_path": null,
+        "original_language": "pt",
+        "id": 101199,
+        "vote_average": 0,
+        "overview": "",
+        "poster_path": "/7V4QGSwgZxiT8SR75azj2oQN7JJ.jpg"
+      },
+      {
+        "original_name": "L'Agence Nostradamus",
+        "genre_ids": [
+          35,
+          80
+        ],
+        "media_type": "tv",
+        "name": "L'Agence Nostradamus",
+        "popularity": 0.6,
+        "origin_country": [
+          
+        ],
+        "vote_count": 0,
+        "first_air_date": "1950-10-09",
+        "backdrop_path": "/wIKkstIS1p8L5qEZ7abpBRMJL1Y.jpg",
+        "original_language": "fr",
+        "id": 95754,
+        "vote_average": 0,
+        "overview": "Cette série met en scène des enquêtes policières teintées d'astrologie, dans un format court. En neuf épisodes d’une dizaine de minutes chacun, dans un style humoristique un duo de détectives privés enquête sur une série de meurtres impliquant une agence matrimoniale.",
+        "poster_path": "/kY6DUhen6A6YJHfcu1GOJygQke5.jpg"
+      },
+      {
+        "original_name": "L'isola del tesoro",
+        "genre_ids": [
+          10759
+        ],
+        "media_type": "tv",
+        "name": "L'isola del tesoro",
+        "popularity": 0.6,
+        "origin_country": [
+          
+        ],
+        "vote_count": 0,
+        "first_air_date": "1959-02-07",
+        "backdrop_path": null,
+        "original_language": "it",
+        "id": 90279,
+        "vote_average": 0,
+        "overview": "",
+        "poster_path": "/icAzwIhRihOPVQsUs0oJ7RYOIK4.jpg"
+      },
+      {
+        "original_name": "Orgoglio e Pregiudizio",
+        "genre_ids": [
+          
+        ],
+        "media_type": "tv",
+        "name": "Orgoglio e Pregiudizio",
+        "popularity": 0.6,
+        "origin_country": [
+          "IT"
+        ],
+        "vote_count": 0,
+        "first_air_date": "1957-09-21",
+        "backdrop_path": null,
+        "original_language": "it",
+        "id": 71071,
+        "vote_average": 0,
+        "overview": "",
+        "poster_path": "/g0BMprclK3Mx9mfY9Rzmnh6HdCO.jpg"
+      },
+      {
+        "original_name": "So weit die Füße tragen",
+        "id": 66500,
+        "media_type": "tv",
+        "name": "So weit die Füße tragen",
+        "popularity": 0.6,
+        "vote_count": 0,
+        "vote_average": 0,
+        "first_air_date": "1959-02-12",
+        "poster_path": "/8cAODTK1b5JgKRvgQNkBfi5wuej.jpg",
+        "genre_ids": [
+          18,
+          10759
+        ],
+        "original_language": "de",
+        "backdrop_path": null,
+        "overview": "",
+        "origin_country": [
+          "DE"
+        ]
+      },
+      {
+        "original_name": "Les cinq dernières minutes",
+        "genre_ids": [
+          80
+        ],
+        "media_type": "tv",
+        "name": "Les cinq dernières minutes",
+        "popularity": 1.4,
+        "origin_country": [
+          "FR"
+        ],
+        "vote_count": 0,
+        "first_air_date": "1958-01-01",
+        "backdrop_path": null,
+        "original_language": "fr",
+        "id": 44591,
+        "vote_average": 0,
+        "overview": "Première longue série d'enquêtes policières de la télévision française. Elle est fondée sur l'exposition d'une enquête où le spectateur doit, en compagnie de l'inspecteur puis commissaire Antoine Bourrel et de son adjoint Dupuy, rechercher les indices qui permettront à la fin de découvrir le coupable",
+        "poster_path": null
+      },
+      {
+        "original_name": "Familie Schölermann",
+        "genre_ids": [
+          10751
+        ],
+        "media_type": "tv",
+        "name": "Familie Schölermann",
+        "popularity": 0.6,
+        "origin_country": [
+          "DE"
+        ],
+        "vote_count": 0,
+        "first_air_date": "1954-09-15",
+        "backdrop_path": null,
+        "original_language": "de",
+        "id": 40726,
+        "vote_average": 0,
+        "overview": "",
+        "poster_path": null
+      },
+      {
+        "original_name": "The Rebel",
+        "genre_ids": [
+          37
+        ],
+        "media_type": "tv",
+        "name": "The Rebel",
+        "popularity": 1.98,
+        "origin_country": [
+          "US"
+        ],
+        "vote_count": 0,
+        "first_air_date": "1959-10-04",
+        "backdrop_path": "/jcMs0fMhUrsM9OK5If9Rq4gzOav.jpg",
+        "original_language": "en",
+        "id": 13844,
+        "vote_average": 0,
+        "overview": "",
+        "poster_path": "/sCrbB2kaC43dU5iYx2Rg0HXolKW.jpg"
+      }
+    ],
+    "item_count": 23,
+    "iso_639_1": "fr",
+    "name": "Années 50",
+    "poster_path": null
+  }

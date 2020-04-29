@@ -1,0 +1,139 @@
+{
+    "backdrop_path": null,
+    "created_by": [
+      {
+        "id": 28902,
+        "credit_id": "5a218288c3a3680b8d0a5dd6",
+        "name": "Gregory Widen",
+        "gender": 2,
+        "profile_path": null
+      }
+    ],
+    "episode_run_time": [
+      
+    ],
+    "first_air_date": "1992-10-03",
+    "genres": [
+      {
+        "id": 10765,
+        "name": "Science-Fiction & Fantastique"
+      },
+      {
+        "id": 18,
+        "name": "Drame"
+      },
+      {
+        "id": 10759,
+        "name": "Action & Adventure"
+      }
+    ],
+    "homepage": "",
+    "id": 4414,
+    "in_production": false,
+    "languages": [
+      "en",
+      "it"
+    ],
+    "last_air_date": "1998-05-16",
+    "last_episode_to_air": {
+      "air_date": "1998-05-16",
+      "episode_number": 13,
+      "id": 307359,
+      "name": "Ne pas être",
+      "overview": "",
+      "production_code": "",
+      "season_number": 6,
+      "show_id": 4414,
+      "still_path": null,
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    "name": "Highlander",
+    "next_episode_to_air": null,
+    "networks": [
+      {
+        "name": "Syndication",
+        "id": 184,
+        "logo_path": null,
+        "origin_country": ""
+      }
+    ],
+    "number_of_episodes": 119,
+    "number_of_seasons": 6,
+    "origin_country": [
+      "US"
+    ],
+    "original_language": "en",
+    "original_name": "Highlander: The Series",
+    "overview": "Duncan MacLeod est un immortel issu du même clan que Connor MacLeod, le héros des films. Il a plus de quatre cents ans et travaille comme antiquaire avec sa compagne Tessa Noël entre la ville fictive de Seacouver (contraction de Vancouver, ville de Colombie-Britannique, où a été partiellement tournée la série, et Seattle, ville au Nord-Ouest des États-Unis), et Paris. Il protège également un jeune voyou prénommé Richie. La vie quotidienne de Duncan est ponctuée de duels à l'épée avec d'autres immortels qui veulent l'éliminer. En effet, chaque immortel qui en décapite un autre libère son « quickening », et s'approprie ainsi ses connaissances et ses pouvoirs.\n\nMacLeod va donc devoir affronter des ennemis de plus en plus puissants, qu'il connaît souvent depuis plusieurs siècles (la série, comme les films, a souvent recours aux flashbacks).",
+    "popularity": 15.975,
+    "poster_path": "/vb2WG1ba6SS9a6UT16odtMtUuj6.jpg",
+    "production_companies": [
+      {
+        "id": 7961,
+        "logo_path": null,
+        "name": "Gaumont International",
+        "origin_country": ""
+      }
+    ],
+    "seasons": [
+      {
+        "air_date": "1992-10-03",
+        "episode_count": 22,
+        "id": 13169,
+        "name": "Saison 1",
+        "overview": "",
+        "poster_path": "/3fgbeCEGwYaJdj2cnIwuoCS1HjB.jpg",
+        "season_number": 1
+      },
+      {
+        "air_date": "1993-10-02",
+        "episode_count": 22,
+        "id": 13170,
+        "name": "Saison 2",
+        "overview": "",
+        "poster_path": "/wLzk98LZ1kLe0wxX1MGTgqJRGx8.jpg",
+        "season_number": 2
+      },
+      {
+        "air_date": "1994-10-01",
+        "episode_count": 22,
+        "id": 13171,
+        "name": "Saison 3",
+        "overview": "",
+        "poster_path": "/hCjJUOlRsSoyTYiDUfEDfxJnBTr.jpg",
+        "season_number": 3
+      },
+      {
+        "air_date": "1995-09-30",
+        "episode_count": 20,
+        "id": 13172,
+        "name": "Saison 4",
+        "overview": "",
+        "poster_path": "/dWJxujcDzodI1weWHE2Z711UDbs.jpg",
+        "season_number": 4
+      },
+      {
+        "air_date": "1996-09-22",
+        "episode_count": 20,
+        "id": 13173,
+        "name": "Saison 5",
+        "overview": "",
+        "poster_path": "/3JgsUAtHWfiV7zIclEBu4Qf7i2t.jpg",
+        "season_number": 5
+      },
+      {
+        "air_date": "1997-10-04",
+        "episode_count": 13,
+        "id": 13174,
+        "name": "Saison 6",
+        "overview": "",
+        "poster_path": "/kbWFpG4mXi4NV8a4IXXoQjiVTXr.jpg",
+        "season_number": 6
+      }
+    ],
+    "status": "Ended",
+    "type": "Scripted",
+    "vote_average": 7.0,
+    "vote_count": 104
+  }

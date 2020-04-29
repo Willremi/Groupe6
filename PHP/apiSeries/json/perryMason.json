@@ -1,0 +1,169 @@
+{
+    "cast": [
+      {
+        "character": "Perry Mason",
+        "credit_id": "52575d4f19c29531db1a6a49",
+        "id": 7685,
+        "name": "Raymond Burr",
+        "gender": 2,
+        "profile_path": "/ytOh75gcfS1fxLXb0fHACDajscz.jpg",
+        "order": 0
+      },
+      {
+        "character": "Della Street",
+        "credit_id": "52575d5219c29531db1a6d87",
+        "id": 109701,
+        "name": "Barbara Hale",
+        "gender": 1,
+        "profile_path": "/7ORAxB1D30kQesqWHN7RU8zxNMi.jpg",
+        "order": 1
+      },
+      {
+        "character": "Paul Drake",
+        "credit_id": "52575d5219c29531db1a6dcd",
+        "id": 2776,
+        "name": "William Hopper",
+        "gender": 2,
+        "profile_path": "/buYdcTVHw4x33NPdcsdkw37tnkV.jpg",
+        "order": 2
+      },
+      {
+        "character": "Hamilton Burger",
+        "credit_id": "589f8a4b925141337e0036ee",
+        "id": 89581,
+        "name": "William Talman",
+        "gender": 2,
+        "profile_path": "/v3EG7QdDBYDcBTPJtWzFrlCZEx.jpg",
+        "order": 3
+      },
+      {
+        "character": "Lieutenant Tragg",
+        "credit_id": "52575d5319c29531db1a6ebf",
+        "id": 14518,
+        "name": "Ray Collins",
+        "gender": 2,
+        "profile_path": "/aafy1UvizCKmf8is7gTfAJc43wP.jpg",
+        "order": 4
+      }
+    ],
+    "crew": [
+      {
+        "credit_id": "52575d5319c29531db1a6fe3",
+        "department": "Production",
+        "id": 1211924,
+        "name": "Herbert Hirschman",
+        "gender": 0,
+        "job": "Producer",
+        "profile_path": null
+      },
+      {
+        "credit_id": "589f88bac3a3684fd700342d",
+        "department": "Production",
+        "id": 13973,
+        "name": "Christian Nyby",
+        "gender": 2,
+        "job": "Producer",
+        "profile_path": null
+      },
+      {
+        "credit_id": "589f88fc92514133780035c0",
+        "department": "Production",
+        "id": 80568,
+        "name": "Jesse Hibbs",
+        "gender": 2,
+        "job": "Producer",
+        "profile_path": null
+      },
+      {
+        "credit_id": "589f8923c3a3684fe0002e70",
+        "department": "Production",
+        "id": 1217398,
+        "name": "William D. Russell",
+        "gender": 2,
+        "job": "Producer",
+        "profile_path": null
+      },
+      {
+        "credit_id": "589f8942c3a3684fd0002ff1",
+        "department": "Production",
+        "id": 89981,
+        "name": "László Benedek",
+        "gender": 2,
+        "job": "Producer",
+        "profile_path": null
+      },
+      {
+        "credit_id": "589f896c9251413371003236",
+        "department": "Production",
+        "id": 116986,
+        "name": "Jerry Hopper",
+        "gender": 2,
+        "job": "Producer",
+        "profile_path": null
+      },
+      {
+        "credit_id": "589f899ec3a3684fd0003027",
+        "department": "Production",
+        "id": 89157,
+        "name": "Bernard L. Kowalski",
+        "gender": 2,
+        "job": "Producer",
+        "profile_path": null
+      },
+      {
+        "credit_id": "5914384ac3a3683fb600a395",
+        "department": "Production",
+        "id": 41371,
+        "name": "Jackson Gillis",
+        "gender": 2,
+        "job": "Associate Producer",
+        "profile_path": null
+      },
+      {
+        "credit_id": "591438a5925141580d00acf2",
+        "department": "Production",
+        "id": 89944,
+        "name": "Sam White",
+        "gender": 2,
+        "job": "Associate Producer",
+        "profile_path": null
+      },
+      {
+        "credit_id": "591438dac3a36842c100af33",
+        "department": "Production",
+        "id": 1226784,
+        "name": "Seeleg Lester",
+        "gender": 0,
+        "job": "Associate Producer",
+        "profile_path": null
+      },
+      {
+        "credit_id": "59143af2925141572300af57",
+        "department": "Production",
+        "id": 1814513,
+        "name": "Ben Brady",
+        "gender": 0,
+        "job": "Producer",
+        "profile_path": null
+      },
+      {
+        "credit_id": "5b4ae8989251417d1e01c590",
+        "department": "Writing",
+        "id": 1235698,
+        "name": "Erle Stanley Gardner",
+        "gender": 2,
+        "job": "Novel",
+        "profile_path": null
+      },
+      {
+        "credit_id": "5b4ae92e9251417d2701de8c",
+        "department": "Crew",
+        "id": 1235698,
+        "name": "Erle Stanley Gardner",
+        "gender": 2,
+        "job": "Creator",
+        "profile_path": null
+      }
+    ],
+    "id": 4177
+  }
