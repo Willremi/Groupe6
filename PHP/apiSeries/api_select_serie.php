@@ -26,7 +26,11 @@ function showSelectSerie() {
 
         echo '<td>'.$serie->name.'</td>';
         echo '<td>'.$serie->name.'</td>';
-        echo '<td>'.$serie->first_air_date.'</td>';
+        // echo '<td>'.$serie->first_air_date.'</td>';
+        $dateDebut = $serie->first_air_date;
+        $dateExplode = explode("-", $dateDebut);
+        echo '<td>'.$dateExplode[0].'</td>';
+
         echo '<td>'.$serie->origin_country[0].'</td>';
         echo '<tr>';
     }
