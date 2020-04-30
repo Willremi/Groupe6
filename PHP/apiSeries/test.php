@@ -16,7 +16,7 @@ echo '<hr>';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Liste de séries</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
@@ -51,14 +51,12 @@ echo '<hr>';
         </tbody>
     </table>
 
-    <!-- /** 
+    <!-- 
     * Liste des années des années (exple: list50.json)
     https://api.themoviedb.org/3/list/140995?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR&page=1
     
     * Sélectionner le items->id pour avoir la liste d'acteur
-    */
-
-    /** 
+     
     * https://api.themoviedb.org/3/tv/4177/credits?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR&page=1
 
     * Sélectionner les acteurs cast->name ( exple: perryMason.json) et les réalisateurs created_by->name (exple: highlander.json)
@@ -66,7 +64,7 @@ echo '<hr>';
     * Années de production début first_air_date et fin last_air_date (explode('-', variable))
     
     * pays origine array origin_country(code alpha)
-    */ -->
+     -->
 
     <hr>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
