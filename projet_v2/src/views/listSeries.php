@@ -259,11 +259,16 @@ $pageTitle = 'Recherche de série';
                   <div class="form-group">
                     <label for="genres">Genres</label>
                     <select multiple class="form-control" id="genres">
-                      <option>Policier</option>
+                      <!-- <option>Policier</option>
                       <option>Action</option>
                       <option>Aventure</option>
                       <option>Science-Fiction</option>
-                      <option>Fantastique</option>
+                      <option>Fantastique</option> -->
+                      <?php 
+                      require 'src/api/api_genre_tv.php';
+
+                      showGenreSerie();
+                      ?>
                     </select>
                   </div>
                   <input type="button" class="btn btn-primary" value="Rechercher">

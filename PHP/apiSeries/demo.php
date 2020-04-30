@@ -9,12 +9,19 @@ $urlGenre = file_get_contents('json/genreTv.json');
 $tab_genre = json_decode($urlGenre);
 $tab_genre = $tab_genre->genres;
 
+// var_dump($tab_genre);
+
+// var_dump($tab_serie);
+
 echo 'liste genre_id dans list50.json<br>';
 
 foreach ($tab_serie as $key => $serie) {
     $genreSerie = $serie->genre_ids[0];
     echo $genreSerie.'<br>';
-
+    // var_dump($genreSerie);
+    // if($genreSerie === 37) {
+    //     echo 'western<br>';
+    // }
 }
 
 echo '<hr>liste genre avec nom dans genreTV.json<br>';
