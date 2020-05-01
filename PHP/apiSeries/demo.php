@@ -22,6 +22,7 @@ foreach ($tab_serie as $key => $serie) {
     // if($genreSerie === 37) {
     //     echo 'western<br>';
     // }
+        
     foreach ($tab_genre as $key => $genre) {
         $idGenre = $genre->id;
         $nomGenre = $genre->name;
