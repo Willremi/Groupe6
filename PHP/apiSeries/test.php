@@ -45,7 +45,7 @@ echo '<hr>';
             
         <?php require 'api_select_serie.php';
 
-    showSelectSerie();
+    showSelectSerie($idTV);
     ?>
             
         </tbody>

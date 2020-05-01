@@ -1,23 +1,27 @@
 <?php
-function showSelectSerie() {
+function showSelectSerie($idTV) {
+
+    // Liste des séries des années 50
     $url = file_get_contents('https://api.themoviedb.org/3/list/140995?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR&page=1');
-
     $tab_select = json_decode($url);
-
     $tab_serie = $tab_select->items;
 
-    $urlGenre = file_get_contents('json/genreTv.json');
-    $tab_genre = json_decode($urlGenre);
+    // Listes des genres TV
+    $urlGenre = file_get_contents('https://api.themoviedb.org/3/genre/tv/list?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR&page=1');
+    $tab_genres = json_decode($urlGenre);
+    $tab_genre = $tab_genres->genres;
 
-    $tab_genre = $tab_genre->genres;
+    // Listes des réalisateurs et acteurs de la série
+    $urlCredit = file_get_contents('https://api.themoviedb.org/3/tv/'.$idTV.'/credits?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR&page=1');
+    $tab_credits = json_decode($urlCredit);
+    $tab_credit = $tab_credits->cast;
 
     // var_dump($tab_genre[0]->id);
 
-    
-
-    
     foreach($tab_serie as $key => $serie) {
         $genreSerie = $serie->genre_ids[0];
+        $idSérie = $serie->id;
+        // var_dump($idSérie);
         echo '<tr>';
         echo '<td>'.$serie->name.'</td>';
         // echo '<td>'.$serie->genre_ids[0].'</td>';
@@ -31,8 +35,8 @@ function showSelectSerie() {
             }
             
         }
-        foreach ($tab_genre as $key => $genre) {
-            $idGenre = $genre->id;
+        foreach ($tab_credit as $key => $cast) {
+            $acteur = $cast->character;
             $nomGenre = $genre->name;
             if($genreSerie === $idGenre) {
                 echo '<td>'.$nomGenre.'</td>';
