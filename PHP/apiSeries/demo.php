@@ -17,12 +17,23 @@ echo 'liste genre_id dans list50.json<br>';
 
 foreach ($tab_serie as $key => $serie) {
     $genreSerie = $serie->genre_ids[0];
-    echo $genreSerie.'<br>';
+    // echo $genreSerie.'<br>';
     // var_dump($genreSerie);
     // if($genreSerie === 37) {
     //     echo 'western<br>';
     // }
+    foreach ($tab_genre as $key => $genre) {
+        $idGenre = $genre->id;
+        $nomGenre = $genre->name;
+        // echo $idGenre.' = '.$nomGenre.'<br>';
+        
+       if ($genreSerie === $idGenre) {
+           echo $serie->name.'->'.$nomGenre.'<br>';
+       } 
+    }
 }
+
+
 
 echo '<hr>liste genre avec nom dans genreTV.json<br>';
 

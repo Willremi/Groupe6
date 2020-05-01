@@ -1,6 +1,6 @@
 <?php
 function showSelectSerie() {
-    $url = file_get_contents('json/list50.json');
+    $url = file_get_contents('https://api.themoviedb.org/3/list/141005?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR&page=1');
 
     $tab_select = json_decode($url);
 
@@ -13,16 +13,24 @@ function showSelectSerie() {
 
     // var_dump($tab_genre[0]->id);
 
-    foreach ($tab_genre as $key => $genre) {
-        $idGenre = $genre->id;
-        $nomGenre = $genre->name;
-    }
+    
 
     
     foreach($tab_serie as $key => $serie) {
+        $genreSerie = $serie->genre_ids[0];
         echo '<tr>';
         echo '<td>'.$serie->name.'</td>';
-        echo '<td>'.$serie->genre_ids[0].'</td>';
+        // echo '<td>'.$serie->genre_ids[0].'</td>';
+        foreach ($tab_genre as $key => $genre) {
+            $idGenre = $genre->id;
+            $nomGenre = $genre->name;
+            if($genreSerie === $idGenre) {
+                echo '<td>'.$nomGenre.'</td>';
+            } elseif ($genreSerie === null) {
+                echo '<td>'.null.'</td>';
+            }
+            
+        }
 
         echo '<td>'.$serie->name.'</td>';
         echo '<td>'.$serie->name.'</td>';
