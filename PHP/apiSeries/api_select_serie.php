@@ -31,10 +31,19 @@ function showSelectSerie() {
             }
             
         }
+        foreach ($tab_genre as $key => $genre) {
+            $idGenre = $genre->id;
+            $nomGenre = $genre->name;
+            if($genreSerie === $idGenre) {
+                echo '<td>'.$nomGenre.'</td>';
+            } elseif ($genreSerie === null) {
+                echo '<td>'.null.'</td>';
+            }
+            
+        }
 
+        // echo '<td>'.$serie->name.'</td>';
         echo '<td>'.$serie->name.'</td>';
-        echo '<td>'.$serie->name.'</td>';
-        // echo '<td>'.$serie->first_air_date.'</td>';
         $dateDebut = $serie->first_air_date;
         $dateExplode = explode("-", $dateDebut);
         echo '<td>'.$dateExplode[0].'</td>';
