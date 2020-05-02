@@ -48,9 +48,9 @@ echo '<hr>';
     // showSelectSerie($list50);
     // showSelectSerie($list60);
     // showSelectSerie($list70);
-    // showSelectSerie($list80);
+    showSelectSerie($list80);
     // showSelectSerie($list90);
-    showSelectSerie($list2000);
+    // showSelectSerie($list2000);
     ?>
             
         </tbody>
