@@ -9,9 +9,8 @@ $urlGenre = file_get_contents('json/genreTv.json');
 $tab_genre = json_decode($urlGenre);
 $tab_genre = $tab_genre->genres;
 
-// var_dump($tab_genre);
 
-// var_dump($tab_serie);
+
 
 echo 'liste genre_id dans list50.json<br>';
 
@@ -29,8 +28,21 @@ foreach ($tab_serie as $key => $serie) {
         // echo $idGenre.' = '.$nomGenre.'<br>';
         
        if ($genreSerie === $idGenre) {
-           echo $serie->name.'->'.$nomGenre.'<br>';
+        //    echo $serie->id.': '.$serie->name.'->'.$nomGenre.'<br>';
        } 
+    }
+    $idTv = $serie->id;
+    // Listes des réalisateurs et acteurs de la série
+    $urlCredit = file_get_contents('https://api.themoviedb.org/3/tv/'.$idTv.'/credits?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR&page=1');
+    $tab_credits = json_decode($urlCredit);
+    $tab_credit = $tab_credits->cast;
+    
+    // var_dump($tab_credit);
+    $tab_credit = array_splice($tab_credit, 0, 2);
+
+    foreach($tab_credit as $key => $cast) {
+        $acteur = $cast->name;
+        echo $serie->name.' : '.$acteur.'<br>';
     }
 }
 
@@ -50,6 +62,11 @@ foreach ($tab_genre as $key => $genre) {
 
 
 echo '<hr>';
+
+// foreach($tab_credit as $key => $cast) {
+//     $acteur = $cast->name;
+//     echo $acteur.'<br>';
+// }
 
 ?>
 <!DOCTYPE html>
