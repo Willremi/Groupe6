@@ -1,8 +1,14 @@
 <?php
-function showSelectSerie($idTV) {
-
-    // Liste des séries des années 50
-    $url = file_get_contents('https://api.themoviedb.org/3/list/140995?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR&page=1');
+function showSelectSerie($list2000) {
+    $list50 = '140995';
+    $list60 = '140997';
+    $list70 = '140999';
+    $list80 = '141000';
+    $list90 = '141003';
+    $list2000 = '141005';
+    $idList = $list2000;
+    // Liste des séries des années 
+    $url = file_get_contents('https://api.themoviedb.org/3/list/'.$idList.'?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR&page=1');
     $tab_select = json_decode($url);
     $tab_serie = $tab_select->items;
 
