@@ -1,5 +1,6 @@
 <?php 
 $pageTitle = 'Recherche de série';
+require 'src/api/api_select_serie.php';
 ?>
 
 <div class="container-fluid">
@@ -65,14 +66,18 @@ $pageTitle = 'Recherche de série';
                           </tr>
                       </thead>
                       <tbody>
-                          <tr>
+                          <!-- <tr>
                               <td><a href="<?php echo $router->generate('incorruptibles') ?>">Les Incorruptibles</a></td>
                               <td>Policier</td>
                               <td>Robert Stack, Abel Fernandez</td>
                               <td>Quinn Martin</td>
                               <td>1959 - 1963</td>
                               <td>USA</td>
-                          </tr>
+                          </tr> -->
+                          <?php 
+                          // require 'src/api/api_select_serie.php';
+                          showSelectSerie($list50);
+                          ?>
                       </tbody>
                   </table>
               </div>
@@ -93,14 +98,17 @@ $pageTitle = 'Recherche de série';
                           </tr>
                       </thead>
                       <tbody>
-                          <tr>
+                          <!-- <tr>
                               <td><a href="#">Doctor Who (première série)</a></td>
                               <td>Science Fiction</td>
                               <td>Sylvester McCoy, Sophie Aldred</td>
                               <td>Sydney Newman, Donald Wilson</td>
                               <td>1963 - 1996</td>
                               <td>Royaume-Uni</td>
-                          </tr>
+                          </tr> -->
+                          <?php 
+                          showSelectSerie($list60);
+                          ?>
                       </tbody>
                   </table>
               </div>
@@ -120,14 +128,17 @@ $pageTitle = 'Recherche de série';
                           </tr>
                       </thead>
                       <tbody>
-                          <tr>
+                          <!-- <tr>
                               <td><a href="#">L'Île perdue</a></td>
                               <td>Aventure, Famille</td>
                               <td>Tony Hughes, Jane Wallis</td>
                               <td>Michael Lawrence</td>
                               <td>1976</td>
                               <td>Australie</td>
-                          </tr>
+                          </tr> -->
+                          <?php 
+                          showSelectSerie($list70);
+                          ?>
                       </tbody>
                   </table>
               </div>
@@ -147,14 +158,17 @@ $pageTitle = 'Recherche de série';
                           </tr>
                       </thead>
                       <tbody>
-                          <tr>
+                          <!-- <tr>
                               <td><a href="#">Bioman</a></td>
                               <td>Action, Science Fiction</td>
                               <td>Ryosuke Sakamoto, Naoto Tada</td>
                               <td>Saburo Hatte, Yatsude</td>
                               <td>1984 - 1985</td>
                               <td>Japon</td>
-                          </tr>
+                          </tr> -->
+                          <?php 
+                          showSelectSerie($list80);
+                          ?>
                       </tbody>
                   </table>
               </div>
@@ -174,14 +188,17 @@ $pageTitle = 'Recherche de série';
                           </tr>
                       </thead>
                       <tbody>
-                          <tr>
+                          <!-- <tr>
                               <td><a href="#">Highlander</a></td>
                               <td>Fantastique</td>
                               <td>Adrian Paul, Jim Byrnes, Elizabeth Gracen</td>
                               <td>Gregory Widen</td>
                               <td>1992 - 1998</td>
                               <td>Canada, France</td>
-                          </tr>
+                          </tr> -->
+                          <?php 
+                          showSelectSerie($list90);
+                          ?>
                       </tbody>
                   </table>
               </div>
@@ -201,14 +218,17 @@ $pageTitle = 'Recherche de série';
                           </tr>
                       </thead>
                       <tbody>
-                          <tr>
+                          <!-- <tr>
                               <td><a href="#">Tessa à la pointe de l'épée</a></td>
                               <td>Aventure, Western</td>
                               <td>Tessie Santiago, Anthony Lemke, Peter Wingfield</td>
                               <td>David Abramowitz</td>
                               <td>2000 - 2001</td>
                               <td>Canada, Espagne, USA, France, Royaume-Uni</td>
-                          </tr>
+                          </tr> -->
+                          <?php 
+                          showSelectSerie($list2000);
+                          ?>
                       </tbody>
                   </table>
               </div>
