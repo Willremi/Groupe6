@@ -11,14 +11,14 @@ function head() {
     <title>Rétro Série</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="public/css/style.css"> -->
-    <link rel="stylesheet" href="../../../public/css/style.css">
-    <link rel="shortcut icon" href="../../../public/img/LogoTV.png">
+    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="shortcut icon" href="public/img/LogoTV.png">
 </head>
 <body>
    
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <a class="navbar-brand" href="/">
-            <img src="../../../public/img/LogoTV.png" alt="Logo du site">
+            <img src="public/img/LogoTV.png" alt="Logo du site">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>

@@ -20,32 +20,32 @@ require 'src/api/api_select_serie.php';
             <ul class="nav nav-pills nav-justified">
               <li class="nav-item">
                 <p class="nav-link">
-                    <button type="submit" class="btn btn-secondary" id="btn50">Années 50</button>
+                    <button type="button" class="btn btn-secondary" id="btn50">Années 50</button>
                 </p>
               </li>
               <li class="nav-item">
                 <p class="nav-link">
-                  <button type="submit" class="btn btn-info" id="btn60">Années 60</button>
+                  <button type="button" class="btn btn-info" id="btn60">Années 60</button>
                 </p>
               </li>
               <li class="nav-item">
                 <p class="nav-link">
-                  <button type="submit" class="btn btn-success" id="btn70">Années 70</button>
+                  <button type="button" class="btn btn-success" id="btn70">Années 70</button>
                 </p>
               </li>
               <li class="nav-item">
                 <p class="nav-link">
-                  <button type="submit" class="btn btn-primary" id="btn80">Années 80</button>
+                  <button type="button" class="btn btn-primary" id="btn80">Années 80</button>
                 </p>
               </li>
               <li class="nav-item">
                 <p class="nav-link">
-                  <button type="submit" class="btn btn-warning" id="btn90">Années 90</button>
+                  <button type="button" class="btn btn-warning" id="btn90">Années 90</button>
                 </p>
               </li>
               <li class="nav-item">
                 <p class="nav-link">
-                  <button type="submit" class="btn btn-danger" id="btn2000">Années 2000</button>
+                  <button type="button" class="btn btn-danger" id="btn2000">Années 2000</button>
                 </p>
               </li>  
             </ul>
@@ -237,32 +237,15 @@ require 'src/api/api_select_serie.php';
           <div class="tab-pane fade" id="continents" role="tabpanel" aria-labelledby="continents-tab">
             <div class="container">
               <fieldset>
-                <legend>Sélectionner un ou deux continents : </legend>
+                <legend>Sélectionner un continent : </legend>
                 <form action="" class="mt-2">
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="continent1" value="Afrique">
-                    <label class="form-check-label" for="continent1">Afrique</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="continent2" value="Amérique du Nord">
-                    <label class="form-check-label" for="continent2">Amérique du Nord</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="continent3" value="Amérique du Sud">
-                    <label class="form-check-label" for="continent3">Amérique du Sud</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="continent4" value="Asie">
-                    <label class="form-check-label" for="continent4">Asie</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="continent5" value="Europe">
-                    <label class="form-check-label" for="continent5">Europe</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="continent6" value="Océanie">
-                    <label class="form-check-label" for="continent6">Océanie</label>
-                  </div>
+                <select class="custom-select">
+                  <option value="Asie">Asie</option>
+                  <option value="Afrique">Afrique</option>
+                  <option value="Amériques">Amériques</option>
+                  <option value="Europe">Europe</option>
+                  <option value="Océanie">Océanie</option>
+                </select>
                   <input type="button" class="btn btn-primary" value="Rechercher">
                 </form>
               </fieldset>
@@ -274,11 +257,11 @@ require 'src/api/api_select_serie.php';
           <div class="tab-pane fade" id="genres" role="tabpanel" aria-labelledby="genres-tab">
             <div class="container">
               <fieldset>
-                <legend>Sélectionner un ou deux genres : </legend>
+                <legend>Sélectionner un genre : </legend>
                 <form action="" class="mt-2">
                   <div class="form-group">
                     <label for="genres">Genres</label>
-                    <select multiple class="form-control" id="genres">
+                    <select class="form-control" id="genres">
                       <!-- <option>Policier</option>
                       <option>Action</option>
                       <option>Aventure</option>

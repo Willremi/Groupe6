@@ -63,6 +63,10 @@ select#genres {
   margin-left: 25%;
 }
 
+select.custom-select {
+  width: 50%;
+}
+
 .col-12 h1, h3 {
   text-align: center;
 }
