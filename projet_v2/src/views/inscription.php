@@ -49,7 +49,7 @@
                     <div class="form-row">
                         <div class="form-group offset-md-2 col-md-2">
                             <label for="inputCp">Code postal</label>
-                            <input type="text" class="form-control" id="inputCp">
+                            <input type="text" class="form-control" id="inputCp" name="inputCp">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputCity">Ville</label>

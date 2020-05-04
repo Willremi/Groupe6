@@ -1,5 +1,4 @@
 <?php
-echo 'toto';
 
 // Ajout d'un pseudo
 if(isset($_POST['inputName'])) {
@@ -8,8 +7,8 @@ if(isset($_POST['inputName'])) {
     $nom = '';
 }
 
-if(isset($_POST['inputFirstName'])) {
-    $prenom = htmlspecialchars(trim($_POST['inputFirstName']));
+if(isset($_POST['inputFirstname'])) {
+    $prenom = htmlspecialchars(trim($_POST['inputFirstname']));
 } else {
     $prenom = '';
 }
@@ -26,17 +25,20 @@ if(isset($_POST['inputPseudo'])) {
     $pseudo = '';
 }
 
+
 if(isset($_POST['inputMdp'])) {
     $mdp = password_hash(htmlspecialchars(trim($_POST['inputMdp'])), PASSWORD_BCRYPT);
 } else {
     $mdp = '';
 }
 
-if(isset($_POST['inputNumAdress'])) {
+
+if($_POST['inputNumAdress']) {
     $numRue = htmlspecialchars(trim($_POST['inputNumAdress']));
 } else {
     $numRue = '';
 }
+
 
 if(isset($_POST['inputAdress'])) {
     $adresse = htmlspecialchars(trim($_POST['inputAdress']));
@@ -44,11 +46,13 @@ if(isset($_POST['inputAdress'])) {
     $adresse = '';
 }
 
+
 if($_POST['inputAdress2']) {
     $adresseCompl = htmlspecialchars(trim($_POST['inputAdress2']));
 } else {
     $adresseCompl = '';
 }
+
 
 if(isset($_POST['inputCp'])) {
     $cp = htmlspecialchars(trim($_POST['inputCp']));
@@ -56,9 +60,28 @@ if(isset($_POST['inputCp'])) {
     $cp = '';
 }
 
+
+
 if(isset($_POST['inputCity'])) {
     $ville = htmlspecialchars(trim($_POST['inputCity']));
 } else {
     $ville = '';
 }
+
+
+
+$sqlUser = "INSERT INTO user (nomUser, prenomUser, pseudoUser, mailUser, mdpUser, numRue, nomRue1, nomRue2, cpVille, nomVille) VALUES (:insertNom, :insertPrenom, :insertPseudo, :insertMail, :insertMdp, :insertNumRue, :insertNomRue1, :insertNomRue2, :insertCp, :insertVille)";
+$reqInsertUser = $db->prepare($sqlUser);
+$reqInsertUser->bindParam(':insertNom', $nom);
+$reqInsertUser->bindParam(':insertPrenom', $prenom);
+$reqInsertUser->bindParam(':insertPseudo', $pseudo);
+$reqInsertUser->bindParam(':insertMail', $email);
+$reqInsertUser->bindParam(':insertMdp', $mdp);
+$reqInsertUser->bindParam(':insertNumRue', $numRue);
+$reqInsertUser->bindParam(':insertNomRue1', $adresse);
+$reqInsertUser->bindParam(':insertNomRue2', $adresseCompl);
+$reqInsertUser->bindParam(':insertCp', $cp);
+$reqInsertUser->bindParam(':insertVille', $ville);
+
+$reqInsertUser->execute();
 
