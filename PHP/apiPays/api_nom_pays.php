@@ -17,6 +17,7 @@ function showDataByPaysName($nomPays) {
     foreach($tab_country as $key => $country) {
         $trad = $country->translations;
         echo $trad->fr.'<br>';
+        echo $country->alpha2Code.'<br>';
     }
 }
 

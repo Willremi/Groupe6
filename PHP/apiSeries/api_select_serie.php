@@ -68,8 +68,20 @@ function showSelectSerie($idList) {
         $dateDebut = $serie->first_air_date;
         $dateExplode = explode("-", $dateDebut);
         echo '<td>'.$dateExplode[0].'</td>';
+        $codePays = $serie->origin_country[0];
 
-        echo '<td>'.$serie->origin_country[0].'</td>';
+        $urlPays = file_get_contents('https://restcountries.eu/rest/v2/alpha/'.$codePays.'?fields=translations');
+        $tab_pays = json_decode($urlPays);
+        $tab_pays_trad = $tab_pays->translations;
+      
+        
+        foreach ($tab_pays_trad as $key => $pays) {
+            
+            // var_dump($key.' => '.$pays);
+            if($key === 'fr') {
+                echo '<td>'.$pays.'</td>';
+            }
+        }
         echo '<tr>';
     }
     
