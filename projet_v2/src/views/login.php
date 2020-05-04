@@ -18,6 +18,7 @@
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Valider</button>
+                    <button type="reset" class="btn btn-danger">Annuler</button>
                 </form>
                 </blockquote>
             </div>
