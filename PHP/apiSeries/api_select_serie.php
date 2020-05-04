@@ -82,7 +82,7 @@ function showSelectSerie($idList) {
                 echo '<td>'.$pays.'</td>';
             }
         }
-        echo '<tr>';
+        echo '</tr>';
     }
     
 }

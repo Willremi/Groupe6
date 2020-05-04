@@ -1,5 +1,6 @@
 <?php 
 $pageTitle = 'Recherche de série';
+require 'functionTable.php';
 require 'src/api/api_select_serie.php';
 ?>
 
@@ -53,7 +54,7 @@ require 'src/api/api_select_serie.php';
               <div class="col-sm-12 col-md-12" id="annee50">
                   <h1>Liste des séries des années 50</h1>
                   <hr>
-                  <table class="table-respo">
+                  <!-- <table class="table-respo">
                       <thead>
                           <tr>
                               <th scope="col">Noms</th>
@@ -64,16 +65,13 @@ require 'src/api/api_select_serie.php';
                               <th scope="col">Pays d'origine</th>
                               
                           </tr>
-                      </thead>
+                      </thead> -->
+                      <?php 
+                       
+                      tableau();
+                      ?>
                       <tbody>
-                          <!-- <tr>
-                              <td><a href="<?php echo $router->generate('incorruptibles') ?>">Les Incorruptibles</a></td>
-                              <td>Policier</td>
-                              <td>Robert Stack, Abel Fernandez</td>
-                              <td>Quinn Martin</td>
-                              <td>1959 - 1963</td>
-                              <td>USA</td>
-                          </tr> -->
+                          
                           <?php 
                           // require 'src/api/api_select_serie.php';
                           showSelectSerie($list50);
@@ -85,28 +83,9 @@ require 'src/api/api_select_serie.php';
               <div class="col-sm-12 col-md-12" id="annee60">
                   <h1>Liste des séries des années 60</h1>
                   <hr>
-                  <table class="table-respo">
-                      <thead>
-                          <tr>
-                              <th scope="col">Noms</th>
-                              <th scope="col">Genres</th>
-                              <th scope="col">Acteurs</th>
-                              <th scope="col">Réalisateurs</th>
-                              <th scope="col">Années de production</th>
-                              <th scope="col">Pays d'origine</th>
-                              
-                          </tr>
-                      </thead>
+                  <?php tableau(); ?>
                       <tbody>
-                          <!-- <tr>
-                              <td><a href="#">Doctor Who (première série)</a></td>
-                              <td>Science Fiction</td>
-                              <td>Sylvester McCoy, Sophie Aldred</td>
-                              <td>Sydney Newman, Donald Wilson</td>
-                              <td>1963 - 1996</td>
-                              <td>Royaume-Uni</td>
-                          </tr> -->
-                          <?php 
+                        <?php 
                           showSelectSerie($list60);
                           ?>
                       </tbody>
@@ -115,18 +94,7 @@ require 'src/api/api_select_serie.php';
               <div class="col-sm-12 col-md-12" id="annee70">
                   <h1>Liste des séries des années 70</h1>
                   <hr>
-                  <table class="table-respo">
-                      <thead>
-                          <tr>
-                              <th scope="col">Noms</th>
-                              <th scope="col">Genres</th>
-                              <th scope="col">Acteurs</th>
-                              <th scope="col">Réalisateurs</th>
-                              <th scope="col">Années de production</th>
-                              <th scope="col">Pays d'origine</th>
-                              
-                          </tr>
-                      </thead>
+                  <?php tableau(); ?>
                       <tbody>
                           <!-- <tr>
                               <td><a href="#">L'Île perdue</a></td>
@@ -145,18 +113,7 @@ require 'src/api/api_select_serie.php';
               <div class="col-sm-12 col-md-12" id="annee80">
                   <h1>Liste des séries des années 80</h1>
                   <hr>
-                  <table class="table-respo">
-                      <thead>
-                          <tr>
-                              <th scope="col">Noms</th>
-                              <th scope="col">Genres</th>
-                              <th scope="col">Acteurs</th>
-                              <th scope="col">Réalisateurs</th>
-                              <th scope="col">Années de production</th>
-                              <th scope="col">Pays d'origine</th>
-                              
-                          </tr>
-                      </thead>
+                  <?php tableau(); ?>
                       <tbody>
                           <!-- <tr>
                               <td><a href="#">Bioman</a></td>
@@ -175,18 +132,7 @@ require 'src/api/api_select_serie.php';
               <div class="col-sm-12 col-md-12" id="annee90">
                   <h1>Liste des séries des années 90</h1>
                   <hr>
-                  <table class="table-respo">
-                      <thead>
-                          <tr>
-                              <th scope="col">Noms</th>
-                              <th scope="col">Genres</th>
-                              <th scope="col">Acteurs</th>
-                              <th scope="col">Réalisateurs</th>
-                              <th scope="col">Années de production</th>
-                              <th scope="col">Pays d'origine</th>
-                              
-                          </tr>
-                      </thead>
+                  <?php tableau(); ?>
                       <tbody>
                           <!-- <tr>
                               <td><a href="#">Highlander</a></td>
@@ -205,18 +151,7 @@ require 'src/api/api_select_serie.php';
               <div class="col-sm-12 col-md-12" id="annee2000">
                   <h1>Liste des séries des années 2000</h1>
                   <hr>
-                  <table class="table-respo">
-                      <thead>
-                          <tr>
-                              <th scope="col">Noms</th>
-                              <th scope="col">Genres</th>
-                              <th scope="col">Acteurs</th>
-                              <th scope="col">Réalisateurs</th>
-                              <th scope="col">Années de production</th>
-                              <th scope="col">Pays d'origine</th>
-                              
-                          </tr>
-                      </thead>
+                  <?php tableau(); ?>
                       <tbody>
                           <!-- <tr>
                               <td><a href="#">Tessa à la pointe de l'épée</a></td>
