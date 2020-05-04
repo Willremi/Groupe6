@@ -1,8 +1,7 @@
 <?php
 
-function head() {
-    
-?>
+// function head() {
+    ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -85,5 +84,4 @@ function head() {
           </div>
       </header>
 <?php
-
-}
+// }

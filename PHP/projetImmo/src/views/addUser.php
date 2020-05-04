@@ -34,9 +34,9 @@ if(isset($_POST['inputRole'])) {
 }
 
 if(isset($_POST['inputEmail'])) {
-    $role = htmlspecialchars(trim($_POST['inputEmail']));
+    $email = htmlspecialchars(trim($_POST['inputEmail']));
 } else {
-    $role = '';
+    $email = '';
 }
 
 $sqlUser = "INSERT INTO user (pseudoUser, mdpUser, roleUser) VALUES (:insertPseudo, :insertMdp, :insertRole)";

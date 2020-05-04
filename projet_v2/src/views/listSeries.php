@@ -1,5 +1,4 @@
 <?php 
-$pageTitle = 'Recherche de série';
 require 'functionTable.php';
 require 'src/api/api_select_serie.php';
 ?>

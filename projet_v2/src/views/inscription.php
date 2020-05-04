@@ -5,7 +5,7 @@
             </div>
             <div class="card-body">
                 <blockquote class="blockquote mb-0">
-                <form>
+                <form action="<?= $router->generate("addUser") ?>" method="POST">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                         <label for="inputName">Nom</label>

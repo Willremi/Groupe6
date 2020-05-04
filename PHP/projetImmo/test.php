@@ -9,3 +9,9 @@ if (password_verify($pass, $passhash)) {
 } else {
     echo 'Toto est invalide.';
 }
+
+echo '<hr>';
+
+if(password_verify('qsdfghjklm', '$2y$10$Xe2ETW6O.zn2bl/WsfCyZ.iCdaOZve04obpsKoLrTULxN1z9Hn.s.')) {
+    echo 'ok c\'est bon';
+}

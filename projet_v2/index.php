@@ -1,9 +1,14 @@
 <?php
+session_start();
 require 'vendor/autoload.php';
 require 'src/views/elements/head.php';
 require 'src/views/elements/footer.php';
+require 'src/config/config.php';
+require 'src/models/connect.php';
 
-head();
+$db = connect();
+
+// head();
 $router = new AltoRouter();
 // $router->setBasePath('public/');
 
@@ -27,9 +32,8 @@ if($match['target'] === '/') {
     require 'src/views/login.php';
 } elseif ($match['target'] === 'inscription') {
     require 'src/views/inscription.php';
-} 
-
-
-
+} elseif($match['target'] === 'addUser') {
+    require 'src/views/addUser.php';
+}
 
 footer();
