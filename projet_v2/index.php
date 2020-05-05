@@ -9,20 +9,22 @@ require 'src/models/connect.php';
 $db = connect();
 
 // Sélection pseudo et mot de passe de l'utilisateur
-$sqlSelUser = "SELECT pseudoUser, mpdUser FROM user";
+$sqlSelUser = "SELECT pseudoUser, mdpUser FROM user";
 $reqSelUser = $db->prepare($sqlSelUser);
 $reqSelUser->execute();
 
 $data = $reqSelUser->fetchObject();
+// var_dump($data);
 
-
-if(isset($_SESSION['login'])) {
+if(password_verify($_POST['inputMdp'], $data->mdpUser)) {
+    if(isset($_SESSION['login'])) {
     $pseudo = $_SESSION['login'];
-} else {
+    } else {
     $_SESSION['login'] = $_POST['inputPseudo'];
     $pseudo = $_SESSION['login'];
+    }
+    header('location: /');
 }
-
 head();
 $router = new AltoRouter();
 $router->setBasePath('');
