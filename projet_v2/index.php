@@ -27,7 +27,7 @@ if(password_verify($_POST['inputMdp'], $data->mdpUser)) {
 }
 head();
 $router = new AltoRouter();
-$router->setBasePath('');
+// $router->setBasePath('');
 
 require 'src/views/elements/router.php';
 
@@ -49,6 +49,7 @@ if($match['target'] === '/') {
     require 'src/views/login.php';
 } elseif ($match['target'] === 'inscription') {
     require 'src/views/inscription.php';
+} elseif ($match['target'] === 'addUser') {
+    require 'src/views/addUser.php';
 }
-
 footer();

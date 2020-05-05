@@ -38,7 +38,18 @@ if(isset($_SESSION['login'])) {
               <a class="nav-link" href="Recherche">Liste des séries</a>
             </li>
             <?php 
-            if($pseudo === "willremi") {
+            $db = connect();
+
+            // Sélection pseudo et mot de passe de l'utilisateur
+            $sqlSelUser = "SELECT pseudoUser, mdpUser FROM user";
+            $reqSelUser = $db->prepare($sqlSelUser);
+            $reqSelUser->execute();
+            
+            $data = $reqSelUser->fetchObject();
+            // var_dump($data);
+
+            if($pseudo === $data->pseudoUser) {
+            // if($pseudo === "willremi") {
               ?>
               <li class="nav-item">
               <a class="nav-link" href="#">Streaming/Blu-ray</a>
@@ -64,7 +75,8 @@ if(isset($_SESSION['login'])) {
             </li>
             
             <?php 
-            if ($pseudo === "willremi") {
+            if($pseudo === $data->pseudoUser) {
+            // if ($pseudo === "willremi") {
              ?>
             <li class="nav-item avatar dropdown">
               <a class="nav-link" id="navbarDropdownMenuLink-55" data-toggle="dropdown"

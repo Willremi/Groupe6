@@ -1,8 +1,9 @@
 <?php
 // Voir l'exemple fourni sur la page de la fonction password_hash()
 // pour savoir d'où cela provient.
-$pass = "toto";
-$passhash = password_hash($pass, PASSWORD_BCRYPT);
+$pass = "qsdf";
+// $passhash = password_hash($pass, PASSWORD_BCRYPT);
+$passhash = "$2y$10$8EZXDVLjTaoKXswIAFlaGOps8h8jah.wTGUUBZv2zx/7.j8LU.hZW";
 
 if (password_verify($pass, $passhash)) {
     echo 'Toto est valide !';

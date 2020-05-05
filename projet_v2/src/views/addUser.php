@@ -20,9 +20,9 @@ if(isset($_POST['inputEmail'])) {
 }
 
 if(isset($_POST['inputPseudo'])) {
-    $pseudo = htmlspecialchars(trim($_POST['inputPseudo']));
+    $pseudoInsert = htmlspecialchars(trim($_POST['inputPseudo']));
 } else {
-    $pseudo = '';
+    $pseudoInsert = '';
 }
 
 
@@ -68,12 +68,11 @@ if(isset($_POST['inputCity'])) {
     $ville = '';
 }
 
-
 $sqlUser = "INSERT INTO user (nomUser, prenomUser, pseudoUser, mailUser, mdpUser, numRue, nomRue1, nomRue2, cpVille, nomVille) VALUES (:insertNom, :insertPrenom, :insertPseudo, :insertMail, :insertMdp, :insertNumRue, :insertNomRue1, :insertNomRue2, :insertCp, :insertVille)";
 $reqInsertUser = $db->prepare($sqlUser);
 $reqInsertUser->bindParam(':insertNom', $nom);
 $reqInsertUser->bindParam(':insertPrenom', $prenom);
-$reqInsertUser->bindParam(':insertPseudo', $pseudo);
+$reqInsertUser->bindParam(':insertPseudo', $pseudoInsert);
 $reqInsertUser->bindParam(':insertMail', $email);
 $reqInsertUser->bindParam(':insertMdp', $mdp);
 $reqInsertUser->bindParam(':insertNumRue', $numRue);
