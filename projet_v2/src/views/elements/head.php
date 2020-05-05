@@ -8,6 +8,7 @@ if(isset($_SESSION['login'])) {
     
     $pseudo = '';
 }
+var_dump($pseudo);
     ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -41,8 +42,9 @@ if(isset($_SESSION['login'])) {
             $db = connect();
 
             // Sélection pseudo et mot de passe de l'utilisateur
-            $sqlSelUser = "SELECT pseudoUser, mdpUser FROM user";
+            $sqlSelUser = "SELECT pseudoUser, mdpUser FROM user WHERE pseudoUser = :pseudo";
             $reqSelUser = $db->prepare($sqlSelUser);
+            $reqSelUser->bindParam(':pseudo', $pseudo);
             $reqSelUser->execute();
             
             $data = $reqSelUser->fetchObject();
