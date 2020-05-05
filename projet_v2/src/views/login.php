@@ -5,7 +5,7 @@
             </div>
             <div class="card-body">
                 <blockquote class="blockquote mb-0">
-                <form>
+                <form method="POST" action="/">
                     <div class="form-group">
                         <div class="form-group offset-md-3 col-md-6">
                         <label for="inputPseudo">Pseudo</label>

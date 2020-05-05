@@ -1,6 +1,13 @@
 <?php
-
-// function head() {
+session_start();
+function head() {
+  
+if(isset($_SESSION['login'])) {
+    $pseudo = $_SESSION['login'];
+} else {
+    
+    $pseudo = '';
+}
     ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -30,7 +37,10 @@
             <li class="nav-item">
               <a class="nav-link" href="Recherche">Liste des séries</a>
             </li>
-            <li class="nav-item">
+            <?php 
+            if($pseudo === "willremi") {
+              ?>
+              <li class="nav-item">
               <a class="nav-link" href="#">Streaming/Blu-ray</a>
             </li>
             <li class="nav-item">
@@ -42,6 +52,9 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Acteurs</a>
             </li>
+              <?php
+            }
+            ?>
             <li class="nav-item"><a class="nav-link" href="contact">Contact</a></li>
           </ul>
           <ul class="navbar-nav ml-auto nav-flex-icons">
@@ -49,7 +62,26 @@
               <a class="nav-link waves-effect waves-light">Panier : <span>0</span>
               </a>
             </li>
+            
+            <?php 
+            if ($pseudo === "willremi") {
+             ?>
             <li class="nav-item avatar dropdown">
+              <a class="nav-link" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <?= $pseudo ?>
+              </a>
+              <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"
+                aria-labelledby="navbarDropdownMenuLink-55">
+                <a class="dropdown-item" href="#">Compte</a>
+                <a class="dropdown-item" href="/src/views/logout.php">Déconnexion</a>
+                
+              </div>
+            </li>
+            <?php
+            } else {
+                ?>
+                <li class="nav-item avatar dropdown">
               <a class="nav-link" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 Se connecter/S'inscrire
@@ -61,6 +93,9 @@
                 
               </div>
             </li>
+            <?php
+            }
+            ?>
             <!-- <li class="nav-item avatar dropdown">
               <a class="nav-link" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
@@ -84,4 +119,4 @@
           </div>
       </header>
 <?php
-// }
+ }
