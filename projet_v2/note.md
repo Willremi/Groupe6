@@ -26,3 +26,32 @@ head.php
                 
               </div>
             </li>
+
+index.php
+// Sélection pseudo et mot de passe de l'utilisateur
+$pseudoInput = $_POST['inputPseudo'];
+
+$sqlSelUser = "SELECT pseudoUser, mdpUser FROM user WHERE pseudoUser = ".$pseudoInput;
+$reqSelUser = $db->prepare($sqlSelUser);
+$reqSelUser->execute();
+
+$data = $reqSelUser->fetchObject();
+
+if(password_verify($_POST['inputMdp'], $data->mdpUser)) {
+    if(isset($_SESSION['login'])) {
+    $pseudo = $_SESSION['login'];
+    } else {
+    $_SESSION['login'] = $pseudoInput;
+    $pseudo = $_SESSION['login'];
+    }
+    header('location: /');
+}
+
+head.php
+
+// Sélection pseudo et mot de passe de l'utilisateur
+            $sqlSelUser = "SELECT pseudoUser, mdpUser FROM user WHERE pseudoUser = ".$_SESSION['login'];
+            $reqSelUser = $db->prepare($sqlSelUser);
+            $reqSelUser->execute();
+            
+            $data = $reqSelUser->fetchObject();
