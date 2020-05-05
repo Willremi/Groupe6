@@ -32,8 +32,8 @@ if($match['target'] === '/') {
     require 'src/views/login.php';
 } elseif ($match['target'] === 'inscription') {
     require 'src/views/inscription.php';
-} elseif($match['target'] === 'addUser') {
-    require 'src/views/addUser.php';
-}
+// } elseif($match['target'] === 'addUser') {
+//     require 'src/views/addUser.php';
+ }
 
 footer();

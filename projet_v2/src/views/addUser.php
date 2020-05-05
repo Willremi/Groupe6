@@ -69,7 +69,6 @@ if(isset($_POST['inputCity'])) {
 }
 
 
-
 $sqlUser = "INSERT INTO user (nomUser, prenomUser, pseudoUser, mailUser, mdpUser, numRue, nomRue1, nomRue2, cpVille, nomVille) VALUES (:insertNom, :insertPrenom, :insertPseudo, :insertMail, :insertMdp, :insertNumRue, :insertNomRue1, :insertNomRue2, :insertCp, :insertVille)";
 $reqInsertUser = $db->prepare($sqlUser);
 $reqInsertUser->bindParam(':insertNom', $nom);
@@ -85,3 +84,10 @@ $reqInsertUser->bindParam(':insertVille', $ville);
 
 $reqInsertUser->execute();
 
+$nbInsert = $reqInsertUser->rowCount();
+
+if($nbInsert == 1){
+    header('Location: /?add=sucess');
+}else{
+    header('Location: /?add=error');
+}
