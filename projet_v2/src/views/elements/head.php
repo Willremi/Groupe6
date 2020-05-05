@@ -8,7 +8,7 @@ if(isset($_SESSION['login'])) {
     
     $pseudo = '';
 }
-var_dump($pseudo);
+// var_dump($pseudo);
     ?>
 <!DOCTYPE html>
 <html lang="fr">
