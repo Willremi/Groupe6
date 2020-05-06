@@ -49,6 +49,7 @@ require 'src/api/api_select_serie.php';
                 </p>
               </li>  
             </ul>
+            
             <div class="row">
               <div class="col-sm-12 col-md-12" id="annee50">
                   <h1>Liste des séries des années 50</h1>

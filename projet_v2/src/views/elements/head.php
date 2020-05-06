@@ -54,16 +54,16 @@ if(isset($_SESSION['login'])) {
             // if($pseudo === "willremi") {
               ?>
               <li class="nav-item">
-              <a class="nav-link" href="#">Streaming/Blu-ray</a>
+              <a class="nav-link" href="streaming">Streaming/Blu-ray</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Musiques</a>
+              <a class="nav-link" href="musiques">Musiques</a>
             </li>
             <!-- <li class="nav-item">
               <a class="nav-link" href="#">Stickers</a>
             </li> -->
             <li class="nav-item">
-              <a class="nav-link" href="#">Acteurs</a>
+              <a class="nav-link" href="acteurs">Acteurs</a>
             </li>
               <?php
             }
@@ -87,7 +87,7 @@ if(isset($_SESSION['login'])) {
               </a>
               <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"
                 aria-labelledby="navbarDropdownMenuLink-55">
-                <a class="dropdown-item" href="#">Compte</a>
+                <a class="dropdown-item" href="compte">Compte</a>
                 <a class="dropdown-item" href="/src/views/logout.php">Déconnexion</a>
                 
               </div>
