@@ -36,8 +36,8 @@ $data = $reqUser->fetchObject();
                 <input type="text" name="userFirstName" id="userFirstName" class="form-control" value="<?= $data->Prénom ?>">
             </div>
             <div class="col-md-4 mb-3">
-            <label for="userFirstName">Pseudo </label>
-                <input type="text" name="userFirstName" id="userFirstName" class="form-control" value="<?= $data->Pseudo ?>">
+            <label for="userPseudo">Pseudo </label>
+                <input type="text" name="userPseudo" id="userPseudo" class="form-control" value="<?= $data->Pseudo ?>">
             </div>
         </div>
         <div class="form-row">
