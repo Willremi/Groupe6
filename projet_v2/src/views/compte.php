@@ -34,6 +34,7 @@ $data = $reqUser->fetchObject();
         <p>Complément d'adresse : <?= $data->AdressCompl ?></p>
         <p>Code Postal : <?= $data->CodePostal ?></p>
         <p>Ville : <?= $data->Ville ?></p>
+        <a href="<?= $router->generate('Modification') ?>"><button type="submit" class="btn btn-warning">Modifier</button></a>
     </div>
 </div>
 <?php

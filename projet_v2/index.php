@@ -62,5 +62,9 @@ if($match['target'] === '/') {
     require 'src/views/acteurs.php';
 } elseif ($match['target'] === 'compte') {
     require 'src/views/compte.php';
+} elseif ($match['target'] === 'Modification') {
+    require 'src/views/updateUser.php';
+} elseif ($match['target'] === 'updateUserInfo') {
+    require 'src/views/updateUserInfo.php';
 }
 footer();
