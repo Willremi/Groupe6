@@ -23,8 +23,8 @@ $data = $reqUser->fetchObject();
 ?>
 <div class="container-fluid">
     <h1>Modifier les informations de votre compte</h1>
-
-    <form action="<?= $router->generate('updateUserInfo') ?>" method="get">
+    
+    <form action="<?= $router->generate('updateUserInfo') ?>" method="post">
         <div class="form-row">
             <div class="col-md-4 mb-3">
                 <label for="userName">Nom</label>
@@ -45,10 +45,10 @@ $data = $reqUser->fetchObject();
             <label for="userMail">Email</label>
             <input id="userMail" class="form-control" type="text" name="userMail" value="<?= $data->Email ?>">
             </div>
-            <div class="col-md-4 mb-3">
+            <!-- <div class="col-md-4 mb-3">
             <label for="userMdp">Mot de passe</label>
             <input id="userMdp" class="form-control" type="password" name="userMdp" value="<?= $data->Mdp ?>">
-            </div>
+            </div> -->
         </div>
         <div class="form-row">
             <div class="col-md-2 mb-3">
@@ -62,7 +62,7 @@ $data = $reqUser->fetchObject();
         </div>
         <div class="form-group mb-3">
             <label for="nomRue2">Complément d'adresse</label>
-            <input id="nomRue2" class="form-control" type="text" name="nomRue2" value="<?= $data->AdressCompl ?>" placeholder="bâtiment, Etage, Appartement...">
+            <input id="nomRue2" class="form-control" type="text" name="nomRue2" value="<?= $data->AdresseCompl ?>" placeholder="bâtiment, Etage, Appartement...">
         </div>
         <div class="form-row">
             <div class="col-md-3 mb-3">

@@ -1,19 +1,72 @@
 <?php
-$nomUser = htmlspecialchars(trim($_GET['userName']));
-$prennomUser = htmlspecialchars(trim($_GET['userFirstName']));
-$pseudoUser = htmlspecialchars(trim($_GET['userPseudo']));
-$mailUser = htmlspecialchars(trim($_GET['userMail']));
+$nomUser = htmlspecialchars(trim($_POST['userName']));
 
-$mdpUser = password_hash(htmlspecialchars(trim($_GET['userMdp'])), PASSWORD_BCRYPT);
+$prenomUser = htmlspecialchars(trim($_POST['userFirstName']));
+
+$pseudoUser = htmlspecialchars(trim($_POST['userPseudo']));
+
+$mailUser = htmlspecialchars(trim($_POST['userMail']));
+// var_dump($mailUser);
+// $mdpUser = password_hash(htmlspecialchars(trim($_POST['userMdp'])), PASSWORD_BCRYPT);
 
 
-$numRue = htmlspecialchars(trim($_GET['numRue']));
-$nomRue = htmlspecialchars(trim($_GET['nomRue']));
-$nomRue2 = htmlspecialchars(trim($_GET['nomRue2']));
-$cpVille = htmlspecialchars(trim($_GET['cpVille']));
-$nomVille = htmlspecialchars(trim($_GET['nomVille']));
+$numRue = htmlspecialchars(trim($_POST['numRue']));
 
-$nomLogin = $_SESSION['login'];
+$nomRue = htmlspecialchars(trim($_POST['nomRue']));
+
+$nomRue2 = htmlspecialchars(trim($_POST['nomRue2']));
+
+$cpVille = htmlspecialchars(trim($_POST['cpVille']));
+
+$nomVille = htmlspecialchars(trim($_POST['nomVille']));
+// var_dump($nomVille);
+
+$userLogin = $_SESSION['login'];
+
+$sqlId = 'SELECT idUser FROM user WHERE pseudoUser = :pseudo';
+
+$reqId = $db->prepare($sqlId);
+$reqId->bindParam(':pseudo', $userLogin);
+$reqId->execute();
+
+$dataId = $reqId->fetchObject();
+
+$idUser = $dataId->idUser;
+// var_dump($idUser);
+
+$sqlUp = "UPDATE user 
+          SET nomUser = :nomUserUp, 
+              prenomUser = :prenomUserUp, 
+              pseudoUser = :pseudoUserUp, 
+              mailUser = :mailUserUp, 
+              numRue = :numRueUp, 
+              nomRue1 = :nomRueUp, 
+              nomRue2 = :nomRueCompUp, 
+              cpVille = :cpVilleUp, 
+              nomVille = :nomVilleUp 
+          WHERE idUser = :idUserUp LIMIT 1";
+
+$reqUp = $db->prepare($sqlUp);
+$reqUp->bindParam(':nomUserUp', $nomUser);
+$reqUp->bindParam(':prenomUserUp', $prenomUser);
+$reqUp->bindParam(':pseudoUserUp', $pseudoUser);
+$reqUp->bindParam(':mailUserUp', $mailUser);
+$reqUp->bindParam(':numRueUp', $numRue);
+$reqUp->bindParam(':nomRueUp', $nomRue);
+$reqUp->bindParam(':nomRueCompUp', $nomRue2);
+$reqUp->bindParam(':cpVilleUp', $cpVille);
+$reqUp->bindParam(':nomVilleUp', $nomVille);
+$reqUp->bindParam(':idUserUp', $idUser);
+$reqUp->execute();
+
+
+if($reqUp->rowCount() > 0) {
+    // header('Location: compte?modif=OK');
+    echo '<meta http-equiv="refresh" content="0;URL=/?modif=OK">';
+    
+} else {
+    echo 'non réussi';
+}
 
 ?>
-<a href="gererMesBiens.php"><button type="button" class="btn btn-danger">Retour</button></a>
+<a href="/"><button type="button" class="btn btn-danger">Retour</button></a>

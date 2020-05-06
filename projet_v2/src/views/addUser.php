@@ -86,7 +86,9 @@ $reqInsertUser->execute();
 $nbInsert = $reqInsertUser->rowCount();
 
 if($nbInsert == 1){
-    header('Location: /?add=sucess');
+    // header('Location: /?add=sucess');
+    echo '<meta http-equiv="refresh" content="0;URL=/?add=success">';
 }else{
-    header('Location: /?add=error');
+    // header('Location: /?add=error');
+    echo '<meta http-equiv="refresh" content="0;URL=/?add=error">';
 }
