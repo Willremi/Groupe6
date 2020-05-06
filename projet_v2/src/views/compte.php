@@ -28,6 +28,7 @@ $data = $reqUser->fetchObject();
         <p>Nom : <?= $data->Nom ?></p>
         <p>Prénom : <?= $data->Prénom ?></p>
         <p>Pseudo : <?= $data->Pseudo ?></p>
+        <!-- <p>Mdp : <?= $data->Mdp ?></p> -->
         <p>Email : <?= $data->Email ?></p>
         <p>Adresse : <?= $data->NumeroRue ?> rue <?= $data->Adresse ?></p>
         <p>Complément d'adresse : <?= $data->AdressCompl ?></p>
