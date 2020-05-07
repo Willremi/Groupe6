@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container">
-    <form action="" method="get">
+    <form action="" method="post">
             <div class="form-group">
                 <label for="nomSerie">Nom de série :</label>
                 <input type="text" name="nomSerie" id="nomSerie" class="form-control">
@@ -19,8 +19,8 @@
         <?php 
 require 'api_serie.php';
 
-if(isset($_GET['nomSerie'])){
-    $nomSerie = $_GET['nomSerie'];
+if(isset($_POST['nomSerie'])){
+    $nomSerie = $_POST['nomSerie'];
     $nomSerieExplode = explode(' ', $nomSerie);
     $titreSerie = implode ($nomSerieExplode, '-');
 }else{
