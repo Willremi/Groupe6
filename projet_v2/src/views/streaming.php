@@ -1,3 +1,3 @@
 <div class="container-fluid">
-    <h1>Page en construction</h1>
+    <h1>Page streaming en construction</h1>
 </div>
