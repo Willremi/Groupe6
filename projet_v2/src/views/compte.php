@@ -37,5 +37,4 @@ $data = $reqUser->fetchObject();
         <a href="<?= $router->generate('Modification') ?>"><button type="submit" class="btn btn-warning">Modifier</button></a>
     </div>
 </div>
-<?php
-// var_dump($data);
+
