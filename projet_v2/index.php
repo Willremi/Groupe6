@@ -18,6 +18,7 @@ $reqSelUser->execute();
 
 $data = $reqSelUser->fetchObject();
 // var_dump($data);
+
 if(password_verify($_POST['inputMdp'], $data->mdpUser)) {
     if(isset($_SESSION['login'])) {
     $pseudo = $_SESSION['login'];
