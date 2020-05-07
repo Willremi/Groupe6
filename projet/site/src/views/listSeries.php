@@ -1,6 +1,7 @@
 <?php 
 require_once 'elements/head.php';
 require_once 'elements/footer.php';
+require 'functionTable.php';
 
 head();
 
@@ -52,22 +53,11 @@ head();
                 </p>
               </li>  
             </ul>
-            <div class="row">
+            <div class="row" id='listSerieTv'>
               <div class="col-sm-12 col-md-12" id="annee50">
                   <h1>Liste des séries des années 50</h1>
                   <hr>
-                  <table class="table-respo">
-                      <thead>
-                          <tr>
-                              <th scope="col">Noms</th>
-                              <th scope="col">Genres</th>
-                              <th scope="col">Acteurs</th>
-                              <th scope="col">Réalisateurs</th>
-                              <th scope="col">Années de production</th>
-                              <th scope="col">Pays d'origine</th>
-                              
-                          </tr>
-                      </thead>
+                  <?php tableau() ?>
                       <tbody>
                           <tr>
                               <td><a href="incorrup.html">Les Incorruptibles</a></td>
@@ -84,18 +74,7 @@ head();
               <div class="col-sm-12 col-md-12" id="annee60">
                   <h1>Liste des séries des années 60</h1>
                   <hr>
-                  <table class="table-respo">
-                      <thead>
-                          <tr>
-                              <th scope="col">Noms</th>
-                              <th scope="col">Genres</th>
-                              <th scope="col">Acteurs</th>
-                              <th scope="col">Réalisateurs</th>
-                              <th scope="col">Années de production</th>
-                              <th scope="col">Pays d'origine</th>
-                              
-                          </tr>
-                      </thead>
+                  <?php tableau() ?>
                       <tbody>
                           <tr>
                               <td><a href="#">Doctor Who (première série)</a></td>
@@ -111,18 +90,7 @@ head();
               <div class="col-sm-12 col-md-12" id="annee70">
                   <h1>Liste des séries des années 70</h1>
                   <hr>
-                  <table class="table-respo">
-                      <thead>
-                          <tr>
-                              <th scope="col">Noms</th>
-                              <th scope="col">Genres</th>
-                              <th scope="col">Acteurs</th>
-                              <th scope="col">Réalisateurs</th>
-                              <th scope="col">Années de production</th>
-                              <th scope="col">Pays d'origine</th>
-                              
-                          </tr>
-                      </thead>
+                  <?php tableau() ?>
                       <tbody>
                           <tr>
                               <td><a href="#">L'Île perdue</a></td>
@@ -138,18 +106,7 @@ head();
               <div class="col-sm-12 col-md-12" id="annee80">
                   <h1>Liste des séries des années 80</h1>
                   <hr>
-                  <table class="table-respo">
-                      <thead>
-                          <tr>
-                              <th scope="col">Noms</th>
-                              <th scope="col">Genres</th>
-                              <th scope="col">Acteurs</th>
-                              <th scope="col">Réalisateurs</th>
-                              <th scope="col">Années de production</th>
-                              <th scope="col">Pays d'origine</th>
-                              
-                          </tr>
-                      </thead>
+                  <?php tableau() ?>
                       <tbody>
                           <tr>
                               <td><a href="#">Bioman</a></td>
@@ -165,18 +122,7 @@ head();
               <div class="col-sm-12 col-md-12" id="annee90">
                   <h1>Liste des séries des années 90</h1>
                   <hr>
-                  <table class="table-respo">
-                      <thead>
-                          <tr>
-                              <th scope="col">Noms</th>
-                              <th scope="col">Genres</th>
-                              <th scope="col">Acteurs</th>
-                              <th scope="col">Réalisateurs</th>
-                              <th scope="col">Années de production</th>
-                              <th scope="col">Pays d'origine</th>
-                              
-                          </tr>
-                      </thead>
+                  <?php tableau() ?>
                       <tbody>
                           <tr>
                               <td><a href="#">Highlander</a></td>
@@ -192,18 +138,7 @@ head();
               <div class="col-sm-12 col-md-12" id="annee2000">
                   <h1>Liste des séries des années 2000</h1>
                   <hr>
-                  <table class="table-respo">
-                      <thead>
-                          <tr>
-                              <th scope="col">Noms</th>
-                              <th scope="col">Genres</th>
-                              <th scope="col">Acteurs</th>
-                              <th scope="col">Réalisateurs</th>
-                              <th scope="col">Années de production</th>
-                              <th scope="col">Pays d'origine</th>
-                              
-                          </tr>
-                      </thead>
+                  <?php tableau() ?>
                       <tbody>
                           <tr>
                               <td><a href="#">Tessa à la pointe de l'épée</a></td>

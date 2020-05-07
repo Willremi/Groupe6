@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
              
         });
     });
-     
+  
             
 $annee50 = $('#annee50');
 $annee60 = $('#annee60');
