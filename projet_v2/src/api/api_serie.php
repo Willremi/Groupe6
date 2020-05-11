@@ -12,7 +12,7 @@ function showDataBySerie($titreSerie) {
 
     $tab = json_decode($url);
     $tab_serie = $tab->results;
-    dump($tab_serie[0]);
+    // dump($tab_serie[0]);
     
     $idSerie = $tab_serie[0]->id;
     // dump($idSerie);
@@ -49,32 +49,63 @@ EOD;
          echo $str;
     }
 echo '</ul>';
+
+        $str = <<<EOD
+    </div>
+    <div class="col-sm-3">
+    <strong>Réalisateurs :</strong>
+    <ul>
+EOD;
+    echo $str;
     // Réalisateurs
     $tab_Prod = $tab_select_serie->created_by;
     // dump($tab_Prod);
     if($tab_Prod === []) {
         // dump('rien');
         $str = <<<EOD
-        <div class="col-sm-3">
-            <strong>Réalisateurs :</strong>
-            <p>Quinn Martin</p>
-        </div>
+        
+            <li>Non renseigné</li>
+        
 EOD;
-        // echo $str;
+         echo $str;
+        
     } else {
         // $tab_Prod['name'];
-        $str = <<<EOD
-        <div class="col-sm-3">
-            <strong>Réalisateurs :</strong>
-            <p>Quinn Martin</p>
-        </div>
-EOD;
-        // echo $str;
+        
         foreach($tab_Prod as $producteur) {
             // dump($producteur->name);
+            $str = <<<EOD
+            <li>$producteur->name</li>
             
-        }
+EOD;
+        echo $str;
     }
-    
+    // echo '</ul>';
+        
+    }
+    echo '</ul>';
+    echo '</div>';  
+    $str = <<<EOD
+    <div class="col-sm-3">
+            <strong>Années de diffusion :</strong>
+            <ul>
+          
+EOD;
+    echo $str;
+    // Année de production
+    $date_debut = $tab_select_serie->first_air_date;
+    $date_fin = $tab_select_serie->last_air_date;
+    $date_debut_explode = explode('-', $date_debut);
+    $date_fin_explode = explode('-', $date_fin);
+    $dateDebut = $date_debut_explode[0];
+    $dateFin = $date_fin_explode[0];
+    // dump($dateDebut);
+    // dump($dateFin);
+    $str = <<<EOD
+    <li>$dateDebut - $dateFin</li>
+    EOD;
+    echo $str;
+    echo '</ul>';
+    echo '</div>';
 }
 
