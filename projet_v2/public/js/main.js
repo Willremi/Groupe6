@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
      
-    var btn = $('button');
+    var btn = $('.listSerie');
     btn.click(function (e) { 
         e.preventDefault();
         let id = this.id;

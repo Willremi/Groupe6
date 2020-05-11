@@ -20,32 +20,32 @@ require 'src/api/api_select_serie.php';
             <ul class="nav nav-pills nav-justified">
               <li class="nav-item">
                 <p class="nav-link">
-                    <button type="button" class="btn btn-secondary" id="btn50">Années 50</button>
+                    <button type="button" class="btn btn-secondary listSerie" id="btn50">Années 50</button>
                 </p>
               </li>
               <li class="nav-item">
                 <p class="nav-link">
-                  <button type="button" class="btn btn-info" id="btn60">Années 60</button>
+                  <button type="button" class="btn btn-info listSerie" id="btn60">Années 60</button>
                 </p>
               </li>
               <li class="nav-item">
                 <p class="nav-link">
-                  <button type="button" class="btn btn-success" id="btn70">Années 70</button>
+                  <button type="button" class="btn btn-success listSerie" id="btn70">Années 70</button>
                 </p>
               </li>
               <li class="nav-item">
                 <p class="nav-link">
-                  <button type="button" class="btn btn-primary" id="btn80">Années 80</button>
+                  <button type="button" class="btn btn-primary listSerie" id="btn80">Années 80</button>
                 </p>
               </li>
               <li class="nav-item">
                 <p class="nav-link">
-                  <button type="button" class="btn btn-warning" id="btn90">Années 90</button>
+                  <button type="button" class="btn btn-warning listSerie" id="btn90">Années 90</button>
                 </p>
               </li>
               <li class="nav-item">
                 <p class="nav-link">
-                  <button type="button" class="btn btn-danger" id="btn2000">Années 2000</button>
+                  <button type="button" class="btn btn-danger listSerie" id="btn2000">Années 2000</button>
                 </p>
               </li>  
             </ul>
