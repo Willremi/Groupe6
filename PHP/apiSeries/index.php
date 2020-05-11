@@ -34,15 +34,6 @@ if($titreSerie !== null) {
 
 
 ?> 
-<div class="mt-5" id="showProduct">
-            <div class="row">
-                <div class="col-12 mt-2" id="blocShox">
-                    <h4><b>Détail de mon produit</b></h4>
-                    <hr>
-                    <span id="detail"></span>
-                </div>
-            </div>
-        </div>
 
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

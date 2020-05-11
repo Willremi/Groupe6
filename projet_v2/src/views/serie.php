@@ -1,5 +1,15 @@
 <?php 
-dump($_GET);
+require 'src/api/api_serie.php';
+$nomSerie = $_GET['name'];
+$nomSerieExplode = explode(' ', $nomSerie);
+$titreSerie = implode('-', $nomSerieExplode);
+
+// dump($titreSerie);
+
+if($titreSerie !== null) {
+  showDataBySerie($titreSerie);
+}
+
 ?>
 
 <div class="container-fluid">
