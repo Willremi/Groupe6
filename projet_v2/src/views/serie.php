@@ -6,22 +6,26 @@ $titreSerie = implode('-', $nomSerieExplode);
 
 // dump($titreSerie);
 
-if($titreSerie !== null) {
-  showDataBySerie($titreSerie);
-}
+
 
 ?>
 
 <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-              <h1>Les incorruptibles</h1>
-            <hr>
+              <!-- <h1>Les incorruptibles</h1> -->
+             <?php 
+             if($titreSerie !== null) {
+              showDataBySerie($titreSerie);
+            }
+             
+             ?> 
+            <!-- <hr> -->
           </div>
-          <div class="offset-md-2 col-sm-3">
+          <!-- <div class="offset-md-2 col-sm-3">
             <strong>Genres :</strong>
             <p>Policier</p>
-          </div>
+          </div> -->
           <div class="col-sm-3">
             <strong>Réalisateurs :</strong>
             <p>Quinn Martin</p>
