@@ -43,7 +43,7 @@ if($match['target'] === '/') {
     require 'src/views/home.php';
 } elseif ($match['target'] === 'Recherche') {
     require 'src/views/listSeries.php';
-} elseif ($match['target'] === 'série') {
+} elseif ($match['target'] === 'serie') {
     require 'src/views/serie.php';
 }elseif ($match['target'] === 'contact') {
     require 'src/views/contact.php';
