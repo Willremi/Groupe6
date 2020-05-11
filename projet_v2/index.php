@@ -43,8 +43,8 @@ if($match['target'] === '/') {
     require 'src/views/home.php';
 } elseif ($match['target'] === 'Recherche') {
     require 'src/views/listSeries.php';
-} elseif ($match['target'] === 'incorruptibles') {
-    require 'src/views/incorrup.php';
+} elseif ($match['target'] === 'série') {
+    require 'src/views/serie.php';
 }elseif ($match['target'] === 'contact') {
     require 'src/views/contact.php';
 } elseif ($match['target'] === 'mail') {
