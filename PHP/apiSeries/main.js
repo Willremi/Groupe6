@@ -4,8 +4,5 @@ $(document).ready(function () {
 
     let validBtn = $('#valider');
 
-    validBtn.on('click', function() {
-        
-
-    });
+  
 });
