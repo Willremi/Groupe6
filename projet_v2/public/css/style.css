@@ -24,8 +24,8 @@ ul {
   list-style: none;
 }
 
-#annee50, #annee60, #annee70, #annee80, #annee90, #annee2000 {
-  display: none;
+.loading {
+  text-align: center;
 }
 
 table {

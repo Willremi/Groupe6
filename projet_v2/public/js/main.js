@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
     btn.click(function (e) { 
         e.preventDefault();
         let id = this.id;
-    
+        $('#result').html('<div class="loading"><img src="https://i.gifer.com/GNvR.gif" alt="En chargement..."></div>');
         $.ajax({
             method: 'POST',
             url: "src/views/listTableau.php",
