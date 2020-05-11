@@ -13,7 +13,7 @@
   margin-top: 30px;
 }
 
-#titleIndex {
+#titleIndex, #imageTV {
   text-align: center;
 }
 
@@ -23,10 +23,6 @@ img.rounded {
 
 ul {
   list-style: none;
-}
-
-#annee50, #annee60, #annee70, #annee80, #annee90, #annee2000 {
-  display: none;
 }
 
 table {

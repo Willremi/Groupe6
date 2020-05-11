@@ -56,3 +56,124 @@ head.php
             $reqSelUser->execute();
             
             $data = $reqSelUser->fetchObject();
+
+listSerie.php
+
+<div class="row">
+              <div class="col-sm-12 col-md-12" id="annee50">
+                  <h1>Liste des séries des années 50</h1>
+                  <hr>
+                  <!-- <table class="table-respo">
+                      <thead>
+                          <tr>
+                              <th scope="col">Noms</th>
+                              <th scope="col">Genres</th>
+                              <th scope="col">Acteurs</th>
+                              <th scope="col">Réalisateurs</th>
+                              <th scope="col">Années de production</th>
+                              <th scope="col">Pays d'origine</th>
+                              
+                          </tr>
+                      </thead> -->
+                      <?php 
+                       
+                      tableau();
+                      ?>
+                      <tbody>
+                          
+                          <?php 
+                          // require 'src/api/api_select_serie.php';
+                          showSelectSerie($list50);
+                          ?>
+                      </tbody>
+                  </table>
+              </div>
+              
+              <div class="col-sm-12 col-md-12" id="annee60">
+                  <h1>Liste des séries des années 60</h1>
+                  <hr>
+                  <?php tableau(); ?>
+                      <tbody>
+                        <?php 
+                          showSelectSerie($list60);
+                          ?>
+                      </tbody>
+                  </table>
+              </div>
+              <div class="col-sm-12 col-md-12" id="annee70">
+                  <h1>Liste des séries des années 70</h1>
+                  <hr>
+                  <?php tableau(); ?>
+                      <tbody>
+                          <!-- <tr>
+                              <td><a href="#">L'Île perdue</a></td>
+                              <td>Aventure, Famille</td>
+                              <td>Tony Hughes, Jane Wallis</td>
+                              <td>Michael Lawrence</td>
+                              <td>1976</td>
+                              <td>Australie</td>
+                          </tr> -->
+                          <?php 
+                          showSelectSerie($list70);
+                          ?>
+                      </tbody>
+                  </table>
+              </div>
+              <div class="col-sm-12 col-md-12" id="annee80">
+                  <h1>Liste des séries des années 80</h1>
+                  <hr>
+                  <?php tableau(); ?>
+                      <tbody>
+                          <!-- <tr>
+                              <td><a href="#">Bioman</a></td>
+                              <td>Action, Science Fiction</td>
+                              <td>Ryosuke Sakamoto, Naoto Tada</td>
+                              <td>Saburo Hatte, Yatsude</td>
+                              <td>1984 - 1985</td>
+                              <td>Japon</td>
+                          </tr> -->
+                          <?php 
+                          showSelectSerie($list80);
+                          ?>
+                      </tbody>
+                  </table>
+              </div>
+              <div class="col-sm-12 col-md-12" id="annee90">
+                  <h1>Liste des séries des années 90</h1>
+                  <hr>
+                  <?php tableau(); ?>
+                      <tbody>
+                          <!-- <tr>
+                              <td><a href="#">Highlander</a></td>
+                              <td>Fantastique</td>
+                              <td>Adrian Paul, Jim Byrnes, Elizabeth Gracen</td>
+                              <td>Gregory Widen</td>
+                              <td>1992 - 1998</td>
+                              <td>Canada, France</td>
+                          </tr> -->
+                          <?php 
+                          showSelectSerie($list90);
+                          ?>
+                      </tbody>
+                  </table>
+              </div>
+              <div class="col-sm-12 col-md-12" id="annee2000">
+                  <h1>Liste des séries des années 2000</h1>
+                  <hr>
+                  <?php tableau(); ?>
+                      <tbody>
+                          <!-- <tr>
+                              <td><a href="#">Tessa à la pointe de l'épée</a></td>
+                              <td>Aventure, Western</td>
+                              <td>Tessie Santiago, Anthony Lemke, Peter Wingfield</td>
+                              <td>David Abramowitz</td>
+                              <td>2000 - 2001</td>
+                              <td>Canada, Espagne, USA, France, Royaume-Uni</td>
+                          </tr> -->
+                          <?php 
+                          showSelectSerie($list2000);
+                          ?>
+                      </tbody>
+                  </table>
+              </div>
+            </div>
