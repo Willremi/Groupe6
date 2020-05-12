@@ -7,7 +7,8 @@
  * @return void
  */
 
-function showDataBySerie($titreSerie) {
+function showDataBySerie($titreSerie)
+{
     $url = file_get_contents('http://api.themoviedb.org/3/search/tv?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR&page=1&query='.$titreSerie);
 
     $tab = json_decode($url);
@@ -33,7 +34,7 @@ function showDataBySerie($titreSerie) {
             <ul>
 EOD;
 
-echo $str;
+    echo $str;
     // Genres
     $tab_genres = $tab_select_serie->genres;
     // dump($tab_genres);
@@ -46,11 +47,11 @@ echo $str;
             <li>$name</li>
             
 EOD;
-         echo $str;
+        echo $str;
     }
-echo '</ul>';
+    echo '</ul>';
 
-        $str = <<<EOD
+    $str = <<<EOD
     </div>
     <div class="col-sm-3">
     <strong>Réalisateurs :</strong>
@@ -60,31 +61,29 @@ EOD;
     // Réalisateurs
     $tab_Prod = $tab_select_serie->created_by;
     // dump($tab_Prod);
-    if($tab_Prod === []) {
+    if ($tab_Prod === []) {
         // dump('rien');
         $str = <<<EOD
         
             <li>Non renseigné</li>
         
 EOD;
-         echo $str;
-        
+        echo $str;
     } else {
         // $tab_Prod['name'];
         
-        foreach($tab_Prod as $producteur) {
+        foreach ($tab_Prod as $producteur) {
             // dump($producteur->name);
             $str = <<<EOD
             <li>$producteur->name</li>
             
 EOD;
-        echo $str;
-    }
-    // echo '</ul>';
-        
+            echo $str;
+        }
+        // echo '</ul>';
     }
     echo '</ul>';
-    echo '</div>';  
+    echo '</div>';
     $str = <<<EOD
     <div class="col-sm-3">
             <strong>Années de diffusion :</strong>
@@ -102,12 +101,18 @@ EOD;
     // dump($dateDebut);
     // dump($dateFin);
     $str = <<<EOD
-    <li>$dateDebut - $dateFin</li>
-    </ul>
-    </div>
+            <li>$dateDebut - $dateFin</li>
+        </ul>
+        </div>
+    </div> <!-- fin row -->
+    <hr>
+    <div class = "row">
+        <div class="col-sm-8">
+                <p>$tab_select_serie->overview</p>
+            <hr id="ligne">
+        </div>
+        
 EOD;
     echo $str;
-    echo '</div>'; // fin row
-    echo '<hr>';
 }
 
