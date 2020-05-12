@@ -111,7 +111,7 @@ EOD;
         <div class="col-sm-8">
                 <p>$tab_select_serie->overview</p>
                 <div id="imageSerie">
-                <img class="rounded "src="https://image.tmdb.org/t/p/w780/$tab_select_serie->backdrop_path">
+                <img class="rounded "src="https://image.tmdb.org/t/p/w780/$tab_select_serie->backdrop_path" alt="photo de série">
                 </div>
             <hr id="ligne">
         </div>
