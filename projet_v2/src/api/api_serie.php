@@ -187,8 +187,13 @@ echo $str;
     $tab_saison = $tab_select_serie->seasons;
     foreach($tab_saison as $saison) {
         echo '<tr><td>'.$saison->name.'</td>';
-        echo '<td>'.$saison->episode_count.'</td>
-    <td>'.$saison->air_date.'</td>';
+        echo '<td>'.$saison->episode_count.'</td>';
+
+        $date = $saison->air_date;
+        $date_explode = explode('-', $date);
+        $date_reverse = array_reverse($date_explode);
+        $dateFr = implode('-', $date_reverse);
+        echo '<td>'.$dateFr.'</td>';
     }
     // foreach($tab_saison as $nbEpisode) {
     //     echo '<td>'.$nbEpisode->episode_count.'</td>'; 
