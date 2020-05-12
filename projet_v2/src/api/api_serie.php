@@ -117,6 +117,7 @@ EOD;
         </div>
         <div class="col-sm-4" id="distribution">
         <h3>Acteurs principaux</h3>
+        <div class="list">
             <ul>
 EOD;
     echo $str;
@@ -137,9 +138,10 @@ EOD;
         echo '<li>'.$personnage.' : '.$acteur.'</li>';
     }
 
-    echo '</ul>';
+    echo '</ul></div>';
     $str = <<<EOD
     <h3>Pays d'origine</h3>
+    <div class='list'>
     <ul>
 EOD;
 
@@ -159,6 +161,14 @@ EOD;
             }
         }
     }
+    echo '</ul></div>';
 
+    $str = <<<EOD
+    <h3>Nombre de saisons</h3>
+    <p>$tab_select_serie->number_of_seasons saisons</p>
+    </div>
+EOD;
+
+    echo $str;
 }
 

@@ -31,7 +31,7 @@ function showSelectSerie($idList) {
         $idSérie = $serie->id;
         // var_dump($idSérie);
         echo '<tr>';
-        echo '<td><a href="serie?name='.$serie->name.'">'.$serie->name.'</a></td>';
+        echo '<td><a href="serie?name='.$serie->original_name.'">'.$serie->original_name.'</a></td>';
         // echo '<td>'.$serie->genre_ids[0].'</td>';
         foreach ($tab_genre as $key => $genre) {
             $idGenre = $genre->id;
