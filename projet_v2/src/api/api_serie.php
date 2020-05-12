@@ -167,8 +167,29 @@ EOD;
     <h3>Nombre de saisons</h3>
     <p>$tab_select_serie->number_of_seasons saisons</p>
     </div>
+    <div class="col-sm-12 col-lg-12">
+    <hr>
+    <h3>Achat de vidéos</h3>
+    <table class="table-respo">
+        <thead>
+            <tr>
+                <th scope="col">Saisons</th>
+                <th scope="col">Nombres d'épisodes</th>
+                <th scope="col">Date de diffusion</th>
+            </tr>
+        </thead>
+        <tbody>
 EOD;
 
-    echo $str;
+echo $str;
+
+
+$str = <<<EOD
+    </tbody>
+    </table>
+    </div>
+EOD;
+
+echo $str;
 }
 
