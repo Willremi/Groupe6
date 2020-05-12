@@ -58,8 +58,8 @@ require 'src/api/api_select_serie.php';
             <div class="container">
               <fieldset>
                 <legend>Sélectionner un continent : </legend>
-                <form action="" class="mt-2">
-                <select class="custom-select">
+                <form action="" class="mt-2" method="POST">
+                <select name="continents" class="custom-select">
                   <option value="Asie">Asie</option>
                   <option value="Afrique">Afrique</option>
                   <option value="Amériques">Amériques</option>
@@ -73,6 +73,7 @@ require 'src/api/api_select_serie.php';
             <!-- <p>Travail pour plus tard : je sélectionne un continent, je dois faire apparaitre une liste des pays du continent sélectionné</p>
             <p>Si deux continents sélectionnés, faire apparaître deux listes</p>
             <p>Après sélection de continent, le formulaire disparait en faisant apparaitre la liste de pays</p> -->
+            
           </div>
           <div class="tab-pane fade" id="genres" role="tabpanel" aria-labelledby="genres-tab">
             <div class="container">
