@@ -179,12 +179,25 @@ EOD;
             </tr>
         </thead>
         <tbody>
+        
 EOD;
 
 echo $str;
-
+    
+    $tab_saison = $tab_select_serie->seasons;
+    foreach($tab_saison as $saison) {
+        echo '<tr><td>'.$saison->name.'</td>';
+        echo '<td>'.$saison->episode_count.'</td>
+    <td>'.$saison->air_date.'</td>';
+    }
+    // foreach($tab_saison as $nbEpisode) {
+    //     echo '<td>'.$nbEpisode->episode_count.'</td>'; 
+    // }
+    
 
 $str = <<<EOD
+
+    </tr>
     </tbody>
     </table>
     </div>
