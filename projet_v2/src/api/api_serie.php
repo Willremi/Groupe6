@@ -9,15 +9,16 @@
 
 function showDataBySerie($titreSerie)
 {
+    // API pour récupérer l'id de la série
     $url = file_get_contents('http://api.themoviedb.org/3/search/tv?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR&page=1&query='.$titreSerie);
 
     $tab = json_decode($url);
     $tab_serie = $tab->results;
-    // dump($tab_serie[0]);
     
     $idSerie = $tab_serie[0]->id;
     // dump($idSerie);
 
+    // API pour récupérer la description de la série
     $urlSerie = file_get_contents("https://api.themoviedb.org/3/tv/".$idSerie."?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR&page=1");
 
     $tab_select_serie = json_decode($urlSerie);
@@ -109,10 +110,55 @@ EOD;
     <div class = "row">
         <div class="col-sm-8">
                 <p>$tab_select_serie->overview</p>
+                <div id="imageSerie">
+                <img class="rounded "src="https://image.tmdb.org/t/p/w780/$tab_select_serie->backdrop_path">
+                </div>
             <hr id="ligne">
         </div>
-        
+        <div class="col-sm-4" id="distribution">
+        <h3>Acteurs principaux</h3>
+            <ul>
 EOD;
     echo $str;
+
+    // Api pour récupérer les acteurs
+    $urlCred = file_get_contents("https://api.themoviedb.org/3/tv/".$idSerie."/credits?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR&page=1");
+
+    $tab_cred = json_decode($urlCred);
+    $tab_cred_acteurs = $tab_cred->cast;
+
+    // Limiter à 5 acteurs principaux
+    $tabLimitCred = array_slice($tab_cred_acteurs, 0, 5); 
+  
+    
+    foreach($tabLimitCred as $key => $cast) {
+        $personnage = $cast->character;
+        $acteur = $cast->name;
+        echo '<li>'.$personnage.' : '.$acteur.'</li>';
+    }
+
+    echo '</ul>';
+    $str = <<<EOD
+    <h3>Pays d'origine</h3>
+    <ul>
+EOD;
+
+    echo $str;
+
+    $tab_pays = $tab_select_serie->origin_country;
+    $tabPaysLimit = array_splice($tab_pays, 0, 2);
+    foreach($tabPaysLimit as $pays) {
+        $urlPays = file_get_contents('https://restcountries.eu/rest/v2/alpha/'.$pays.'?fields=translations');
+
+        $tab_pays_select = json_decode($urlPays);
+        $tab_pays_trad = $tab_pays_select->translations;
+
+        foreach ($tab_pays_trad as $key => $pays_trad_fr) {
+            if($key === 'fr') {
+                echo '<li>'.$pays_trad_fr.'</li>';
+            }
+        }
+    }
+
 }
 
