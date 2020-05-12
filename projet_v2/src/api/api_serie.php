@@ -103,9 +103,11 @@ EOD;
     // dump($dateFin);
     $str = <<<EOD
     <li>$dateDebut - $dateFin</li>
-    EOD;
+    </ul>
+    </div>
+EOD;
     echo $str;
-    echo '</ul>';
-    echo '</div>';
+    echo '</div>'; // fin row
+    echo '<hr>';
 }
 
