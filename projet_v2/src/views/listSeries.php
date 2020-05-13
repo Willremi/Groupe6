@@ -17,7 +17,7 @@ require 'src/api/api_select_serie.php';
           </li>
         </ul>
         <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade show active" id="annees" role="tabpanel" aria-labelledby="annees-tab">
+          <div class="tab-pane active" id="annees" role="tabpanel" aria-labelledby="annees-tab">
             <ul class="nav nav-pills nav-justified">
               <li class="nav-item">
                 <p class="nav-link">
@@ -55,18 +55,19 @@ require 'src/api/api_select_serie.php';
             </div>
              <!--voir note.md fin row -->
           </div>
-          <div class="tab-pane fade" id="continents" role="tabpanel" aria-labelledby="continents-tab">
+          <div class="tab-pane" id="continents" role="tabpanel" aria-labelledby="continents-tab">
             <div class="container">
               <fieldset>
                 <legend>Sélectionner un continent : </legend>
                 <form action="" class="mt-2" method="POST">
-                <select name="continents" class="custom-select">
+                <select name="continents" class="custom-select" id="continents">
                   <option value="Asie">Asie</option>
                   <option value="Afrique">Afrique</option>
                   <option value="Amériques">Amériques</option>
                   <option value="Europe">Europe</option>
                   <option value="Océanie">Océanie</option>
                 </select>
+                
                   <button type="submit" class="btn btn-primary" value="Rechercher" id="searchCont">Rechercher</button>
                 </form>
               </fieldset>
@@ -74,9 +75,10 @@ require 'src/api/api_select_serie.php';
             <!-- <p>Travail pour plus tard : je sélectionne un continent, je dois faire apparaitre une liste des pays du continent sélectionné</p>
             <p>Si deux continents sélectionnés, faire apparaître deux listes</p>
             <p>Après sélection de continent, le formulaire disparait en faisant apparaitre la liste de pays</p> -->
-           <?php dump($_POST['continents']); ?>
+            <?php dump($_POST) ?>
+           
           </div>
-          <div class="tab-pane fade" id="genres" role="tabpanel" aria-labelledby="genres-tab">
+          <div class="tab-pane" id="genres" role="tabpanel" aria-labelledby="genres-tab">
             <div class="container">
               <fieldset>
                 <legend>Sélectionner un genre : </legend>

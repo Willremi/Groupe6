@@ -32,5 +32,14 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });          
 
+    // $('#searchCont').click(function() {
+        
+    //     $('#myTab #continents-tab').tab('show');
+    //     var valeur = $('#continents').value;
+    //     console.log(valeur);
+       
+        
+    // });
+   
 
 });
