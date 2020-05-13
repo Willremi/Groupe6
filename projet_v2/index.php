@@ -45,7 +45,7 @@ if($match['target'] === '/') {
     require 'src/views/listSeries.php';
 } elseif ($match['target'] === 'serie') {
     require 'src/views/serie.php';
-}elseif ($match['target'] === 'contact') {
+} elseif ($match['target'] === 'contact') {
     require 'src/views/contact.php';
 } elseif ($match['target'] === 'mail') {
     require 'src/views/mail.php';
@@ -68,4 +68,6 @@ if($match['target'] === '/') {
 } elseif ($match['target'] === 'updateUserInfo') {
     require 'src/views/updateUserInfo.php';
 }
+
+
 footer();

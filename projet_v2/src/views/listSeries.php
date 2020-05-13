@@ -1,6 +1,7 @@
 <?php 
 require 'functionTable.php';
 require 'src/api/api_select_serie.php';
+
 ?>
 
 <div class="container-fluid">
@@ -66,14 +67,14 @@ require 'src/api/api_select_serie.php';
                   <option value="Europe">Europe</option>
                   <option value="Océanie">Océanie</option>
                 </select>
-                  <input type="button" class="btn btn-primary" value="Rechercher">
+                  <button type="submit" class="btn btn-primary" value="Rechercher" id="searchCont">Rechercher</button>
                 </form>
               </fieldset>
             </div>
             <!-- <p>Travail pour plus tard : je sélectionne un continent, je dois faire apparaitre une liste des pays du continent sélectionné</p>
             <p>Si deux continents sélectionnés, faire apparaître deux listes</p>
             <p>Après sélection de continent, le formulaire disparait en faisant apparaitre la liste de pays</p> -->
-            
+           <?php dump($_POST['continents']); ?>
           </div>
           <div class="tab-pane fade" id="genres" role="tabpanel" aria-labelledby="genres-tab">
             <div class="container">
@@ -95,7 +96,7 @@ require 'src/api/api_select_serie.php';
                       ?>
                     </select>
                   </div>
-                  <input type="button" class="btn btn-primary" value="Rechercher">
+                  <input type="submit" class="btn btn-primary" id="searchGen" value="Rechercher">
                 </form>
               </fieldset>
             </div>

@@ -1,6 +1,7 @@
 <?php
 $router->map('GET', '/', '/', 'base');
 $router->map('GET|POST', '/Recherche', 'Recherche', 'Recherche');
+// $router->map('GET|POST', '/Recherche/[i:id]', 'Recherche#id', 'Recherche#id');
 $router->map('GET|POST', '/serie', 'serie', 'serie');
 $router->map('GET|POST', '/contact', 'contact', 'contact');
 $router->map('GET|POST', '/mail', 'mail', 'mail');
