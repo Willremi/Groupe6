@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
             $('#myTab #continents-tab').tab('show'); 
 
             $('.continent').html($('#continentList').val());
-           
+            
             return false;
         }
     );
