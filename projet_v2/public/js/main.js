@@ -32,12 +32,15 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });          
 
-    $('#searchCont').click(function() {
-        
-        $('#myTab #continents-tab').tab('show');
-        
-        
-    });
+    $('#continents form').submit(
+        function() {
+            $('#myTab #continents-tab').tab('show'); 
+            console.log($('#continentList').val());
+
+            $('.continent').html($('#continentList').val());
+            return false;
+        }
+    );
    
 
 });

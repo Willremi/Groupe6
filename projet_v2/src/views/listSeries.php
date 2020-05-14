@@ -60,7 +60,7 @@ require 'src/api/api_select_serie.php';
               <fieldset>
                 <legend>Sélectionner un continent : </legend>
                 <form action="<?= $router->generate('Recherche') ?>#continents" class="mt-2" method="POST">
-                <select name="continents" class="custom-select" id="continents">
+                <select name="continents" class="custom-select" id="continentList">
                   <option value="Asie">Asie</option>
                   <option value="Afrique">Afrique</option>
                   <option value="Amériques">Amériques</option>
@@ -75,7 +75,8 @@ require 'src/api/api_select_serie.php';
             <!-- <p>Travail pour plus tard : je sélectionne un continent, je dois faire apparaitre une liste des pays du continent sélectionné</p>
             <p>Si deux continents sélectionnés, faire apparaître deux listes</p>
             <p>Après sélection de continent, le formulaire disparait en faisant apparaitre la liste de pays</p> -->
-            <?php dump($_POST) ?>
+            <div class='continent'></div>
+            
            
           </div>
           <div class="tab-pane" id="genres" role="tabpanel" aria-labelledby="genres-tab">
