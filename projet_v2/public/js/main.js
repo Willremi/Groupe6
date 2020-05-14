@@ -42,5 +42,23 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     );
    
-
+    // $('#searchCont').submit(
+    //     function(e) {
+            
+    //         e.preventDefault;
+    //         $('#myTab #continents-tab').tab('show'); 
+    //         $.ajax({
+    //             type: "POST",
+    //             url: "../../src/views/listSeries.php", 
+    //             data: {
+    //                 continent : $('#continents').val()
+    //             },
+    //             dataType: "html",
+    //             success: function (response) {
+    //                 $('.continent').html(response);
+    //             }
+    //         });
+            
+    //     }
+    // );
 });

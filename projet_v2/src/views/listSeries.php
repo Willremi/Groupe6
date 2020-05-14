@@ -59,7 +59,7 @@ require 'src/api/api_select_serie.php';
             <div class="container">
               <fieldset>
                 <legend>Sélectionner un continent : </legend>
-                <form action="" class="mt-2" method="POST">
+                <form action="" class="mt-2">
                 <select name="continents" class="custom-select" id="continentList">
                   <option value="Asie">Asie</option>
                   <option value="Afrique">Afrique</option>
