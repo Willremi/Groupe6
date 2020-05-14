@@ -35,9 +35,9 @@ document.addEventListener('DOMContentLoaded', function () {
     $('#continents form').submit(
         function() {
             $('#myTab #continents-tab').tab('show'); 
-            console.log($('#continentList').val());
 
             $('.continent').html($('#continentList').val());
+           
             return false;
         }
     );
