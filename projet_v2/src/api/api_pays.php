@@ -30,7 +30,7 @@ function showListPays($nomContinent) {
     foreach($tab_list_pays as $key => $pays) {
         $paysTrad = $pays->translations;
         if($paysTrad->fr) {
-            echo $paysTrad->fr.': '.$pays->alpha2Code.'<br>';
+            echo $key.'/'.$paysTrad->fr.': '.$pays->alpha2Code.'<br>';
 
         }
     }
