@@ -32,33 +32,35 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });          
 
-    $('#continents form').submit(
-        function() {
-            $('#myTab #continents-tab').tab('show'); 
-
-            $('.continent').html($('#continentList').val());
-            
-            return false;
-        }
-    );
-   
-    // $('#searchCont').submit(
-    //     function(e) {
-            
-    //         e.preventDefault;
+    // $('#continents form').submit(
+    //     function() {
     //         $('#myTab #continents-tab').tab('show'); 
-    //         $.ajax({
-    //             type: "POST",
-    //             url: "../../src/views/listSeries.php", 
-    //             data: {
-    //                 continent : $('#continents').val()
-    //             },
-    //             dataType: "html",
-    //             success: function (response) {
-    //                 $('.continent').html(response);
-    //             }
-    //         });
+
+    //         $('.continent').html($('#continentList').val());
             
+    //         return false;
     //     }
     // );
+   
+    $('#formContinents').submit(
+        function(e) {
+            $('#myTab #continents-tab').tab('show');
+            e.preventDefault();
+             var $form = $(this);
+            $.ajax({
+                type: "POST",
+                url: "../../src/views/continent.php", 
+                data: {
+                    continent : $form.serializeArray()
+                },
+                dataType: "html",
+                success: function (response) {
+                    $('.continent').html(response);
+                }
+            });
+            
+        } 
+    );
+    
+
 });

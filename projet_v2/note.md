@@ -251,3 +251,5 @@ listSerie.php
           </div> <!-- fin col-lg-12 -->
           
         </div> <!-- fin row -->
+
+        
