@@ -31,7 +31,7 @@ function showListPays($nomContinent) {
         $paysTrad = $pays->translations;
         if($paysTrad->fr) {
             echo $key.'/'.$paysTrad->fr.': '.$pays->alpha2Code.'<br>';
-
+            
         }
     }
 }
