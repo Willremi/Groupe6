@@ -59,7 +59,7 @@ require 'src/api/api_select_serie.php';
             <div class="container">
               <fieldset>
                 <legend>Sélectionner un continent : </legend>
-                <form action="" class="mt-2" method="POST" id="formContinents">
+                <form action="" class="mt-2 form-inline" method="POST" id="formContinents">
                 <select name="continents" class="custom-select" id="continentList">
                   <option value="Asie">Asie</option>
                   <option value="Afrique">Afrique</option>
@@ -67,7 +67,14 @@ require 'src/api/api_select_serie.php';
                   <option value="Europe">Europe</option>
                   <option value="Océanie">Océanie</option>
                 </select>
-                
+                <select name="annees" class="custom-select" id="anneesList">
+                  <option value="Années 50">Années 50</option>
+                  <option value="Années 60">Années 60</option>
+                  <option value="Années 70">Années 70</option>
+                  <option value="Années 80">Années 80</option>
+                  <option value="Années 90">Années 90</option>
+                  <option value="Années 2000">Années 2000</option>
+                </select>
                   <button type="submit" class="btn btn-primary" value="Rechercher" id="searchCont">Rechercher</button>
                 </form>
               </fieldset>

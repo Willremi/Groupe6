@@ -59,6 +59,10 @@ legend, .mt-2 {
   text-align: center;
 }
 
+form#formContinents {
+  margin-left: 33%;
+}
+
 select#genres {
   width: 50%;
   margin-left: 25%;

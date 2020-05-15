@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 type: "POST",
                 url: "../../src/views/continent.php", 
                 data: {
-                    continent : $form.serializeArray()
+                    data : $form.serializeArray()
                 },
                 dataType: "html",
                 success: function (response) {
