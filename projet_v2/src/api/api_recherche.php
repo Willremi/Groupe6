@@ -113,11 +113,5 @@ EOD;
         
 } // fin else
     
-    // foreach($tab_list_pays as $key => $pays) {
-    //     $paysTrad = $pays->translations;
-    //     if($paysTrad->fr) {
-    //         echo $key.'/'.$paysTrad->fr.': '.$pays->alpha2Code.'<br>';
-           
-    //     }
-    // }
+   
 }
