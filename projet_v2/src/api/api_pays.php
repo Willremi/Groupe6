@@ -29,7 +29,7 @@ function showListPays($titreSerie, $nomContinent, $annees) {
     $tab_list_pays = json_decode($url);
 
     if($titreSerie === '') {
-
+        // Recherche sans input text
     } else {
         // API pour recherche par nom de série
     $urlSerie = file_get_contents('https://api.themoviedb.org/3/search/tv?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR&query='.$titreSerie);
@@ -59,7 +59,7 @@ EOD;
         echo '<p>Pays d\'origine : Aucune information disponible du pays</p>';
        echo '<p>Résumé : Aucune information disponible</p>';
     } else {
-        echo '<p>Pays d\'origine :'.$paysOrigin.'</p>';
+        echo '<p>Pays d\'origine : '.$paysOrigin.'</p>';
     echo '<p>Résumé : '.$resume.'</p>';
     }
     echo '<hr>';  
