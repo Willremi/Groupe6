@@ -12,9 +12,9 @@ require 'src/api/api_select_serie.php';
           <li class="nav-item">
             <a class="nav-link" id="searchSerie-tab" data-toggle="tab" href="#searchSerie" role="tab" aria-controls="searchSerie" aria-selected="false">Recherche</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" id="genres-tab" data-toggle="tab" href="#genres" role="tab" aria-controls="genres" aria-selected="false">Genres</a>
-          </li>
+          </li> -->
         </ul>
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane active" id="annees" role="tabpanel" aria-labelledby="annees-tab">
@@ -59,17 +59,16 @@ require 'src/api/api_select_serie.php';
             <div class="container">
               <fieldset>
                 <legend>Rechercher une série : </legend>
-                <div class="offset-md-2">
+                <div class="offset-md-3">
                 <form action="" class="mt-2 form-inline" method="POST" id="formSearch">
                 <input type="text" name="nomSerie" id="nomSerie" class="form-control"placeholder="Higlander, les incorruptibles...">
-                <select name="continents" class="custom-select" id="continentList">
-                  <option value="Sélectionner un continent">Sélectionner un continent</option>
+                <!-- <select name="continents" class="custom-select" id="continentList">
                   <option value="Asie">Asie</option>
                   <option value="Afrique">Afrique</option>
                   <option value="Amériques">Amériques</option>
                   <option value="Europe">Europe</option>
                   <option value="Océanie">Océanie</option>
-                </select>
+                </select> -->
                 <select name="annees" class="custom-select" id="anneesList">
                   <option value="Sélectionner une décennie">Sélectionner une décennie</option>
                   <option value="Années 50">Années 50</option>

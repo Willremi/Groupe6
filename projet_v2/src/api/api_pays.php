@@ -1,18 +1,18 @@
 <?php
-switch($nomContinent) {
-    case 'Amériques':
-    $nomContinent = 'Americas';
-    break; 
-    case 'Asie':
-    $nomContinent = 'Asia';
-    break;
-    case 'Afrique':
-    $nomContinent = 'Africa';
-    break;
-    case 'Océanie': 
-    $nomContinent = 'Oceania';
-    break;
-}
+// switch($nomContinent) {
+//     case 'Amériques':
+//     $nomContinent = 'Americas';
+//     break; 
+//     case 'Asie':
+//     $nomContinent = 'Asia';
+//     break;
+//     case 'Afrique':
+//     $nomContinent = 'Africa';
+//     break;
+//     case 'Océanie': 
+//     $nomContinent = 'Oceania';
+//     break;
+// }
 
 /**
  * showListPays
@@ -21,7 +21,12 @@ switch($nomContinent) {
  * @return void
  */
 
-function showListPays($titreSerie, $nomContinent, $annees) {
+function showListPays($titreSerie, $annees) {
+    //API pour récupérer la liste des pays par continent
+    // $url = file_get_contents('https://restcountries.eu/rest/v2/region/'.$nomContinent.'?fields=name;translations;alpha2Code');
+    
+    // var_dump($annees);
+    // $tab_list_pays = json_decode($url);
 
     if($titreSerie === '') {
         // Recherche sans input text
@@ -53,15 +58,12 @@ function showListPays($titreSerie, $nomContinent, $annees) {
         <hr>
 EOD;
         if($paysOrigin && $anneeDif) {
-            // if ($annees === "Années 50" && $anneeDif < 2011) {
-            //     echo $str;
-                
-        
-            // }
+           
             switch($annees) {
                 case('Années 50'):
                     if($anneeDif >= 1950 && $anneeDif < 1960) {
                         echo $str;
+                        
                     }
                 break;
                 case('Années 60'):
@@ -100,5 +102,11 @@ EOD;
         
 } // fin else
     
-   
+    // foreach($tab_list_pays as $key => $pays) {
+    //     $paysTrad = $pays->translations;
+    //     if($paysTrad->fr) {
+    //         echo $key.'/'.$paysTrad->fr.': '.$pays->alpha2Code.'<br>';
+           
+    //     }
+    // }
 }
