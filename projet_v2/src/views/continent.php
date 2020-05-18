@@ -5,4 +5,4 @@ $nomContinent = $continent['value'];
 $annees = $_POST['data'][1]['value'];
 require '../api/api_pays.php';
 
-showListPays($nomContinent);
+showListPays($nomContinent, $annees);

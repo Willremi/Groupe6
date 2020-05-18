@@ -21,17 +21,17 @@ switch($nomContinent) {
  * @return void
  */
 
-function showListPays($nomContinent) {
+function showListPays($nomContinent, $annees) {
     //API pour récupérer la liste des pays par continent
     $url = file_get_contents('https://restcountries.eu/rest/v2/region/'.$nomContinent.'?fields=name;translations;alpha2Code');
-
-    $tab_list_pays = json_decode($url);
     
+    $tab_list_pays = json_decode($url);
+    // var_dump($annees);
     foreach($tab_list_pays as $key => $pays) {
         $paysTrad = $pays->translations;
         if($paysTrad->fr) {
             echo $key.'/'.$paysTrad->fr.': '.$pays->alpha2Code.'<br>';
-            
+           
         }
     }
 }
