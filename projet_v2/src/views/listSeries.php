@@ -69,6 +69,7 @@ require 'src/api/api_select_serie.php';
                   <option value="Océanie">Océanie</option>
                 </select>
                 <select name="annees" class="custom-select" id="anneesList">
+                  <option value="Sélectionner une décennie">Sélectionner une décennie</option>
                   <option value="Années 50">Années 50</option>
                   <option value="Années 60">Années 60</option>
                   <option value="Années 70">Années 70</option>

@@ -94,6 +94,10 @@ EOD;
                         echo $str;
                     }
                 break;
+                default:
+                    if($anneeDif < 2010) {
+                        echo $str;
+                    }
             }
         }
         
