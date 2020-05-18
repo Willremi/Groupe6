@@ -36,19 +36,20 @@ function showListPays($titreSerie, $nomContinent, $annees) {
     
     $tab_list_serie = json_decode($urlSerie);
     $tab_serie = $tab_list_serie->results;
+   
     // var_dump($tab_serie);
-    function afficheSerieAnnees($tab_serie)
-    {
-        foreach ($tab_serie as $serie) {
-            $paysOrigin = $serie->origin_country[0];
+    
+    foreach ($tab_serie as $serie) {
+        $paysOrigin = $serie->origin_country[0];
         
-            $date = $serie->first_air_date;
-            $dateExplode = explode('-', $date);
-            $anneeDif = $dateExplode[0];
+        $date = $serie->first_air_date;
+        $dateExplode = explode('-', $date);
+        $anneeDif = $dateExplode[0];
         
-            $resume = $serie->overview;
-            if ($anneeDif < 2011 && $anneeDif !== '') {
-                $str =<<<EOD
+        $resume = $serie->overview;
+        if ($anneeDif < 2011 && $anneeDif !== '') {
+        
+        $str =<<<EOD
         <h4>Titre : $serie->name</h4>
         <p>Titre d'origine : $serie->original_name</p>
         <!-- <p>Pays d'origine : $paysOrigin</p> -->
@@ -68,8 +69,7 @@ EOD;
     
             } // fin if $annee < 2011
         } // fin foreach
-    } 
-    afficheSerieAnnees($tab_serie);
+    
 
     if($annees === 'Années 50') {}
 } // fin else
