@@ -47,31 +47,28 @@ function showListPays($titreSerie, $nomContinent, $annees) {
         $anneeDif = $dateExplode[0];
         
         $resume = $serie->overview;
-        if ($anneeDif < 2011 && $anneeDif !== '') {
+        // if ($anneeDif < 2011 && $anneeDif !== '') {
         
         $str =<<<EOD
         <h4>Titre : $serie->name</h4>
         <p>Titre d'origine : $serie->original_name</p>
         <!-- <p>Pays d'origine : $paysOrigin</p> -->
         <p>Année de la première diffusion : $anneeDif</p>
-        
-
+        <p>Pays d'origine : $paysOrigin</p>
 EOD;
+        if ($anneeDif < 2011 && $anneeDif !== '' && $paysOrigin) {
         echo $str;
-        if (!$resume || !$paysOrigin) {
-            echo '<p>Pays d\'origine : Aucune information disponible du pays</p>';
-            echo '<p>Résumé : Aucune information disponible</p>';
-        } else {
-            echo '<p>Pays d\'origine : '.$paysOrigin.'</p>';
-            echo '<p>Résumé : '.$resume.'</p>';
-        }
+        // if (!$resume) {
+        //     echo '<p>Résumé : Aucune information disponible</p>';
+        // } else {
+        //     echo '<p>Résumé : '.$resume.'</p>';
+        // }
+        
         echo '<hr>';
 
             } // fin if $annee < 2011
         } // fin foreach
-    
-
-    if($annees === 'Années 50') {}
+        
 } // fin else
     
     // foreach($tab_list_pays as $key => $pays) {
