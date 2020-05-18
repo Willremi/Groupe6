@@ -106,7 +106,7 @@ EOD;
                             echo $str;
                         }
                 }
-            }
+            } 
         }
         
         } // fin foreach
