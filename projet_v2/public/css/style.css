@@ -58,8 +58,8 @@ legend, .mt-2 {
   text-align: center;
 }
 
-form#formContinents {
-  margin-left: 33%;
+form#formSearch {
+  margin-left: 23%;
 }
 
 select#genres {

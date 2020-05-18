@@ -42,9 +42,9 @@ document.addEventListener('DOMContentLoaded', function () {
     //     }
     // );
    
-    $('#formContinents').submit(
+    $('#formSearch').submit(
         function(e) {
-            $('#myTab #continents-tab').tab('show');
+            $('#myTab #searchSerie-tab').tab('show');
             e.preventDefault();
              var $form = $(this);
             $.ajax({
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 dataType: "html",
                 success: function (response) {
-                    $('.continent').html(response);
+                    $('.resultSerie').html(response);
                 }
             });
             

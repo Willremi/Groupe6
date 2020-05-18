@@ -10,7 +10,7 @@ require 'src/api/api_select_serie.php';
             <a class="nav-link active" id="annees-tab" data-toggle="tab" href="#annees" role="tab" aria-controls="annees" aria-selected="true">Années</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="continents-tab" data-toggle="tab" href="#continents" role="tab" aria-controls="continents" aria-selected="false">Continents</a>
+            <a class="nav-link" id="searchSerie-tab" data-toggle="tab" href="#searchSerie" role="tab" aria-controls="searchSerie" aria-selected="false">Recherche</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" id="genres-tab" data-toggle="tab" href="#genres" role="tab" aria-controls="genres" aria-selected="false">Genres</a>
@@ -55,11 +55,12 @@ require 'src/api/api_select_serie.php';
             </div>
              <!--voir note.md fin row -->
           </div>
-          <div class="tab-pane" id="continents" role="tabpanel" aria-labelledby="continents-tab">
+          <div class="tab-pane" id="searchSerie" role="tabpanel" aria-labelledby="searchSerie-tab">
             <div class="container">
               <fieldset>
-                <legend>Sélectionner un continent : </legend>
-                <form action="" class="mt-2 form-inline" method="POST" id="formContinents">
+                <legend>Rechercher une série : </legend>
+                <form action="" class="mt-2 form-inline" method="POST" id="formSearch">
+                <input type="text" name="nomSerie" id="nomSerie" class="form-control"placeholder="Higlander, les incorruptibles...">
                 <select name="continents" class="custom-select" id="continentList">
                   <option value="Asie">Asie</option>
                   <option value="Afrique">Afrique</option>
@@ -82,7 +83,7 @@ require 'src/api/api_select_serie.php';
             <!-- <p>Travail pour plus tard : je sélectionne un continent, je dois faire apparaitre une liste des pays du continent sélectionné</p>
             <p>Si deux continents sélectionnés, faire apparaître deux listes</p>
             <p>Après sélection de continent, le formulaire disparait en faisant apparaitre la liste de pays</p> -->
-            <div class='continent'></div>
+            <div class='resultSerie'></div>
             
            
           </div>

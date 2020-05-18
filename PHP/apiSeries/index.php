@@ -22,7 +22,7 @@ require 'api_serie.php';
 if(isset($_POST['nomSerie'])){
     $nomSerie = $_POST['nomSerie'];
     $nomSerieExplode = explode(' ', $nomSerie);
-    $titreSerie = implode ($nomSerieExplode, '-');
+    $titreSerie = implode ('-',$nomSerieExplode);
 }else{
     $nomSerie = null;
 }
