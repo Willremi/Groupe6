@@ -45,22 +45,23 @@ function showListPays($titreSerie, $nomContinent, $annees) {
         $anneeDif = $dateExplode[0];
         
         $resume = $serie->overview;
-        if($anneeDif < 2001 && $anneeDif !== '') {
+        if($anneeDif < 2011 && $anneeDif !== '') {
             $str =<<<EOD
         <h4>Titre : $serie->name</h4>
         <p>Titre d'origine : $serie->original_name</p>
         <p>Pays d'origine : $paysOrigin</p>
         <p>Année de la première diffusion : $anneeDif</p>
-        <p>Résumé : $resume</p>
-        <hr>
+        
 
 EOD;
     echo $str;
+    if(!$resume) {
+       echo '<p>Résumé : Aucune information disponible</p>';
+    } else {
+    echo '<p>Résumé : '.$resume.'</p>';
+    }
+    echo '<hr>';  
         } 
-        // if() {
-
-        // }
-        
     } // fin foreach
 } // fin else
     
