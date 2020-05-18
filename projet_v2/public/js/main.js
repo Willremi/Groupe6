@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
              var $form = $(this);
             $.ajax({
                 type: "POST",
-                url: "../../src/views/continent.php", 
+                url: "../../src/views/searchSerie.php", 
                 data: {
                     data : $form.serializeArray()
                 },
