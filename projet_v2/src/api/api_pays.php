@@ -37,16 +37,18 @@ function showListPays($titreSerie, $nomContinent, $annees) {
     $tab_list_serie = json_decode($urlSerie);
     $tab_serie = $tab_list_serie->results;
     // var_dump($tab_serie);
-    foreach($tab_serie as $serie) {
-        $paysOrigin = $serie->origin_country[0];
+    function afficheSerieAnnees($tab_serie)
+    {
+        foreach ($tab_serie as $serie) {
+            $paysOrigin = $serie->origin_country[0];
         
-        $date = $serie->first_air_date;
-        $dateExplode = explode('-', $date);
-        $anneeDif = $dateExplode[0];
+            $date = $serie->first_air_date;
+            $dateExplode = explode('-', $date);
+            $anneeDif = $dateExplode[0];
         
-        $resume = $serie->overview;
-        if($anneeDif < 2011 && $anneeDif !== '') {
-            $str =<<<EOD
+            $resume = $serie->overview;
+            if ($anneeDif < 2011 && $anneeDif !== '') {
+                $str =<<<EOD
         <h4>Titre : $serie->name</h4>
         <p>Titre d'origine : $serie->original_name</p>
         <!-- <p>Pays d'origine : $paysOrigin</p> -->
@@ -54,20 +56,22 @@ function showListPays($titreSerie, $nomContinent, $annees) {
         
 
 EOD;
-    echo $str;
-    if(!$resume || !$paysOrigin) {
-        echo '<p>Pays d\'origine : Aucune information disponible du pays</p>';
-       echo '<p>Résumé : Aucune information disponible</p>';
-    } else {
-        echo '<p>Pays d\'origine : '.$paysOrigin.'</p>';
-    echo '<p>Résumé : '.$resume.'</p>';
-    }
-    echo '<hr>';
-    if ($annees === 'Années 50' && $anneeDif >= 1950 && $anneeDif < 1960) {
-        
-    }
-        } // fin if $annee < 2011
-    } // fin foreach
+                echo $str;
+                if (!$resume || !$paysOrigin) {
+                    echo '<p>Pays d\'origine : Aucune information disponible du pays</p>';
+                    echo '<p>Résumé : Aucune information disponible</p>';
+                } else {
+                    echo '<p>Pays d\'origine : '.$paysOrigin.'</p>';
+                    echo '<p>Résumé : '.$resume.'</p>';
+                }
+                echo '<hr>';
+    
+            } // fin if $annee < 2011
+        } // fin foreach
+    } 
+    afficheSerieAnnees($tab_serie);
+
+    if($annees === 'Années 50') {}
 } // fin else
     
     // foreach($tab_list_pays as $key => $pays) {
