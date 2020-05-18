@@ -57,16 +57,16 @@ function showListPays($titreSerie, $nomContinent, $annees) {
         
 
 EOD;
-                echo $str;
-                if (!$resume || !$paysOrigin) {
-                    echo '<p>Pays d\'origine : Aucune information disponible du pays</p>';
-                    echo '<p>Résumé : Aucune information disponible</p>';
-                } else {
-                    echo '<p>Pays d\'origine : '.$paysOrigin.'</p>';
-                    echo '<p>Résumé : '.$resume.'</p>';
-                }
-                echo '<hr>';
-    
+        echo $str;
+        if (!$resume || !$paysOrigin) {
+            echo '<p>Pays d\'origine : Aucune information disponible du pays</p>';
+            echo '<p>Résumé : Aucune information disponible</p>';
+        } else {
+            echo '<p>Pays d\'origine : '.$paysOrigin.'</p>';
+            echo '<p>Résumé : '.$resume.'</p>';
+        }
+        echo '<hr>';
+
             } // fin if $annee < 2011
         } // fin foreach
     
