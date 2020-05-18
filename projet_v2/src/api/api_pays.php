@@ -35,9 +35,11 @@ function showListPays($titreSerie, $nomContinent, $annees) {
     // var_dump($tab_serie);
     foreach($tab_serie as $serie) {
         $paysOrigin = $serie->origin_country[0];
+        
         $date = $serie->first_air_date;
         $dateExplode = explode('-', $date);
         $anneeDif = $dateExplode[0];
+        
         if($anneeDif < 2001 && $anneeDif !== '') {
             $str =<<<EOD
         <h4>Titre : $serie->name</h4>
