@@ -49,15 +49,17 @@ function showListPays($titreSerie, $nomContinent, $annees) {
             $str =<<<EOD
         <h4>Titre : $serie->name</h4>
         <p>Titre d'origine : $serie->original_name</p>
-        <p>Pays d'origine : $paysOrigin</p>
+        <!-- <p>Pays d'origine : $paysOrigin</p> -->
         <p>Année de la première diffusion : $anneeDif</p>
         
 
 EOD;
     echo $str;
-    if(!$resume) {
+    if(!$resume || !$paysOrigin) {
+        echo '<p>Pays d\'origine : Aucune information disponible du pays</p>';
        echo '<p>Résumé : Aucune information disponible</p>';
     } else {
+        echo '<p>Pays d\'origine :'.$paysOrigin.'</p>';
     echo '<p>Résumé : '.$resume.'</p>';
     }
     echo '<hr>';  
