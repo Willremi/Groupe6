@@ -22,11 +22,6 @@ switch($nomContinent) {
  */
 
 function showListPays($titreSerie, $nomContinent, $annees) {
-    //API pour récupérer la liste des pays par continent
-    $url = file_get_contents('https://restcountries.eu/rest/v2/region/'.$nomContinent.'?fields=name;translations;alpha2Code');
-    
-    // var_dump($annees);
-    $tab_list_pays = json_decode($url);
 
     if($titreSerie === '') {
         // Recherche sans input text
@@ -105,11 +100,5 @@ EOD;
         
 } // fin else
     
-    // foreach($tab_list_pays as $key => $pays) {
-    //     $paysTrad = $pays->translations;
-    //     if($paysTrad->fr) {
-    //         echo $key.'/'.$paysTrad->fr.': '.$pays->alpha2Code.'<br>';
-           
-    //     }
-    // }
+   
 }

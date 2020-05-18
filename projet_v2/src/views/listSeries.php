@@ -59,9 +59,11 @@ require 'src/api/api_select_serie.php';
             <div class="container">
               <fieldset>
                 <legend>Rechercher une série : </legend>
+                <div class="offset-md-2">
                 <form action="" class="mt-2 form-inline" method="POST" id="formSearch">
                 <input type="text" name="nomSerie" id="nomSerie" class="form-control"placeholder="Higlander, les incorruptibles...">
                 <select name="continents" class="custom-select" id="continentList">
+                  <option value="Sélectionner un continent">Sélectionner un continent</option>
                   <option value="Asie">Asie</option>
                   <option value="Afrique">Afrique</option>
                   <option value="Amériques">Amériques</option>
@@ -79,6 +81,7 @@ require 'src/api/api_select_serie.php';
                 </select>
                   <button type="submit" class="btn btn-primary" value="Rechercher" id="searchCont">Rechercher</button>
                 </form>
+                </div>
               </fieldset>
             </div>
             <!-- <p>Travail pour plus tard : je sélectionne un continent, je dois faire apparaitre une liste des pays du continent sélectionné</p>
