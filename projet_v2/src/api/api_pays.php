@@ -62,8 +62,11 @@ EOD;
         echo '<p>Pays d\'origine : '.$paysOrigin.'</p>';
     echo '<p>Résumé : '.$resume.'</p>';
     }
-    echo '<hr>';  
-        } 
+    echo '<hr>';
+    if ($annees === 'Années 50' && $anneeDif >= 1950 && $anneeDif < 1960) {
+        
+    }
+        } // fin if $annee < 2011
     } // fin foreach
 } // fin else
     
