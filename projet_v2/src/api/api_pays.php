@@ -55,18 +55,48 @@ function showListPays($titreSerie, $nomContinent, $annees) {
         <!-- <p>Pays d'origine : $paysOrigin</p> -->
         <p>Année de la première diffusion : $anneeDif</p>
         <p>Pays d'origine : $paysOrigin</p>
+        <hr>
 EOD;
-        if ($anneeDif < 2011 && $anneeDif !== '' && $paysOrigin) {
-        echo $str;
-        // if (!$resume) {
-        //     echo '<p>Résumé : Aucune information disponible</p>';
-        // } else {
-        //     echo '<p>Résumé : '.$resume.'</p>';
-        // }
+        if($paysOrigin && $anneeDif) {
+            // if ($annees === "Années 50" && $anneeDif < 2011) {
+            //     echo $str;
+                
         
-        echo '<hr>';
-
-            } // fin if $annee < 2011
+            // }
+            switch($annees) {
+                case('Années 50'):
+                    if($anneeDif >= 1950 && $anneeDif < 1960) {
+                        echo $str;
+                    }
+                break;
+                case('Années 60'):
+                    if($anneeDif >= 1960 && $anneeDif < 1970) {
+                        echo $str;
+                    }
+                break;
+                case('Années 70'):
+                    if($anneeDif >= 1970 && $anneeDif < 1980) {
+                        echo $str;
+                    }
+                break;
+                case('Années 80'):
+                    if($anneeDif >= 1980 && $anneeDif < 1990) {
+                        echo $str;
+                    }
+                break;
+                case('Années 90'):
+                    if($anneeDif >= 1990 && $anneeDif < 2000) {
+                        echo $str;
+                    }
+                break;
+                case('Années 2000'):
+                    if($anneeDif >= 2000 && $anneeDif < 2010) {
+                        echo $str;
+                    }
+                break;
+            }
+        }
+        
         } // fin foreach
         
 } // fin else
