@@ -9,10 +9,10 @@ $annees = $_POST['data'][2]['value'];
 $nomSerieExplode = explode(' ', $nomSerie);
 $titreSerie = implode ('-',$nomSerieExplode);
 
-var_dump($titreSerie);
+// var_dump($titreSerie);
 
 require '../api/api_pays.php';
-// var_dump($nomSerie);
-// showListPays($nomContinent);
+
+showListPays($titreSerie,$nomContinent, $annees);
 
 // nomSerie avec l'API qui recherche les séries en mettant le nom

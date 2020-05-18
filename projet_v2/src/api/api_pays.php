@@ -21,17 +21,37 @@ switch($nomContinent) {
  * @return void
  */
 
-function showListPays($nomContinent) {
+function showListPays($titreSerie, $nomContinent, $annees) {
     //API pour récupérer la liste des pays par continent
     $url = file_get_contents('https://restcountries.eu/rest/v2/region/'.$nomContinent.'?fields=name;translations;alpha2Code');
     
-    $tab_list_pays = json_decode($url);
     // var_dump($annees);
-    foreach($tab_list_pays as $key => $pays) {
-        $paysTrad = $pays->translations;
-        if($paysTrad->fr) {
-            echo $key.'/'.$paysTrad->fr.': '.$pays->alpha2Code.'<br>';
-           
-        }
+    $tab_list_pays = json_decode($url);
+
+    $urlSerie = file_get_contents('https://api.themoviedb.org/3/search/tv?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR&query='.$titreSerie);
+    
+    $tab_list_serie = json_decode($urlSerie);
+    $tab_serie = $tab_list_serie->results;
+    // var_dump($tab_serie);
+    foreach($tab_serie as $serie) {
+        $date = $serie->first_air_date;
+        $dateExplode = explode('-', $date);
+        $anneeDif = $dateExplode[0];
+        $str =<<<EOD
+        <h4>Titre : $serie->name</h4>
+        <p>Titre d'origine : $serie->original_name</p>
+        <p>Année de la première diffusion : $anneeDif</p>
+        <p>Résumé : $serie->overview</p>
+        <hr>
+
+EOD;
+echo $str;
     }
+    // foreach($tab_list_pays as $key => $pays) {
+    //     $paysTrad = $pays->translations;
+    //     if($paysTrad->fr) {
+    //         echo $key.'/'.$paysTrad->fr.': '.$pays->alpha2Code.'<br>';
+           
+    //     }
+    // }
 }
