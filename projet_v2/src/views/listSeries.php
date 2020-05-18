@@ -59,16 +59,10 @@ require 'src/api/api_select_serie.php';
             <div class="container">
               <fieldset>
                 <legend>Rechercher une série : </legend>
-                <div class="offset-md-3">
+                <div class="offset-md-2">
                 <form action="" class="mt-2 form-inline" method="POST" id="formSearch">
                 <input type="text" name="nomSerie" id="nomSerie" class="form-control"placeholder="Higlander, les incorruptibles...">
-                <!-- <select name="continents" class="custom-select" id="continentList">
-                  <option value="Asie">Asie</option>
-                  <option value="Afrique">Afrique</option>
-                  <option value="Amériques">Amériques</option>
-                  <option value="Europe">Europe</option>
-                  <option value="Océanie">Océanie</option>
-                </select> -->
+                
                 <select name="annees" class="custom-select" id="anneesList">
                   <option value="Sélectionner une décennie">Sélectionner une décennie</option>
                   <option value="Années 50">Années 50</option>
@@ -77,6 +71,15 @@ require 'src/api/api_select_serie.php';
                   <option value="Années 80">Années 80</option>
                   <option value="Années 90">Années 90</option>
                   <option value="Années 2000">Années 2000</option>
+                </select>
+
+                <select name="continents" class="custom-select" id="continentList">
+                  <option value="Sélectionner un continent">Sélectionner un continent</option>
+                  <option value="Asie">Asie</option>
+                  <option value="Afrique">Afrique</option>
+                  <option value="Amériques">Amériques</option>
+                  <option value="Europe">Europe</option>
+                  <option value="Océanie">Océanie</option>
                 </select>
                   <button type="submit" class="btn btn-primary" value="Rechercher" id="searchCont">Rechercher</button>
                 </form>

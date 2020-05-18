@@ -1,18 +1,21 @@
 <?php
-// switch($nomContinent) {
-//     case 'Amériques':
-//     $nomContinent = 'Americas';
-//     break; 
-//     case 'Asie':
-//     $nomContinent = 'Asia';
-//     break;
-//     case 'Afrique':
-//     $nomContinent = 'Africa';
-//     break;
-//     case 'Océanie': 
-//     $nomContinent = 'Oceania';
-//     break;
-// }
+switch($nomContinent) {
+    case 'Amériques':
+    $nomContinent = 'Americas';
+    break; 
+    case 'Asie':
+    $nomContinent = 'Asia';
+    break;
+    case 'Afrique':
+    $nomContinent = 'Africa';
+    break;
+    case 'Océanie': 
+    $nomContinent = 'Oceania';
+    break;
+    default:
+    $nomContinent;
+    
+}
 
 /**
  * showListPays
@@ -21,7 +24,7 @@
  * @return void
  */
 
-function showListPays($titreSerie, $annees) {
+function showListPays($titreSerie, $annees, $nomContinent) {
     //API pour récupérer la liste des pays par continent
     // $url = file_get_contents('https://restcountries.eu/rest/v2/region/'.$nomContinent.'?fields=name;translations;alpha2Code');
     
@@ -60,43 +63,49 @@ function showListPays($titreSerie, $annees) {
         <hr>
 EOD;
         if($paysOrigin && $anneeDif) {
-           
-            switch($annees) {
-                case('Années 50'):
-                    if($anneeDif >= 1950 && $anneeDif < 1960) {
-                        echo $str;
-                        
-                    }
-                break;
-                case('Années 60'):
-                    if($anneeDif >= 1960 && $anneeDif < 1970) {
-                        echo $str;
-                    }
-                break;
-                case('Années 70'):
-                    if($anneeDif >= 1970 && $anneeDif < 1980) {
-                        echo $str;
-                    }
-                break;
-                case('Années 80'):
-                    if($anneeDif >= 1980 && $anneeDif < 1990) {
-                        echo $str;
-                    }
-                break;
-                case('Années 90'):
-                    if($anneeDif >= 1990 && $anneeDif < 2000) {
-                        echo $str;
-                    }
-                break;
-                case('Années 2000'):
-                    if($anneeDif >= 2000 && $anneeDif < 2010) {
-                        echo $str;
-                    }
-                break;
-                default:
-                    if($anneeDif < 2010) {
-                        echo $str;
-                    }
+           $urlPays = file_get_contents('https://restcountries.eu/rest/v2/alpha/'.$paysOrigin.'?fields=region');
+           $tabPays = json_decode($urlPays);
+            $tabContinent = $tabPays->region;
+        //    var_dump($nomContinent);
+            if($tabContinent === $nomContinent) {
+
+                switch($annees) {
+                    case('Années 50'):
+                        if($anneeDif >= 1950 && $anneeDif < 1960) {
+                            echo $str;
+                            
+                        }
+                    break;
+                    case('Années 60'):
+                        if($anneeDif >= 1960 && $anneeDif < 1970) {
+                            echo $str;
+                        }
+                    break;
+                    case('Années 70'):
+                        if($anneeDif >= 1970 && $anneeDif < 1980) {
+                            echo $str;
+                        }
+                    break;
+                    case('Années 80'):
+                        if($anneeDif >= 1980 && $anneeDif < 1990) {
+                            echo $str;
+                        }
+                    break;
+                    case('Années 90'):
+                        if($anneeDif >= 1990 && $anneeDif < 2000) {
+                            echo $str;
+                        }
+                    break;
+                    case('Années 2000'):
+                        if($anneeDif >= 2000 && $anneeDif < 2010) {
+                            echo $str;
+                        }
+                    break;
+                    default:
+                        if($anneeDif < 2010) {
+                            echo $str;
+                        }
+                }
             }
         }
         
