@@ -28,6 +28,10 @@ function showListPays($titreSerie, $nomContinent, $annees) {
     // var_dump($annees);
     $tab_list_pays = json_decode($url);
 
+    if($titreSerie === '') {
+
+    } else {
+        // API pour recherche par nom de série
     $urlSerie = file_get_contents('https://api.themoviedb.org/3/search/tv?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR&query='.$titreSerie);
     
     $tab_list_serie = json_decode($urlSerie);
@@ -40,21 +44,26 @@ function showListPays($titreSerie, $nomContinent, $annees) {
         $dateExplode = explode('-', $date);
         $anneeDif = $dateExplode[0];
         
+        $resume = $serie->overview;
         if($anneeDif < 2001 && $anneeDif !== '') {
             $str =<<<EOD
         <h4>Titre : $serie->name</h4>
         <p>Titre d'origine : $serie->original_name</p>
         <p>Pays d'origine : $paysOrigin</p>
         <p>Année de la première diffusion : $anneeDif</p>
-        <p>Résumé : $serie->overview</p>
+        <p>Résumé : $resume</p>
         <hr>
 
 EOD;
-echo $str;
+    echo $str;
         } 
+        // if() {
+
+        // }
         
-        
-    }
+    } // fin foreach
+} // fin else
+    
     // foreach($tab_list_pays as $key => $pays) {
     //     $paysTrad = $pays->translations;
     //     if($paysTrad->fr) {
