@@ -11,7 +11,7 @@ $titreSerie = implode ('-',$nomSerieExplode);
 
 // var_dump($titreSerie);
 
-require '../api/api_pays.php';
+require '../api/api_recherche.php';
 
 showListPays($titreSerie, $annees);
 

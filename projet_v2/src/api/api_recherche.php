@@ -46,13 +46,15 @@ function showListPays($titreSerie, $annees) {
         $dateExplode = explode('-', $date);
         $anneeDif = $dateExplode[0];
         
-        $resume = $serie->overview;
-        // if ($anneeDif < 2011 && $anneeDif !== '') {
+        $idSerie = $serie->id;
+        
+        
         
         $str =<<<EOD
-        <h4>Titre : $serie->name</h4>
+        <h4><a href="serie?name=$serie->original_name">Titre : $serie->name</a></h4>
         <p>Titre d'origine : $serie->original_name</p>
         <!-- <p>Pays d'origine : $paysOrigin</p> -->
+        <p>ID de la série : $idSerie</p>
         <p>Année de la première diffusion : $anneeDif</p>
         <p>Pays d'origine : $paysOrigin</p>
         <hr>
