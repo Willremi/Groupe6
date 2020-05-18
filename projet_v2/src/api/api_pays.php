@@ -34,18 +34,24 @@ function showListPays($titreSerie, $nomContinent, $annees) {
     $tab_serie = $tab_list_serie->results;
     // var_dump($tab_serie);
     foreach($tab_serie as $serie) {
+        $paysOrigin = $serie->origin_country[0];
         $date = $serie->first_air_date;
         $dateExplode = explode('-', $date);
         $anneeDif = $dateExplode[0];
-        $str =<<<EOD
+        if($anneeDif < 2001 && $anneeDif !== '') {
+            $str =<<<EOD
         <h4>Titre : $serie->name</h4>
         <p>Titre d'origine : $serie->original_name</p>
+        <p>Pays d'origine : $paysOrigin</p>
         <p>Année de la première diffusion : $anneeDif</p>
         <p>Résumé : $serie->overview</p>
         <hr>
 
 EOD;
 echo $str;
+        } 
+        
+        
     }
     // foreach($tab_list_pays as $key => $pays) {
     //     $paysTrad = $pays->translations;
