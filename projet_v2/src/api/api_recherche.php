@@ -12,8 +12,7 @@ switch($nomContinent) {
     case 'Océanie': 
     $nomContinent = 'Oceania';
     break;
-    default:
-    $nomContinent;
+    
     
 }
 
@@ -62,7 +61,7 @@ function showListPays($titreSerie, $annees, $nomContinent) {
         <p>Pays d'origine : $paysOrigin</p>
         <hr>
 EOD;
-        if($paysOrigin && $anneeDif) {
+        if($paysOrigin !== 'XC' && $paysOrigin && $anneeDif) {
            $urlPays = file_get_contents('https://restcountries.eu/rest/v2/alpha/'.$paysOrigin.'?fields=region');
            $tabPays = json_decode($urlPays);
             $tabContinent = $tabPays->region;
@@ -106,7 +105,7 @@ EOD;
                             echo $str;
                         }
                 }
-            } 
+            }         
         }
         
         } // fin foreach

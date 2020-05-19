@@ -64,7 +64,7 @@ require 'src/api/api_select_serie.php';
                 <input type="text" name="nomSerie" id="nomSerie" class="form-control"placeholder="Higlander, les incorruptibles...">
                 
                 <select name="annees" class="custom-select" id="anneesList">
-                  <option value="Sélectionner une décennie">Sélectionner une décennie</option>
+                  <option value="">Sélectionner une décennie</option>
                   <option value="Années 50">Années 50</option>
                   <option value="Années 60">Années 60</option>
                   <option value="Années 70">Années 70</option>
@@ -74,7 +74,7 @@ require 'src/api/api_select_serie.php';
                 </select>
 
                 <select name="continents" class="custom-select" id="continentList">
-                  <option value="Sélectionner un continent">Sélectionner un continent</option>
+                  <option value="">Sélectionner un continent</option>
                   <option value="Asie">Asie</option>
                   <option value="Afrique">Afrique</option>
                   <option value="Amériques">Amériques</option>
