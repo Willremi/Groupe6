@@ -9,7 +9,7 @@ function tableau() {
         <th scope="col">Acteurs</th>
         <th scope="col">Réalisateurs</th>
         <th scope="col">Années de production</th>
-        <th scope="col">Pays d'origine</th>
+        <th scope="col">Lieux d'origine</th>
         </tr>
         </thead>
         

@@ -140,7 +140,7 @@ EOD;
 
     echo '</ul></div>';
     $str = <<<EOD
-    <h3>Pays d'origine</h3>
+    <h3>Lieux d'origine</h3>
     <div class='list'>
     <ul>
 EOD;
