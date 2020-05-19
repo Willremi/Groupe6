@@ -1,10 +1,9 @@
 <?php 
 require 'src/api/api_serie.php';
-$nomSerie = $_GET['name'];
-$nomSerieExplode = explode(' ', $nomSerie);
-$titreSerie = implode('-', $nomSerieExplode);
-
-// dump($titreSerie);
+// $nomSerie = $_GET['name'];
+// $nomSerieExplode = explode(' ', $nomSerie);
+// $titreSerie = implode('-', $nomSerieExplode);
+$idSerie = $_GET['id'];
 
 ?>
 
@@ -13,8 +12,9 @@ $titreSerie = implode('-', $nomSerieExplode);
     <div class="col-12">
               
       <?php 
-             if($titreSerie !== null) {
-              showDataBySerie($titreSerie);
+             if($idSerie !== null) {
+              // showDataBySerie($titreSerie);
+              showDataBySerie($idSerie);
             }
              
       ?> 

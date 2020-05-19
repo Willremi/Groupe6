@@ -7,15 +7,15 @@
  * @return void
  */
 
-function showDataBySerie($titreSerie)
+function showDataBySerie($idSerie)
 {
     // API pour récupérer l'id de la série
-    $url = file_get_contents('http://api.themoviedb.org/3/search/tv?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR&page=1&query='.$titreSerie);
+    // $url = file_get_contents('http://api.themoviedb.org/3/search/tv?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR&page=1&query='.$titreSerie);
 
-    $tab = json_decode($url);
-    $tab_serie = $tab->results;
+    // $tab = json_decode($url);
+    // $tab_serie = $tab->results;
     
-    $idSerie = $tab_serie[0]->id;
+    // $idSerie = $tab_serie[0]->id;
     // dump($idSerie);
 
     // API pour récupérer la description de la série

@@ -54,7 +54,7 @@ function showListPays($titreSerie, $annees, $nomContinent) {
         
         
         $str =<<<EOD
-        <h4><a href="serie?name=$serie->original_name">Titre : $serie->name</a></h4>
+        <h4><a href="serie?id=$serie->id" target="_blank">Titre : $serie->name</a></h4>
         <p>Titre d'origine : $serie->original_name</p>
         <!-- <p>Pays d'origine : $paysOrigin</p> -->
         <p>ID de la série : $idSerie</p>

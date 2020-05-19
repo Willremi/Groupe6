@@ -28,10 +28,10 @@ function showSelectSerie($idList) {
 
     foreach($tab_serie as $key => $serie) {
         $genreSerie = $serie->genre_ids[0];
-        $idSérie = $serie->id;
-        // var_dump($idSérie);
+        $idSerie = $serie->id;
+        // var_dump($idSerie);
         echo '<tr>';
-        echo '<td><a href="serie?name='.$serie->original_name.'">'.$serie->original_name.'</a></td>';
+        echo '<td><a href="serie?id='.$idSerie.'" target="_blank">'.$serie->name.'</a></td>';
         // echo '<td>'.$serie->genre_ids[0].'</td>';
         foreach ($tab_genre as $key => $genre) {
             $idGenre = $genre->id;
