@@ -31,9 +31,21 @@ function showDetailActeur ($acteur) {
         
         // Lieu de naissance
         $lieuBirth = $tab_ci_acteur->place_of_birth;
-        
-        echo '<p>'.$dateNaissance.'</p>';
-        echo '<p>'.$lieuBirth.'</p>';
+
+        // Date de décès
+        $dateDeath = $tab_ci_acteur->deathday;
+        $dateDeathExplode = explode('-',$dateDeath);
+        $dateDeathTab = array_reverse($dateDeathExplode);
+        $dateDeces = implode('/', $dateDeathTab); 
+
+        if($dateNaissance && $lieuBirth) {
+            echo '<p>Date de naissance : '.$dateNaissance.'</p>';
+            echo '<p>Lieu de naissance : '.$lieuBirth.'</p>';
+            if($dateDeces !== '') {
+                echo '<p>Date de décès : '.$dateDeces.'</p>';
+            } 
+            echo '<hr>';
+        }
 
     }
 }
