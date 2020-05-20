@@ -1,12 +1,14 @@
 <div class="container">
     <fieldset>
         <legend>Rechercher un acteur: </legend>
-        <div class="offset-md-2">
-            <form action="" class="mt-2 form-inline" method="POST" id="formSearch">
-            
-            
-            
-                <button type="submit" class="btn btn-primary" value="Rechercher" id="searchAct">Rechercher</button>
+        <div class="">
+            <form action="" class="mt-2" method="POST" id="formSearchAct">
+            <div class="form-row">
+                <div class="form-group offset-md-3 col-md-6">
+                    <input type="text" name="nomAct" id="nomAct" class="form-control" placeholder="Veuillez mettre le nom et prénom de l'acteur que vous recherchez">
+                    <br>
+                    <button type="submit" class="btn btn-primary" value="Rechercher" id="searchAct">Rechercher</button>
+            </div>
             </form>
         </div>
     </fieldset>

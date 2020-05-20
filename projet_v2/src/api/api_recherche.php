@@ -53,7 +53,7 @@ function showListPays($titreSerie, $annees, $nomContinent) {
         
         
         $str =<<<EOD
-        <h4><a href="serie?id=$serie->id" target="_blank">Titre : $serie->name</a></h4>
+        <h4><a href="serie?id=$serie->id" target="_blank">$serie->name</a></h4>
         <p>Titre d'origine : $serie->original_name</p>
         <!-- <p>Pays d'origine : $paysOrigin</p> -->
         <p>ID de la série : $idSerie</p>
@@ -104,8 +104,8 @@ EOD;
                         if($anneeDif < 2010) {
                             echo $str;
                         }
-                }
-            }         
+                } // fin switch
+            }  
         }
         
         } // fin foreach
