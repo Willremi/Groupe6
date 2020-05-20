@@ -1,13 +1,17 @@
 <?php
-$nomSerie = $_POST['data'][0]['value'];
-$annees = $_POST['data'][1]['value'];
-$continent = $_POST['data'][2];
-$nomContinent = $continent['value'];
+
+// $nomSerie = $_POST['data'][0]['value'];
+// $annees = $_POST['data'][1]['value'];
+// $continent = $_POST['data'][2];
+// $nomContinent = $continent['value'];
+$formInput = array_column($_POST['data'], 'value');
+$nomSerie = $formInput[0];
+$annees = $formInput[1];
+$nomContinent = $formInput[2];
 
 $nomSerieExplode = explode(' ', $nomSerie);
 $titreSerie = implode ('-',$nomSerieExplode);
-
-// var_dump($titreSerie);
+// var_dump($annees);
 
 require '../api/api_recherche.php';
 
