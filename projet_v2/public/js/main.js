@@ -62,5 +62,21 @@ document.addEventListener('DOMContentLoaded', function () {
         } 
     );
     
+    $('#formSearchAct').submit(
+        function(e) {
+            e.preventDefault();
+            var $form = $(this);
+            $.ajax({
+                type: "POST",
+                url: "../../src/views/searchActeur.php",
+                data: {
+                    data: $form.serializeArray()
+                },
+                dataType: "html",
+                success: function (response) {
+                  $('.resultActeur').html(response);  
+                }
+            });
+    });
 
 });

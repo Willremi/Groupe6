@@ -12,4 +12,5 @@
             </form>
         </div>
     </fieldset>
-</div>
+    <div class="resultActeur"></div>
+</div> <!-- fin container -->
