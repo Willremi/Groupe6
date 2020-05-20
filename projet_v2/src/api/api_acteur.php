@@ -22,7 +22,18 @@ function showDetailActeur ($acteur) {
         $urlCiActeur = file_get_contents('https://api.themoviedb.org/3/person/'.$idActeur.'?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR&page=1');
 
         $tab_ci_acteur = json_decode($urlCiActeur);
-        echo '<p>'.$tab_ci_acteur->birthday.'</p>';
+
+        // Date de naissance
+        $dateBirth = $tab_ci_acteur->birthday;
+        $dateBirthExplode = explode('-',$dateBirth);
+        $dateBirthTab = array_reverse($dateBirthExplode);
+        $dateNaissance = implode('/', $dateBirthTab); 
+        
+        // Lieu de naissance
+        $lieuBirth = $tab_ci_acteur->place_of_birth;
+        
+        echo '<p>'.$dateNaissance.'</p>';
+        echo '<p>'.$lieuBirth.'</p>';
 
     }
 }
