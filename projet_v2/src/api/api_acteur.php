@@ -76,6 +76,6 @@ function showDetailActeur ($acteur) {
 
             echo '<hr>';
         }
-
-    }
+        
+    } // fin foreach
 }
