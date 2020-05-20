@@ -9,4 +9,6 @@ $acteur = implode ('-',$nomActExplode);
 
 require '../api/api_acteur.php';
 
-showDetailActeur($acteur);
+if($acteur) {
+    showDetailActeur($acteur);
+}
