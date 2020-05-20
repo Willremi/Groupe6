@@ -22,6 +22,8 @@ function showDetailActeur ($acteur) {
         $urlCiActeur = file_get_contents('https://api.themoviedb.org/3/person/'.$idActeur.'?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR&page=1');
 
         $tab_ci_acteur = json_decode($urlCiActeur);
+        // Nom de l'acteur
+        $nomActeur = $tab_ci_acteur->name;
 
         // Date de naissance
         $dateBirth = $tab_ci_acteur->birthday;
@@ -38,12 +40,40 @@ function showDetailActeur ($acteur) {
         $dateDeathTab = array_reverse($dateDeathExplode);
         $dateDeces = implode('/', $dateDeathTab); 
 
-        if($dateNaissance && $lieuBirth) {
+        // Bio 
+        $bio = $tab_ci_acteur->biography;
+
+        // Photo de l'acteur
+        $photo = $tab_ci_acteur->profile_path;
+
+        if($nomActeur && $dateNaissance && $lieuBirth) {
+            echo '<p>Nom de l\'acteur : '.$nomActeur.'</p>';
             echo '<p>Date de naissance : '.$dateNaissance.'</p>';
             echo '<p>Lieu de naissance : '.$lieuBirth.'</p>';
             if($dateDeces !== '') {
                 echo '<p>Date de décès : '.$dateDeces.'</p>';
             } 
+            if($bio) {
+                echo '<p>Bio : '.$bio.'</p>';
+            } else {
+                $urlCiActeurEnglish = file_get_contents('https://api.themoviedb.org/3/person/'.$idActeur.'?api_key=c595147bf4af143ab2df16843f9487bf&page=1');
+
+                $tab_ci_acteurEnglish = json_decode($urlCiActeurEnglish);
+
+                $biography = $tab_ci_acteurEnglish->biography;
+
+                if($biography) {
+                    echo '<p>Bio (En anglais) : '.$biography.'</p>';
+                } else {
+                    echo '<p>Bio : Pas d\'information disponible</p>';
+                }
+            }
+            if($photo) {
+                echo '<img src="https://image.tmdb.org/t/p/w92'.$photo.'">';
+            } else {
+                echo '<img src="../../public/img/LogoTV.png" style="width: 92px;">';
+            }
+
             echo '<hr>';
         }
 
