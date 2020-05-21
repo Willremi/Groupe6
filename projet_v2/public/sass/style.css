@@ -97,6 +97,11 @@ iframe {
   text-align: center;
 }
 
+#photoActeur {
+  width: 125px;
+  height: auto;
+}
+
 @media only screen and (max-width: 780px) {
   table, thead, tbody, tr, th, td {
     display: block;

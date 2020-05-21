@@ -13,7 +13,7 @@ function showDetailActeur ($acteur) {
 
     $tab_search_acteur = json_decode($urlSeachActeur);
     $tab_acteur = $tab_search_acteur->results;
-    
+    echo '<br><div class="row">';
     foreach($tab_acteur as $detailActeur) {
         $idActeur = $detailActeur->id;
         
@@ -47,6 +47,47 @@ function showDetailActeur ($acteur) {
         $photo = $tab_ci_acteur->profile_path;
 
         if($nomActeur && $dateNaissance && $lieuBirth) {
+            // echo '<p>Nom de l\'acteur : '.$nomActeur.'</p>';
+            // echo '<p>Date de naissance : '.$dateNaissance.'</p>';
+            // echo '<p>Lieu de naissance : '.$lieuBirth.'</p>';
+            // if($dateDeces !== '') {
+            //     echo '<p>Date de décès : '.$dateDeces.'</p>';
+            // } 
+            // if($bio) {
+            //     echo '<p>Bio : '.$bio.'</p>';
+            // } else {
+            //     $urlCiActeurEnglish = file_get_contents('https://api.themoviedb.org/3/person/'.$idActeur.'?api_key=c595147bf4af143ab2df16843f9487bf&page=1');
+
+            //     $tab_ci_acteurEnglish = json_decode($urlCiActeurEnglish);
+
+            //     $biography = $tab_ci_acteurEnglish->biography;
+
+            //     if($biography) {
+            //         echo '<p>Bio (En anglais) : '.$biography.'</p>';
+            //     } else {
+            //         echo '<p>Bio : Pas d\'information disponible</p>';
+            //     }
+            // }
+            // if($photo) {
+            //     echo '<img src="https://image.tmdb.org/t/p/w92'.$photo.'">';
+            // } else {
+            //     echo '<img src="../../public/img/LogoTV.png" style="width: 92px;">';
+            // }
+            $str=<<<EOD
+            <div class="col-md-2">
+
+EOD;
+            echo $str;
+            if($photo) {
+                echo '<img src="https://image.tmdb.org/t/p/w154'.$photo.'" id="photoActeur">';
+            } else {
+                echo '<img src="../../public/img/LogoTV.jpg" style="width: 92px;" id="photoActeur">';
+            }
+            $str=<<<EOD
+            </div>
+            <div class="col-md-10">
+EOD;
+            echo $str;
             echo '<p>Nom de l\'acteur : '.$nomActeur.'</p>';
             echo '<p>Date de naissance : '.$dateNaissance.'</p>';
             echo '<p>Lieu de naissance : '.$lieuBirth.'</p>';
@@ -68,14 +109,10 @@ function showDetailActeur ($acteur) {
                     echo '<p>Bio : Pas d\'information disponible</p>';
                 }
             }
-            if($photo) {
-                echo '<img src="https://image.tmdb.org/t/p/w92'.$photo.'">';
-            } else {
-                echo '<img src="../../public/img/LogoTV.png" style="width: 92px;">';
-            }
-
-            echo '<hr>';
+            echo '<br><br>';
+            echo '</div>';
         }
         
     } // fin foreach
+    echo '</div>'; //fin row
 }

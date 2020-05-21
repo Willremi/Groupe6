@@ -104,6 +104,12 @@ iframe {
     text-align: center;
 }
 
+// page acteurs
+#photoActeur {
+    width: 125px;
+    height: auto;
+}
+
 // mode responsive
 @media only screen and (max-width: 780px) {
     table, thead, tbody, tr, th, td {
