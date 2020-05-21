@@ -111,7 +111,14 @@ EOD;
         <div class="col-sm-8">
                 <p>$tab_select_serie->overview</p>
                 <div id="imageSerie">
-                <img class="rounded "src="https://image.tmdb.org/t/p/w780/$tab_select_serie->backdrop_path" alt="photo de série">
+EOD;
+    echo $str;
+                if($tab_select_serie->backdrop_path) {
+                    echo '<img class="rounded "src="https://image.tmdb.org/t/p/w780/'.$tab_select_serie->backdrop_path.'" alt="photo de série">';
+                } else {
+                    echo '<img class="rounded "src="../../public/img/LogoTV800.png" alt="photo de série">';
+                }
+                $str=<<<EOD
                 </div>
             <hr id="ligne">
         </div>
@@ -119,9 +126,12 @@ EOD;
         <h3>Acteurs principaux</h3>
         <div class="list">
             <ul>
+
+    
+    
+
 EOD;
     echo $str;
-
     // Api pour récupérer les acteurs
     $urlCred = file_get_contents("https://api.themoviedb.org/3/tv/".$idSerie."/credits?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR&page=1");
 
