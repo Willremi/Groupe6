@@ -127,9 +127,6 @@ EOD;
         <div class="list">
             <ul>
 
-    
-    
-
 EOD;
     echo $str;
     // Api pour récupérer les acteurs
@@ -137,15 +134,21 @@ EOD;
 
     $tab_cred = json_decode($urlCred);
     $tab_cred_acteurs = $tab_cred->cast;
-
     // Limiter à 5 acteurs principaux
     $tabLimitCred = array_slice($tab_cred_acteurs, 0, 5); 
-  
-    
-    foreach($tabLimitCred as $key => $cast) {
-        $personnage = $cast->character;
-        $acteur = $cast->name;
-        echo '<li>'.$personnage.' : '.$acteur.'</li>';
+    // var_dump($tabLimitCred);
+    if(!$tabLimitCred) {
+        echo 'Aucunes informations disponibles';
+    } else {
+        foreach ($tabLimitCred as $key => $cast) {
+            $personnage = $cast->character;
+            $acteur = $cast->name;
+            if ($personnage && $acteur) {
+                echo '<li>'.$personnage.' : '.$acteur.'</li>';
+            } elseif (!$personnage) {
+                echo '<li>'.$acteur.'</li>';
+            }
+        }
     }
 
     echo '</ul></div>';
