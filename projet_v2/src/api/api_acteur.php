@@ -81,7 +81,7 @@ EOD;
             if($photo) {
                 echo '<img src="https://image.tmdb.org/t/p/w154'.$photo.'" id="photoActeur">';
             } else {
-                echo '<img src="../../public/img/LogoTV.jpg" style="width: 92px;" id="photoActeur">';
+                echo '<img src="../../public/img/LogoTV800.png" style="width: 92px;" id="photoActeur">';
             }
             $str=<<<EOD
             </div>

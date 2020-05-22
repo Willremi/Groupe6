@@ -116,7 +116,7 @@ EOD;
                 if($tab_select_serie->backdrop_path) {
                     echo '<img class="rounded "src="https://image.tmdb.org/t/p/w780/'.$tab_select_serie->backdrop_path.'" alt="photo de série">';
                 } else {
-                    echo '<img class="rounded "src="../../public/img/LogoTV800.png" alt="photo de série">';
+                    echo '<img class="rounded "src="../../public/img/mireTV.jpg" alt="photo de série">';
                 }
                 $str=<<<EOD
                 </div>
