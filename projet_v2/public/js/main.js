@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
         function(e) {
             e.preventDefault();
             var $form = $(this);
+            $('.resultActeur').html('<div class="loading"><img src="https://i.gifer.com/GNvR.gif" alt="En chargement..."></div>');
             $.ajax({
                 type: "POST",
                 url: "../../src/views/searchActeur.php",

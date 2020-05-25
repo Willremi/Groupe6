@@ -11,6 +11,7 @@ $router->map('GET|POST', '/addUser', 'addUser', 'addUser');
 $router->map('GET|POST', '/streaming', 'streaming', 'streaming');
 $router->map('GET|POST', '/musiques', 'musiques', 'musiques');
 $router->map('GET|POST', '/acteurs', 'acteurs', 'acteurs');
+$router->map('GET|POST', '/acteurs/[i:id]', 'acteurs#id', 'acteurs#id');
 $router->map('GET|POST', '/compte', 'compte', 'compte');
 $router->map('GET|POST', '/Modification', 'Modification', 'Modification');
 $router->map('GET|POST', '/updateUserInfo', 'updateUserInfo', 'updateUserInfo');

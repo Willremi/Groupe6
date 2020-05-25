@@ -71,10 +71,10 @@ if(isset($_SESSION['login'])) {
             <li class="nav-item"><a class="nav-link" href="contact">Contact</a></li>
           </ul>
           <ul class="navbar-nav ml-auto nav-flex-icons">
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link waves-effect waves-light">Panier : <span>0</span>
               </a>
-            </li>
+            </li> -->
             
             <?php 
             if($pseudo === $data->pseudoUser) {
