@@ -55,7 +55,7 @@ $str = <<<EOD
 EOD;
 echo $str;
 if($dateDeces !== '') {
-  echo '<p>Mort le '.$dateDeces.'</p>';
+  echo '<p>Mort(e) le '.$dateDeces.'</p>';
 } 
 if($bio) {
   echo '<p>Bio : '.$bio.'</p>';
@@ -111,7 +111,7 @@ EOD;
     
    if($role->name !== 'The Emmy Awards') {
     echo '<td>'.$dateFr.'</td>';
-    echo '<td>'.$role->name.'</td>';
+    echo '<td><a href="serie?id='.$role->id.'">'.$role->name.'</a></td>';
     if($role->character === 'himself' || $role->character === 'Himself') {
       echo '<td>Lui-même</td>';
 

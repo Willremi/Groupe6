@@ -55,7 +55,7 @@ function showSelectSerie($idList) {
         foreach ($tab_credit as $key => $cast) {
             $acteur = $cast->name;
             
-            echo '<td>'.$acteur.'</td>';
+            echo '<td><a href="bio?id='.$cast->id.'">'.$acteur.'</a></td>';
             
         }
 

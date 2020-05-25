@@ -58,7 +58,7 @@ function showListPays($titreSerie, $annees, $nomContinent) {
         <!-- <p>Pays d'origine : $paysOrigin</p> -->
         <p>ID de la série : $idSerie</p>
         <p>Année de la première diffusion : $anneeDif</p>
-        <p>Pays d'origine : $paysOrigin</p>
+        <p>Lieux d'origine : $paysOrigin</p>
         <hr>
 EOD;
         if($paysOrigin !== 'XC' && $paysOrigin && $anneeDif) {

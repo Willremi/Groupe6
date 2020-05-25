@@ -144,9 +144,9 @@ EOD;
             $personnage = $cast->character;
             $acteur = $cast->name;
             if ($personnage && $acteur) {
-                echo '<li>'.$personnage.' : '.$acteur.'</li>';
+                echo '<li>'.$personnage.' : <a href="bio?id='.$cast->id.'">'.$acteur.'</a></li>';
             } elseif (!$personnage) {
-                echo '<li>'.$acteur.'</li>';
+                echo '<li><a href="bio?id='.$cast->id.'">'.$acteur.'</a></li>';
             }
         }
     }
