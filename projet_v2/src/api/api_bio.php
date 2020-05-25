@@ -80,7 +80,15 @@ if($bio) {
 $str= <<<EOD
   <div class="col-md-6">
   <h3>Interprétations</h3>
-  <ul>
+  <table class="table-respo">
+    <thead>
+      <tr>
+        <th scope="col">Années</th>
+        <th scope="col">Séries</th>
+        <th scope="col">Rôle</th>
+      </tr>
+    </thead>
+    <tbody>
 EOD;
   echo $str;
 
@@ -90,11 +98,21 @@ EOD;
   $tab_dist_acteur = json_decode($urlDist);
   $tab_role = $tab_dist_acteur->cast;
   $tab_real = $tab_dist_acteur->crew;
-
+  
   foreach($tab_role as $role) {
-    echo '<li>'.$role->name.'</li>';
+    // echo '<td>'.$role->name.'</td>';
+    $date = $role->first_air_date;
+    $date_explode = explode('-', $date);
+    
+    $dateFr = $date_explode[0];
+    
+   if($role->name !== 'The Emmy Awards') {
+    echo '<tr><td>'.$dateFr.'</td>';
+   }
+  
   }
-  echo '</ul>';
+  
+  echo '</table>';
   echo '</div>'; // Fin col-md-6
  echo '</div>'; // Fin row
 }
