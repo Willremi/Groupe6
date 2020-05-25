@@ -61,6 +61,8 @@ if($match['target'] === '/') {
     require 'src/views/musiques.php';
 } elseif ($match['target'] === 'acteurs') {
     require 'src/views/acteurs.php';
+} elseif ($match['target'] === 'bio') {
+    require 'src/views/bio.php';
 } elseif ($match['target'] === 'compte') {
     require 'src/views/compte.php';
 } elseif ($match['target'] === 'Modification') {

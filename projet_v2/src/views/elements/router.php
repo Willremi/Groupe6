@@ -1,7 +1,7 @@
 <?php
 $router->map('GET', '/', '/', 'base');
 $router->map('GET|POST', '/Recherche', 'Recherche', 'Recherche');
-$router->map('GET|POST', '/Recherche/[i:id]', 'Recherche#id', 'Recherche#id');
+// $router->map('GET|POST', '/Recherche/[i:id]', 'Recherche#id', 'Recherche#id');
 $router->map('GET|POST', '/serie', 'serie', 'serie');
 $router->map('GET|POST', '/contact', 'contact', 'contact');
 $router->map('GET|POST', '/mail', 'mail', 'mail');
@@ -11,7 +11,7 @@ $router->map('GET|POST', '/addUser', 'addUser', 'addUser');
 $router->map('GET|POST', '/streaming', 'streaming', 'streaming');
 $router->map('GET|POST', '/musiques', 'musiques', 'musiques');
 $router->map('GET|POST', '/acteurs', 'acteurs', 'acteurs');
-$router->map('GET|POST', '/acteurs/[i:id]', 'acteurs#id', 'acteurs#id');
+$router->map('GET|POST', '/bio', 'bio', 'bio');
 $router->map('GET|POST', '/compte', 'compte', 'compte');
 $router->map('GET|POST', '/Modification', 'Modification', 'Modification');
 $router->map('GET|POST', '/updateUserInfo', 'updateUserInfo', 'updateUserInfo');
