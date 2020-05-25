@@ -75,4 +75,26 @@ if($bio) {
 
   echo '</div>'; // fin col-md-6
  echo '</div>'; // Fin row
+ echo '<hr>';
+ echo '<div class="row">';
+$str= <<<EOD
+  <div class="col-md-6">
+  <h3>Interprétations</h3>
+  <ul>
+EOD;
+  echo $str;
+
+  // API sur interprétations et réalisations de l'acteur
+  $urlDist = file_get_contents('https://api.themoviedb.org/3/person/'.$idActeur.'/tv_credits?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR&page=1');
+
+  $tab_dist_acteur = json_decode($urlDist);
+  $tab_role = $tab_dist_acteur->cast;
+  $tab_real = $tab_dist_acteur->crew;
+
+  foreach($tab_role as $role) {
+    echo '<li>'.$role->name.'</li>';
+  }
+  echo '</ul>';
+  echo '</div>'; // Fin col-md-6
+ echo '</div>'; // Fin row
 }
