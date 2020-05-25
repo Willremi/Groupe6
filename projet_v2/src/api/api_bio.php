@@ -98,13 +98,13 @@ EOD;
   $tab_dist_acteur = json_decode($urlDist);
   $tab_role = $tab_dist_acteur->cast;
   $tab_real = $tab_dist_acteur->crew;
-  
+
   foreach($tab_role as $role) {
     // echo '<td>'.$role->name.'</td>';
     $date = $role->first_air_date;
     $date_explode = explode('-', $date);
-    
     $dateFr = $date_explode[0];
+    
     
    if($role->name !== 'The Emmy Awards') {
     echo '<tr><td>'.$dateFr.'</td>';
