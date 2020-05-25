@@ -99,33 +99,30 @@ EOD;
   $tab_role = $tab_dist_acteur->cast;
   $tab_real = $tab_dist_acteur->crew;
 
-  $tabAnnee = array_column($tab_role, 'first_air_date');
-  arsort($tabAnnee);
-  foreach($tabAnnee as $annee) {
-    $date_explode = explode('-', $annee);
-    $anneeFr = $date_explode[0];
-    if($anneeFr > 1950) {
-      echo '<tr><td>'.$anneeFr.'</td>';
-      
-
-    }
-  }
-  
+  // $tabAnnee = array_column($tab_role, 'first_air_date');
+  // arsort($tabAnnee);
   
   foreach($tab_role as $role) {
-    // $date = $role->first_air_date;
-    // $date_explode = explode('-', $date);
-    // $dateFr = (int)$date_explode[0];
+    echo '<tr>';
+    $date = $role->first_air_date;
+    $date_explode = explode('-', $date);
+    $dateFr = (int)$date_explode[0];
     
     
    if($role->name !== 'The Emmy Awards') {
-    // echo '<tr><td>'.$dateFr.'</td>';
-    
+    echo '<td>'.$dateFr.'</td>';
+    echo '<td>'.$role->name.'</td>';
+    if($role->character === 'himself' || $role->character === 'Himself') {
+      echo '<td>Lui-même</td>';
+
+    } else {
+      echo '<td>'.$role->character.'</td>';
+    }
    }
-  
+   echo '</tr>';
   }
  
-  
+  echo '</tbody>';
   echo '</table>';
   echo '</div>'; // Fin col-md-6
  echo '</div>'; // Fin row
