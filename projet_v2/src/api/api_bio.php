@@ -99,18 +99,32 @@ EOD;
   $tab_role = $tab_dist_acteur->cast;
   $tab_real = $tab_dist_acteur->crew;
 
+  $tabAnnee = array_column($tab_role, 'first_air_date');
+  arsort($tabAnnee);
+  foreach($tabAnnee as $annee) {
+    $date_explode = explode('-', $annee);
+    $anneeFr = $date_explode[0];
+    if($anneeFr > 1950) {
+      echo '<tr><td>'.$anneeFr.'</td>';
+      
+
+    }
+  }
+  
+  
   foreach($tab_role as $role) {
-    // echo '<td>'.$role->name.'</td>';
-    $date = $role->first_air_date;
-    $date_explode = explode('-', $date);
-    $dateFr = $date_explode[0];
+    // $date = $role->first_air_date;
+    // $date_explode = explode('-', $date);
+    // $dateFr = (int)$date_explode[0];
     
     
    if($role->name !== 'The Emmy Awards') {
-    echo '<tr><td>'.$dateFr.'</td>';
+    // echo '<tr><td>'.$dateFr.'</td>';
+    
    }
   
   }
+ 
   
   echo '</table>';
   echo '</div>'; // Fin col-md-6
