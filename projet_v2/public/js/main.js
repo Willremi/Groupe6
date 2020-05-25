@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
             $('#myTab #searchSerie-tab').tab('show');
             e.preventDefault();
              var $form = $(this);
+             $('.resultSerie').html('<div class="loading"><img src="https://i.gifer.com/GNvR.gif" alt="En chargement..."></div>');
             $.ajax({
                 type: "POST",
                 url: "../../src/views/searchSerie.php", 
