@@ -44,9 +44,9 @@ EOD;
 echo $str;
 
 if($photo) {
-  echo '<img src="https://image.tmdb.org/t/p/w300'.$photo.'">';
+  echo '<img src="https://image.tmdb.org/t/p/w300'.$photo.'" class="rounded">';
 } else {
-  echo '<img src="../../public/img/LogoTV800.png" style="width: 300px;">';
+  echo '<img src="../../public/img/LogoTV800.png" style="width: 300px;" class="rounded">';
 }
   echo '</div>'; // fin col-md-3
 $str = <<<EOD
