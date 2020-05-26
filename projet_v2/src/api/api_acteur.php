@@ -14,7 +14,7 @@ function showDetailActeur ($acteur) {
     $tab_search_acteur = json_decode($urlSeachActeur);
     $tab_acteur = $tab_search_acteur->results;
     echo '<br><div class="row">';
-    echo '<div>';
+    // echo '<div>';
     foreach($tab_acteur as $detailActeur) {
         $idActeur = $detailActeur->id;
         
@@ -56,9 +56,11 @@ function showDetailActeur ($acteur) {
 EOD;
             echo $str;
             if($photo) {
-                echo '<img src="https://image.tmdb.org/t/p/w154'.$photo.'" id="photoActeur">';
+                echo '<a href="bio?id='.$idActeur.'"><img src="https://image.tmdb.org/t/p/w154'.$photo.'" id="photoActeur">';
+                echo '<p>'.$nomActeur.'</p></a>';
             } else {
-                echo '<img src="../../public/img/LogoTV800.png" style="width: 92px;" id="photoActeur">';
+                echo '<a href="bio?id='.$idActeur.'"><img src="../../public/img/LogoTV800.png" style="width: 92px;" id="photoActeur">';
+                echo '<p>'.$nomActeur.'</p></a>';
             }
             $str=<<<EOD
             </div>
@@ -66,34 +68,20 @@ EOD;
             <h4><a href="bio?id=$idActeur">$nomActeur</a></h4>
             <p>Né(e) le $dateNaissance à $lieuBirth</p>
 EOD;
-            echo $str;
+            // echo $str;
             
-            if($dateDeces !== '') {
-                echo '<p>Date de décès : '.$dateDeces.'</p>';
-            } 
-            // if($bio) {
-            //     echo '<p>Bio : '.$bio.'</p>';
-            // } else {
-            //     $urlCiActeurEnglish = file_get_contents('https://api.themoviedb.org/3/person/'.$idActeur.'?api_key=c595147bf4af143ab2df16843f9487bf&page=1');
-
-            //     $tab_ci_acteurEnglish = json_decode($urlCiActeurEnglish);
-
-            //     $biography = $tab_ci_acteurEnglish->biography;
-
-            //     if($biography) {
-            //         echo '<p>Bio (En anglais) : '.$biography.'</p>';
-            //     } else {
-            //         echo '<p>Bio : Pas d\'information disponible</p>';
-            //     }
-            // }
-            echo '<hr>';
+            // if($dateDeces !== '') {
+            //     echo '<p>Date de décès : '.$dateDeces.'</p>';
+            // } 
+            
             echo '</div>';
+            // echo '<hr>';
            
             
         }
         
     } // fin foreach
-    echo '</div>';
+    // echo '</div>';
     echo '</div>'; //fin row
 }
 
