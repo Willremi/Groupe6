@@ -85,6 +85,14 @@ $tab_dist_acteur = json_decode($urlDist);
 $tab_role = $tab_dist_acteur->cast;
 $tab_real = $tab_dist_acteur->crew;
 
+// Tri json par date décroissant
+uasort($tab_role, function($date1, $date2){
+  return strtotime($date2->first_air_date) > strtotime($date1->first_air_date);
+});
+uasort($tab_real, function($date1, $date2){
+  return strtotime($date2->first_air_date) > strtotime($date1->first_air_date);
+});
+
 if($tab_real === []) {
   echo '<div class="offset-md-1 col-md-10">';
 } else if($tab_real) {
@@ -114,9 +122,9 @@ EOD;
     $date = $role->first_air_date;
     $date_explode = explode('-', $date);
     $dateFr = (int)$date_explode[0];
+    // var_dump($dateFr);
     
-    
-   if($role->name !== 'The Emmy Awards') {
+    if($role->name !== 'The Emmy Awards') {
     echo '<td>'.$dateFr.'</td>';
     echo '<td><a href="serie?id='.$role->id.'">'.$role->name.'</a></td>';
     if($role->character === 'himself' || $role->character === 'Himself') {
