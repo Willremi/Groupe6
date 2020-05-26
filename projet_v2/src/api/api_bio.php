@@ -77,8 +77,22 @@ if($bio) {
  echo '</div>'; // Fin row
  echo '<hr>';
  echo '<div class="row">';
+
+// API sur interprétations et réalisations de l'acteur
+$urlDist = file_get_contents('https://api.themoviedb.org/3/person/'.$idActeur.'/tv_credits?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR&page=1');
+
+$tab_dist_acteur = json_decode($urlDist);
+$tab_role = $tab_dist_acteur->cast;
+$tab_real = $tab_dist_acteur->crew;
+
+if($tab_real === []) {
+  echo '<div class="offset-md-1 col-md-10">';
+} else if($tab_real) {
+  echo '<div class="col-md-6">';
+}
+
 $str= <<<EOD
-  <div class="col-md-6">
+  <!-- <div class="col-md-6"> -->
   <h3>Interprétations</h3>
   <table class="table-respo">
     <thead>
@@ -92,14 +106,7 @@ $str= <<<EOD
 EOD;
   echo $str;
 
-  // API sur interprétations et réalisations de l'acteur
-  $urlDist = file_get_contents('https://api.themoviedb.org/3/person/'.$idActeur.'/tv_credits?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR&page=1');
-
-  $tab_dist_acteur = json_decode($urlDist);
-  $tab_role = $tab_dist_acteur->cast;
-  $tab_real = $tab_dist_acteur->crew;
-
-  // $tabAnnee = array_column($tab_role, 'first_air_date');
+ // $tabAnnee = array_column($tab_role, 'first_air_date');
   // arsort($tabAnnee);
   
   foreach($tab_role as $role) {
@@ -122,8 +129,74 @@ EOD;
    echo '</tr>';
   }
  
-  echo '</tbody>';
-  echo '</table>';
-  echo '</div>'; // Fin col-md-6
- echo '</div>'; // Fin row
+ $str =<<<EOD
+  </tbody>
+  </table>
+  </div> <!-- Fin col-md-6 -->
+  
+EOD;
+  echo $str;
+  if($tab_real) {
+    $str=<<<EOD
+    <div class="col-md-6">
+    <h3>Réalisations</h3>
+    <table class="table-respo">
+    <thead>
+      <tr>
+        <th scope="col">Années</th>
+        <th scope="col">Séries</th>
+        <th scope="col">Métiers</th>
+      </tr>
+    </thead>
+    <tbody>
+EOD;
+    echo $str;
+
+    foreach($tab_real as $real) {
+      echo '<tr>';
+      $dateReal = $real->first_air_date;
+      $dateReal_explode = explode('-', $dateReal);
+      $dateRealFr = (int)$dateReal_explode[0];
+      echo '<td>'.$dateRealFr.'</td>';
+      echo '<td><a href="serie?id='.$real->id.'">'.$real->name.'</a></td>';
+
+      $metier = $real->job;
+
+      switch ($metier) {
+        case 'Director':
+          $metier = 'Realisateur';
+          break;
+        case 'Producer': 
+          $metier = 'Producteur';
+          break;
+        case 'Executive Producer': 
+          $metier = 'Producteur exécutif';
+          break;
+        case 'Writer': 
+          $metier = 'Auteur';
+          break;
+        default:
+          $metier;
+          break;
+      }
+
+      echo '<td>'.$metier.'</td>';
+
+      echo '</tr>';
+    }
+
+
+    // echo '</body>';
+    // echo '</table>';
+    // echo '</div>';
+    $str=<<<EOD
+    </body>
+    </table>
+    </div>
+EOD;
+    echo $str;
+  }
+
+
+echo '</div>'; // Fin row
 }
