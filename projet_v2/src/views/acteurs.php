@@ -1,6 +1,6 @@
 <div class="container">
     <fieldset>
-        <legend>Rechercher un acteur: </legend>
+        <legend>Rechercher un acteur ou une actrice : </legend>
         <div class="">
             <form action="" class="mt-2" method="POST" id="formSearchAct">
             <div class="form-row">

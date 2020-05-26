@@ -124,7 +124,7 @@ EOD;
     $dateFr = (int)$date_explode[0];
     // var_dump($dateFr);
     
-    if($role->name !== 'The Emmy Awards') {
+    if($dateFr > 1950) {
     echo '<td>'.$dateFr.'</td>';
     echo '<td><a href="serie?id='.$role->id.'">'.$role->name.'</a></td>';
     if($role->character === 'himself' || $role->character === 'Himself') {
