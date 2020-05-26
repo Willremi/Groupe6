@@ -56,10 +56,10 @@ function showDetailActeur ($acteur) {
 EOD;
             echo $str;
             if($photo) {
-                echo '<a href="bio?id='.$idActeur.'" target="_blank"><img src="https://image.tmdb.org/t/p/w154'.$photo.'" id="photoActeur">';
+                echo '<a href="bio?id='.$idActeur.'" target="_blank"><img src="https://image.tmdb.org/t/p/w154'.$photo.'" id="photoActeur" class="rounded">';
                 echo '<p>'.$nomActeur.'</p></a>';
             } else {
-                echo '<a href="bio?id='.$idActeur.'" target="_blank"><img src="../../public/img/LogoTV800.png" style="width: 92px;" id="photoActeur">';
+                echo '<a href="bio?id='.$idActeur.'" target="_blank"><img src="../../public/img/LogoTV800.png" style="width: 92px;" id="photoActeur" class="rounded">';
                 echo '<p>'.$nomActeur.'</p></a>';
             }
             

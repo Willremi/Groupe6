@@ -76,7 +76,6 @@ if($bio) {
   echo '</div>'; // fin col-md-6
  echo '</div>'; // Fin row
  echo '<hr>';
- echo '<div class="row">';
 
 // API sur interprétations et réalisations de l'acteur
 $urlDist = file_get_contents('https://api.themoviedb.org/3/person/'.$idActeur.'/tv_credits?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR&page=1');
@@ -84,6 +83,16 @@ $urlDist = file_get_contents('https://api.themoviedb.org/3/person/'.$idActeur.'/
 $tab_dist_acteur = json_decode($urlDist);
 $tab_role = $tab_dist_acteur->cast;
 $tab_real = $tab_dist_acteur->crew;
+
+// echo '<div class="row">';
+//   foreach ($tab_role as $img) {
+//     $photo = $img->poster_path;
+//     // var_dump($photo);
+//     echo '<div class="col-md-2">';
+//     echo '<img src="https://image.tmdb.org/t/p/w154'.$photo.'" id="photoActeur" class="rounded">';
+//     echo '</div><br>';
+//   }
+// echo '</div>';
 
 // Tri json par date décroissant
 uasort($tab_role, function($date1, $date2){
@@ -93,6 +102,9 @@ uasort($tab_real, function($date1, $date2){
   return strtotime($date2->first_air_date) > strtotime($date1->first_air_date);
 });
 
+
+
+echo '<div class="row">';
 if($tab_real === []) {
   echo '<div class="offset-md-1 col-md-10">';
 } else if($tab_real) {
