@@ -16,7 +16,8 @@
         <h1>Artistes populaires</h1>
         <?php 
         require 'src/api/api_pop_acteur.php';
-        showPopAct();
+        $page = 1;
+        showPopAct($page);
         ?>
     </div>
     <div class="resultActeur"></div>
