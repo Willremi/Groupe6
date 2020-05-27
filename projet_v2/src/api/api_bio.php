@@ -125,8 +125,7 @@ EOD;
     $date_explode = explode('-', $date);
     $dateFr = (int)$date_explode[0];
     // var_dump($dateFr);
-    
-    if($dateFr > 1950) {
+    if($dateFr > $dateBirthExplode[0]) {
     echo '<td>'.$dateFr.'</td>';
     echo '<td><a href="serie?id='.$role->id.'">'.$role->name.'</a></td>';
     if($role->character === 'himself' || $role->character === 'Himself') {
@@ -167,7 +166,11 @@ EOD;
       $dateReal = $real->first_air_date;
       $dateReal_explode = explode('-', $dateReal);
       $dateRealFr = (int)$dateReal_explode[0];
-      echo '<td>'.$dateRealFr.'</td>';
+
+      if($dateRealFr > $dateBirthExplode[0]) {
+        echo '<td>'.$dateRealFr.'</td>';
+      }
+      
       echo '<td><a href="serie?id='.$real->id.'">'.$real->name.'</a></td>';
 
       $metier = $real->job;

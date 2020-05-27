@@ -1,7 +1,6 @@
 <?php
 function showPopAct() {
-    $url = file_get_contents('https://api.themoviedb.org/3/person/popular?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR&page=1
-    ');
+    $url = file_get_contents('https://api.themoviedb.org/3/person/popular?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR&page=1');
 
     $tabPop = json_decode($url);
     $tab_pop_list = $tabPop->results;

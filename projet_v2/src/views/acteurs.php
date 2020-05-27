@@ -13,6 +13,7 @@
         </div>
     </fieldset>
     <div class="populaireActeur">
+        <h1>Artistes populaires</h1>
         <?php 
         require 'src/api/api_pop_acteur.php';
         showPopAct();
