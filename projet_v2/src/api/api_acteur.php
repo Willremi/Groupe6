@@ -26,28 +26,10 @@ function showDetailActeur ($acteur) {
         // Nom de l'acteur
         $nomActeur = $tab_ci_acteur->name;
 
-        // Date de naissance
-        $dateBirth = $tab_ci_acteur->birthday;
-        $dateBirthExplode = explode('-',$dateBirth);
-        $dateBirthTab = array_reverse($dateBirthExplode);
-        $dateNaissance = implode('/', $dateBirthTab); 
-        
-        // Lieu de naissance
-        $lieuBirth = $tab_ci_acteur->place_of_birth;
-
-        // Date de décès
-        $dateDeath = $tab_ci_acteur->deathday;
-        $dateDeathExplode = explode('-',$dateDeath);
-        $dateDeathTab = array_reverse($dateDeathExplode);
-        $dateDeces = implode('/', $dateDeathTab); 
-
-        // Bio 
-        $bio = $tab_ci_acteur->biography;
-
         // Photo de l'acteur
         $photo = $tab_ci_acteur->profile_path;
 
-        if($nomActeur && $dateNaissance && $lieuBirth) {
+        if($nomActeur) {
             
             $str=<<<EOD
             

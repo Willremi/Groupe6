@@ -12,6 +12,12 @@
             </form>
         </div>
     </fieldset>
+    <div class="populaireActeur">
+        <?php 
+        require 'src/api/api_pop_acteur.php';
+        showPopAct();
+        ?>
+    </div>
     <div class="resultActeur"></div>
         
     

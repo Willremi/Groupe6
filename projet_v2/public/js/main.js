@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     $('#formSearchAct').submit(
         function(e) {
+            $('.populaireActeur').hide();
             e.preventDefault();
             var $form = $(this);
             $('.resultActeur').html('<div class="loading"><img src="https://i.gifer.com/GNvR.gif" alt="En chargement..."></div>');

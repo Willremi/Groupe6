@@ -99,7 +99,7 @@ iframe {
 
 #photoActeur {
   width: 100px;
-  height: auto;
+  height: 150px;
 }
 
 @media only screen and (max-width: 780px) {
