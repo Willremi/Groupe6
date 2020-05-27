@@ -18,25 +18,17 @@
         require 'src/api/api_pop_acteur.php';
         // $page = 1;
         showPopAct($page);
-        // echo '<div class="offset-md-4">';
-       
-        // echo '<i class="fas fa-angle-left">Précédent</i>';
-        // echo '<span class="fas">/</span>';
-        // echo '<pan class="fas">Suivant<i class="fas fa-angle-right"></i><span>';
-        // echo '</div>';
-
-
-        
         
         $str=<<<EOD
         <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
-        EOD;
+EOD;
         echo $str;
         
         if(isset($_GET['page']) && !empty($_GET['page'])){
             $currentPage = (int) strip_tags($_GET['page']);
-        }else{
+        } 
+        else{
             $currentPage = 1;
         }
         $pages = 500;
@@ -50,7 +42,13 @@
                 </li>
             </ul>
         </nav>
+        <?php 
+        if($currentPage > $pages) {
+            echo '<meta http-equiv="refresh" content="0;URL=?page='.$pages.'">';
+        }
         
+        ?>
+    
     </div>
     <div class="resultActeur"></div>
         
