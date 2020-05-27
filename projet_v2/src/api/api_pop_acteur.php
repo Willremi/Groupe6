@@ -17,7 +17,9 @@ function showPopAct() {
             if($photo) {
                 echo '<div class="offset-md-1 col-md-2">';
                 echo '<a href="bio?id='.$idActeur.'" target="_blank"><img src="https://image.tmdb.org/t/p/w154'.$photo.'" id="photoActeur" class="rounded">';
-                echo '<p></p></a>';
+                echo '<br><br></a>';
+                
+
                 echo '</div>';
             } 
             
