@@ -102,10 +102,6 @@ iframe {
   height: 150px;
 }
 
-.fas {
-  font-size: 36px;
-}
-
 @media only screen and (max-width: 780px) {
   table, thead, tbody, tr, th, td {
     display: block;
