@@ -84,16 +84,6 @@ $tab_dist_acteur = json_decode($urlDist);
 $tab_role = $tab_dist_acteur->cast;
 $tab_real = $tab_dist_acteur->crew;
 
-// echo '<div class="row">';
-//   foreach ($tab_role as $img) {
-//     $photo = $img->poster_path;
-//     // var_dump($photo);
-//     echo '<div class="col-md-2">';
-//     echo '<img src="https://image.tmdb.org/t/p/w154'.$photo.'" id="photoActeur" class="rounded">';
-//     echo '</div><br>';
-//   }
-// echo '</div>';
-
 // Tri json par date décroissant
 uasort($tab_role, function($date1, $date2){
   return strtotime($date2->first_air_date) > strtotime($date1->first_air_date);
