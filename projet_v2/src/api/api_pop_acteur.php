@@ -1,4 +1,6 @@
 <?php
+$page = $_GET['page'];
+
 function showPopAct($page) {
     $url = file_get_contents('https://api.themoviedb.org/3/person/popular?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR&page='.$page);
 
