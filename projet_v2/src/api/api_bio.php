@@ -53,10 +53,16 @@ $str = <<<EOD
   <div class="col-md-6">
   <p>Né(e) le $dateNaissance à $lieuBirth</p>
 EOD;
-echo $str;
+if($dateNaissance) {
+  echo $str;
+} else {
+  echo '<div class="col-md-6">';
+}
+
 if($dateDeces !== '') {
   echo '<p>Mort(e) le '.$dateDeces.'</p>';
 } 
+
 if($bio) {
   echo '<p>Bio : '.$bio.'</p>';
 } else {
@@ -131,6 +137,8 @@ EOD;
     if($role->character === 'himself' || $role->character === 'Himself') {
       echo '<td>Lui-même</td>';
 
+    } elseif ($role->character === 'Herself') {
+      echo '<td>Elle-même</td>';
     } else {
       echo '<td>'.$role->character.'</td>';
     }
@@ -166,11 +174,15 @@ EOD;
       $dateReal = $real->first_air_date;
       $dateReal_explode = explode('-', $dateReal);
       $dateRealFr = (int)$dateReal_explode[0];
-
-      if($dateRealFr > $dateBirthExplode[0]) {
-        echo '<td>'.$dateRealFr.'</td>';
-      }
       
+      if($dateRealFr) {
+        if($dateRealFr > $dateBirthExplode[0]) {
+          echo '<td>'.$dateRealFr.'</td>';
+        }
+      } else {
+        echo '<td>/</td>';
+      }
+
       echo '<td><a href="serie?id='.$real->id.'">'.$real->name.'</a></td>';
 
       $metier = $real->job;
