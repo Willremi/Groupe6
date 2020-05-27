@@ -103,12 +103,12 @@ uasort($tab_real, function($date1, $date2){
 echo '<div class="row">';
 if($tab_real === []) {
   echo '<div class="offset-md-1 col-md-10">';
-} else if($tab_real) {
+} else if($tab_real && $tab_role) {
   echo '<div class="col-md-6">';
 }
 
 $str= <<<EOD
-  <!-- <div class="col-md-6"> -->
+  
   <h3>Interprétations</h3>
   <table class="table-respo">
     <thead>
@@ -120,42 +120,48 @@ $str= <<<EOD
     </thead>
     <tbody>
 EOD;
-  echo $str;
+if ($tab_role) {
+    echo $str;
 
- // $tabAnnee = array_column($tab_role, 'first_air_date');
-  // arsort($tabAnnee);
+    // $tabAnnee = array_column($tab_role, 'first_air_date');
+    // arsort($tabAnnee);
   
-  foreach($tab_role as $role) {
-    echo '<tr>';
-    $date = $role->first_air_date;
-    $date_explode = explode('-', $date);
-    $dateFr = (int)$date_explode[0];
-    // var_dump($dateFr);
-    if($dateFr > $dateBirthExplode[0]) {
-    echo '<td>'.$dateFr.'</td>';
-    echo '<td><a href="serie?id='.$role->id.'">'.$role->name.'</a></td>';
-    if($role->character === 'himself' || $role->character === 'Himself') {
-      echo '<td>Lui-même</td>';
-
-    } elseif ($role->character === 'Herself') {
-      echo '<td>Elle-même</td>';
-    } else {
-      echo '<td>'.$role->character.'</td>';
+    foreach ($tab_role as $role) {
+        echo '<tr>';
+        $date = $role->first_air_date;
+        $date_explode = explode('-', $date);
+        $dateFr = (int)$date_explode[0];
+        // var_dump($dateFr);
+        if ($dateFr > $dateBirthExplode[0]) {
+            echo '<td>'.$dateFr.'</td>';
+            echo '<td><a href="serie?id='.$role->id.'">'.$role->name.'</a></td>';
+            if ($role->character === 'himself' || $role->character === 'Himself') {
+                echo '<td>Lui-même</td>';
+            } elseif ($role->character === 'Herself') {
+                echo '<td>Elle-même</td>';
+            } else {
+                echo '<td>'.$role->character.'</td>';
+            }
+        }
+        echo '</tr>';
     }
-   }
-   echo '</tr>';
-  }
  
- $str =<<<EOD
+    $str =<<<EOD
   </tbody>
   </table>
   </div> <!-- Fin col-md-6 -->
   
 EOD;
-  echo $str;
+    echo $str;
+}
+  if($tab_role === []) {
+    echo '<div class="offset-md-1 col-md-10">';
+  } else if($tab_role) {
+    echo '<div class="col-md-6">';
+  }
   if($tab_real) {
     $str=<<<EOD
-    <div class="col-md-6">
+    
     <h3>Réalisations</h3>
     <table class="table-respo">
     <thead>
