@@ -18,11 +18,11 @@
         require 'src/api/api_pop_acteur.php';
         $page = 1;
         showPopAct($page);
-        echo '<div class="offset-md-4">';
-        echo '<i class="fas fa-angle-left">Précédent</i>';
-        echo '<span class="fas">/</span>';
-        echo '<pan class="fas">Suivant<i class="fas fa-angle-right"></i><span>';
-        echo '</div>';
+        // echo '<div class="offset-md-4">';
+        // echo '<i class="fas fa-angle-left">Précédent</i>';
+        // echo '<span class="fas">/</span>';
+        // echo '<pan class="fas">Suivant<i class="fas fa-angle-right"></i><span>';
+        // echo '</div>';
         ?>
     </div>
     <div class="resultActeur"></div>
