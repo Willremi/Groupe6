@@ -110,7 +110,7 @@ echo $str;
         echo '<tr>';
         echo '<td>'.$episode_number.'</td>';
         echo '<td>'.$titre_episode.'</td>';
-        echo '<td>'.$resume_episode.'</td>';
+        echo '<td><p>'.$resume_episode.'</p></td>';
         
     }
     $str = <<<EOD
