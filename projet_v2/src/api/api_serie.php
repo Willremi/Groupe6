@@ -201,6 +201,7 @@ echo $str;
     foreach($tab_saison as $saison) {
         $saisons = $saison->name;
         $nb_episode = $saison->episode_count;
+        $saison_num = $saison->season_number;
 
         echo '<tr><td>'.$saisons.'</td>';
         echo '<td>'.$nb_episode.'</td>';
