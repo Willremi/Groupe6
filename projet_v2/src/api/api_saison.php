@@ -15,9 +15,39 @@ function showEpisodeBySaison($idSerie,$saison_number) {
    // Nom de la série
    $tab_nom = $tab_select_serie->name;
    
-   $str=<<<EOD
-   <h1>$tab_nom</h1>
-EOD;
-    echo $str;
+   // Saison de la série
+   $tab_saison = $tab_select_serie->seasons;
+     
+    $saison = array_column($tab_saison, 'season_number');
+
    
+   $str=<<<EOD
+   <div class="row">
+   <div class="col-12">
+   <h1>$tab_nom</h1>
+   <hr>
+   </div>
+   </div>
+   <div class="row justify-content-around">
+   <div class="col-md-4">
+   <p><strong>Nombre d'épisodes : </strong></p>
+        
+EOD;
+        $str;
+
+        echo $str;
+       
+    
+    echo '</div>'; // fin col-md-4
+   echo '</div>'; // fin row justify-content-around
 }
+
+?>
+<!-- <div class="row justify-content-around">
+    <div class="col-md-4">
+        One of two columns
+    </div>
+    <div class="col-md-4">
+      One of two columns
+    </div> 
+</div> -->

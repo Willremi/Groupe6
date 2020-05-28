@@ -25,9 +25,12 @@ function showDataBySerie($idSerie)
 
     // Nom de la série
     $tab_nom = $tab_select_serie->name;
-    echo '<h1>'.$tab_nom.'</h1>';
+    // echo '<h1>'.$tab_nom.'</h1>';
     
     $str = <<<EOD
+    <div class="row">
+    <div class="col-12">
+    <h1>$tab_nom</h1>
 <hr>
 </div>
     <div class="offset-md-2 col-sm-3">

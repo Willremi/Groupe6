@@ -8,10 +8,8 @@ $idSerie = $_GET['id'];
 ?>
 
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-12">
-              
-      <?php 
+  
+    <?php 
              if($idSerie !== null) {
               // showDataBySerie($titreSerie);
               showDataBySerie($idSerie);
