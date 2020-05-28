@@ -203,7 +203,7 @@ echo $str;
         $nb_episode = $saison->episode_count;
         $saison_num = $saison->season_number;
 
-        echo '<tr><td>'.$saisons.'</td>';
+        echo '<tr><td><a href="saison?idSerie='.$idSerie.'&num='.$saison_num.'" target="_blank">'.$saisons.'</a></td>';
         echo '<td>'.$nb_episode.'</td>';
 
         $date = $saison->air_date;
