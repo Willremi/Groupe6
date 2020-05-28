@@ -76,7 +76,7 @@ EOD;
         foreach ($tab_Prod as $producteur) {
             // dump($producteur->name);
             $str = <<<EOD
-            <li>$producteur->name</li>
+            <li><a href="bio?id=$producteur->id" target="_blank">$producteur->name</a></li>
             
 EOD;
             echo $str;
@@ -199,8 +199,11 @@ echo $str;
     
     $tab_saison = $tab_select_serie->seasons;
     foreach($tab_saison as $saison) {
-        echo '<tr><td>'.$saison->name.'</td>';
-        echo '<td>'.$saison->episode_count.'</td>';
+        $saisons = $saison->name;
+        $nb_episode = $saison->episode_count;
+
+        echo '<tr><td>'.$saisons.'</td>';
+        echo '<td>'.$nb_episode.'</td>';
 
         $date = $saison->air_date;
         $date_explode = explode('-', $date);
