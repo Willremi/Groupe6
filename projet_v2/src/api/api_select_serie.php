@@ -55,13 +55,13 @@ function showSelectSerie($idList) {
         foreach ($tab_credit as $key => $cast) {
             $acteur = $cast->name;
             
-            echo '<td><a href="bio?id='.$cast->id.'">'.$acteur.'</a></td>';
+            echo '<td><a href="bio?id='.$cast->id.'" target="_blank">'.$acteur.'</a></td>';
             
         }
 
         foreach($tab_credit_real as $key => $crew) {
             $real = $crew->name;
-            echo '<td>'.$real.'</td>';
+            echo '<td><a href="bio?id='.$crew->id.'" target="_blank">'.$real.'</a></td>';
         }
 
         // echo '<td>'.$serie->name.'</td>';
