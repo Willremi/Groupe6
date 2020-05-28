@@ -53,7 +53,7 @@ $str = <<<EOD
   <div class="col-md-6">
   <p>Né(e) le $dateNaissance à $lieuBirth</p>
 EOD;
-if($dateNaissance) {
+if($dateNaissance && $lieuBirth) {
   echo $str;
 } else {
   echo '<div class="col-md-6">';
