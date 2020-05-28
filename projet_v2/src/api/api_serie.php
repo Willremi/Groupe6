@@ -185,7 +185,7 @@ EOD;
     </div>
     <div class="col-sm-12 col-lg-12">
     <hr>
-    <h3>Achat de vidéos</h3>
+    <h3>Liste de saisons</h3>
     <table class="table-respo">
         <thead>
             <tr>

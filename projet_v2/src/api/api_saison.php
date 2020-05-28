@@ -7,6 +7,7 @@
  * @return void
  */
 function showEpisodeBySaison($idSerie,$saison_number) {
+    $saison_number = (int)$saison_number;
    // API pour récupérer la description de la série
    $urlSerie = file_get_contents("https://api.themoviedb.org/3/tv/".$idSerie."?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR&page=1");
 
@@ -35,7 +36,7 @@ EOD;
 
         echo $str;
     foreach($tab_saison as $saison) {
-        $saison_number = (int)$saison_number;
+        
         $nbreSaison = $saison->season_number;
         if($nbreSaison === $saison_number) {
             echo '<div class="offset-md-1 col-md-3">';
@@ -61,6 +62,66 @@ EOD;
    echo '</div>'; // fin row justify-content-around
    echo '<hr>';
 
+    // API pour diffuser les épisodes par saison
+    $urlSaison = file_get_contents('https://api.themoviedb.org/3/tv/'.$idSerie.'/season/'.$saison_number.'?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR');
+    $tab_episode_saison = json_decode($urlSaison);
+    $tab_list_episode = $tab_episode_saison->episodes;
 
+    echo '<div class="row justify-content-center">';
+    echo '<div>';
+    echo '<img src="https://image.tmdb.org/t/p/w185/'.$tab_episode_saison->poster_path.'">';
+    echo '</div>';
+    echo '</div>'; // fin row justify-content-center
+    echo '<br>';
+    // echo '<div class="row justify-content-center">';
+    // echo '<details>';
+    // echo '<summary>Episodes</summary>';
+    // echo '<ul>';
+    // foreach ($tab_list_episode as $listEpisode) {
+    //    echo '<li><a href="#'.$listEpisode->episode_number.'">'.$listEpisode->name.'</a></li>'; 
+    // }
+    // echo '</ul>';
+    // echo '</details>';
+    // echo '</div>';
+    $str = <<<EOD
+    <br>
+    <div class="col-sm-12 col-lg-12">
+    <h3>Liste d'épisode</h3>
+    <hr>
+    
+    <table class="table-respo">
+        <thead>
+            <tr>
+                <th scope="col">Episode</th>
+                <th scope="col">Titre</th>
+                <th scope="col">Résumé</th>
+            </tr>
+        </thead>
+        <tbody>
+        
+EOD;
+
+echo $str;
+
+    foreach($tab_list_episode as $episode) {
+        $episode_number = $episode->episode_number;
+        $titre_episode = $episode->name;
+        $resume_episode = $episode->overview;
+        echo '<tr>';
+        echo '<td>'.$episode_number.'</td>';
+        echo '<td>'.$titre_episode.'</td>';
+        echo '<td>'.$resume_episode.'</td>';
+        
+    }
+    $str = <<<EOD
+
+    </tr>
+    </tbody>
+    </table>
+   
+EOD;
+
+echo $str;
+    echo '</div>'; // fin row
 }
 
