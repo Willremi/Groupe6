@@ -66,10 +66,15 @@ EOD;
     $urlSaison = file_get_contents('https://api.themoviedb.org/3/tv/'.$idSerie.'/season/'.$saison_number.'?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR');
     $tab_episode_saison = json_decode($urlSaison);
     $tab_list_episode = $tab_episode_saison->episodes;
-
+    $photo = $tab_episode_saison->poster_path;
     echo '<div class="row justify-content-center">';
     echo '<div>';
-    echo '<img src="https://image.tmdb.org/t/p/w185/'.$tab_episode_saison->poster_path.'">';
+    if($photo) {
+        echo '<img src="https://image.tmdb.org/t/p/w185/'.$photo.'">';
+
+    } else {
+        echo '<img src="../../public/img/LogoTV800.png" style="width: 300px;" class="rounded">';
+    }
     echo '</div>';
     echo '</div>'; // fin row justify-content-center
     echo '<br>';
@@ -84,11 +89,37 @@ EOD;
     // echo '</details>';
     // echo '</div>';
     $str = <<<EOD
-    <br>
+    
     <div class="col-sm-12 col-lg-12">
     <h3>Liste d'épisode</h3>
-    <hr>
-    
+    <br>
+EOD;
+        echo $str;
+        if(isset($saison_number) && !empty($saison_number)){
+            $currentPage = (int) strip_tags($saison_number);
+        } 
+        else{
+            $currentPage = 1;
+        }
+
+        $pages = (int)$tab_select_serie->number_of_seasons;
+        
+?>
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item <?= ($currentPage == 1) ? 'd-none' : '' ?>">
+            <a class="page-link" href="?idSerie=<?= $idSerie ?>&num=<?= $currentPage - 1 ?>">Saison précédente</a>
+        </li>
+        <li class="page-item"><p class="page-link"><?= $tab_episode_saison->name ?></p></li>
+        <li class="page-item <?= ($currentPage == $pages) ? 'd-none' : '' ?>">
+            <a class="page-link" href="?idSerie=<?= $idSerie ?>&num=<?= $currentPage + 1 ?>">Saison suivante</a>
+        </li>
+    </ul>
+</nav>
+
+<?php
+
+        $str = <<<EOD
     <table class="table-respo">
         <thead>
             <tr>
@@ -118,10 +149,24 @@ echo $str;
     </tr>
     </tbody>
     </table>
-   
+   <br>
 EOD;
 
 echo $str;
+?>
+    <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item <?= ($currentPage == 1) ? 'd-none' : '' ?>">
+            <a class="page-link" href="?idSerie=<?= $idSerie ?>&num=<?= $currentPage - 1 ?>">Saison précédente</a>
+        </li>
+        <li class="page-item <?= ($currentPage == 1) ? 'd-none' : '' ?>"><p class="page-link"><?= $tab_episode_saison->name ?></p></li>
+        <li class="page-item <?= ($currentPage == $pages) ? 'd-none' : '' ?>">
+            <a class="page-link" href="?idSerie=<?= $idSerie ?>&num=<?= $currentPage + 1 ?>">Saison suivante</a>
+        </li>
+    </ul>
+</nav>
+<?php
+
     echo '</div>'; // fin row
 }
 
