@@ -23,7 +23,7 @@ function showEpisodeBySaison($idSerie,$saison_number) {
     $str=<<<EOD
    <div class="row">
    <div class="col-12">
-   <h1>$tab_nom</h1>
+   <h1><a href="serie?id=$idSerie">$tab_nom</a></h1>
    <hr>
    </div>
    </div>
