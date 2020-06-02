@@ -70,7 +70,7 @@ EOD;
     echo '<div class="row justify-content-center">';
     echo '<div>';
     if($photo) {
-        echo '<img src="https://image.tmdb.org/t/p/w185/'.$photo.'">';
+        echo '<img src="https://image.tmdb.org/t/p/w185'.$photo.'">';
 
     } else {
         echo '<img src="../../public/img/LogoTV800.png" style="width: 300px;" class="rounded">';

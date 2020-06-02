@@ -89,21 +89,22 @@ EOD;
  </div> <!-- fin row -->
 <!-- <hr> -->
 <div class="row">
+    
 <?php
 $tab_real = $tab_episode->crew;
- foreach ($tab_real as $real) {
-     $nomReal = $real->name;
-     $metierReal = $real->job;
-    //  var_dump($metierReal);
-     if($nomReal && $metierReal) {
-        if($metierReal === "Director") {
-            echo '<div class="col-md-3"><strong>Réalisé(e) par </strong><a href="bio?id='.$real->id.'" target="_blank">'.$nomReal.'</a></div>';
-         }
-         if ($metierReal === "Writer") {
-            echo '<div class="offset-md-2 col-md-3"><strong>Ecrit(e) par </strong><a href="bio?id='.$real->id.'" target="_blank">'.$nomReal.'</a></div>';
-         }
-     }
-    }
+//  foreach ($tab_real as $real) {
+//      $nomReal = $real->name;
+//      $metierReal = $real->job;
+//     //  var_dump($metierReal);
+//      if($nomReal && $metierReal) {
+//         if($metierReal === "Director") {
+//             echo '<div class="col-md-3"><strong>Réalisé(e) par </strong><a href="bio?id='.$real->id.'" target="_blank">'.$nomReal.'</a></div>';
+//          }
+//          if ($metierReal === "Writer") {
+//             echo '<div class="col-md-3"><strong>Ecrit(e) par </strong><a href="bio?id='.$real->id.'" target="_blank">'.$nomReal.'</a></div>';
+//          }
+//      }
+//     }
     echo '<div class="col-md-2"><strong>Diffusé le </strong>'.$dateFr.'</div>';
     echo '</div>';
     echo '<hr>';
@@ -113,8 +114,9 @@ $tab_real = $tab_episode->crew;
         echo '<h2>Résumé</h2>';
         echo '<p>'.$tab_episode->overview.'</p>';
         echo '</div>';
-        
-        
+        echo '<div class="col-md-4">';
+        echo '<img src="https://image.tmdb.org/t/p/w300'.$tab_episode->still_path.'" class="rounded">';
+        echo '</div>';
     }
     
     // var_dump($tab_episode->overview);
