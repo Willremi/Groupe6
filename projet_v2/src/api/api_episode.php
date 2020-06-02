@@ -40,7 +40,6 @@ EOD;
 
     $tab_episode = json_decode($urlEpisode);
 
-
     foreach ($tab_saison as $saison) {
         $saisonNum = $saison->season_number;
         if ($saisonNum === $saison_number) {
@@ -65,14 +64,12 @@ EOD;
 <nav aria-label="Page navigation example">
         <ul class="pagination">
             <li class="page-item <?= ($currentPage === 1) ? 'd-none' : '' ?>">
-                <a class="page-link" href="?<?= $idSerie ?>/S<?= $saison_number ?>/E<?= $currentPage - 1 ?>" id="episode">Episode précédente</a>
+                <a class="page-link" href="?<?= $idSerie ?>/S<?= $saison_number ?>/E<?= $currentPage - 1 ?>" id="episode">Episode précédent</a>
             </li>
 	</ul>
 	</nav>
 </div>
-<!-- <div class="col-md-1">
-    <p><strong>S<?= $tab_episode->season_number ?>E<?= $tab_episode->episode_number ?></strong></p>
-</div> -->
+
 <div class="col-md-4">
     <p><strong>S<?= $tab_episode->season_number ?>E<?= $tab_episode->episode_number ?> : <?= $tab_episode->name ?></strong></p>
 </div>
@@ -83,7 +80,7 @@ EOD;
 <nav aria-label="Page navigation example">
     <ul class="pagination">  
         <li class="page-item <?= ($currentPage == $pages) ? 'd-none' : '' ?>">
-        <a class="page-link" href="?<?= $idSerie ?>/S<?= $saison_number ?>/E<?= $currentPage + 1 ?>" id="episode">Episode suivante</a>
+        <a class="page-link" href="?<?= $idSerie ?>/S<?= $saison_number ?>/E<?= $currentPage + 1 ?>" id="episode">Episode suivant</a>
         </li>
     </ul>
 </nav>
@@ -91,5 +88,22 @@ EOD;
 </div>
  </div> <!-- fin row -->
 <hr>
+<div class="row">
 <?php
+$tab_real = $tab_episode->crew;
+ foreach ($tab_real as $real) {
+     $nomReal = $real->name;
+     $metierReal = $real->job;
+    //  var_dump($metierReal);
+     if($nomReal && $metierReal) {
+        if($metierReal === "Director") {
+            echo '<div class="offset-md-2 col-md-3"><strong>Réalisé(e) par </strong>'.$nomReal.'</div>';
+         }
+         if ($metierReal === "Writer") {
+            echo '<div class="col-md-3"><strong>Ecrit(e) par </strong>'.$nomReal.'</div>';
+         }
+     }
+    }
+    echo '<div class="col-md-2"><strong>Diffusé le </strong>'.$dateFr.'</div>';
+
 }
