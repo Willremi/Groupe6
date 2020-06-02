@@ -139,8 +139,8 @@ echo $str;
         $titre_episode = $episode->name;
         $resume_episode = $episode->overview;
         echo '<tr>';
-        echo '<td>'.$episode_number.'</td>';
-        echo '<td>'.$titre_episode.'</td>';
+        echo '<td><a href="episode?idSerie='.$idSerie.'&episode='.$episode_number.'" target="_blank">'.$episode_number.'</a></td>';
+        echo '<td><a href="episode?idSerie='.$idSerie.'&episode='.$episode_number.'" target="_blank">'.$titre_episode.'</a></td>';
         echo '<td><p>'.$resume_episode.'</p></td>';
         
     }

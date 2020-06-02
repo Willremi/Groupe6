@@ -47,6 +47,8 @@ if($match['target'] === '/') {
     require 'src/views/serie.php';
 } elseif ($match['target'] === 'saison') {
     require 'src/views/saison.php';
+} elseif ($match['target'] === 'episode') {
+    require 'src/views/episode.php';
 } elseif ($match['target'] === 'contact') {
     require 'src/views/contact.php';
 } elseif ($match['target'] === 'mail') {

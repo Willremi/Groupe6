@@ -4,6 +4,7 @@ $router->map('GET|POST', '/Recherche', 'Recherche', 'Recherche');
 // $router->map('GET|POST', '/Recherche/[i:id]', 'Recherche#id', 'Recherche#id');
 $router->map('GET|POST', '/serie', 'serie', 'serie');
 $router->map('GET|POST', '/saison', 'saison', 'saison');
+$router->map('GET|POST', '/episode', 'episode', 'episode');
 $router->map('GET|POST', '/contact', 'contact', 'contact');
 $router->map('GET|POST', '/mail', 'mail', 'mail');
 $router->map('GET|POST', '/connexion', 'connexion', 'connexion');
