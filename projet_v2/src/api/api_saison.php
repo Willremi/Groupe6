@@ -41,7 +41,7 @@ EOD;
         if($nbreSaison === $saison_number) {
             echo '<div class="offset-md-1 col-md-3">';
             echo '<p><strong>'.$saison->name.'</strong></p>';
-            echo '</div>'; // fin col-md-4
+            echo '</div>'; // fin col-md-3
             
             echo '<div class="col-md-3">';
             echo '<p><strong>Nombre d\'épisodes :</strong> '.$saison->episode_count.'</p>';

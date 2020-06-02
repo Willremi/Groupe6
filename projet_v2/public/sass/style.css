@@ -106,6 +106,10 @@ iframe {
   height: 150px;
 }
 
+#episode {
+  border: 0;
+}
+
 @media only screen and (max-width: 780px) {
   table, thead, tbody, tr, th, td {
     display: block;

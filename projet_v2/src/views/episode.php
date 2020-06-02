@@ -7,14 +7,19 @@ $serieExplode = explode('/', $serie);
 // var_dump($serieExplode);
 
 $idSerie = $serieExplode[0];
-$saison = preg_split('//', $serieExplode[1], -1, PREG_SPLIT_NO_EMPTY);
-$episode = preg_split('//', $serieExplode[2], -1, PREG_SPLIT_NO_EMPTY);
+$saison = $serieExplode[1];
+$saison = explode('S', $saison);
+$episode = $serieExplode[2];
+$episode = explode('E', $episode);
+// var_dump($episode);
+
+// $saison = preg_split('//', $serieExplode[1], -1, PREG_SPLIT_NO_EMPTY);
+// $episode = preg_split('//', $serieExplode[2], -1, PREG_SPLIT_NO_EMPTY);
 
 $saison_number = (int)$saison[1];
 $episode_number = (int)$episode[1];
 
 // var_dump($saison_number);
-// var_dump($episode_number);
 ?>
 <div class="container-fluid">
   
