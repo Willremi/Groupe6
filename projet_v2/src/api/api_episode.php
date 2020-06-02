@@ -36,7 +36,7 @@ EOD;
     echo $str;
 
     // API pour récupérer la description de l'épisode
-    $urlEpisode = file_get_contents('https://api.themoviedb.org/3/tv/4414/season/'.$saison_number.'/episode/'.$episode_number.'?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR&append_to_response=credits');
+    $urlEpisode = file_get_contents('https://api.themoviedb.org/3/tv/'.$idSerie.'/season/'.$saison_number.'/episode/'.$episode_number.'?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR&append_to_response=credits');
 
     $tab_episode = json_decode($urlEpisode);
 
@@ -97,14 +97,27 @@ $tab_real = $tab_episode->crew;
     //  var_dump($metierReal);
      if($nomReal && $metierReal) {
         if($metierReal === "Director") {
-            echo '<div class="offset-md-2 col-md-3"><strong>Réalisé(e) par </strong><a href="bio?id='.$real->id.'" target="_blank">'.$nomReal.'</a></div>';
+            echo '<div class="col-md-3"><strong>Réalisé(e) par </strong><a href="bio?id='.$real->id.'" target="_blank">'.$nomReal.'</a></div>';
          }
          if ($metierReal === "Writer") {
-            echo '<div class="col-md-3"><strong>Ecrit(e) par </strong><a href="bio?id='.$real->id.'" target="_blank">'.$nomReal.'</a></div>';
+            echo '<div class="offset-md-2 col-md-3"><strong>Ecrit(e) par </strong><a href="bio?id='.$real->id.'" target="_blank">'.$nomReal.'</a></div>';
          }
      }
     }
     echo '<div class="col-md-2"><strong>Diffusé le </strong>'.$dateFr.'</div>';
     echo '</div>';
     echo '<hr>';
+    echo '<div class="row">';
+    if($tab_episode->overview) {
+        echo '<div class="offset-md-1 col-md-6">';
+        echo '<h2>Résumé</h2>';
+        echo '<p>'.$tab_episode->overview.'</p>';
+        echo '</div>';
+        
+        
+    }
+    
+    // var_dump($tab_episode->overview);
+    echo '</div>'; // fin row
 }
+
