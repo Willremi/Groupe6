@@ -87,7 +87,7 @@ EOD;
 
 </div>
  </div> <!-- fin row -->
-<hr>
+<!-- <hr> -->
 <div class="row">
 <?php
 $tab_real = $tab_episode->crew;
@@ -97,13 +97,14 @@ $tab_real = $tab_episode->crew;
     //  var_dump($metierReal);
      if($nomReal && $metierReal) {
         if($metierReal === "Director") {
-            echo '<div class="offset-md-2 col-md-3"><strong>Réalisé(e) par </strong>'.$nomReal.'</div>';
+            echo '<div class="offset-md-2 col-md-3"><strong>Réalisé(e) par </strong><a href="bio?id='.$real->id.'" target="_blank">'.$nomReal.'</a></div>';
          }
          if ($metierReal === "Writer") {
-            echo '<div class="col-md-3"><strong>Ecrit(e) par </strong>'.$nomReal.'</div>';
+            echo '<div class="col-md-3"><strong>Ecrit(e) par </strong><a href="bio?id='.$real->id.'" target="_blank">'.$nomReal.'</a></div>';
          }
      }
     }
     echo '<div class="col-md-2"><strong>Diffusé le </strong>'.$dateFr.'</div>';
-
+    echo '</div>';
+    echo '<hr>';
 }
