@@ -167,7 +167,7 @@ EOD;
         $nomActeurPrin = $acteurPrin->name;
         $roleActeurPrin = $acteurPrin->character;
         $photoActeurPrin = $acteurPrin->profile_path;
-        echo '<div class="ml-3 col-md-3>" id="galerieActeur"';
+        echo '<div class="ml-3 col-md-3" id="galerieActeur">';
         echo '<a href="bio?id='.$idActeurPrin.'" target="_blank">';
         if($photoActeurPrin) {
             echo '<a href="bio?id='.$idActeurPrin.'" target="_blank"><img src="https://image.tmdb.org/t/p/w154'.$photoActeurPrin.'" class="rounded">';
@@ -196,6 +196,8 @@ EOD;
         $nomActeurInvit = $invite->name;
         $roleActeurInvit = $invite->character;
         $photoActeurInvit = $invite->profile_path;
+        echo '<div class="ml-3 col-md-3" id="galerieActeur">';
+        echo '</div>';
     }
     echo '</div>';
 }
