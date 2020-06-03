@@ -113,13 +113,22 @@ EOD;
         </div>
         <div class="offset-md-1 col-md-4">
             <h2>Equipe technique</h2>
-            <strong>Réalisé(e) par : </strong>
-            <ul>
+            <!-- <strong>Réalisé(e) par : </strong> 
+            <ul> -->
 EOD;
         echo $str;
-        $tab_real = $tab_episode->crew;
+        $tab_crew = $tab_episode->crew;
         
-        echo '</ul>';
+        foreach ($tab_crew as $real) {
+            $metierReal = $real->job;
+            if($metierReal === 'Director') {
+                var_dump($real->name);
+            }
+            if($metierReal === 'Writer') {
+                var_dump($real->name);
+            }
+        }
+        // echo '</ul>';
 
         echo '</div>';
     }
