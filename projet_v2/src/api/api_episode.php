@@ -113,8 +113,7 @@ EOD;
         </div>
         <div class="offset-md-1 col-md-4">
             <h2>Equipe technique</h2>
-            <!-- <strong>Réalisé(e) par : </strong> 
-            <ul> -->
+            <ul>
 EOD;
         echo $str;
         $tab_crew = $tab_episode->crew;
@@ -122,13 +121,15 @@ EOD;
         foreach ($tab_crew as $real) {
             $metierReal = $real->job;
             if($metierReal === 'Director') {
-                var_dump($real->name);
+                $metierReal = 'Réalisateur';
+                echo '<li><a href="bio?id='.$real->id.'" target="_blank">'.$real->name.'</a>('.$metierReal.')'.'</li>';
             }
             if($metierReal === 'Writer') {
-                var_dump($real->name);
+                $metierReal = 'Auteur';
+                echo '<li><a href="bio?id='.$real->id.'" target="_blank">'.$real->name.'</a>('.$metierReal.')'.'</li>';
             }
         }
-        // echo '</ul>';
+        echo '</ul>';
 
         echo '</div>';
     }
