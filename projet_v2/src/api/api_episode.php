@@ -148,20 +148,36 @@ EOD;
 EOD;    
         echo $str;
     }
-    echo '</div>'; // fin row
-    echo '<div class="row">';
-    echo '<div class="col-md-12">';
-    echo '<h3>Acteurs principaux</h3>';
-    echo '<hr>';
-    echo '</div>';
+    
+?>
+    </div> <!--fin row -->
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Acteurs principaux</h3>
+            <hr>
+        </div>
+        
+<?php
     $tab_acteur = $tab_episode->credits;
     $tab_acteur_principaux = $tab_acteur->cast;
     // var_dump($tab_acteur_principaux);
     foreach($tab_acteur_principaux as $acteurPrin) {
+        $idActeurPrin = $acteurPrin->id;
         $nomActeurPrin = $acteurPrin->name;
         $roleActeurPrin = $acteurPrin->character;
         $photoActeurPrin = $acteurPrin->profile_path;
+        echo '<div class="ml-2 col-md-3>"';
+        echo '<a href="bio?id='.$idActeurPrin.'" target="_blank">';
+        if($photoActeurPrin) {
+            echo '<a href="bio?id='.$idActeurPrin.'" target="_blank"><img src="https://image.tmdb.org/t/p/w154'.$photoActeurPrin.'" class="rounded">';
+        } else {
+            echo '<a href="bio?id='.$idActeurPrin.'" target="_blank"><img src="../../public/img/LogoTV800.png" id="imgLogo" class="rounded">';
+        }
+        echo '<p><strong>'.$nomActeurPrin.'</a></strong><br>'.$roleActeurPrin.'</p>';
+        
+        echo '</div>';
     }
+    
     echo '</div>'; // fin row
 }
 

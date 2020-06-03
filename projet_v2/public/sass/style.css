@@ -110,6 +110,11 @@ iframe {
   border: 0;
 }
 
+#imgLogo {
+  width: 154px;
+  height: 231px;
+}
+
 @media only screen and (max-width: 780px) {
   table, thead, tbody, tr, th, td {
     display: block;
