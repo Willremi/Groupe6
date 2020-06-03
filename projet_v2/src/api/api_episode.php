@@ -104,16 +104,16 @@ EOD;
             
 EOD;    
         echo $str;
-        if($tab_episode->still_path) {
-            echo '<img src="https://image.tmdb.org/t/p/w300'.$tab_episode->still_path.'" class="rounded">';
-        } else {
-            echo '<img class="rounded "src="../../public/img/mireTV.jpg" alt="photo de série">';
-        }
+        // if($tab_episode->still_path) {
+        //     echo '<img src="https://image.tmdb.org/t/p/w300'.$tab_episode->still_path.'" class="rounded">';
+        // } else {
+        //     echo '<img class="rounded "src="../../public/img/mireTV.jpg" alt="photo de série">';
+        // }
         $str=<<<EOD
         <hr id="ligne">
         </div>
-        <div class="offset-md-1 col-md-4">
-            <h2>Equipe technique</h2>
+        <div class="offset-md-1 col-md-4" id="distribution">
+            <h3>Equipe technique</h3>
             <ul>
 EOD;
         echo $str;
@@ -133,16 +133,21 @@ EOD;
         
         $str=<<<EOD
         </ul>
-        <h2>Date de diffusion</h2>
-        <ul>
-        <li>$dateFr</li>
-        </ul>
+        <h3>Date de diffusion</h3>
+        <p>$dateFr</p>
+        </div>
+        
 EOD;
         echo $str;
-        echo '</div>';
+    } else {
+        $str=<<<EOD
+        <div class="offset-md-1 col-md-6">
+            <h2>Résumé</h2>
+            <p>Aucune information disponible</p>
+            
+EOD;    
+        echo $str;
     }
-    
-    // var_dump($tab_episode->overview);
     echo '</div>'; // fin row
 }
 
