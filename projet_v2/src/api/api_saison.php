@@ -117,6 +117,9 @@ EOD;
         <li class="page-item <?= ($currentPage == $pages) ? 'disabled' : '' ?>">
             <a class="page-link" href="?idSerie=<?= $idSerie ?>&num=<?= $currentPage + 1 ?>">Saison suivante</a>
         </li>
+        <li class="page-item <?= ($currentPage == $pages) ? 'disabled' : '' ?>">
+            <a class="page-link" href="?idSerie=<?= $idSerie ?>&num=<?= $pages ?>">Dernière saison</a>
+        </li>
     </ul>
 </nav>
 
