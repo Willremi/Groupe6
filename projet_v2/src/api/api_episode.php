@@ -144,7 +144,14 @@ EOD;
         <div class="offset-md-1 col-md-6">
             <h2>Résumé</h2>
             <p>Aucune information disponible</p>
-            
+            <hr id="ligne">
+        </div>
+        <div class="offset-md-1 col-md-4" id="distribution">
+            <h3>Equipe technique</h3>
+                <ul>
+                    <li>Aucune information disponible</li>
+                </ul>
+        </div> 
 EOD;    
         echo $str;
     }
