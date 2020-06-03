@@ -40,7 +40,7 @@ function showListPays($titreSerie, $annees, $nomContinent) {
     $tab_serie = $tab_list_serie->results;
    
     // var_dump($tab_serie);
-    
+    echo '<div class="mt-3 row justify-content-center">';
     foreach ($tab_serie as $serie) {
         $paysOrigin = $serie->origin_country[0];
         
@@ -50,16 +50,16 @@ function showListPays($titreSerie, $annees, $nomContinent) {
         
         $idSerie = $serie->id;
         
-        
-        
         $str =<<<EOD
-        <h4><a href="serie?id=$serie->id" target="_blank">$serie->name</a></h4>
+        <div class="ml-3 col-md-3" id="galerieActeur">
+        <h4><a href="serie?id=$idSerie" target="_blank">$serie->name</a></h4>
         <p>Titre d'origine : $serie->original_name</p>
         <!-- <p>Pays d'origine : $paysOrigin</p> -->
         <p>ID de la série : $idSerie</p>
         <p>Année de la première diffusion : $anneeDif</p>
         <p>Lieux d'origine : $paysOrigin</p>
         <hr>
+        </div>
 EOD;
         if($paysOrigin !== 'XC' && $paysOrigin && $anneeDif) {
            $urlPays = file_get_contents('https://restcountries.eu/rest/v2/alpha/'.$paysOrigin.'?fields=region');
@@ -108,8 +108,8 @@ EOD;
             }  
         }
         
-        } // fin foreach
-        
+    } // fin foreach
+    echo '</div>';
 } // fin else
     
    
