@@ -91,31 +91,36 @@ EOD;
 <div class="row">
     
 <?php
-$tab_real = $tab_episode->crew;
-//  foreach ($tab_real as $real) {
-//      $nomReal = $real->name;
-//      $metierReal = $real->job;
-//     //  var_dump($metierReal);
-//      if($nomReal && $metierReal) {
-//         if($metierReal === "Director") {
-//             echo '<div class="col-md-3"><strong>Réalisé(e) par </strong><a href="bio?id='.$real->id.'" target="_blank">'.$nomReal.'</a></div>';
-//          }
-//          if ($metierReal === "Writer") {
-//             echo '<div class="col-md-3"><strong>Ecrit(e) par </strong><a href="bio?id='.$real->id.'" target="_blank">'.$nomReal.'</a></div>';
-//          }
-//      }
-//     }
-    echo '<div class="col-md-2"><strong>Diffusé le </strong>'.$dateFr.'</div>';
+
+    // echo '<div class="col-md-2"><strong>Diffusé le </strong>'.$dateFr.'</div>';
     echo '</div>';
     echo '<hr>';
     echo '<div class="row">';
     if($tab_episode->overview) {
-        echo '<div class="offset-md-1 col-md-6">';
-        echo '<h2>Résumé</h2>';
-        echo '<p>'.$tab_episode->overview.'</p>';
-        echo '</div>';
-        echo '<div class="col-md-4">';
-        echo '<img src="https://image.tmdb.org/t/p/w300'.$tab_episode->still_path.'" class="rounded">';
+        // echo '<div class="offset-md-1 col-md-6">';
+        // echo '<h2>Résumé</h2>';
+        // echo '<p>'.$tab_episode->overview.'</p>';
+        // echo '</div>';
+        // echo '<div class="col-md-4">';
+        // echo '<img src="https://image.tmdb.org/t/p/w300'.$tab_episode->still_path.'" class="rounded">';
+        // echo '</div>';
+
+        $str=<<<EOD
+        <div class="offset-md-1 col-md-6">
+            <h2>Résumé</h2>
+            <p>$tab_episode->overview</p>
+        <hr id="ligne">
+        </div>
+        <div class="offset-md-1 col-md-4">
+            <h2>Equipe technique</h2>
+            <strong>Réalisé(e) par : </strong>
+            <ul>
+EOD;
+        echo $str;
+        $tab_real = $tab_episode->crew;
+        
+        echo '</ul>';
+
         echo '</div>';
     }
     
