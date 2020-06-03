@@ -34,11 +34,18 @@ EOD;
         $pages = 500;
         
         ?>
-        <li class="page-item <?= ($currentPage == 1) ? 'disabled' : '' ?>">
-        <a class="page-link" href="?page=<?= $currentPage - 1 ?>">Précédent</a>
+                <li class="page-item <?= ($currentPage == 1) ? 'disabled' : '' ?>">
+                    <a class="page-link" href="?page=1">Première page</a>
                 </li>
+                <li class="page-item <?= ($currentPage == 1) ? 'disabled' : '' ?>">
+                    <a class="page-link" href="?page=<?= $currentPage - 1 ?>">Précédent</a>
+                </li>
+                <li class="page-item"><p class="page-link"><?= $currentPage ?></p></li>
                 <li class="page-item <?= ($currentPage == $pages) ? 'disabled' : '' ?>">
                     <a class="page-link" href="?page=<?= $currentPage + 1 ?>">Suivant</a>
+                </li>
+                <li class="page-item <?= ($currentPage == $pages) ? 'disabled' : '' ?>">
+                    <a class="page-link" href="?page=<?= $pages ?>">Dernière page</a>
                 </li>
             </ul>
         </nav>
