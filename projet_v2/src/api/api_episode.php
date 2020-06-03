@@ -119,16 +119,20 @@ EOD;
         echo $str;
         $tab_crew = $tab_episode->crew;
         
-        foreach ($tab_crew as $real) {
-            $metierReal = $real->job;
-            if($metierReal === 'Director') {
-                $metierReal = 'Réalisateur';
-                echo '<li><a href="bio?id='.$real->id.'" target="_blank">'.$real->name.'</a>('.$metierReal.')'.'</li>';
+        if($tab_crew) {
+            foreach ($tab_crew as $real) {
+                $metierReal = $real->job;
+                if($metierReal === 'Director') {
+                    $metierReal = 'Réalisateur';
+                    echo '<li><a href="bio?id='.$real->id.'" target="_blank">'.$real->name.'</a>('.$metierReal.')'.'</li>';
+                }
+                if($metierReal === 'Writer') {
+                    $metierReal = 'Auteur';
+                    echo '<li><a href="bio?id='.$real->id.'" target="_blank">'.$real->name.'</a>('.$metierReal.')'.'</li>';
+                }
             }
-            if($metierReal === 'Writer') {
-                $metierReal = 'Auteur';
-                echo '<li><a href="bio?id='.$real->id.'" target="_blank">'.$real->name.'</a>('.$metierReal.')'.'</li>';
-            }
+        } else {
+            echo '<li>Aucune information disponible</li>';
         }
         
         $str=<<<EOD
@@ -158,6 +162,9 @@ EOD;
     
 ?>
     </div> <!--fin row -->
+    
+<?php
+    $str=<<<EOD
     <div class="row">
         <div class="col-md-12">
             <h3>Acteurs principaux</h3>
@@ -165,9 +172,12 @@ EOD;
         </div>
     </div>
     <div class="row justify-content-center" id="galerieActeur">
-<?php
+EOD;
     $tab_acteur = $tab_episode->credits;
     $tab_acteur_principaux = $tab_acteur->cast;
+    if($tab_acteur_principaux) {
+        echo $str;
+    }
     // var_dump($tab_acteur_principaux);
     foreach($tab_acteur_principaux as $acteurPrin) {
         $idActeurPrin = $acteurPrin->id;
@@ -196,8 +206,10 @@ EOD;
     </div>
     <div class="row justify-content-center" id="galerieActeur">
 EOD;
-    echo $str;
     $tab_acteur_special=$tab_acteur->guest_stars;
+    if($tab_acteur_special) {
+        echo $str;
+    }
     foreach($tab_acteur_special as $invite) {
         $idActeurInvit = $invite->id;
         $nomActeurInvit = $invite->name;
