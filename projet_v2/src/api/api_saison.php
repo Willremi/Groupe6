@@ -163,11 +163,17 @@ echo $str;
     <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
         <li class="page-item <?= ($currentPage == 1) ? 'disabled' : '' ?>">
+            <a class="page-link" href="?idSerie=<?= $idSerie ?>&num=1">Première saison</a>
+        </li>
+        <li class="page-item <?= ($currentPage == 1) ? 'disabled' : '' ?>">
             <a class="page-link" href="?idSerie=<?= $idSerie ?>&num=<?= $currentPage - 1 ?>">Saison précédente</a>
         </li>
         <li class="page-item"><p class="page-link"><?= $tab_episode_saison->name ?></p></li>
         <li class="page-item <?= ($currentPage == $pages) ? 'disabled' : '' ?>">
             <a class="page-link" href="?idSerie=<?= $idSerie ?>&num=<?= $currentPage + 1 ?>">Saison suivante</a>
+        </li>
+        <li class="page-item <?= ($currentPage == $pages) ? 'disabled' : '' ?>">
+            <a class="page-link" href="?idSerie=<?= $idSerie ?>&num=<?= $pages ?>">Dernière saison</a>
         </li>
     </ul>
 </nav>
