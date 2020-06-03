@@ -175,7 +175,7 @@ EOD;
         $roleActeurPrin = $acteurPrin->character;
         $photoActeurPrin = $acteurPrin->profile_path;
         echo '<div class="ml-3 col-md-3" id="galerieActeur">';
-        echo '<a href="bio?id='.$idActeurPrin.'" target="_blank">';
+        // echo '<a href="bio?id='.$idActeurPrin.'" target="_blank">';
         if($photoActeurPrin) {
             echo '<a href="bio?id='.$idActeurPrin.'" target="_blank"><img src="https://image.tmdb.org/t/p/w154'.$photoActeurPrin.'" class="rounded">';
         } else {
@@ -203,7 +203,13 @@ EOD;
         $nomActeurInvit = $invite->name;
         $roleActeurInvit = $invite->character;
         $photoActeurInvit = $invite->profile_path;
-        echo '<div class="ml-3 col-md-3" id="galerieActeur">';
+        echo '<div class="ml-3 col-md-2" id="galerieActeur">';
+        if($photoActeurInvit) {
+            echo '<a href="bio?id='.$idActeurInvit.'" target="_blank"><img src="https://image.tmdb.org/t/p/w154'.$photoActeurInvit.'" class="rounded">';
+        } else {
+            echo '<a href="bio?id='.$idActeurInvit.'" target="_blank"><img src="../../public/img/LogoTV800.png" id="imgLogo" class="rounded">';
+        }
+        echo '<p><strong>'.$nomActeurInvit.'</a></strong><br>'.$roleActeurInvit.'</p>';
         echo '</div>';
     }
     echo '</div>';
