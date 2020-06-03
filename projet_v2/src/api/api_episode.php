@@ -180,5 +180,23 @@ EOD;
     }
     
     echo '</div>'; // fin row
+    $str=<<<EOD
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Invités vedettes</h3>
+            <hr>
+        </div>
+    </div>
+    <div class="row justify-content-center" id="galerieActeur">
+EOD;
+    echo $str;
+    $tab_acteur_special=$tab_acteur->guest_stars;
+    foreach($tab_acteur_special as $invite) {
+        $idActeurInvit = $invite->id;
+        $nomActeurInvit = $invite->name;
+        $roleActeurInvit = $invite->character;
+        $photoActeurInvit = $invite->profile_path;
+    }
+    echo '</div>';
 }
 
