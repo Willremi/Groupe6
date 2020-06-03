@@ -92,23 +92,24 @@ EOD;
     
 <?php
 
-    // echo '<div class="col-md-2"><strong>Diffusé le </strong>'.$dateFr.'</div>';
     echo '</div>';
     echo '<hr>';
     echo '<div class="row">';
     if($tab_episode->overview) {
-        // echo '<div class="offset-md-1 col-md-6">';
-        // echo '<h2>Résumé</h2>';
-        // echo '<p>'.$tab_episode->overview.'</p>';
-        // echo '</div>';
-        // echo '<div class="col-md-4">';
-        // echo '<img src="https://image.tmdb.org/t/p/w300'.$tab_episode->still_path.'" class="rounded">';
-        // echo '</div>';
 
         $str=<<<EOD
         <div class="offset-md-1 col-md-6">
             <h2>Résumé</h2>
             <p>$tab_episode->overview</p>
+            
+EOD;    
+        echo $str;
+        if($tab_episode->still_path) {
+            echo '<img src="https://image.tmdb.org/t/p/w300'.$tab_episode->still_path.'" class="rounded">';
+        } else {
+            echo '<img class="rounded "src="../../public/img/mireTV.jpg" alt="photo de série">';
+        }
+        $str=<<<EOD
         <hr id="ligne">
         </div>
         <div class="offset-md-1 col-md-4">
@@ -129,8 +130,15 @@ EOD;
                 echo '<li><a href="bio?id='.$real->id.'" target="_blank">'.$real->name.'</a>('.$metierReal.')'.'</li>';
             }
         }
-        echo '</ul>';
-
+        
+        $str=<<<EOD
+        </ul>
+        <h2>Date de diffusion</h2>
+        <ul>
+        <li>$dateFr</li>
+        </ul>
+EOD;
+        echo $str;
         echo '</div>';
     }
     
