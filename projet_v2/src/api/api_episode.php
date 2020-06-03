@@ -149,5 +149,19 @@ EOD;
         echo $str;
     }
     echo '</div>'; // fin row
+    echo '<div class="row">';
+    echo '<div class="col-md-12">';
+    echo '<h3>Acteurs principaux</h3>';
+    echo '<hr>';
+    echo '</div>';
+    $tab_acteur = $tab_episode->credits;
+    $tab_acteur_principaux = $tab_acteur->cast;
+    // var_dump($tab_acteur_principaux);
+    foreach($tab_acteur_principaux as $acteurPrin) {
+        $nomActeurPrin = $acteurPrin->name;
+        $roleActeurPrin = $acteurPrin->character;
+        $photoActeurPrin = $acteurPrin->profile_path;
+    }
+    echo '</div>'; // fin row
 }
 
