@@ -156,7 +156,8 @@ EOD;
             <h3>Acteurs principaux</h3>
             <hr>
         </div>
-        
+    </div>
+    <div class="row justify-content-center" id="galerieActeur">
 <?php
     $tab_acteur = $tab_episode->credits;
     $tab_acteur_principaux = $tab_acteur->cast;
@@ -166,7 +167,7 @@ EOD;
         $nomActeurPrin = $acteurPrin->name;
         $roleActeurPrin = $acteurPrin->character;
         $photoActeurPrin = $acteurPrin->profile_path;
-        echo '<div class="ml-2 col-md-3>"';
+        echo '<div class="ml-3 col-md-3>" id="galerieActeur"';
         echo '<a href="bio?id='.$idActeurPrin.'" target="_blank">';
         if($photoActeurPrin) {
             echo '<a href="bio?id='.$idActeurPrin.'" target="_blank"><img src="https://image.tmdb.org/t/p/w154'.$photoActeurPrin.'" class="rounded">';
