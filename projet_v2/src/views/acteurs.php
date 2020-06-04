@@ -35,24 +35,31 @@ EOD;
         
         ?>
                 <li class="page-item <?= ($currentPage == 1) ? 'disabled' : '' ?>">
-                    <a class="page-link" href="?page=1">Première page</a>
+                    <a class="page-link" href="acteurs"><i class="fas fa-step-backward"></i></a>
                 </li>
                 <li class="page-item <?= ($currentPage == 1) ? 'disabled' : '' ?>">
-                    <a class="page-link" href="?page=<?= $currentPage - 1 ?>">Précédent</a>
+                    <!-- <a class="page-link" href="?page=<?= $currentPage - 1 ?>">Précédent</a> -->
+                    <?php 
+                    if($currentPage === 2) {
+                        echo '<a class="page-link" href="acteurs">Précédent</a>';
+                    } else {
+                        echo '<a class="page-link" href="?page='.($currentPage - 1).'">Précédent</a>';
+                    }
+                    ?>
                 </li>
                 <li class="page-item"><p class="page-link"><?= $currentPage ?></p></li>
                 <li class="page-item <?= ($currentPage == $pages) ? 'disabled' : '' ?>">
                     <a class="page-link" href="?page=<?= $currentPage + 1 ?>">Suivant</a>
                 </li>
                 <li class="page-item <?= ($currentPage == $pages) ? 'disabled' : '' ?>">
-                    <a class="page-link" href="?page=<?= $pages ?>">Dernière page</a>
+                    <a class="page-link" href="?page=<?= $pages ?>"><i class="fas fa-step-forward"></i></a>
                 </li>
             </ul>
         </nav>
         <?php 
         if($currentPage > $pages) {
             echo '<meta http-equiv="refresh" content="0;URL=?page='.$pages.'">';
-        }
+        } 
         
         ?>
     

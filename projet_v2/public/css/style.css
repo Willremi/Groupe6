@@ -114,7 +114,7 @@ iframe {
   height: 231px;
 }
 
-#galerieActeur {
+#galerieActeur, .populaireActeur {
   text-align: center;
 }
 
