@@ -107,18 +107,18 @@ EOD;
 ?>
 <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
-    <li class="page-item <?= ($currentPage == 1) ? 'disabled' : '' ?>">
-            <a class="page-link" href="?idSerie=<?= $idSerie ?>&num=1"><i class="fas fa-step-backward"></i></a>
+        <li class="page-item <?= ($currentPage == 1) ? 'disabled' : '' ?>">
+            <a class="page-link" href="?<?= $idSerie ?>/S1"><i class="fas fa-step-backward"></i></a>
         </li>
         <li class="page-item <?= ($currentPage == 1) ? 'disabled' : '' ?>">
-            <a class="page-link" href="?idSerie=<?= $idSerie ?>&num=<?= $currentPage - 1 ?>"><i class="fas fa-backward"></i></a>
+            <a class="page-link" href="?<?= $idSerie ?>/S<?= $currentPage - 1 ?>"><i class="fas fa-backward"></i></a>
         </li>
         <li class="page-item"><p class="page-link"><?= $tab_episode_saison->name ?></p></li>
         <li class="page-item <?= ($currentPage == $pages) ? 'disabled' : '' ?>">
-            <a class="page-link" href="?idSerie=<?= $idSerie ?>&num=<?= $currentPage + 1 ?>"><i class="fas fa-forward"></i></a>
+            <a class="page-link" href="?<?= $idSerie ?>/S<?= $currentPage + 1 ?>"><i class="fas fa-forward"></i></a>
         </li>
         <li class="page-item <?= ($currentPage == $pages) ? 'disabled' : '' ?>">
-            <a class="page-link" href="?idSerie=<?= $idSerie ?>&num=<?= $pages ?>"><i class="fas fa-step-forward"></i></a>
+            <a class="page-link" href="?<?= $idSerie ?>/S<?= $pages ?>"><i class="fas fa-step-forward"></i></a>
         </li>
     </ul>
 </nav>
@@ -162,18 +162,18 @@ echo $str;
 ?>
     <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
-        <li class="page-item <?= ($currentPage == 1) ? 'disabled' : '' ?>">
-            <a class="page-link" href="?idSerie=<?= $idSerie ?>&num=1"><i class="fas fa-step-backward"></i></a>
+    <li class="page-item <?= ($currentPage == 1) ? 'disabled' : '' ?>">
+            <a class="page-link" href="?<?= $idSerie ?>/S1"><i class="fas fa-step-backward"></i></a>
         </li>
         <li class="page-item <?= ($currentPage == 1) ? 'disabled' : '' ?>">
-            <a class="page-link" href="?idSerie=<?= $idSerie ?>&num=<?= $currentPage - 1 ?>"><i class="fas fa-backward"></i></a>
+            <a class="page-link" href="?<?= $idSerie ?>/S<?= $currentPage - 1 ?>"><i class="fas fa-backward"></i></a>
         </li>
         <li class="page-item"><p class="page-link"><?= $tab_episode_saison->name ?></p></li>
         <li class="page-item <?= ($currentPage == $pages) ? 'disabled' : '' ?>">
-            <a class="page-link" href="?idSerie=<?= $idSerie ?>&num=<?= $currentPage + 1 ?>"><i class="fas fa-forward"></i></a>
+            <a class="page-link" href="?<?= $idSerie ?>/S<?= $currentPage + 1 ?>"><i class="fas fa-forward"></i></a>
         </li>
         <li class="page-item <?= ($currentPage == $pages) ? 'disabled' : '' ?>">
-            <a class="page-link" href="?idSerie=<?= $idSerie ?>&num=<?= $pages ?>"><i class="fas fa-step-forward"></i></a>
+            <a class="page-link" href="?<?= $idSerie ?>/S<?= $pages ?>"><i class="fas fa-step-forward"></i></a>
         </li>
     </ul>
 </nav>
