@@ -64,23 +64,29 @@ EOD;
 <nav aria-label="Page navigation example">
         <ul class="pagination">
             <li class="page-item <?= ($currentPage === 1) ? 'd-none' : '' ?>">
+                <a class="page-link" href="?<?= $idSerie ?>/S<?= $saison_number ?>/E1" id="episode">1ère épisode</a>
+            </li>
+            <li class="page-item <?= ($currentPage === 1) ? 'd-none' : '' ?>">
                 <a class="page-link" href="?<?= $idSerie ?>/S<?= $saison_number ?>/E<?= $currentPage - 1 ?>" id="episode">Episode précédent</a>
             </li>
 	</ul>
 	</nav>
 </div>
 
-<div class="col-md-4">
+<div class="col-md-3">
     <p><strong>S<?= $tab_episode->season_number ?>E<?= $tab_episode->episode_number ?> : <?= $tab_episode->name ?></strong></p>
 </div>
 <!-- <div class="col-md-3">
     <p><strong>Date de diffusion : </strong><?= $dateFr ?></p>
 </div> -->
-<div class="col-md-2">
+<div class="col-md-4">
 <nav aria-label="Page navigation example">
     <ul class="pagination">  
         <li class="page-item <?= ($currentPage == $pages) ? 'd-none' : '' ?>">
         <a class="page-link" href="?<?= $idSerie ?>/S<?= $saison_number ?>/E<?= $currentPage + 1 ?>" id="episode">Episode suivant</a>
+        </li>
+        <li class="page-item <?= ($currentPage == $pages) ? 'd-none' : '' ?>">
+        <a class="page-link" href="?<?= $idSerie ?>/S<?= $saison_number ?>/E<?= $pages ?>" id="episode">Dernière épisode</a>
         </li>
     </ul>
 </nav>
