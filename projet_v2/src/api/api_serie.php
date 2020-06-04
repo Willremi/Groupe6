@@ -206,7 +206,8 @@ echo $str;
         $nb_episode = $saison->episode_count;
         $saison_num = $saison->season_number;
 
-        echo '<tr><td><a href="saison?idSerie='.$idSerie.'&num='.$saison_num.'" target="_blank">'.$saisons.'</a></td>';
+        if($saison_num !== 0) {
+            echo '<tr><td><a href="saison?idSerie='.$idSerie.'&num='.$saison_num.'" target="_blank">'.$saisons.'</a></td>';
         echo '<td>'.$nb_episode.'</td>';
 
         $date = $saison->air_date;
@@ -214,6 +215,7 @@ echo $str;
         $date_reverse = array_reverse($date_explode);
         $dateFr = implode('-', $date_reverse);
         echo '<td>'.$dateFr.'</td>';
+        }
     }
     // foreach($tab_saison as $nbEpisode) {
     //     echo '<td>'.$nbEpisode->episode_count.'</td>'; 
