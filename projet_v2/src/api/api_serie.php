@@ -207,7 +207,7 @@ echo $str;
         $saison_num = $saison->season_number;
 
         if($saison_num !== 0) {
-            echo '<tr><td><a href="saison?idSerie='.$idSerie.'&num='.$saison_num.'" target="_blank">'.$saisons.'</a></td>';
+            echo '<tr><td><a href="saison?'.$idSerie.'/S'.$saison_num.'" target="_blank">'.$saisons.'</a></td>';
         echo '<td>'.$nb_episode.'</td>';
 
         $date = $saison->air_date;

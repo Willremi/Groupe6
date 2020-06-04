@@ -1,10 +1,16 @@
 <?php
 require 'src/api/api_saison.php';
+$serie = array_keys($_GET);
+$serie = $serie[0];
+// var_dump($serie);
+$serieExplode = explode('/', $serie);
+// var_dump($serieExplode);
 
-$saison_number = $_GET['num'];
-$idSerie = $_GET['idSerie'];
-// var_dump($idSerie);
+$idSerie = $serieExplode[0];
+$saison = $serieExplode[1];
+$saison = explode('S', $saison);
 
+$saison_number = (int)$saison[1];
 ?>
 <div class="container-fluid">
   
