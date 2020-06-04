@@ -53,6 +53,7 @@ EOD;
     }
 
     $pages = $nbEpisode;
+    
     // var_dump($currentPage);
     $date = $tab_episode->air_date;
     $date_explode = explode('-', $date);
@@ -74,7 +75,9 @@ EOD;
 </div>
 
 <div class="col-md-3">
-    <p><strong>S<?= $tab_episode->season_number ?>E<?= $tab_episode->episode_number ?> : <?= $tab_episode->name ?></strong></p>
+    <p><strong>Episode <?= $tab_episode->episode_number ?> : <?= $tab_episode->name ?><br>
+    <a href="saison?<?= $idSerie ?>/S<?= $saison_number ?>">Saison <?= $saison_number ?></a>
+    </strong></p>
 </div>
 <!-- <div class="col-md-3">
     <p><strong>Date de diffusion : </strong><?= $dateFr ?></p>
