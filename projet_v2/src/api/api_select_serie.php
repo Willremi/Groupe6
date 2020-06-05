@@ -66,8 +66,9 @@ function showSelectSerie($idList) {
 
         // echo '<td>'.$serie->name.'</td>';
         $dateDebut = $serie->first_air_date;
-        $dateExplode = explode("-", $dateDebut);
-        echo '<td>'.$dateExplode[0].'</td>';
+        // $dateExplode = explode("-", $dateDebut);
+        $anneeDebut = date('Y', strtotime($dateDebut));
+        echo '<td>'.$anneeDebut.'</td>';
         $codePays = $serie->origin_country[0];
 
         $urlPays = file_get_contents('https://restcountries.eu/rest/v2/alpha/'.$codePays.'?fields=translations');
