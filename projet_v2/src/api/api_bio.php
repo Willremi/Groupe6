@@ -16,18 +16,22 @@ $nomActeur = $tab_bio_acteur->name;
 
 // Date de naissance
 $dateBirth = $tab_bio_acteur->birthday;
-$dateBirthExplode = explode('-',$dateBirth);
-$dateBirthTab = array_reverse($dateBirthExplode);
-$dateNaissance = implode('/', $dateBirthTab);
+// $dateBirthExplode = explode('-',$dateBirth);
+// $dateBirthTab = array_reverse($dateBirthExplode);
+// $dateNaissance = implode('/', $dateBirthTab);
+$dateNaissance = date('d/m/Y', strtotime($dateBirth));
+$anneeNaissance = date('Y', strtotime($dateBirth));
 
 // Lieu de naissance
 $lieuBirth = $tab_bio_acteur->place_of_birth;
 
 // Date de décès
 $dateDeath = $tab_bio_acteur->deathday;
-$dateDeathExplode = explode('-',$dateDeath);
-$dateDeathTab = array_reverse($dateDeathExplode);
-$dateDeces = implode('/', $dateDeathTab);
+// $dateDeathExplode = explode('-',$dateDeath);
+// $dateDeathTab = array_reverse($dateDeathExplode);
+// $dateDeces = implode('/', $dateDeathTab);
+$dateDeces = date('d/m/Y', strtotime($dateDeath));
+$anneeDeces = date('Y', strtotime($dateDeath));
 
 // Photo de l'acteur
 $photo = $tab_bio_acteur->profile_path;
@@ -129,11 +133,12 @@ if ($tab_role) {
     foreach ($tab_role as $role) {
         echo '<tr>';
         $date = $role->first_air_date;
-        $date_explode = explode('-', $date);
-        $dateFr = (int)$date_explode[0];
+        // $date_explode = explode('-', $date);
+        // $dateFr = (int)$date_explode[0];
+        $anneeRole = date('Y', strtotime($date));
         // var_dump($dateFr);
-        if ($dateFr > $dateBirthExplode[0]) {
-            echo '<td>'.$dateFr.'</td>';
+        if ($anneeRole > $anneeNaissance) {
+            echo '<td>'.$anneeRole.'</td>';
             echo '<td><a href="serie?id='.$role->id.'">'.$role->name.'</a></td>';
             if ($role->character === 'himself' || $role->character === 'Himself') {
                 echo '<td>Lui-même</td>';
@@ -178,12 +183,13 @@ EOD;
     foreach($tab_real as $real) {
       echo '<tr>';
       $dateReal = $real->first_air_date;
-      $dateReal_explode = explode('-', $dateReal);
-      $dateRealFr = (int)$dateReal_explode[0];
+      // $dateReal_explode = explode('-', $dateReal);
+      // $dateRealFr = (int)$dateReal_explode[0];
+      $anneeReal = date('Y', strtotime($dateReal));
       
-      if($dateRealFr) {
-        if($dateRealFr > $dateBirthExplode[0]) {
-          echo '<td>'.$dateRealFr.'</td>';
+      if($anneeReal) {
+        if($anneeReal > $anneeNaissance) {
+          echo '<td>'.$anneeReal.'</td>';
         }
       } else {
         echo '<td>/</td>';
