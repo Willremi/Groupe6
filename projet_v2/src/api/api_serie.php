@@ -98,14 +98,12 @@ EOD;
     // Année de production
     $date_debut = $tab_select_serie->first_air_date;
     $date_fin = $tab_select_serie->last_air_date;
-    $date_debut_explode = explode('-', $date_debut);
-    $date_fin_explode = explode('-', $date_fin);
-    $dateDebut = $date_debut_explode[0];
-    $dateFin = $date_fin_explode[0];
-    // dump($dateDebut);
-    // dump($dateFin);
+   
+    $anneeDebut = date('Y', strtotime($date_debut));
+    $anneeFin = date('Y', strtotime($date_fin));
+    
     $str = <<<EOD
-            <li>$dateDebut - $dateFin</li>
+            <li>$anneeDebut - $anneeFin</li>
         </ul>
         </div>
     </div> <!-- fin row -->
@@ -211,9 +209,7 @@ echo $str;
         echo '<td>'.$nb_episode.'</td>';
 
         $date = $saison->air_date;
-        $date_explode = explode('-', $date);
-        $date_reverse = array_reverse($date_explode);
-        $dateFr = implode('-', $date_reverse);
+        $dateFr = date('d/m/Y', strtotime($date));
         echo '<td>'.$dateFr.'</td>';
         }
     }
