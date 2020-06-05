@@ -33,7 +33,7 @@ function showDetailActeur ($acteur) {
             
             $str=<<<EOD
             
-            <div class="offset-md-1 col-md-2">
+            <div class="offset-md-1 col-md-3">
 
 EOD;
             echo $str;
