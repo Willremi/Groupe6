@@ -66,7 +66,7 @@ function showSelectSerie($idList) {
 
         // echo '<td>'.$serie->name.'</td>';
         $dateDebut = $serie->first_air_date;
-        // $dateExplode = explode("-", $dateDebut);
+        
         $anneeDebut = date('Y', strtotime($dateDebut));
         echo '<td>'.$anneeDebut.'</td>';
         $codePays = $serie->origin_country[0];
