@@ -48,9 +48,6 @@ EOD;
             echo '</div>';
 
             $date = $saison->air_date;
-            // $date_explode = explode('-', $date);
-            // $date_reverse = array_reverse($date_explode);
-            // $dateFr = implode('-', $date_reverse);
             $dateFr = date('d/m/Y', strtotime($date));
 
             echo '<div class="col-md-3">';
