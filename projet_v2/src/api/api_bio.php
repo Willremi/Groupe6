@@ -16,9 +16,6 @@ $nomActeur = $tab_bio_acteur->name;
 
 // Date de naissance
 $dateBirth = $tab_bio_acteur->birthday;
-// $dateBirthExplode = explode('-',$dateBirth);
-// $dateBirthTab = array_reverse($dateBirthExplode);
-// $dateNaissance = implode('/', $dateBirthTab);
 $dateNaissance = date('d/m/Y', strtotime($dateBirth));
 $anneeNaissance = date('Y', strtotime($dateBirth));
 
@@ -27,11 +24,8 @@ $lieuBirth = $tab_bio_acteur->place_of_birth;
 
 // Date de décès
 $dateDeath = $tab_bio_acteur->deathday;
-// $dateDeathExplode = explode('-',$dateDeath);
-// $dateDeathTab = array_reverse($dateDeathExplode);
-// $dateDeces = implode('/', $dateDeathTab);
 $dateDeces = date('d/m/Y', strtotime($dateDeath));
-$anneeDeces = date('Y', strtotime($dateDeath));
+// $anneeDeces = date('Y', strtotime($dateDeath));
 
 // Photo de l'acteur
 $photo = $tab_bio_acteur->profile_path;

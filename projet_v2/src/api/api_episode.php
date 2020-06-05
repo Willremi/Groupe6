@@ -56,9 +56,6 @@ EOD;
     
     // var_dump($currentPage);
     $date = $tab_episode->air_date;
-    // $date_explode = explode('-', $date);
-    // $date_reverse = array_reverse($date_explode);
-    // $dateFr = implode('-', $date_reverse);
     $dateFr = date('d/m/Y', strtotime($date));
     // var_dump($dateFr);
 ?>
