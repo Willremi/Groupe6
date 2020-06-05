@@ -45,8 +45,9 @@ function showListPays($titreSerie, $annees, $nomContinent) {
         $paysOrigin = $serie->origin_country[0];
         
         $date = $serie->first_air_date;
-        $dateExplode = explode('-', $date);
-        $anneeDif = $dateExplode[0];
+        // $dateExplode = explode('-', $date);
+        // $anneeDif = $dateExplode[0];
+        $anneeDif = date('Y', strtotime($date));
         
         $idSerie = $serie->id;
         
