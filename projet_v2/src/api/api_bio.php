@@ -18,14 +18,14 @@ $nomActeur = $tab_bio_acteur->name;
 $dateBirth = $tab_bio_acteur->birthday;
 $dateNaissance = date('d/m/Y', strtotime($dateBirth));
 $anneeNaissance = date('Y', strtotime($dateBirth));
-
 // Lieu de naissance
 $lieuBirth = $tab_bio_acteur->place_of_birth;
 
 // Date de décès
 $dateDeath = $tab_bio_acteur->deathday;
-$dateDeces = date('d/m/Y', strtotime($dateDeath));
-// $anneeDeces = date('Y', strtotime($dateDeath));
+$dateDeathExplode = explode('-',$dateDeath);
+$dateDeathTab = array_reverse($dateDeathExplode);
+$dateDeces = implode('/', $dateDeathTab);
 
 // Photo de l'acteur
 $photo = $tab_bio_acteur->profile_path;
@@ -53,13 +53,19 @@ $str = <<<EOD
 EOD;
 if($dateNaissance && $lieuBirth) {
   echo $str;
-} else {
+} elseif ($dateNaissance && $lieuBirth !== '') {
+ echo '<div class="col-md-6">';
+ echo '<p>Né le '.$dateNaissance.'</>';
+}
+else {
   echo '<div class="col-md-6">';
 }
 
 if($dateDeces !== '') {
   echo '<p>Mort(e) le '.$dateDeces.'</p>';
-} 
+} else {
+  echo '<p></p>';
+}
 
 if($bio) {
   echo '<p>Bio : '.$bio.'</p>';
