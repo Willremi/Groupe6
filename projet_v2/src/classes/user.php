@@ -24,6 +24,7 @@ class User {
         $sql = "INSERT INTO user (nomUser, prenomUser, pseudoUser, mailUser, mdpUser, numRue, nomRue1, nomRue2, cpVille, nomVille) VALUES (:insertNom, :insertPrenom, :insertPseudo, :insertMail, :insertMdp, :insertNumRue, :insertNomRue1, :insertNomRue2, :insertCp, :insertVille)";
 
         $reqInsertUser = $this->db->prepare($sql);
+        
         $reqInsertUser->bindParam(':insertNom', $this->nom);
         $reqInsertUser->bindParam(':insertPrenom', $this->prenom);
         $reqInsertUser->bindParam(':insertPseudo', $this->pseudoInsert);
