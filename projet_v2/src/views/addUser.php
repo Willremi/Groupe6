@@ -1,5 +1,5 @@
 <?php
-require_once 'src/classes/user.php';
+require_once 'src/classes/User.php';
 // Ajout d'un pseudo
 // if(isset($_POST['inputName'])) {
 //     $nom = htmlspecialchars(trim($_POST['inputName']));
