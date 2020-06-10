@@ -73,8 +73,6 @@ $adresseCompl = htmlspecialchars(trim($_POST['inputAdress2'])) ?? '';
 $cp = htmlspecialchars(trim($_POST['inputCp'])) ?? '';
 $ville = htmlspecialchars(trim($_POST['inputCity'])) ?? '';
 
-
-
 $user->setNom($_POST['inputName']);
 $user->setPrenom($_POST['inputFirstname']);
 $user->setPseudo($_POST['inputPseudo']);
@@ -85,9 +83,6 @@ $user->setAdress($_POST['inputAdress']);
 $user->setComplementAdress($_POST['inputAdress2']);
 $user->setCodePostal($_POST['inputCp']);
 $user->setVille($_POST['inputCity']);
-
-
-
 
 
 $sqlUser = "INSERT INTO user (nomUser, prenomUser, pseudoUser, mailUser, mdpUser, numRue, nomRue1, nomRue2, cpVille, nomVille) VALUES (:insertNom, :insertPrenom, :insertPseudo, :insertMail, :insertMdp, :insertNumRue, :insertNomRue1, :insertNomRue2, :insertCp, :insertVille)";
