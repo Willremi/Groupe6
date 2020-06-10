@@ -86,20 +86,20 @@ $user->setCodePostal($_POST['inputCp']);
 $user->setVille($_POST['inputCity']);
 
 
-$sqlUser = "INSERT INTO user (nomUser, prenomUser, pseudoUser, mailUser, mdpUser, numRue, nomRue1, nomRue2, cpVille, nomVille) VALUES (:insertNom, :insertPrenom, :insertPseudo, :insertMail, :insertMdp, :insertNumRue, :insertNomRue1, :insertNomRue2, :insertCp, :insertVille)";
-$reqInsertUser = $db->prepare($sqlUser);
-$reqInsertUser->bindParam(':insertNom', $nom);
-$reqInsertUser->bindParam(':insertPrenom', $prenom);
-$reqInsertUser->bindParam(':insertPseudo', $pseudoInsert);
-$reqInsertUser->bindParam(':insertMail', $email);
-$reqInsertUser->bindParam(':insertMdp', $mdp);
-$reqInsertUser->bindParam(':insertNumRue', $numRue);
-$reqInsertUser->bindParam(':insertNomRue1', $adresse);
-$reqInsertUser->bindParam(':insertNomRue2', $adresseCompl);
-$reqInsertUser->bindParam(':insertCp', $cp);
-$reqInsertUser->bindParam(':insertVille', $ville);
+// $sqlUser = "INSERT INTO user (nomUser, prenomUser, pseudoUser, mailUser, mdpUser, numRue, nomRue1, nomRue2, cpVille, nomVille) VALUES (:insertNom, :insertPrenom, :insertPseudo, :insertMail, :insertMdp, :insertNumRue, :insertNomRue1, :insertNomRue2, :insertCp, :insertVille)";
+// $reqInsertUser = $db->prepare($sqlUser);
+// $reqInsertUser->bindParam(':insertNom', $nom);
+// $reqInsertUser->bindParam(':insertPrenom', $prenom);
+// $reqInsertUser->bindParam(':insertPseudo', $pseudoInsert);
+// $reqInsertUser->bindParam(':insertMail', $email);
+// $reqInsertUser->bindParam(':insertMdp', $mdp);
+// $reqInsertUser->bindParam(':insertNumRue', $numRue);
+// $reqInsertUser->bindParam(':insertNomRue1', $adresse);
+// $reqInsertUser->bindParam(':insertNomRue2', $adresseCompl);
+// $reqInsertUser->bindParam(':insertCp', $cp);
+// $reqInsertUser->bindParam(':insertVille', $ville);
 
-$reqInsertUser->execute();
+// $reqInsertUser->execute();
 
 $nbInsert = $reqInsertUser->rowCount();
 
