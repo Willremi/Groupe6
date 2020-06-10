@@ -13,7 +13,7 @@ class User {
     private $codePostal;
     private $ville;
 
-    private $_db; // Instance de PDO
+    private $db; // Instance de PDO
 
     public function __construct($db)
     {
@@ -38,6 +38,7 @@ class User {
         $reqInsertUser->execute();
 
     }
+
     public function update() {
         $sql = "UPDATE user 
           SET nomUser = :nomUserUp, 
@@ -51,16 +52,18 @@ class User {
               nomVille = :nomVilleUp 
           WHERE idUser = :idUserUp LIMIT 1";
     }
+
     public function delete() {
         $sql = "DELETE FROM user WHERE idUser = :idUser LIMIT 1";
     }
+    
     public function select() {
         $sql = "SELECT * FROM user";
     }
 
     public function setDb(PDO $db)
     {
-        $this->_db = $db;
+        $this->db = $db;
     }
 
     /**

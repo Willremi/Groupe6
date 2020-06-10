@@ -62,6 +62,7 @@ require_once 'src/classes/user.php';
 // }
 
 $user = new User($db);
+
 $nom = htmlspecialchars(trim($_POST['inputName'])) ?? '';
 $prenom = htmlspecialchars(trim($_POST['inputFirstname'])) ?? '';
 $pseudo = htmlspecialchars(trim($_POST['inputPseudo'])) ?? '';
@@ -109,6 +110,3 @@ if($nbInsert == 1){
     // header('Location: /?add=error');
     echo '<meta http-equiv="refresh" content="0;URL=/?add=error">';
 }
-
-
-var_dump($user);
