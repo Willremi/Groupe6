@@ -1,6 +1,4 @@
-<?php 
-require_once 'src/classes/user.php';
-?>
+
 <div class="container-fluid">
         <div class="card text-center">
             <div class="card-header">
@@ -69,8 +67,3 @@ require_once 'src/classes/user.php';
 
           
 </div> <!-- fin container -->
-
-<?php
-
-$user = new User($db);
-var_dump($user);
