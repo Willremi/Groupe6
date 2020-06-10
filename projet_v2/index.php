@@ -5,6 +5,7 @@ require 'src/views/elements/head.php';
 require 'src/views/elements/footer.php';
 require 'src/config/config.php';
 require 'src/models/connect.php';
+require_once 'src/classes/User.php';
 
 $db = connect();
 
