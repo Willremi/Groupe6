@@ -72,6 +72,15 @@ class User {
         $sql = "SELECT * FROM user";
     }
 
+    // Essai
+    public function selectByPseudo($pseudoInput) {
+        $pseudoInput = $this->pseudo;
+        $sqlSelUser = "SELECT pseudoUser, mdpUser FROM user WHERE pseudoUser = :inputPseudo";
+        $reqSelUser = $this->db->prepare($sqlSelUser);
+        $reqSelUser->bindParam(':inputPseudo', $pseudoInput);
+        $reqSelUser->execute();
+    }
+
     public function setDb(PDO $db)
     {
         $this->db = $db;
