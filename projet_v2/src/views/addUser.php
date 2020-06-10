@@ -1,5 +1,5 @@
 <?php
-
+require_once '../classes/user.php';
 // Ajout d'un pseudo
 if(isset($_POST['inputName'])) {
     $nom = htmlspecialchars(trim($_POST['inputName']));
@@ -92,3 +92,4 @@ if($nbInsert == 1){
     // header('Location: /?add=error');
     echo '<meta http-equiv="refresh" content="0;URL=/?add=error">';
 }
+
