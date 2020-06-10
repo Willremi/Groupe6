@@ -24,19 +24,29 @@ class User {
         $sql = "INSERT INTO user (nomUser, prenomUser, pseudoUser, mailUser, mdpUser, numRue, nomRue1, nomRue2, cpVille, nomVille) VALUES (:insertNom, :insertPrenom, :insertPseudo, :insertMail, :insertMdp, :insertNumRue, :insertNomRue1, :insertNomRue2, :insertCp, :insertVille)";
 
         $reqInsertUser = $this->db->prepare($sql);
-        
+
         $reqInsertUser->bindParam(':insertNom', $this->nom);
         $reqInsertUser->bindParam(':insertPrenom', $this->prenom);
-        $reqInsertUser->bindParam(':insertPseudo', $this->pseudoInsert);
-        $reqInsertUser->bindParam(':insertMail', $this->email);
+        $reqInsertUser->bindParam(':insertPseudo', $this->pseudo);
+        $reqInsertUser->bindParam(':insertMail', $this->mail);
         $reqInsertUser->bindParam(':insertMdp', $this->mdp);
         $reqInsertUser->bindParam(':insertNumRue', $this->numRue);
-        $reqInsertUser->bindParam(':insertNomRue1', $this->adresse);
-        $reqInsertUser->bindParam(':insertNomRue2', $this->adresseCompl);
-        $reqInsertUser->bindParam(':insertCp', $this->cp);
+        $reqInsertUser->bindParam(':insertNomRue1', $this->adress);
+        $reqInsertUser->bindParam(':insertNomRue2', $this->complementAdress);
+        $reqInsertUser->bindParam(':insertCp', $this->codePostal);
         $reqInsertUser->bindParam(':insertVille', $this->ville);
         
         $reqInsertUser->execute();
+
+        
+        $nbInsert = $reqInsertUser->rowCount();
+        if($nbInsert == 1){
+            // header('Location: /?add=sucess');
+            echo '<meta http-equiv="refresh" content="0;URL=/?add=success">';
+        }else{
+            // header('Location: /?add=error');
+            echo '<meta http-equiv="refresh" content="0;URL=/?add=error">';
+}
 
     }
 
@@ -102,7 +112,7 @@ class User {
      */ 
     public function setNom($nom)
     {
-        $this->nom = $nom;
+        $this->nom = htmlspecialchars(trim($nom));
 
         return $this;
     }
@@ -122,7 +132,7 @@ class User {
      */ 
     public function setPrenom($prenom)
     {
-        $this->prenom = $prenom;
+        $this->prenom = htmlspecialchars(trim($prenom));
 
         return $this;
     }
@@ -142,7 +152,7 @@ class User {
      */ 
     public function setPseudo($pseudo)
     {
-        $this->pseudo = $pseudo;
+        $this->pseudo = htmlspecialchars(trim($pseudo));
 
         return $this;
     }
@@ -162,7 +172,7 @@ class User {
      */ 
     public function setMail($mail)
     {
-        $this->mail = $mail;
+        $this->mail = htmlspecialchars(trim($mail));
 
         return $this;
     }
@@ -182,7 +192,7 @@ class User {
      */ 
     public function setMdp($mdp)
     {
-        $this->mdp = $mdp;
+        $this->mdp = password_hash(htmlspecialchars(trim($mdp)), PASSWORD_BCRYPT);
 
         return $this;
     }
@@ -202,7 +212,7 @@ class User {
      */ 
     public function setNumRue($numRue)
     {
-        $this->numRue = $numRue;
+        $this->numRue = htmlspecialchars(trim($numRue));
 
         return $this;
     }
@@ -222,7 +232,7 @@ class User {
      */ 
     public function setAdress($adress)
     {
-        $this->adress = $adress;
+        $this->adress = htmlspecialchars(trim($adress));
 
         return $this;
     }
@@ -242,7 +252,7 @@ class User {
      */ 
     public function setComplementAdress($complementAdress)
     {
-        $this->complementAdress = $complementAdress;
+        $this->complementAdress = htmlspecialchars(trim($complementAdress));
 
         return $this;
     }
@@ -262,7 +272,7 @@ class User {
      */ 
     public function setCodePostal($codePostal)
     {
-        $this->codePostal = $codePostal;
+        $this->codePostal = htmlspecialchars(trim($codePostal));
 
         return $this;
     }
@@ -282,7 +292,7 @@ class User {
      */ 
     public function setVille($ville)
     {
-        $this->ville = $ville;
+        $this->ville = htmlspecialchars(trim($ville));
 
         return $this;
     }
