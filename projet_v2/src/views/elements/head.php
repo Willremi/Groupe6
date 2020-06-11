@@ -4,6 +4,7 @@ function head() {
   
 $pseudo = $_SESSION['login'] ?? '';
 // var_dump($pseudo);
+
     ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -37,22 +38,22 @@ $pseudo = $_SESSION['login'] ?? '';
             $db = connect();
 
             // Sélection pseudo et mot de passe de l'utilisateur
-            $sqlSelUser = "SELECT pseudoUser, mdpUser FROM user WHERE pseudoUser = :pseudo";
-            $reqSelUser = $db->prepare($sqlSelUser);
-            $reqSelUser->bindParam(':pseudo', $pseudo);
-            $reqSelUser->execute();
+            // $sqlSelUser = "SELECT pseudoUser, mdpUser FROM user WHERE pseudoUser = :pseudo";
+            // $reqSelUser = $db->prepare($sqlSelUser);
+            // $reqSelUser->bindParam(':pseudo', $pseudo);
+            // $reqSelUser->execute();
             
-            $data = $reqSelUser->fetchObject();
+            // $data = $reqSelUser->fetchObject();
             // var_dump($data);
            
             $user = new User($db);
             $pseudoInput = $user->setPseudo($pseudo);
             // var_dump($pseudoInput);
-            // $data = $user->selectByPseudo();
+            $data = $user->selectByPseudo();
             
             // var_dump($reqSelUser);
 
-            if($pseudo === $data->pseudoUser) {
+            if($pseudo === $data->Pseudo) {
             // if($pseudo === "willremi") {
               ?>
               <li class="nav-item">
@@ -79,7 +80,7 @@ $pseudo = $_SESSION['login'] ?? '';
             </li> -->
             
             <?php 
-            if($pseudo === $data->pseudoUser) {
+            if($pseudo === $data->Pseudo) {
             // if ($pseudo === "willremi") {
              ?>
             <li class="nav-item avatar dropdown">
