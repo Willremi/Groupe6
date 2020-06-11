@@ -1,11 +1,11 @@
 <?php
  session_start();
-require 'vendor/autoload.php';
+ require 'vendor/autoload.php';
+ require_once 'src/classes/User.php';
 require 'src/views/elements/head.php';
 require 'src/views/elements/footer.php';
 require 'src/config/config.php';
 require 'src/models/connect.php';
-require_once 'src/classes/User.php';
 
 $db = connect();
 
@@ -13,7 +13,6 @@ $db = connect();
 $user = new User($db);
 $pseudoInput = $user->setPseudo($_POST['inputPseudo']);
 $reqSelUser = $user->selectByPseudo();
-// var_dump($reqSelUser);
 $pseudoUser = $reqSelUser->Pseudo;
 $mdpUser = $reqSelUser->Mdp;
 $activeUser = $reqSelUser->activate;
@@ -21,17 +20,18 @@ $activeUser = $reqSelUser->activate;
 if(password_verify($_POST['inputMdp'], $mdpUser)) {
     $_SESSION['login'] = $pseudoUser;
     header('location: /');
-}
+} 
 
-// if(password_verify($_POST['inputMdp'], $data->mdpUser)) {
+// if(password_verify($_POST['inputMdp'], $mdpUser)) {
 //     if(isset($_SESSION['login'])) {
 //     $pseudo = $_SESSION['login'];
 //     } else {
-//     $_SESSION['login'] = $data->pseudoUser;
+//     $_SESSION['login'] = $pseudoUser;
 //     $pseudo = $_SESSION['login'];
 //     }
 //     header('location: /');
 // }
+
 
 head();
 $router = new AltoRouter();

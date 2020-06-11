@@ -44,6 +44,13 @@ $pseudo = $_SESSION['login'] ?? '';
             
             $data = $reqSelUser->fetchObject();
             // var_dump($data);
+           
+            $user = new User($db);
+            $pseudoInput = $user->setPseudo($pseudo);
+            // var_dump($pseudoInput);
+            // $data = $user->selectByPseudo();
+            
+            // var_dump($reqSelUser);
 
             if($pseudo === $data->pseudoUser) {
             // if($pseudo === "willremi") {

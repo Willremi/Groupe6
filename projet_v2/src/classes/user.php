@@ -92,9 +92,7 @@ class User {
         $reqSelUser->execute();
 
         return $reqSelUser->fetchObject();
-        
-
-        
+    
     }
 
     public function setDb(PDO $db)
