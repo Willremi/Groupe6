@@ -20,6 +20,7 @@ class User {
       $this->setDb($db);
     }
 
+    // Requêtes SQL
     public function create() {
         $sql = "INSERT INTO user (nomUser, prenomUser, pseudoUser, mailUser, mdpUser, numRue, nomRue1, nomRue2, cpVille, nomVille) VALUES (:insertNom, :insertPrenom, :insertPseudo, :insertMail, :insertMdp, :insertNumRue, :insertNomRue1, :insertNomRue2, :insertCp, :insertVille)";
 
@@ -38,7 +39,6 @@ class User {
         
         $reqInsertUser->execute();
 
-        
         $nbInsert = $reqInsertUser->rowCount();
         if($nbInsert == 1){
             // header('Location: /?add=sucess');
@@ -72,13 +72,28 @@ class User {
         $sql = "SELECT * FROM user";
     }
 
-    // Essai
-    public function selectByPseudo($pseudoInput) {
+    public function selectByPseudo() {
         $pseudoInput = $this->pseudo;
-        $sqlSelUser = "SELECT pseudoUser, mdpUser FROM user WHERE pseudoUser = :inputPseudo";
+        $sqlSelUser = "SELECT nomUser AS Nom, 
+                              prenomUser AS Prénom,
+                              pseudoUser AS Pseudo, 
+                              mailUser AS Email, 
+                              mdpUser AS Mdp, 
+                              numRue AS NumeroRue, 
+                              nomRue1 AS Adresse, 
+                              nomRue2 AS AdresseCompl, 
+                              cpVille AS CodePostal, 
+                              nomVille AS Ville
+                       FROM user 
+                       WHERE pseudoUser = :inputPseudo";
         $reqSelUser = $this->db->prepare($sqlSelUser);
         $reqSelUser->bindParam(':inputPseudo', $pseudoInput);
         $reqSelUser->execute();
+
+        $data = $reqSelUser->fetchObject();
+        
+        return $data;
+        
     }
 
     public function setDb(PDO $db)
