@@ -60,7 +60,7 @@ class User {
               nomRue1 = :nomRueUp, 
               nomRue2 = :nomRueCompUp, 
               cpVille = :cpVilleUp, 
-              nomVille = :nomVilleUp 
+              nomVille = :nomVilleUp
           WHERE idUser = :idUserUp LIMIT 1";
     }
 
@@ -83,16 +83,17 @@ class User {
                               nomRue1 AS Adresse, 
                               nomRue2 AS AdresseCompl, 
                               cpVille AS CodePostal, 
-                              nomVille AS Ville
+                              nomVille AS Ville, 
+                              activate
                        FROM user 
                        WHERE pseudoUser = :inputPseudo";
         $reqSelUser = $this->db->prepare($sqlSelUser);
         $reqSelUser->bindParam(':inputPseudo', $pseudoInput);
         $reqSelUser->execute();
 
-        $data = $reqSelUser->fetchObject();
+        return $reqSelUser->fetchObject();
         
-        return $data;
+
         
     }
 

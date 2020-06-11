@@ -2,12 +2,7 @@
 session_start();
 function head() {
   
-if(isset($_SESSION['login'])) {
-    $pseudo = $_SESSION['login'];
-} else {
-    
-    $pseudo = '';
-}
+$pseudo = $_SESSION['login'] ?? '';
 // var_dump($pseudo);
     ?>
 <!DOCTYPE html>

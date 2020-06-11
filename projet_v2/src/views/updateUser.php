@@ -1,24 +1,9 @@
 <?php
 $login = $_SESSION['login'];
 
-$SelUser = "SELECT nomUser AS Nom, 
-                  prenomUser AS Prénom, 
-                  pseudoUser AS Pseudo, 
-                  mailUser AS Email, 
-                  mdpUser AS Mdp, 
-                  numRue AS NumeroRue, 
-                  nomRue1 AS Adresse, 
-                  nomRue2 AS AdresseCompl, 
-                  cpVille AS CodePostal, 
-                  nomVille AS Ville
-           FROM user WHERE pseudoUser = :pseudo";
-
-$reqUser = $db->prepare($SelUser);
-$reqUser->bindParam(':pseudo', $login);
-$reqUser->execute();
-
-$data = $reqUser->fetchObject();
-// var_dump($data);
+$user = new User($db);
+$pseudoInput = $user->setPseudo($login);
+$data = $user->selectByPseudo();
 
 ?>
 <div class="container-fluid">

@@ -10,33 +10,19 @@ require_once 'src/classes/User.php';
 $db = connect();
 
 // Sélection pseudo et mot de passe de l'utilisateur
-$pseudoInput = $_POST['inputPseudo'];
-
-$sqlSelUser = "SELECT pseudoUser, mdpUser FROM user WHERE pseudoUser = :inputPseudo";
-$reqSelUser = $db->prepare($sqlSelUser);
-$reqSelUser->bindParam(':inputPseudo', $pseudoInput);
-// $reqSelUser->execute();
-
-// $data = $reqSelUser->fetchObject();
-// var_dump($data);
-
-//Essai
 $user = new User($db);
 $pseudoInput = $user->setPseudo($_POST['inputPseudo']);
 $reqSelUser = $user->selectByPseudo();
 // var_dump($reqSelUser);
 $pseudoUser = $reqSelUser->Pseudo;
 $mdpUser = $reqSelUser->Mdp;
+$activeUser = $reqSelUser->activate;
 
 if(password_verify($_POST['inputMdp'], $mdpUser)) {
-    if(isset($_SESSION['login'])) {
-    $pseudo = $_SESSION['login'];
-    } else {
     $_SESSION['login'] = $pseudoUser;
-    $pseudo = $_SESSION['login'];
-    }
     header('location: /');
 }
+
 // if(password_verify($_POST['inputMdp'], $data->mdpUser)) {
 //     if(isset($_SESSION['login'])) {
 //     $pseudo = $_SESSION['login'];
