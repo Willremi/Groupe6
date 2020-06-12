@@ -9,12 +9,9 @@ require 'src/models/connect.php';
 
 $db = connect();
 $error = '';
-// Sélection pseudo et mot de passe de l'utilisateur
-// if(password_verify($_POST['inputMdp'], $mdpUser)) {
-//     $_SESSION['login'] = $pseudoUser;
-//     header('location: /');
-// } 
+
 if (!isset($_SESSION['login']) && isset($_POST['inputPseudo'])) {
+    // Sélection pseudo et mot de passe de l'utilisateur
     $user = new User($db);
     $pseudoInput = $user->setPseudo($_POST['inputPseudo']);
     $reqSelUser = $user->selectByPseudo();
@@ -31,7 +28,7 @@ if (!isset($_SESSION['login']) && isset($_POST['inputPseudo'])) {
         // exit();
         header('location: /');
     }
-}
+} 
 
 // if(password_verify($_POST['inputMdp'], $mdpUser)) {
 //     if(isset($_SESSION['login'])) {
