@@ -21,17 +21,14 @@ $cpVille = htmlspecialchars(trim($_POST['cpVille']));
 $nomVille = htmlspecialchars(trim($_POST['nomVille']));
 // var_dump($nomVille);
 
-$userLogin = $_SESSION['login'];
+$login = $_SESSION['login'];
 
-$sqlId = 'SELECT idUser FROM user WHERE pseudoUser = :pseudo';
+$user = new User($db);
+$user->setPseudo($login);
+$data = $user->selectByPseudo();
 
-$reqId = $db->prepare($sqlId);
-$reqId->bindParam(':pseudo', $userLogin);
-$reqId->execute();
+$idUser = $data->idUser;
 
-$dataId = $reqId->fetchObject();
-
-$idUser = $dataId->idUser;
 // var_dump($idUser);
 
 $sqlUp = "UPDATE user 

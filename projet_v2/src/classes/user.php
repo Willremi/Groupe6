@@ -68,13 +68,14 @@ class User {
         $sql = "DELETE FROM user WHERE idUser = :idUser LIMIT 1";
     }
     
-    public function select() {
-        $sql = "SELECT * FROM user";
-    }
+    // public function select() {
+    //     $sql = "SELECT * FROM user";
+    // }
 
     public function selectByPseudo() {
         $pseudoInput = $this->pseudo;
-        $sqlSelUser = "SELECT nomUser AS Nom, 
+        $sqlSelUser = "SELECT idUser, 
+                              nomUser AS Nom, 
                               prenomUser AS Prénom,
                               pseudoUser AS Pseudo, 
                               mailUser AS Email, 
