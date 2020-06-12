@@ -62,6 +62,19 @@ class User {
               cpVille = :cpVilleUp, 
               nomVille = :nomVilleUp
           WHERE idUser = :idUserUp LIMIT 1";
+
+        $reqUp = $this->db->prepare($sql);
+
+        $reqUp->bindParam(':nomUserUp', $this->nom);
+        $reqUp->bindParam(':prenomUserUp', $this->prenom);
+        $reqUp->bindParam(':pseudoUserUp', $this->pseudo);
+        $reqUp->bindParam(':mailUserUp', $this->mail);
+        $reqUp->bindParam(':numRueUp', $this->numRue);
+        $reqUp->bindParam(':nomRueUp', $this->adress);
+        $reqUp->bindParam(':nomRueCompUp', $this->complementAdress);
+        $reqUp->bindParam(':cpVilleUp', $this->codePostal);
+        $reqUp->bindParam(':nomVilleUp', $this->ville);
+        $reqUp->bindParam(':idUserUp', $this->id);
     }
 
     public function delete() {
