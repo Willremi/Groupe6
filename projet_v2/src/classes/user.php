@@ -86,7 +86,7 @@ class User {
                               nomVille AS Ville, 
                               activate
                        FROM user 
-                       WHERE pseudoUser = :inputPseudo";
+                       WHERE pseudoUser = :inputPseudo AND activate = 1";
         $reqSelUser = $this->db->prepare($sqlSelUser);
         $reqSelUser->bindParam(':inputPseudo', $pseudoInput);
         $reqSelUser->execute();

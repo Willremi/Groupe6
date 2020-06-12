@@ -3,9 +3,10 @@
             <div class="card-header">
             <h1>Se connecter</h1>
             </div>
+            <div id="error"><span><?= $error ?></span></div>
             <div class="card-body">
                 <blockquote class="blockquote mb-0">
-                <form method="POST" action="/">
+                <form method="POST" action="">
                     <div class="form-group">
                         <div class="form-group offset-md-3 col-md-6">
                         <label for="inputPseudo">Pseudo</label>

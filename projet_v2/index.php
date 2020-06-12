@@ -1,5 +1,5 @@
 <?php
- session_start();
+session_start();
  require 'vendor/autoload.php';
  require_once 'src/classes/User.php';
 require 'src/views/elements/head.php';
@@ -8,19 +8,30 @@ require 'src/config/config.php';
 require 'src/models/connect.php';
 
 $db = connect();
-
+$error = '';
 // Sélection pseudo et mot de passe de l'utilisateur
-$user = new User($db);
-$pseudoInput = $user->setPseudo($_POST['inputPseudo']);
-$reqSelUser = $user->selectByPseudo();
-$pseudoUser = $reqSelUser->Pseudo;
-$mdpUser = $reqSelUser->Mdp;
+// if(password_verify($_POST['inputMdp'], $mdpUser)) {
+//     $_SESSION['login'] = $pseudoUser;
+//     header('location: /');
+// } 
+if (!isset($_SESSION['login']) && isset($_POST['inputPseudo'])) {
+    $user = new User($db);
+    $pseudoInput = $user->setPseudo($_POST['inputPseudo']);
+    $reqSelUser = $user->selectByPseudo();
+    $pseudoUser = $reqSelUser->Pseudo;
+    $mdpUser = $reqSelUser->Mdp;
 
-
-if(password_verify($_POST['inputMdp'], $mdpUser)) {
-    $_SESSION['login'] = $pseudoUser;
-    header('location: /');
-} 
+    // Comparaison du pass envoyé via le formulaire avec la base
+    $isPasswordCorrect = password_verify($_POST['inputMdp'], $mdpUser);
+    // var_dump($isPasswordCorrect);
+    if (!$isPasswordCorrect) {
+        $error = 'Mauvais identifiant ou mot de passe';
+    } else {
+        $_SESSION['login'] = $pseudoUser;
+        // exit();
+        header('location: /');
+    }
+}
 
 // if(password_verify($_POST['inputMdp'], $mdpUser)) {
 //     if(isset($_SESSION['login'])) {

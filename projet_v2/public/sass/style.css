@@ -29,6 +29,11 @@ ul {
   list-style: none;
 }
 
+#error {
+  color: red;
+  background-color: pink;
+}
+
 .loading {
   text-align: center;
 }

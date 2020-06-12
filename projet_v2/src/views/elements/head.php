@@ -47,14 +47,15 @@ $pseudo = $_SESSION['login'] ?? '';
             // var_dump($data);
            
             $user = new User($db);
-            $pseudoInput = $user->setPseudo($pseudo);
+            $user->setPseudo($pseudo);
             // var_dump($pseudoInput);
             $data = $user->selectByPseudo();
             
+            
             // var_dump($reqSelUser);
-
-            if($pseudo === $data->Pseudo) {
-            // if($pseudo === "willremi") {
+            
+                if ($pseudo === $data->Pseudo) {
+                    // if($pseudo === "willremi") {
               ?>
               <li class="nav-item">
               <a class="nav-link" href="streaming">Streaming/Blu-ray</a>
@@ -69,8 +70,7 @@ $pseudo = $_SESSION['login'] ?? '';
               <a class="nav-link" href="acteurs">Acteurs</a>
             </li>
               <?php
-            }
-            ?>
+                } ?>
             <li class="nav-item"><a class="nav-link" href="contact">Contact</a></li>
           </ul>
           <ul class="navbar-nav ml-auto nav-flex-icons">
@@ -79,9 +79,9 @@ $pseudo = $_SESSION['login'] ?? '';
               </a>
             </li> -->
             
-            <?php 
-            if($pseudo === $data->Pseudo) {
-            // if ($pseudo === "willremi") {
+            <?php
+            if ($pseudo === $data->Pseudo) {
+                // if ($pseudo === "willremi") {
              ?>
             <li class="nav-item avatar dropdown">
               <a class="nav-link" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
@@ -96,7 +96,8 @@ $pseudo = $_SESSION['login'] ?? '';
               </div>
             </li>
             <?php
-            } else {
+            } 
+            else {
                 ?>
                 <li class="nav-item avatar dropdown">
               <a class="nav-link" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
@@ -112,6 +113,7 @@ $pseudo = $_SESSION['login'] ?? '';
             </li>
             <?php
             }
+            
             ?>
             <!-- <li class="nav-item avatar dropdown">
               <a class="nav-link" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
