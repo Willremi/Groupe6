@@ -75,6 +75,16 @@ class User {
         $reqUp->bindParam(':cpVilleUp', $this->codePostal);
         $reqUp->bindParam(':nomVilleUp', $this->ville);
         $reqUp->bindParam(':idUserUp', $this->id);
+
+        $reqUp->execute();
+
+        if($reqUp->rowCount() > 0) {
+            // header('Location: compte?modif=OK');
+            echo '<meta http-equiv="refresh" content="0;URL=/?modif=OK">';
+            
+        } else {
+            echo 'non réussi';
+        }
     }
 
     public function delete() {
