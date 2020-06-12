@@ -3,7 +3,7 @@
             <div class="card-header">
             <h1>Se connecter</h1>
             </div>
-            <div id="error"><span><?= $error ?></span></div>
+            <div class="mt-2 offset-md-4 col-md-4 rounded" id="error"><span><?= $error ?></span></div>
             <div class="card-body">
                 <blockquote class="blockquote mb-0">
                 <form method="POST" action="">

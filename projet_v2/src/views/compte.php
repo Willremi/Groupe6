@@ -1,30 +1,14 @@
-
 <?php  
 $login = $_SESSION['login'];
 
-$SelUser = "SELECT nomUser AS Nom, 
-                  prenomUser AS Prénom, 
-                  pseudoUser AS Pseudo, 
-                  mailUser AS Email, 
-                  mdpUser AS Mdp, 
-                  numRue AS NumeroRue, 
-                  nomRue1 AS Adresse, 
-                  nomRue2 AS AdresseCompl, 
-                  cpVille AS CodePostal, 
-                  nomVille AS Ville
-           FROM user WHERE pseudoUser = :pseudo";
-
-$reqUser = $db->prepare($SelUser);
-$reqUser->bindParam(':pseudo', $login);
-$reqUser->execute();
-
-$data = $reqUser->fetchObject();
-
+$user = new User($db);
+$user->setPseudo($login);
+$data = $user->selectByPseudo();
 
 ?>
 <div class="container-fluid">
     <h1>Compte utilisateur</h1>
-    <div class="offset-sm-5">
+    <div class="offset-md-4 col-md-4">
         <p>Nom : <?= $data->Nom ?></p>
         <p>Prénom : <?= $data->Prénom ?></p>
         <p>Pseudo : <?= $data->Pseudo ?></p>
