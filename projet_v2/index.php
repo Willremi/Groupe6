@@ -15,7 +15,7 @@ $pseudoInput = $user->setPseudo($_POST['inputPseudo']);
 $reqSelUser = $user->selectByPseudo();
 $pseudoUser = $reqSelUser->Pseudo;
 $mdpUser = $reqSelUser->Mdp;
-$activeUser = $reqSelUser->activate;
+
 
 if(password_verify($_POST['inputMdp'], $mdpUser)) {
     $_SESSION['login'] = $pseudoUser;
