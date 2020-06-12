@@ -6,9 +6,6 @@ $prenomUser = htmlspecialchars(trim($_POST['userFirstName']));
 $pseudoUser = htmlspecialchars(trim($_POST['userPseudo']));
 
 $mailUser = htmlspecialchars(trim($_POST['userMail']));
-// var_dump($mailUser);
-// $mdpUser = password_hash(htmlspecialchars(trim($_POST['userMdp'])), PASSWORD_BCRYPT);
-
 
 $numRue = htmlspecialchars(trim($_POST['numRue']));
 
