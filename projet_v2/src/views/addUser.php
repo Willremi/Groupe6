@@ -2,7 +2,6 @@
 
 // Ajout d'un pseudo
 
-
 $user->setNom($_POST['inputName']);
 $user->setPrenom($_POST['inputFirstname']);
 $user->setPseudo($_POST['inputPseudo']);
