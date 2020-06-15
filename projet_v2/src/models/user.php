@@ -19,6 +19,11 @@ class User {
       $this->setDb($db);
     }
 
+    public function setDb($db)
+    {
+        $this->db = $db;
+    }
+
     // Requêtes SQL
     public function create() {
         $sql = "INSERT INTO user (nomUser, prenomUser, pseudoUser, mailUser, mdpUser, numRue, nomRue1, nomRue2, cpVille, nomVille) VALUES (:insertNom, :insertPrenom, :insertPseudo, :insertMail, :insertMdp, :insertNumRue, :insertNomRue1, :insertNomRue2, :insertCp, :insertVille)";
@@ -116,11 +121,6 @@ class User {
 
         return $reqSelUser->fetchObject();
     
-    }
-
-    public function setDb(PDO $db)
-    {
-        $this->db = $db;
     }
 
     /**
