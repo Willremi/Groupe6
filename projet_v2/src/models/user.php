@@ -103,6 +103,15 @@ class User {
         $req->bindParam(':idUser', $this->id);
 
         $req->execute();
+
+        if($req->rowCount() > 0) {
+            
+            echo '<meta http-equiv="refresh" content="0;URL=/?delete=OK">';
+            
+            
+        } else {
+            echo 'non réussi';
+        }
     }
     
     // public function select() {

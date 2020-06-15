@@ -1,5 +1,6 @@
 <div class="container-fluid">
           <div class="row">
+              
               <div class="col-sm-6 col-md-12">
                   <h1 id="titleIndex">Bienvenu sur le site</h1>
                   <hr>

@@ -13,6 +13,7 @@ $user = new User($db);
 
 $error = '';
 
+
 if (!isset($_SESSION['login']) && isset($_POST['inputPseudo'])) {
     // Sélection pseudo et mot de passe de l'utilisateur
     $pseudoInput = $user->setPseudo($_POST['inputPseudo']);
