@@ -210,7 +210,12 @@ echo $str;
 
         $date = $saison->air_date;
         $dateFr = date('d/m/Y', strtotime($date));
-        echo '<td>'.$dateFr.'</td>';
+        // echo '<td>'.$dateFr.'</td>';
+        if($dateFr !== '01/01/1970') {
+            echo '<td>'.$dateFr.'</td>';
+        } else {
+            echo '<td></td>';
+        }
         }
     }
     // foreach($tab_saison as $nbEpisode) {
@@ -223,6 +228,10 @@ $str = <<<EOD
     </tr>
     </tbody>
     </table>
+    <hr>
+    </div>
+    <div class="col-sm-12 col-lg-12">
+    <h3>Commentaires</h3>
     </div>
 EOD;
 
