@@ -1,11 +1,11 @@
 <?php
 session_start();
- require 'vendor/autoload.php';
- require_once 'src/classes/User.php';
+require 'vendor/autoload.php';
+require_once 'src/classes/User.php';
 require 'src/views/elements/head.php';
 require 'src/views/elements/footer.php';
 require 'src/config/config.php';
-require 'src/models/connect.php';
+require 'src/config/connect.php';
 
 $db = connect();
 $error = '';

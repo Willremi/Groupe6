@@ -5,5 +5,10 @@
     "require": {
         "altorouter/altorouter": "^2.0",
         "phpmailer/phpmailer": "^6.1"
+    },
+    "autoload":{
+        "psr-4": {
+            "App\\": "src/"
+        }
     }
 }
