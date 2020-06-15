@@ -58,16 +58,16 @@ class User {
 
     public function update() {
         $sql = "UPDATE user 
-          SET nomUser = :nomUserUp, 
-              prenomUser = :prenomUserUp, 
-              pseudoUser = :pseudoUserUp, 
-              mailUser = :mailUserUp, 
-              numRue = :numRueUp, 
-              nomRue1 = :nomRueUp, 
-              nomRue2 = :nomRueCompUp, 
-              cpVille = :cpVilleUp, 
-              nomVille = :nomVilleUp
-          WHERE idUser = :idUserUp LIMIT 1";
+                SET nomUser = :nomUserUp, 
+                    prenomUser = :prenomUserUp, 
+                    pseudoUser = :pseudoUserUp, 
+                    mailUser = :mailUserUp, 
+                    numRue = :numRueUp, 
+                    nomRue1 = :nomRueUp, 
+                    nomRue2 = :nomRueCompUp, 
+                    cpVille = :cpVilleUp, 
+                    nomVille = :nomVilleUp
+                WHERE idUser = :idUserUp LIMIT 1";
 
         $reqUp = $this->db->prepare($sql);
 
@@ -94,7 +94,15 @@ class User {
     }
 
     public function delete() {
-        $sql = "DELETE FROM user WHERE idUser = :idUser LIMIT 1";
+        $sql = "UPDATE user 
+                SET activate = 0
+                WHERE idUser = :idUser LIMIT 1";
+        
+        $req = $this->db->prepare($sql);
+
+        $req->bindParam(':idUser', $this->id);
+
+        $req->execute();
     }
     
     // public function select() {

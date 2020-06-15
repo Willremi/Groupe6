@@ -85,6 +85,8 @@ if($match['target'] === '/') {
     require 'src/views/compte.php';
 } elseif ($match['target'] === 'Modification') {
     require 'src/views/updateUser.php';
+} elseif ($match['target'] === 'deleteUser') {
+    require 'src/views/deleteUser.php';
 } elseif ($match['target'] === 'updateUserInfo') {
     require 'src/views/updateUserInfo.php';
 }

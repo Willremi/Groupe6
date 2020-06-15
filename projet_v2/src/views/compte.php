@@ -10,6 +10,7 @@ $data = $user->selectByPseudo();
 ?>
 <div class="container-fluid">
     <h1>Compte utilisateur</h1>
+    <div class="row">
     <div class="offset-md-4 col-md-4">
         <p>Nom : <?= $data->Nom ?></p>
         <p>Prénom : <?= $data->Prénom ?></p>
@@ -21,6 +22,10 @@ $data = $user->selectByPseudo();
         <p>Code Postal : <?= $data->CodePostal ?></p>
         <p>Ville : <?= $data->Ville ?></p>
         <a href="<?= $router->generate('Modification') ?>"><button type="submit" class="btn btn-warning">Modifier</button></a>
+    </div>
+    <div class="col-md-3">
+        <a href="<?= $router->generate('deleteUser') ?>">Supprimer votre compte</a>
+    </div>
     </div>
 </div>
 

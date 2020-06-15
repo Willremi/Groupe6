@@ -16,4 +16,5 @@ $router->map('GET|POST', '/acteurs', 'acteurs', 'acteurs');
 $router->map('GET|POST', '/bio', 'bio', 'bio');
 $router->map('GET|POST', '/compte', 'compte', 'compte');
 $router->map('GET|POST', '/Modification', 'Modification', 'Modification');
+$router->map('GET|POST', '/deleteUser', 'deleteUser', 'deleteUser');
 $router->map('GET|POST', '/updateUserInfo', 'updateUserInfo', 'updateUserInfo');
