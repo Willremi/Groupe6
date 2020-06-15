@@ -1,7 +1,6 @@
 <?php
 $login = $_SESSION['login'];
 
-$user = new User($db);
 $pseudoInput = $user->setPseudo($login);
 $data = $user->selectByPseudo();
 

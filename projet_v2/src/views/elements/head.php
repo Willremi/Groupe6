@@ -46,7 +46,7 @@ $pseudo = $_SESSION['login'] ?? '';
             // $data = $reqSelUser->fetchObject();
             // var_dump($data);
            
-            $user = new User($db);
+            $user = new App\Models\User($db);
             $user->setPseudo($pseudo);
             // var_dump($pseudoInput);
             $data = $user->selectByPseudo();

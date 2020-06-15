@@ -1,7 +1,7 @@
 <?php
 
 // Ajout d'un pseudo
-$user = new User($db);
+
 
 $user->setNom($_POST['inputName']);
 $user->setPrenom($_POST['inputFirstname']);

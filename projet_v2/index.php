@@ -1,19 +1,20 @@
 <?php
 session_start();
 require 'vendor/autoload.php';
-require 'src/views/elements/head.php';
-require 'src/views/elements/footer.php';
 require 'src/config/config.php';
 require 'src/config/connect.php';
-require_once 'src/models/user.php';
-
+require 'src/views/elements/head.php';
+require 'src/views/elements/footer.php';
+// require_once 'src/models/user.php';
+use App\Models\User;
 
 $db = connect();
+$user = new User($db);
+
 $error = '';
 
 if (!isset($_SESSION['login']) && isset($_POST['inputPseudo'])) {
     // Sélection pseudo et mot de passe de l'utilisateur
-    $user = new User($db);
     $pseudoInput = $user->setPseudo($_POST['inputPseudo']);
     $reqSelUser = $user->selectByPseudo();
     $pseudoUser = $reqSelUser->Pseudo;

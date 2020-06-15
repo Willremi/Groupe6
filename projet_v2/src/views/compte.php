@@ -1,6 +1,7 @@
 <?php  
 $login = $_SESSION['login'];
 
+use App\Models\User;
 
 $user = new User($db);
 $user->setPseudo($login);
