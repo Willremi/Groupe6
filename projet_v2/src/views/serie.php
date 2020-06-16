@@ -21,29 +21,19 @@ $idSerie = $_GET['id'];
             <?php 
             $login = $_SESSION['login'];
             if(!$login) :
-            
             ?>
-            <div class="">
-                <form method="POST" action="">
-                    <div class="form-group">
-                        <div class="form-group offset-md-3 col-md-6">
-                        <label for="inputPseudo">Pseudo</label>
-                        <input type="text" class="form-control" id="inputPseudo" name="inputPseudo">
-                        </div>
-                    <div class="form-group">
-                        <div class="form-group offset-md-3 col-md-6">
-                            <label for="inputMdp">Mot de passe</label>
-                            <input type="password" class="form-control" id="inputMdp" name="inputMdp">
-                        </div>
-                    </div>
-                    <div class="offset-md-6">
-                    <button type="submit" class="btn btn-primary">Valider</button>
-                    <button type="reset" class="btn btn-danger">Annuler</button>
-                    </div>
-                </form>
-                
-            </div>
+            <div class="row justify-content-md-center">
+                 
+                  <div class="col-sm-2">
+                  <a href="inscription">
+                        <button class="btn btn-success">Inscrivez-vous</button></a>
+                  </div>
+                  <div class="col-sm-2">
+                  <a href="connexion">
+                        <button class="btn btn-primary">Connectez-vous</button></a>
+                  </div>
 
+            </div>
             <?php endif ?>
       </div>
 </div> <!-- fin container -->
