@@ -230,9 +230,7 @@ $str = <<<EOD
     </table>
     <hr>
     </div>
-    <div class="col-sm-12 col-lg-12">
-    <h3>Commentaires</h3>
-    </div>
+    
 EOD;
 
 echo $str;
