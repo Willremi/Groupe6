@@ -42,16 +42,24 @@ EOD;
     // Genres
     $tab_genres = $tab_select_serie->genres;
     // dump($tab_genres);
-    
-    foreach ($tab_genres as $key => $genres) {
-        $name = $genres->name;
-        
+    if($tab_genres === []) {
         $str = <<<EOD
+        
+            <li>Non renseigné</li>
+        
+EOD;
+        echo $str;
+    } else {
+        foreach ($tab_genres as $key => $genres) {
+            $name = $genres->name;
+        
+            $str = <<<EOD
             
             <li>$name</li>
             
 EOD;
-        echo $str;
+            echo $str;
+        }
     }
     echo '</ul>';
 
