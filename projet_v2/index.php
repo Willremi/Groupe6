@@ -60,6 +60,8 @@ if($match['target'] === '/') {
     require 'src/views/listSeries.php';
 } elseif ($match['target'] === 'serie') {
     require 'src/views/serie.php';
+} elseif ($match['target'] === 'addComment') {
+    require 'src/views/addComment.php';
 } elseif ($match['target'] === 'saison') {
     require 'src/views/saison.php';
 } elseif ($match['target'] === 'episode') {
