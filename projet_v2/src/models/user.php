@@ -28,7 +28,7 @@ class User {
 
     // Requêtes SQL
     public function create() {
-        $sql = "INSERT INTO user (nomUser, prenomUser, pseudoUser, mailUser, mdpUser, numRue, nomRue1, nomRue2, cpVille, nomVille, activate) VALUES (:insertNom, :insertPrenom, :insertPseudo, :insertMail, :insertMdp, :insertNumRue, :insertNomRue1, :insertNomRue2, :insertCp, :insertVille, 1)";
+        $sql = "INSERT INTO user (nomUser, prenomUser, pseudoUser, mailUser, mdpUser, numRue, nomRue1, nomRue2, cpVille, nomVille) VALUES (:insertNom, :insertPrenom, :insertPseudo, :insertMail, :insertMdp, :insertNumRue, :insertNomRue1, :insertNomRue2, :insertCp, :insertVille)";
 
         $reqInsertUser = $this->db->prepare($sql);
 
@@ -44,8 +44,9 @@ class User {
         $reqInsertUser->bindParam(':insertVille', $this->ville);
         
         $reqInsertUser->execute();
-
+        $reqInsertUser->debugDumpParams();
         $nbInsert = $reqInsertUser->rowCount();
+        // die();
         if($nbInsert == 1){
             // header('Location: /?add=sucess');
             echo '<meta http-equiv="refresh" content="0;URL=/?add=success">';

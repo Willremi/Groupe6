@@ -1,6 +1,6 @@
 <?php
 
 define('LOCALHOST', 'localhost');
-define('DBNAME', 'retroSerie');
+define('DBNAME', 'retroTv');
 define('DBID', 'root');
 define('DBMDP', 'root');
