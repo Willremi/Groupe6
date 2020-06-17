@@ -1,5 +1,80 @@
 <?php
 
 class Series {
-    
+    private $id;
+    private $apiSerieId;
+    private $nomSerie;
+
+    private $db; // Instance de PDO
+
+    public function __construct($db)
+    {
+      $this->setDb($db);
+    }
+
+    public function setDb($db)
+    {
+        $this->db = $db;
+    }
+
+
+    /**
+     * Get the value of id
+     */ 
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set the value of id
+     *
+     * @return  self
+     */ 
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of apiSerieId
+     */ 
+    public function getApiSerieId()
+    {
+        return $this->apiSerieId;
+    }
+
+    /**
+     * Set the value of apiSerieId
+     *
+     * @return  self
+     */ 
+    public function setApiSerieId($apiSerieId)
+    {
+        $this->apiSerieId = $apiSerieId;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of nomSerie
+     */ 
+    public function getNomSerie()
+    {
+        return $this->nomSerie;
+    }
+
+    /**
+     * Set the value of nomSerie
+     *
+     * @return  self
+     */ 
+    public function setNomSerie($nomSerie)
+    {
+        $this->nomSerie = $nomSerie;
+
+        return $this;
+    }
 }
