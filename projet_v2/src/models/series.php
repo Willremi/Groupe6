@@ -17,6 +17,17 @@ class Series {
         $this->db = $db;
     }
 
+    public function create() {
+        $sql = "INSERT INTO serie (apiSerieId, nomSerie) 
+                VALUES (:insertSerieId, :insertNomSerie)";
+
+        $req = $this->db->prepare($sql);
+
+        $req->bindParam(':insertSerieId', $this->apiSerieId);
+        $req->bindParam(':insertNomSerie', $this->nomSerie);
+
+        $req->execute();
+    }
 
     /**
      * Get the value of id
