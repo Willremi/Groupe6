@@ -40,7 +40,7 @@ $idSerie = $_GET['id'];
             ?>
                <form method="post" action="addComment?id=<?= $idSerie ?>">
                <div class="form-group">
-                  <textarea name="comments" id="comments" cols="40" rows="3" placeholder="Ecrivez votre commentaire"></textarea>
+                  <textarea name="comments" id="comments" cols="40" rows="3" placeholder="Ecrivez votre commentaire" required></textarea>
             </div>
             <button type="submit" id="validComment" class="btn btn-primary">Valider</button>
                </form>   

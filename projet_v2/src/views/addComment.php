@@ -11,3 +11,5 @@ $serieId = $_GET['id'];
 $comment->setAuteur($login);
 $comment->setComment($_POST['comments']);
 $comment->setSerieId($serieId);
+
+$comment->create();

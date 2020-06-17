@@ -23,11 +23,17 @@ class Comments {
 
     // Requêtes SQL
     public function create() {
-        $sql = "INSERT INTO commentaire (auteurComment, textComment) VALUES (:insertAuteur, :insertComment)";
+        $sql = "INSERT INTO commentaire (auteurComment, textComment, dateCreation, serie_id) VALUES (:insertAuteur, :insertComment, NOW(), :insertSerieId)";
 
         $req = $this->db->prepare($sql);
 
         $req->bindParam(':insertAuteur', $this->auteur);
+        $req->bindParam(':insertComment', $this->comment);
+        $req->bindParam(':insertSerieId', $this->serieId);
+
+        $req->execute();
+        $req->debugDumpParams();
+        die();
     }
 
 
