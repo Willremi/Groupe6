@@ -7,6 +7,7 @@ require 'src/views/elements/head.php';
 require 'src/views/elements/footer.php';
 // require_once 'src/models/user.php';
 use App\Models\User;
+use App\Models\Comments;
 
 $db = connect();
 $user = new User($db);

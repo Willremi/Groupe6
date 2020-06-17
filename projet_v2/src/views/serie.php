@@ -38,7 +38,7 @@ $idSerie = $_GET['id'];
             else :
                   echo 'Vous êtes connecté(e)s en tant que '.$login;
             ?>
-               <form method="post" action="addComment">
+               <form method="post" action="addComment?id=<?= $idSerie ?>">
                <div class="form-group">
                   <textarea name="comments" id="comments" cols="40" rows="3" placeholder="Ecrivez votre commentaire"></textarea>
             </div>
