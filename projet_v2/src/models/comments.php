@@ -21,6 +21,16 @@ class Comments {
         $this->db = $db;
     }
 
+    // Requêtes SQL
+    public function create() {
+        $sql = "INSERT INTO commentaire (auteurComment, textComment) VALUES (:insertAuteur, :insertComment)";
+
+        $req = $this->db->prepare($sql);
+
+        $req->bindParam(':insertAuteur', $this->auteur);
+    }
+
+
     /**
      * Get the value of id
      */ 
@@ -76,7 +86,7 @@ class Comments {
      */ 
     public function setComment($comment)
     {
-        $this->comment = $comment;
+        $this->comment = htmlspecialchars($comment);
 
         return $this;
     }
