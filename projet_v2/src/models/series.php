@@ -29,6 +29,10 @@ class Series {
         $req->execute();
     }
 
+    public function select() {
+        
+    }
+
     /**
      * Get the value of id
      */ 
