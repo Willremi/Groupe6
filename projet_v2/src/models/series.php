@@ -34,7 +34,13 @@ class Series {
                        apiSerieId, 
                        nomSerie 
                 FROM serie 
-                WHERE apiSerieId = :idSerie";
+                WHERE apiSerieId = :apiSerieId";
+        
+        $req = $this->db->prepare($sql);
+        $req->bindParam(':apiSerieId', $this->apiSerieId);
+        $req->execute();
+
+        return $req->fetchObject();
     }
 
     /**
