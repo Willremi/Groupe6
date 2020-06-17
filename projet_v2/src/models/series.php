@@ -29,8 +29,12 @@ class Series {
         $req->execute();
     }
 
-    public function select() {
-        
+    public function selectByApiId() {
+        $sql = "SELECT id, 
+                       apiSerieId, 
+                       nomSerie 
+                FROM serie 
+                WHERE apiSerieId = :idSerie";
     }
 
     /**
