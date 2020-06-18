@@ -1,9 +1,11 @@
 <?php 
 require 'src/api/api_serie.php';
+use App\Models\Comments;
+use App\Models\Series;
 // $nomSerie = $_GET['name'];
 // $nomSerieExplode = explode(' ', $nomSerie);
 // $titreSerie = implode('-', $nomSerieExplode);
-$idSerie = $_GET['id'];
+$idSerie = (int)$_GET['id'];
 
 ?>
 
@@ -17,11 +19,38 @@ $idSerie = $_GET['id'];
              
       ?>
       <div class="col-sm-12 col-lg-12" id='commentaire'>
-            <h3>Commentaires</h3>
+            
             <?php 
+            $comment = new Comments($db);
+            $serie = new Series($db);
+
+            $serie->setApiSerieId($idSerie);
+            $data = $serie->selectByApiId();
+            
+            $id = (int)$data->id;
+
+            // dump($id);
+            $comment->setSerieId($id);
+            $commentaires = $comment->selectBySerieId();
+            $nb_comments = count($commentaires);
+            // dump($commentaires);
+            if($nb_comments === 1 || $nb_comments === 0) {
+                  echo '<h3>'.$nb_comments.' Commentaire</h3>';
+            } else {
+                  echo '<h3>'.$nb_comments.' Commentaires</h3>';
+            }
+
+            foreach($commentaires as $key => $commentaire) {
+                  $commentaireUser = $commentaire['textComment'];
+                  $auteur = $commentaire['auteurComment'];
+            }
+
+
+            //---------------------------------------------
             $login = $_SESSION['login'];
             if(!$login) :
             ?>
+
             <div class="row justify-content-md-center">
                  
                   <div class="col-sm-2">

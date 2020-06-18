@@ -39,7 +39,16 @@ class Comments {
         
     }
 
-    public function select() {
+    public function selectBySerieId() {
+        $sql = "SELECT *
+        FROM commentaire
+        WHERE serie_id = :serieId";
+
+        $req = $this->db->prepare($sql);
+        $req->bindParam(':serieId', $this->serieId);
+        $req->execute();
+        return $req->fetchAll();
+        // $req->debugDumpParams();
         
     }
 
