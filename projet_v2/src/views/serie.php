@@ -43,6 +43,9 @@ $idSerie = (int)$_GET['id'];
             foreach($commentaires as $key => $commentaire) {
                   $commentaireUser = $commentaire['textComment'];
                   $auteur = $commentaire['auteurComment'];
+                  $date = date('d/m/Y à H:i:s', strtotime($commentaire['dateCreation']));
+                  echo '<h4>'.$auteur.'</h4><span>'.$date.'</span>';
+                  echo '<p>'.$commentaireUser.'</p>';
             }
 
 
