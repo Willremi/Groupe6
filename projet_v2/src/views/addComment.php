@@ -20,6 +20,7 @@ $urlSerie = file_get_contents("https://api.themoviedb.org/3/tv/".$idSerie."?api_
     $serie->setApiSerieId($idSerie);
     
     $data = $serie->selectByApiId();
+    $id = (int)$data->id;
 
     if(!$data) {
         $serie->setApiSerieId($idSerie);
@@ -30,10 +31,10 @@ $urlSerie = file_get_contents("https://api.themoviedb.org/3/tv/".$idSerie."?api_
     }
 
 // Ajout de série dans base de données
-
+var_dump($id);
 // Ajout d'un commentaire
-// $comment->setAuteur($login);
-// $comment->setComment($_POST['comments']);
-// $comment->setSerieId($idSerie);
+$comment->setAuteur($login);
+$comment->setComment($_POST['comments']);
+$comment->setSerieId($id);
 
-// $comment->create();
+$comment->create();
