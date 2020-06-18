@@ -38,7 +38,7 @@ $comment->setComment($_POST['comments']);
 $comment->setSerieId($id);
 
 $comment->create();
-
+echo '<meta http-equiv="refresh" content="0;URL=serie?id='.$idSerie.'#commentaire">';
 // if(){
 //     // header('Location: /?add=sucess');
 //     echo '<meta http-equiv="refresh" content="0;URL=serie?id='.$idSerie.'&add=success">';

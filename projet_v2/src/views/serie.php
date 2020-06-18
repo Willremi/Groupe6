@@ -16,7 +16,7 @@ $idSerie = $_GET['id'];
             }
              
       ?>
-      <div class="col-sm-12 col-lg-12">
+      <div class="col-sm-12 col-lg-12" id='commentaire'>
             <h3>Commentaires</h3>
             <?php 
             $login = $_SESSION['login'];

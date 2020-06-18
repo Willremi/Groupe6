@@ -39,6 +39,10 @@ class Comments {
         
     }
 
+    public function select() {
+        
+    }
+
 
     /**
      * Get the value of id
