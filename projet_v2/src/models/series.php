@@ -1,5 +1,5 @@
 <?php
-
+namespace App\Models;
 class Series {
     private $id;
     private $apiSerieId;

@@ -1,7 +1,9 @@
 <?php
 use App\Models\Comments;
+use App\Models\Series;
 
 $comment = new Comments($db);
+$serie = new Series($db);
 
 // var_dump($_POST['comments']);
 $login = $_SESSION['login'];
@@ -14,7 +16,18 @@ $urlSerie = file_get_contents("https://api.themoviedb.org/3/tv/".$idSerie."?api_
     // Nom de la série
     $nom = $tab_select_serie->name;
 
-    dump($nom);
+    // dump($nom);
+    $serie->setApiSerieId($idSerie);
+    
+    $data = $serie->selectByApiId();
+
+    if(!$data) {
+        $serie->setApiSerieId($idSerie);
+        $serie->setNomSerie($nom);
+        $serie->create();
+    } else {
+        $data;
+    }
 
 // Ajout de série dans base de données
 
