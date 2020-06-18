@@ -105,6 +105,10 @@ iframe {
   text-align: center;
 }
 
+#listComment {
+  background-color: #D3D3D3;
+}
+
 #photoActeur {
   width: 100px;
   height: 150px;
