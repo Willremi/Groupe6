@@ -21,7 +21,7 @@ $urlSerie = file_get_contents("https://api.themoviedb.org/3/tv/".$idSerie."?api_
     
     $data = $serie->selectByApiId();
     $id = (int)$data->id;
-
+    // dump($data);
     if(!$data) {
         $serie->setApiSerieId($idSerie);
         $serie->setNomSerie($nom);
@@ -31,10 +31,18 @@ $urlSerie = file_get_contents("https://api.themoviedb.org/3/tv/".$idSerie."?api_
     }
 
 // Ajout de série dans base de données
-var_dump($id);
+// var_dump($id);
 // Ajout d'un commentaire
 $comment->setAuteur($login);
 $comment->setComment($_POST['comments']);
 $comment->setSerieId($id);
 
 $comment->create();
+
+// if(){
+//     // header('Location: /?add=sucess');
+//     echo '<meta http-equiv="refresh" content="0;URL=serie?id='.$idSerie.'&add=success">';
+// }else{
+//     // header('Location: /?add=error');
+//     echo '<meta http-equiv="refresh" content="0;URL=/?add=error">';
+// }

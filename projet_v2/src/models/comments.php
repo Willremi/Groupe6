@@ -32,8 +32,11 @@ class Comments {
         $req->bindParam(':insertSerieId', $this->serieId);
 
         $req->execute();
-        $req->debugDumpParams();
+        // $req->debugDumpParams();
+        
+       
         // die();
+        
     }
 
 

@@ -53,7 +53,7 @@ class User {
         }else{
             // header('Location: /?add=error');
             echo '<meta http-equiv="refresh" content="0;URL=/?add=error">';
-}
+        }
 
     }
 
