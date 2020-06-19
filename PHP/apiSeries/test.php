@@ -28,7 +28,11 @@ echo '<hr>';
     </form>
     <?php 
     // var_dump($_POST['continent']);
-    ?>
+
+    if(file_exists('cache/contenu.txt')) {
+       echo file_get_contents('cache/contenu.txt'); 
+    } else {
+        ob_start(); ?>
     <hr>
 <table class="table-respo">
         <thead>
@@ -45,17 +49,22 @@ echo '<hr>';
             
         <?php require 'api_select_serie.php';
 
-    // showSelectSerie($list50);
-    // showSelectSerie($list60);
-    // showSelectSerie($list70);
-    showSelectSerie($list80);
-    // showSelectSerie($list90);
+        // showSelectSerie($list50);
+        // showSelectSerie($list60);
+        // showSelectSerie($list70);
+        showSelectSerie($list80);
+        // showSelectSerie($list90);
     // showSelectSerie($list2000);
     ?>
             
         </tbody>
     </table>
-
+    <?php
+    $content = ob_get_contents();
+    file_put_contents('cache/contenu.txt', $content);
+        echo $content;
+    }
+    ?>
     
 
     <!-- 
