@@ -15,6 +15,7 @@ $idSerie = (int)$_GET['id'];
              if($idSerie !== null) {
               // showDataBySerie($titreSerie);
               showDataBySerie($idSerie);
+              
             }
              
       ?>
@@ -29,7 +30,8 @@ $idSerie = (int)$_GET['id'];
             
             $id = (int)$data->id;
 
-            // dump($id);
+            // dump($data);
+            
             $comment->setSerieId($id);
             $commentaires = $comment->selectBySerieId();
             $nb_comments = count($commentaires);
