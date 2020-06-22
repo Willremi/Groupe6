@@ -20,7 +20,7 @@ $idSerie = (int)$_GET['id'];
       ?>
       <div class="col-sm-12 col-lg-12" id='commentaire'>
             
-            <?php 
+      <?php 
             $comment = new Comments($db);
             $serie = new Series($db);
 
@@ -40,26 +40,24 @@ $idSerie = (int)$_GET['id'];
                   echo '<h3>'.$nb_comments.' Commentaires</h3>';
             }
             echo '<div id="listComment">';
-            echo '<div class="offset-md-5">';
+            echo '<div class="offset-md-5" id="commentUser">';
             foreach($commentaires as $key => $commentaire):
                   $commentaireUser = $commentaire['textComment'];
                   $auteur = $commentaire['auteurComment'];
                   $date = date('d/m/Y à H:i:s', strtotime($commentaire['dateCreation']));
                   // echo '<h4>'.$auteur.'</h4><span>'.$date.'</span>';
                   // echo '<p>'.$commentaireUser.'</p>';
-            
-
-            ?>
+      ?>
             <span><strong><?= $auteur ?> | </strong><?= $date ?></span><br>
             <p><?= $commentaireUser ?></p>
-            <?php
+      <?php
             endforeach;
             echo '</div>';
             echo '</div>';
             //---------------------------------------------
             $login = $_SESSION['login'];
             if(!$login) :
-            ?>
+      ?>
 
             <div class="row justify-content-md-center">
                  
