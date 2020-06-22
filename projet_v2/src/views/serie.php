@@ -17,7 +17,7 @@ $idSerie = (int)$_GET['id'];
               showDataBySerie($idSerie);
               
             }
-             
+            
       ?>
       <div class="col-sm-12 col-lg-12" id='commentaire'>
             

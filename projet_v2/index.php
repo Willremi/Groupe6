@@ -6,6 +6,7 @@ require 'src/config/connect.php';
 require 'src/views/elements/head.php';
 require 'src/views/elements/footer.php';
 // require_once 'src/models/user.php';
+
 use App\Models\User;
 
 $db = connect();
@@ -44,16 +45,15 @@ if (!isset($_SESSION['login']) && isset($_POST['inputPseudo'])) {
 // }
 
 
-head();
+
 $router = new AltoRouter();
 // $router->setBasePath('');
 
 require 'src/views/elements/router.php';
 
 $match = $router->match();
-// dump($match);
 
-
+head();
 if($match['target'] === '/') {
     require 'src/views/home.php';
 } elseif ($match['target'] === 'Recherche') {
