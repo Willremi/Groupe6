@@ -37,17 +37,16 @@ $idSerie = (int)$_GET['id'];
             if($nb_comments === 1 || $nb_comments === 0) {
                   echo '<h3>'.$nb_comments.' Commentaire</h3>';
             } else {
-                  echo '<h3>'.$nb_comments.' Commentaires</h3>';
-            }
-            echo '<div id="listComment" class="offset-md-3 col-md-6">';
-            foreach($commentaires as $key => $commentaire):
+                echo '<h3>'.$nb_comments.' Commentaires</h3>';
+            
+                echo '<div id="listComment" class="offset-md-3 col-md-6">';
+                foreach ($commentaires as $key => $commentaire):
                   echo '<div id="commentUser">';
-                  $commentaireUser = $commentaire['textComment'];
-                  $auteur = $commentaire['auteurComment'];
-                  $date = date('d/m/Y à H:i:s', strtotime($commentaire['dateCreation']));
-                  // echo '<h4>'.$auteur.'</h4><span>'.$date.'</span>';
-                  // echo '<p>'.$commentaireUser.'</p>';
-      ?>
+                $commentaireUser = $commentaire['textComment'];
+                $auteur = $commentaire['auteurComment'];
+                $date = date('d/m/Y à H:i:s', strtotime($commentaire['dateCreation']));
+                // echo '<h4>'.$auteur.'</h4><span>'.$date.'</span>';
+                // echo '<p>'.$commentaireUser.'</p>'; ?>
             <span><strong><?= $auteur ?> | </strong>
             
             <time><?= $date ?></time>
@@ -55,8 +54,9 @@ $idSerie = (int)$_GET['id'];
             <p><?= $commentaireUser ?></p>
       <?php
             echo '</div>';
-            endforeach;
-            echo '</div><br>';
+                endforeach;
+                echo '</div><br>';
+            }
             //---------------------------------------------
             $login = $_SESSION['login'];
             if(!$login) :
@@ -73,11 +73,11 @@ $idSerie = (int)$_GET['id'];
                         <button class="btn btn-primary">Connectez-vous</button></a>
                   </div>
 
-            </div>
+            
             
             <?php 
             else :
-                  echo '<div class="offset-md-4">';
+                  echo '<div class="offset-md-5">';
                   echo 'Vous êtes connecté(e)s en tant que '.$login;
             ?>
             
