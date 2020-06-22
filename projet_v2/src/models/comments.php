@@ -42,7 +42,7 @@ class Comments {
     public function selectBySerieId() {
         $sql = "SELECT *
         FROM commentaire
-        WHERE serie_id = :serieId
+        WHERE serie_id = :serieId AND activate = 1
         ORDER BY dateCreation DESC";
 
         $req = $this->db->prepare($sql);
