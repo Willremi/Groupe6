@@ -39,9 +39,9 @@ $idSerie = (int)$_GET['id'];
             } else {
                   echo '<h3>'.$nb_comments.' Commentaires</h3>';
             }
-            echo '<div id="listComment">';
-            echo '<div class="offset-md-5" id="commentUser">';
+            echo '<div id="listComment" class="offset-md-4 col-md-4">';
             foreach($commentaires as $key => $commentaire):
+                  echo '<div id="commentUser">';
                   $commentaireUser = $commentaire['textComment'];
                   $auteur = $commentaire['auteurComment'];
                   $date = date('d/m/Y à H:i:s', strtotime($commentaire['dateCreation']));
@@ -51,8 +51,8 @@ $idSerie = (int)$_GET['id'];
             <span><strong><?= $auteur ?> | </strong><?= $date ?></span><br>
             <p><?= $commentaireUser ?></p>
       <?php
-            endforeach;
             echo '</div>';
+            endforeach;
             echo '</div>';
             //---------------------------------------------
             $login = $_SESSION['login'];
