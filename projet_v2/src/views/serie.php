@@ -39,7 +39,7 @@ $idSerie = (int)$_GET['id'];
             } else {
                   echo '<h3>'.$nb_comments.' Commentaires</h3>';
             }
-            echo '<div id="listComment" class="offset-md-4 col-md-4">';
+            echo '<div id="listComment" class="offset-md-3 col-md-6">';
             foreach($commentaires as $key => $commentaire):
                   echo '<div id="commentUser">';
                   $commentaireUser = $commentaire['textComment'];
@@ -48,12 +48,15 @@ $idSerie = (int)$_GET['id'];
                   // echo '<h4>'.$auteur.'</h4><span>'.$date.'</span>';
                   // echo '<p>'.$commentaireUser.'</p>';
       ?>
-            <span><strong><?= $auteur ?> | </strong><?= $date ?></span><br>
+            <span><strong><?= $auteur ?> | </strong>
+            
+            <time><?= $date ?></time>
+            </span><hr>
             <p><?= $commentaireUser ?></p>
       <?php
             echo '</div>';
             endforeach;
-            echo '</div>';
+            echo '</div><br>';
             //---------------------------------------------
             $login = $_SESSION['login'];
             if(!$login) :
@@ -71,10 +74,13 @@ $idSerie = (int)$_GET['id'];
                   </div>
 
             </div>
+            
             <?php 
             else :
+                  echo '<div class="offset-md-4">';
                   echo 'Vous êtes connecté(e)s en tant que '.$login;
             ?>
+            
                <form method="post" action="addComment?id=<?= $idSerie ?>">
                <div class="form-group">
                   <textarea name="comments" id="comments" cols="40" rows="3" placeholder="Ecrivez votre commentaire" required></textarea>
