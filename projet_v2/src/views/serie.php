@@ -36,10 +36,14 @@ $idSerie = (int)$_GET['id'];
             $commentaires = $comment->selectBySerieId();
             $nb_comments = count($commentaires);
             // dump($commentaires);
-            if($nb_comments === 1 || $nb_comments === 0) {
+            if($nb_comments === 0) {
                   echo '<h3>'.$nb_comments.' Commentaire</h3>';
-            } else {
-                echo '<h3>'.$nb_comments.' Commentaires</h3>';
+            } else if($nb_comments >= 1) {
+                if($nb_comments === 1) {
+                  echo '<h3>'.$nb_comments.' Commentaire</h3>';
+                } else {
+                  echo '<h3>'.$nb_comments.' Commentaires</h3>';
+                }
             
                 echo '<div id="listComment" class="offset-md-3 col-md-6">';
                 foreach ($commentaires as $key => $commentaire):
@@ -73,16 +77,15 @@ $idSerie = (int)$_GET['id'];
                   <div class="col-sm-2">
                   <a href="connexion">
                         <button class="btn btn-primary">Connectez-vous</button></a>
-                  </div>
-
-            
+                  </div> 
             
             <?php 
             else :
                   echo '<div class="offset-md-5">';
                   echo 'Vous êtes connecté(e)s en tant que '.$login;
             ?>
-            
+            <p class="d-none" id="userLogin"><?= $login ?></p>
+            <p class="d-none" id="idSerie"><?= $idSerie ?></p>
                <form method="post" action="addComment?id=<?= $idSerie ?>" id="formAddComment">
                <div class="form-group">
                   <textarea name="comments" id="comments" cols="40" rows="3" placeholder="Ecrivez votre commentaire" required></textarea>
@@ -94,9 +97,6 @@ $idSerie = (int)$_GET['id'];
             
             ?>
       </div>
-      <!-- <div id="listComment1" class="offset-md-3 col-md-6"></div> -->
+      <div id="listComment1" class="offset-md-3 col-md-6"></div>
 </div> <!-- fin container -->
-<script>
-      var test = '<?= $login ?>';
-      console.log(test);
-</script>
+
