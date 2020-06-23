@@ -2,8 +2,9 @@
 session_start();
 function head($title = 'Rétro Série') {
   
-$pseudo = $_SESSION['login'] ?? '';
-// var_dump($pseudo);
+  $pseudo = $_SESSION['login'] ?? '';
+  // var_dump($pseudo);
+
 
     ?>
 <!DOCTYPE html>
@@ -34,6 +35,10 @@ $pseudo = $_SESSION['login'] ?? '';
             <li class="nav-item">
               <a class="nav-link" href="Recherche">Liste des séries</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="acteurs">Acteurs</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="contact">Contact</a></li>
             <?php 
             $db = connect();
 
@@ -66,12 +71,10 @@ $pseudo = $_SESSION['login'] ?? '';
             <!-- <li class="nav-item">
               <a class="nav-link" href="#">Stickers</a>
             </li> -->
-            <li class="nav-item">
-              <a class="nav-link" href="acteurs">Acteurs</a>
-            </li>
+            
               <?php
                 } ?>
-            <li class="nav-item"><a class="nav-link" href="contact">Contact</a></li>
+            
           </ul>
           <ul class="navbar-nav ml-auto nav-flex-icons">
             <!-- <li class="nav-item">

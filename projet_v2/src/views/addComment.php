@@ -1,9 +1,11 @@
 <?php
 use App\Models\Comments;
 use App\Models\Series;
+// use App\Models\User;
 
 $comment = new Comments($db);
 $serie = new Series($db);
+// $user = new User($db);
 
 // var_dump($_POST['comments']);
 $login = $_SESSION['login'];
