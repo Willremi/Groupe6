@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
         $('#result').html('<div class="loading"><img src="https://i.gifer.com/GNvR.gif" alt="En chargement..."></div>');
         $.ajax({
             method: 'POST',
-            url: "src/views/listTableau.php",
+            url: "src/ajax/listTableau.php",
             data: {
                 'id': id
             },
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
              $('.resultSerie').html('<div class="loading"><img src="https://i.gifer.com/GNvR.gif" alt="En chargement..."></div>');
             $.ajax({
                 type: "POST",
-                url: "src/views/searchSerie.php", 
+                url: "src/ajax/searchSerie.php", 
                 data: {
                     data : $form.serializeArray()
                 },
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
             $('.resultActeur').html('<div class="loading"><img src="https://i.gifer.com/GNvR.gif" alt="En chargement..."></div>');
             $.ajax({
                 type: "POST",
-                url: "src/views/searchActeur.php",
+                url: "src/ajax/searchActeur.php",
                 data: {
                     data: $form.serializeArray()
                 },

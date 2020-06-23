@@ -1,5 +1,5 @@
 <?php 
-require 'functionTable.php';
+require 'src/ajax/functionTable.php';
 require 'src/api/api_select_serie.php';
 
 ?>
