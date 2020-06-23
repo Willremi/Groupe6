@@ -83,7 +83,7 @@ $idSerie = (int)$_GET['id'];
                   echo 'Vous êtes connecté(e)s en tant que '.$login;
             ?>
             
-               <form method="post" action="addComment?id=<?= $idSerie ?>">
+               <form method="post" action="addComment?id=<?= $idSerie ?>" id="formAddComment">
                <div class="form-group">
                   <textarea name="comments" id="comments" cols="40" rows="3" placeholder="Ecrivez votre commentaire" required></textarea>
             </div>
@@ -94,4 +94,5 @@ $idSerie = (int)$_GET['id'];
             
             ?>
       </div>
+      <!-- <div id="listComment1" class="offset-md-3 col-md-6"></div> -->
 </div> <!-- fin container -->
