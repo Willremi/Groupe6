@@ -82,4 +82,24 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     });
 
+    // $('#formAddComment').submit(
+    //     function (e) {
+    //         e.preventDefault();
+    //         var $form = $(this);
+    //         // $('#listComment1').html('<div class="loading"><img src="https://i.gifer.com/GNvR.gif" alt="En chargement..."></div>');
+            
+    //         $.ajax({
+    //             type: "GET",
+    //             url: "src/ajax/addComment.php?user="+user,
+    //             data: {
+    //                 data: $form.serializeArray()
+    //             },
+    //             dataType: "html",
+    //             success: function (response) {
+    //                 $('#listComment1').html(response);
+    //             }
+    //         });
+    //     }
+    // );
+    
 });

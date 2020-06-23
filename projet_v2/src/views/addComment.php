@@ -48,3 +48,4 @@ echo '<meta http-equiv="refresh" content="0;URL=serie?id='.$idSerie.'#commentair
 //     // header('Location: /?add=error');
 //     echo '<meta http-equiv="refresh" content="0;URL=/?add=error">';
 // }
+
