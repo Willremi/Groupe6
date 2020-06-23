@@ -82,26 +82,28 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     });
 
-    // $('#formAddComment').submit(
-    //     function () {
-    //         // e.preventDefault();
-    //         var $form = $(this);
-    //         $('#listComment1').html('<div class="loading"><img src="https://i.gifer.com/GNvR.gif" alt="En chargement..."></div>');
-    //  var userLogin = $('#userLogin').html();
-    //  var idSerie = $('#idSerie').html();
-    //         $.ajax({
-    //             type: "GET",
-    //             url: "src/ajax/addComment.php?idSerie="+idSerie+"&user="+userLogin,
-    //             data: {
-    //                 data: $form.serializeArray()
-    //             },
-    //             dataType: "html",
-    //             success: function (response) {
-    //                 $('#listComment1').html(response);
-                    
-    //             }
-    //         });
-    //     }
-    // );
+    $('#formAddComment').submit(
+        function (e) {
+            e.preventDefault();
+            var $form = $(this);
+            // $('#listComment1').html('<div class="loading"><img src="https://i.gifer.com/GNvR.gif" alt="En chargement..."></div>');
+     var userLogin = $('#userLogin').html();
+     var idSerie = $('#idSerie').html();
+            $.ajax({
+                type: "POST",
+                url: "src/ajax/addComment.php",
+                data: {
+                    data: $form.serializeArray(), 
+                    user: userLogin, 
+                    idSerie: idSerie
+                },
+                dataType: "html",
+                success: function (response) {
+                    $('#listComment1').html(response);
+                    window.location.assign("http://localhost:8001/serie?id="+idSerie+"#commentaire");
+                }
+            });
+        }
+    );
     
 });

@@ -13,9 +13,9 @@ $serie = new Series($db);
 
 // $user = new User($db);
 
-$idSerie = (int)$_GET['idSerie'];
-$login = $_GET['user'];
-$commentInput = array_column($_GET['data'], 'value');
+$idSerie = (int)$_POST['idSerie'];
+$login = $_POST['user'];
+$commentInput = array_column($_POST['data'], 'value');
 $commentaire = $commentInput[0];
 
 $urlSerie = file_get_contents("https://api.themoviedb.org/3/tv/".$idSerie."?api_key=c595147bf4af143ab2df16843f9487bf&language=fr-FR&page=1");
@@ -48,5 +48,4 @@ $comment->setSerieId($id);
 
 // $comment->create();
 
-
-
+// echo '<meta http-equiv="refresh" content="0;URL=serie?id='.$idSerie.'#commentaire">';

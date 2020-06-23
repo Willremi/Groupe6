@@ -86,7 +86,8 @@ $idSerie = (int)$_GET['id'];
             ?>
             <p class="d-none" id="userLogin"><?= $login ?></p>
             <p class="d-none" id="idSerie"><?= $idSerie ?></p>
-               <form method="post" action="addComment?id=<?= $idSerie ?>" id="formAddComment">
+               <form method="post" action="" id="formAddComment">
+               <!-- <form method="post" action="addComment?id=<?= $idSerie ?>" id="formAddComment"> -->
                <div class="form-group">
                   <textarea name="comments" id="comments" cols="40" rows="3" placeholder="Ecrivez votre commentaire" required></textarea>
             </div>
