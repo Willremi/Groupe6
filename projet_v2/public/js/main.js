@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
              $('.resultSerie').html('<div class="loading"><img src="https://i.gifer.com/GNvR.gif" alt="En chargement..."></div>');
             $.ajax({
                 type: "POST",
-                url: "../../src/views/searchSerie.php", 
+                url: "src/views/searchSerie.php", 
                 data: {
                     data : $form.serializeArray()
                 },
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
             $('.resultActeur').html('<div class="loading"><img src="https://i.gifer.com/GNvR.gif" alt="En chargement..."></div>');
             $.ajax({
                 type: "POST",
-                url: "../../src/views/searchActeur.php",
+                url: "src/views/searchActeur.php",
                 data: {
                     data: $form.serializeArray()
                 },
