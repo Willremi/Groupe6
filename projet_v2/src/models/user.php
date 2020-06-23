@@ -132,7 +132,8 @@ class User {
                               nomRue2 AS AdresseCompl, 
                               cpVille AS CodePostal, 
                               nomVille AS Ville, 
-                              activate
+                              activate, 
+                              role_id
                        FROM user 
                        WHERE pseudoUser = :inputPseudo AND activate = 1";
         $reqSelUser = $this->db->prepare($sqlSelUser);

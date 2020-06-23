@@ -76,8 +76,8 @@ if($match['target'] === '/') {
     require 'src/views/inscription.php';
 } elseif ($match['target'] === 'addUser') {
     require 'src/views/addUser.php';
-} elseif ($match['target'] === 'streaming') {
-    require 'src/views/streaming.php';
+} elseif ($match['target'] === 'admin') {
+    require 'src/views/admin.php';
 } elseif ($match['target'] === 'musiques') {
     require 'src/views/musiques.php';
 } elseif ($match['target'] === 'acteurs') {

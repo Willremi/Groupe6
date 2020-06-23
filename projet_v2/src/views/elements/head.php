@@ -38,7 +38,7 @@ function head($title = 'Rétro Série') {
             <li class="nav-item">
               <a class="nav-link" href="acteurs">Acteurs</a>
             </li>
-            <li class="nav-item"><a class="nav-link" href="contact">Contact</a></li>
+            <!-- <li class="nav-item"><a class="nav-link" href="contact">Contact</a></li> -->
             <?php 
             $db = connect();
 
@@ -55,24 +55,28 @@ function head($title = 'Rétro Série') {
             $user->setPseudo($pseudo);
             // var_dump($pseudoInput);
             $data = $user->selectByPseudo();
-            
-            
+            $role = (int)$data->role_id;
+            // var_dump($role);
             // var_dump($reqSelUser);
             
-                if ($pseudo === $data->Pseudo) {
+                if ($pseudo === $data->Pseudo && $role === 1) {
                     // if($pseudo === "willremi") {
               ?>
               <li class="nav-item">
-              <a class="nav-link" href="streaming">Streaming/Blu-ray</a>
+              <a class="nav-link" href="admin">Admin</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="musiques">Musiques</a>
-            </li>
+            </li> -->
             <!-- <li class="nav-item">
               <a class="nav-link" href="#">Stickers</a>
             </li> -->
             
               <?php
+                } else {
+              ?>
+              <li class="nav-item"><a class="nav-link" href="contact">Contact</a></li>
+              <?php    
                 } ?>
             
           </ul>
