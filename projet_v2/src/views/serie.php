@@ -100,4 +100,3 @@ $idSerie = (int)$_GET['id'];
       </div>
       <div id="listComment1" class="offset-md-3 col-md-6"></div>
 </div> <!-- fin container -->
-
