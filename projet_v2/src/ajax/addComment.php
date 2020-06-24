@@ -49,3 +49,12 @@ $comment->setSerieId($id);
 // $comment->create();
 
 // echo '<meta http-equiv="refresh" content="0;URL=serie?id='.$idSerie.'#commentaire">';
+date_default_timezone_set('UTC');
+?>
+<div id="commentUser">
+<span><strong><?= $login ?> | </strong></span>
+<time><?= date("d/m/Y à H:i:s") ?></time>
+</span><hr>
+<p>Votre commentaire est en cours de modération</p>
+</div>
+<?php
