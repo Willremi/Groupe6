@@ -49,7 +49,7 @@ $comment->setSerieId($id);
 // $comment->create();
 
 // echo '<meta http-equiv="refresh" content="0;URL=serie?id='.$idSerie.'#commentaire">';
-date_default_timezone_set('UTC');
+
 ?>
 <div id="commentUser">
 <span><strong><?= $login ?> | </strong></span>
