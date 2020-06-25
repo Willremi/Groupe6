@@ -53,6 +53,9 @@ class Comments {
         
     }
 
+    public function selectByUser() {
+        
+    }
 
     /**
      * Get the value of id
