@@ -35,9 +35,17 @@ $data = $user->selectByPseudo();
             <p>Ville : <?= $data->Ville ?></p>
         </div>
         <div class="offset-md-4">
-        <a href="<?= $router->generate('Modification') ?>"><button type="submit" class="btn btn-warning">Modifier votre compte</button></a>
-        <a href="<?= $router->generate('deleteUser') ?>"><button type="button" class="btn btn-danger">Supprimer votre compte</button></a>
-    </div>
-    </div>
+            <a href="<?= $router->generate('Modification') ?>"><button type="submit" class="btn btn-warning">Modifier votre compte</button></a>
+            <a href="<?= $router->generate('deleteUser') ?>"><button type="button" class="btn btn-danger">Supprimer votre compte</button></a>
+        </div>
+    </div> <!-- fin row -->
+    <?php 
+    $comments->setAuteur($login);
+    $commentaireUser = $comments->selectByAuteur();
+    dump($commentaireUser);
+    $commentaire = $commentaireUser->textComment;
+    $serieId = (int)$commentaireUser->serie_id;
+    dump($serieId);
+    ?>
 </div>
 

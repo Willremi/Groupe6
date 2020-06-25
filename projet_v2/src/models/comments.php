@@ -53,8 +53,15 @@ class Comments {
         
     }
 
-    public function selectByUser() {
+    public function selectByAuteur() {
+        $sql = "SELECT * FROM commentaire 
+                WHERE auteurComment = :auteur AND activate = 1 
+                ORDER BY dateCreation DESC";
         
+        $req = $this->db->prepare($sql);
+        $req->bindParam(':auteur', $this->auteur);
+        $req->execute();
+        return $req->fetchObject();
     }
 
     /**
