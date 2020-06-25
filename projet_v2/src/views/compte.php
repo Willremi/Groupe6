@@ -43,11 +43,32 @@ $data = $user->selectByPseudo();
     $comments->setAuteur($login);
     $commentaireUser = $comments->selectByAuteur();
     $commentaire = $commentaireUser->textComment;
+    $dateCreation = $commentaireUser->dateCreation;
+    $date = date('d/m/Y à H:i', strtotime($dateCreation));
     $serieId = (int)$commentaireUser->serie_id;
 
     $serie->setId($serieId);
     $dataSerie = $serie->selectById();
-    dump($dataSerie);
+    $idApiSerie = (int)$dataSerie->apiSerieId;
+    $nomSerie = $dataSerie->nomSerie;
+    dump($nomSerie);
+    if($commentaire):
     ?>
+    <h2>Votre dernière commentaire</h2>
+    <hr>
+    <div class="row">
+        <div class="ml-4 col-md-4">
+        <p><strong>Série : </strong><?= $nomSerie ?></p>
+        </div>
+        <div class="col-md-4">
+        <p><strong>Posté le : </strong><?= $date ?></p>
+        </div>
+        <div class="col-md-2">
+        <p><strong>Liens : </strong>
+        <a href="serie?id=<?= $idApiSerie ?>#commentaire" target="_blank">Voir le commentaire</a>
+        </p>
+        </div>
+    </div>
+    <?php endif; ?>
 </div>
 
