@@ -51,10 +51,10 @@ $data = $user->selectByPseudo();
     $dataSerie = $serie->selectById();
     $idApiSerie = (int)$dataSerie->apiSerieId;
     $nomSerie = $dataSerie->nomSerie;
-    dump($nomSerie);
+    // dump($nomSerie);
     if($commentaire):
     ?>
-    <h2>Votre dernière commentaire</h2>
+    <h2>Votre dernier commentaire</h2>
     <hr>
     <div class="row">
         <div class="ml-4 col-md-4">
