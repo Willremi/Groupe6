@@ -43,6 +43,19 @@ class Series {
         return $req->fetchObject();
     }
 
+    public function selectById() {
+        $sql = "SELECT * 
+                FROM serie 
+                WHERE id = :id";
+        
+        $req = $this->db->prepare($sql);
+        $req->bindParam(':id', $this->id);
+        $req->execute();
+
+        return $req->fetchObject();
+        $req->debugDumpParams();
+    }
+
     /**
      * Get the value of id
      */ 

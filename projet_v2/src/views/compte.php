@@ -42,10 +42,12 @@ $data = $user->selectByPseudo();
     <?php 
     $comments->setAuteur($login);
     $commentaireUser = $comments->selectByAuteur();
-    dump($commentaireUser);
     $commentaire = $commentaireUser->textComment;
     $serieId = (int)$commentaireUser->serie_id;
-    dump($serieId);
+
+    $serie->setId($serieId);
+    $dataSerie = $serie->selectById();
+    dump($dataSerie);
     ?>
 </div>
 
