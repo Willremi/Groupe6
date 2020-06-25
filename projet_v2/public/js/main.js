@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 dataType: "html",
                 success: function (response) {
-                    $('#listComment1').html(response);
+                    // $('#listComment1').html(response);
                     window.location.assign("http://localhost:8001/serie?id="+idSerie+"#commentaire");
                 }
             });
