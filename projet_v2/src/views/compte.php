@@ -53,7 +53,8 @@ $data = $user->selectByPseudo();
     $dataSerie = $serie->selectById();
     $idApiSerie = (int)$dataSerie->apiSerieId;
     $nomSerie = $dataSerie->nomSerie;
-    dump($commentaireUser);
+    // dump($commentaireUser);
+    
     if($commentaire):
     ?>
     <h2>Votre activité sur le site</h2>

@@ -62,6 +62,18 @@ class Comments {
         return $req->fetchAll();
     }
 
+    // public function selectByAuteurAndSerie() {
+    //     $sql = "SELECT * FROM commentaire 
+    //             WHERE auteurComment = :auteur AND serie_id = :serieId AND activate = 1";
+        
+    //     $req = $this->db->prepare($sql);
+    //     $req->bindParam(':auteur', $this->auteur);
+    //     $req->bindParam(':serieId', $this->serieId);
+    //     $req->execute();
+    //     return $req->fetchAll();
+    // }
+
+    
 
     /**
      * Get the value of id
