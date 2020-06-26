@@ -46,7 +46,7 @@ $comment->setAuteur($login);
 $comment->setComment($commentaire);
 $comment->setSerieId($id);
 
-// $comment->create();
+$comment->create();
 
 // echo '<meta http-equiv="refresh" content="0;URL=serie?id='.$idSerie.'#commentaire">';
 date_default_timezone_set("Europe/Paris");

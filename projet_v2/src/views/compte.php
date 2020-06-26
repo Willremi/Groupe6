@@ -61,7 +61,7 @@ $data = $user->selectByPseudo();
     <hr>
     <div class="row">
         <div class="ml-4">
-            <p><strong>Dernier commentaire : </strong><?= $nomSerie ?> (posté le <?= $date ?>) <a href="serie?id=<?= $idApiSerie ?>#commentaire" target="_blank">Voir le commentaire</a></p>
+            <p><strong>Dernier commentaire d'une série : </strong><?= $nomSerie ?> (posté le <?= $date ?>) <a href="serie?id=<?= $idApiSerie ?>#commentaire" target="_blank">Voir le commentaire</a></p>
             <p><strong>Nombre de commentaires sur le site : </strong><?= $nbCommentaire ?></p>
         </div>
 
