@@ -62,7 +62,6 @@ class Comments {
         return $req->fetchAll();
     }
 
-    
 
     /**
      * Get the value of id

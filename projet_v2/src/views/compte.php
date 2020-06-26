@@ -42,19 +42,17 @@ $data = $user->selectByPseudo();
     <?php 
     $comments->setAuteur($login);
     $commentaireUser = $comments->selectByAuteur();
+    $lastComment = $commentaireUser[0];
     $nbCommentaire = count($commentaireUser);
-    $commentaire = $commentaireUser[0]['textComment'];
-    $dateCreation = $commentaireUser[0]['dateCreation'];
+    $commentaire = $lastComment['textComment'];
+    $dateCreation = $lastComment['dateCreation'];
     $date = date('d/m/Y à H:i', strtotime($dateCreation));
-    $serieId = (int)$commentaireUser[0]['serie_id'];
+    $serieId = (int)$lastComment['serie_id'];
     
     $serie->setId($serieId);
     $dataSerie = $serie->selectById();
     $idApiSerie = (int)$dataSerie->apiSerieId;
     $nomSerie = $dataSerie->nomSerie;
-    
-    
-    // dump($commentaireUser[0]['textComment']);
 
     if($commentaire):
     ?>
