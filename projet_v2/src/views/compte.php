@@ -42,32 +42,32 @@ $data = $user->selectByPseudo();
     <?php 
     $comments->setAuteur($login);
     $commentaireUser = $comments->selectByAuteur();
-    $commentaire = $commentaireUser->textComment;
-    $dateCreation = $commentaireUser->dateCreation;
+    $nbCommentaire = count($commentaireUser);
+    $commentaire = $commentaireUser[0]['textComment'];
+    $dateCreation = $commentaireUser[0]['dateCreation'];
     $date = date('d/m/Y à H:i', strtotime($dateCreation));
-    $serieId = (int)$commentaireUser->serie_id;
-
+    $serieId = (int)$commentaireUser[0]['serie_id'];
+    
     $serie->setId($serieId);
     $dataSerie = $serie->selectById();
     $idApiSerie = (int)$dataSerie->apiSerieId;
     $nomSerie = $dataSerie->nomSerie;
-    // dump($nomSerie);
+    
+    
+    // dump($commentaireUser[0]['textComment']);
+
     if($commentaire):
     ?>
-    <h2>Votre dernier commentaire</h2>
+    <h2>Votre activité sur le site</h2>
     <hr>
     <div class="row">
-        <div class="ml-4 col-md-4">
-        <p><strong>Série : </strong><?= $nomSerie ?></p>
+        <div class="ml-4">
+            <p><strong>Dernier commentaire : </strong><?= $nomSerie ?> (posté le <?= $date ?>) <a href="serie?id=<?= $idApiSerie ?>#commentaire" target="_blank">Voir le commentaire</a></p>
+            <p><strong>Nombre de commentaires sur le site : </strong><?= $nbCommentaire ?></p>
         </div>
-        <div class="col-md-4">
-        <p><strong>Posté le : </strong><?= $date ?></p>
-        </div>
-        <div class="col-md-2">
-        <p><strong>Liens : </strong>
-        <a href="serie?id=<?= $idApiSerie ?>#commentaire" target="_blank">Voir le commentaire</a>
-        </p>
-        </div>
+
+        
+        
     </div>
     <?php endif; ?>
 </div>

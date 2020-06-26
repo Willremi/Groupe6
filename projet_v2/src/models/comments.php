@@ -61,8 +61,10 @@ class Comments {
         $req = $this->db->prepare($sql);
         $req->bindParam(':auteur', $this->auteur);
         $req->execute();
-        return $req->fetchObject();
+        return $req->fetchAll();
     }
+
+    
 
     /**
      * Get the value of id
