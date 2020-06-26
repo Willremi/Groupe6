@@ -33,8 +33,6 @@ class Comments {
 
         $req->execute();
         // $req->debugDumpParams();
-        
-       
         // die();
         
     }
