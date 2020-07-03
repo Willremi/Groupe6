@@ -16,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class VehiculeType extends AbstractType
 {
@@ -61,6 +62,9 @@ class VehiculeType extends AbstractType
                 'multiple' => false,
                 'required' => false
             ))
+            ->add('imageFile', FileType::class, array(
+	            'required' => false
+	        ))
         ;
     }
 

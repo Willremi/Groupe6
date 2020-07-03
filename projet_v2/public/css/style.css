@@ -11,6 +11,7 @@ a:hover {
   color: white;
   text-shadow: 2px 2px 2px black;
 }
+
 .jumbotron h1 {
   text-align: center;
   margin-top: 30px;
@@ -117,9 +118,11 @@ iframe {
   margin-top: 2%;
   padding-top: 2%;
 }
+
 #commentUser span, #commentUser p {
   padding: 1%;
 }
+
 #commentUser time {
   color: #777;
 }
@@ -157,9 +160,11 @@ iframe {
     margin-top: -1px;
     background: #FFF;
   }
+
   td:nth-child(odd) {
     background-color: #EEE;
   }
+
   td::before {
     padding: 10px;
     content: attr(data-label);
@@ -182,6 +187,7 @@ iframe {
   th > td {
     padding-left: 10px;
   }
+
   th > td::before {
     display: none;
   }

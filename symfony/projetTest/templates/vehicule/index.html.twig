@@ -17,6 +17,8 @@
                 <th>Options</th>
                 <th>Type véhicule</th>
                 <th>Couleur</th>
+                <th>Energie</th>
+                <th>Photo</th>
                 {% if is_granted('ROLE_ADMIN') %}
                     <th>actions</th>
                 {% endif %}
@@ -54,7 +56,7 @@
                     {% else %}
                         <td></td>
                     {% endif %}
-
+                        <td><img class="vehiculePhoto" src='{{ vich_uploader_asset(vehicule) }}' alt="image"></td>
                     {% if vehicule.energy %}
                         <td>{{ vehicule.energy.nomEnergy }}</td>
                     {% else %}
@@ -76,6 +78,7 @@
                             </div>
                         </td>
                     {% endif %}
+                    
                 </tr>
             {% else %}
                 <tr>

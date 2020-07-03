@@ -1,3 +1,6 @@
+utiliser sass  
+sass --watch public/sass/style.scss public/css/style.css
+
 head.php
 
 <li class="nav-item">

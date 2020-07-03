@@ -6,11 +6,18 @@ use App\Repository\VehiculeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use DateTime;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Exception;
 
 /**
  * @ORM\Entity(repositoryClass=VehiculeRepository::class)
  * @ORM\Entity
  * @ORM\Table(name="vehicule")
+ * @Vich\Uploadable()
  */
 class Vehicule
 {
@@ -66,6 +73,18 @@ class Vehicule
      */
     private $energy;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $photo;
+
+      /**
+	     * @var File|null
+			 * @Assert\Image(mimeTypes={"image/jpeg", "image/jpg", "image/png"})
+			 * @Vich\UploadableField(mapping="product_image", fileNameProperty="photo")
+			 *
+			 */
+		private $imageFile;
 
     /**
      * @return Marque|null
@@ -84,7 +103,23 @@ class Vehicule
         $this->marque = $marque;
 
         return $this;
-    }
+		}
+		
+		
+		/**
+		* @param File|null $imageFile
+		*
+		* @throws Exception
+		*/
+		public function setImageFile( ?File $imageFile ): void {
+			$this->imageFile = $imageFile;
+			if($this->imageFile instanceof UploadedFile){
+				$this->updated_at = new \DateTime('now');
+			}
+			
+		}
+
+
 
     /**
      * @return mixed
@@ -214,5 +249,29 @@ class Vehicule
         return $this;
     }
 
+    public function getPhoto(): ?string
+    {
+        return $this->photo;
+    }
 
+    public function setPhoto(?string $photo): self
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+
+
+    /**
+    * Get @Assert\Image(mimeTypes={"image/jpeg", "image/jpg", "image/png"})
+    *
+    * @return  File|null
+    */ 
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+   
 }
