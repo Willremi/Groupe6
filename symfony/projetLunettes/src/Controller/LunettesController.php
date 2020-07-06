@@ -10,13 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/lunettes")
- */
+
 class LunettesController extends AbstractController
 {
     /**
-     * @Route("/", name="lunettes_index", methods={"GET"})
+     * @Route("/lunettes", name="lunettes", methods={"GET"})
      */
     public function index(LunettesRepository $lunettesRepository): Response
     {
@@ -26,7 +24,7 @@ class LunettesController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="lunettes_new", methods={"GET","POST"})
+     * @Route("/admin/lunettes/new", name="lunettes_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -42,14 +40,14 @@ class LunettesController extends AbstractController
             return $this->redirectToRoute('lunettes_index');
         }
 
-        return $this->render('lunettes/new.html.twig', [
+        return $this->render('admin/lunettes/new.html.twig', [
             'lunette' => $lunette,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}", name="lunettes_show", methods={"GET"})
+     * @Route("/lunettes/{id}", name="lunettes_show", methods={"GET"})
      */
     public function show(Lunettes $lunette): Response
     {
@@ -59,7 +57,7 @@ class LunettesController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="lunettes_edit", methods={"GET","POST"})
+     * @Route("/admin/lunettes/{id}/edit", name="lunettes_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Lunettes $lunette): Response
     {
@@ -72,14 +70,14 @@ class LunettesController extends AbstractController
             return $this->redirectToRoute('lunettes_index');
         }
 
-        return $this->render('lunettes/edit.html.twig', [
+        return $this->render('admin/lunettes/edit.html.twig', [
             'lunette' => $lunette,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}", name="lunettes_delete", methods={"DELETE"})
+     * @Route("/admin/lunettes/{id}", name="lunettes_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Lunettes $lunette): Response
     {
