@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lunettes{% endblock %}
+
+{% block body %}
+    <h1>Lunettes</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ lunette.id }}</td>
+            </tr>
+            <tr>
+                <th>PrixLunettes</th>
+                <td>{{ lunette.prixLunettes }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ lunette.description }}</td>
+            </tr>
+            <tr>
+                <th>Quantite</th>
+                <td>{{ lunette.quantite }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{{ lunette.statut ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('lunettes_index') }}">back to list</a>
+
+    <a href="{{ path('lunettes_edit', {'id': lunette.id}) }}">edit</a>
+
+    {{ include('lunettes/_delete_form.html.twig') }}
+{% endblock %}
