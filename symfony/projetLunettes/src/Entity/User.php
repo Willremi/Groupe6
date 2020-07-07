@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -75,6 +77,16 @@ class User implements UserInterface
      * @ORM\Column(type="boolean")
      */
     private $statut = 1;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Banque::class, inversedBy="users")
+     */
+    private $banque;
+
+    public function __construct()
+    {
+        $this->banque = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -246,6 +258,32 @@ class User implements UserInterface
     public function setStatut(bool $statut): self
     {
         $this->statut = $statut;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Banque[]
+     */
+    public function getBanque(): Collection
+    {
+        return $this->banque;
+    }
+
+    public function addBanque(Banque $banque): self
+    {
+        if (!$this->banque->contains($banque)) {
+            $this->banque[] = $banque;
+        }
+
+        return $this;
+    }
+
+    public function removeBanque(Banque $banque): self
+    {
+        if ($this->banque->contains($banque)) {
+            $this->banque->removeElement($banque);
+        }
 
         return $this;
     }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\LunettesRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -41,6 +43,26 @@ class Lunettes
      * @ORM\Column(type="string", length=255)
      */
     private $nom;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Panier::class, mappedBy="lunettes")
+     */
+    private $paniers;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Couleur::class, inversedBy="lunettes")
+     */
+    private $couleur;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Type::class, inversedBy="lunettes")
+     */
+    private $type;
+
+    public function __construct()
+    {
+        $this->paniers = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -103,6 +125,61 @@ class Lunettes
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Panier[]
+     */
+    public function getPaniers(): Collection
+    {
+        return $this->paniers;
+    }
+
+    public function addPanier(Panier $panier): self
+    {
+        if (!$this->paniers->contains($panier)) {
+            $this->paniers[] = $panier;
+            $panier->setLunettes($this);
+        }
+
+        return $this;
+    }
+
+    public function removePanier(Panier $panier): self
+    {
+        if ($this->paniers->contains($panier)) {
+            $this->paniers->removeElement($panier);
+            // set the owning side to null (unless already changed)
+            if ($panier->getLunettes() === $this) {
+                $panier->setLunettes(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getCouleur(): ?Couleur
+    {
+        return $this->couleur;
+    }
+
+    public function setCouleur(?Couleur $couleur): self
+    {
+        $this->couleur = $couleur;
+
+        return $this;
+    }
+
+    public function getType(): ?Type
+    {
+        return $this->type;
+    }
+
+    public function setType(?Type $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }

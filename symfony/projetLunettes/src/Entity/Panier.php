@@ -32,6 +32,16 @@ class Panier
      */
     private $statut;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Lunettes::class, inversedBy="paniers")
+     */
+    private $lunettes;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Tva::class, cascade={"persist", "remove"})
+     */
+    private $tva;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +79,30 @@ class Panier
     public function setStatut(bool $statut): self
     {
         $this->statut = $statut;
+
+        return $this;
+    }
+
+    public function getLunettes(): ?Lunettes
+    {
+        return $this->lunettes;
+    }
+
+    public function setLunettes(?Lunettes $lunettes): self
+    {
+        $this->lunettes = $lunettes;
+
+        return $this;
+    }
+
+    public function getTva(): ?Tva
+    {
+        return $this->tva;
+    }
+
+    public function setTva(?Tva $tva): self
+    {
+        $this->tva = $tva;
 
         return $this;
     }
