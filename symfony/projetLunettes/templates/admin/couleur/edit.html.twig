@@ -5,9 +5,9 @@
 {% block body %}
     <h1>Edit Couleur</h1>
 
-    {{ include('couleur/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('admin/couleur/_form.html.twig', {'button_label': 'Update'}) }}
 
     <a href="{{ path('couleur_index') }}">back to list</a>
 
-    {{ include('couleur/_delete_form.html.twig') }}
+    {{ include('admin/couleur/_delete_form.html.twig') }}
 {% endblock %}

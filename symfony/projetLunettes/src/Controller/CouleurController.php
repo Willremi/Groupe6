@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/couleur")
+ * @Route("/admin/couleur")
  */
 class CouleurController extends AbstractController
 {
@@ -20,7 +20,7 @@ class CouleurController extends AbstractController
      */
     public function index(CouleurRepository $couleurRepository): Response
     {
-        return $this->render('couleur/index.html.twig', [
+        return $this->render('admin/couleur/index.html.twig', [
             'couleurs' => $couleurRepository->findAll(),
         ]);
     }
@@ -42,7 +42,7 @@ class CouleurController extends AbstractController
             return $this->redirectToRoute('couleur_index');
         }
 
-        return $this->render('couleur/new.html.twig', [
+        return $this->render('admin/couleur/new.html.twig', [
             'couleur' => $couleur,
             'form' => $form->createView(),
         ]);
@@ -53,7 +53,7 @@ class CouleurController extends AbstractController
      */
     public function show(Couleur $couleur): Response
     {
-        return $this->render('couleur/show.html.twig', [
+        return $this->render('admin/couleur/show.html.twig', [
             'couleur' => $couleur,
         ]);
     }
@@ -72,7 +72,7 @@ class CouleurController extends AbstractController
             return $this->redirectToRoute('couleur_index');
         }
 
-        return $this->render('couleur/edit.html.twig', [
+        return $this->render('admin/couleur/edit.html.twig', [
             'couleur' => $couleur,
             'form' => $form->createView(),
         ]);
