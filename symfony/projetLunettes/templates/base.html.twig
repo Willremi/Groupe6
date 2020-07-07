@@ -22,9 +22,10 @@
       <li class="nav-item">
             <a class="nav-link" href="{{ path('lunettes') }}" >Lunettes</a>
       </li>
-      {# <li class="nav-item">
-            <a class="nav-link" href="" >Contact</a>
-      </li> #}
+      <li class="nav-item">
+            <a class="nav-link" href="{{ path('contact') }}" >Contact</a>
+      </li>
+      
       {% if not is_granted('ROLE_ADMIN') %}
         <li class="nav-item">
             <a class="nav-link" href="{{ path('login') }}" >Login</a>

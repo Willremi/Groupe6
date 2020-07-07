@@ -35,7 +35,7 @@ class ContactController extends AbstractController
             $email = $contact->getEmail();
             $content = $contact->getContenuMessage();
 
-            $textBody = "<h3>".$email."</h3><p>Le sujet : ".$sujet."</p><p>Votre message</p><p>".$content."</p></p><p>Votre adresse e-mail : </p>".$email."<p>De la part de : </p>".$nom;
+            $textBody = "<h3>".$email."</h3><p>Le sujet : ".$sujet."</p><p>Votre message</p><p>".$content."</p><p>Votre adresse e-mail : </p>".$email."<p>De la part de : </p>".$nom;
 
 
                 $message = (new \Swift_Message($sujet))
