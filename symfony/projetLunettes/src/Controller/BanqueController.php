@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/banque")
+ * @Route("/admin/banque")
  */
 class BanqueController extends AbstractController
 {
@@ -20,7 +20,7 @@ class BanqueController extends AbstractController
      */
     public function index(BanqueRepository $banqueRepository): Response
     {
-        return $this->render('banque/index.html.twig', [
+        return $this->render('admin/banque/index.html.twig', [
             'banques' => $banqueRepository->findAll(),
         ]);
     }
@@ -42,7 +42,7 @@ class BanqueController extends AbstractController
             return $this->redirectToRoute('banque_index');
         }
 
-        return $this->render('banque/new.html.twig', [
+        return $this->render('admin/banque/new.html.twig', [
             'banque' => $banque,
             'form' => $form->createView(),
         ]);
@@ -53,7 +53,7 @@ class BanqueController extends AbstractController
      */
     public function show(Banque $banque): Response
     {
-        return $this->render('banque/show.html.twig', [
+        return $this->render('admin/banque/show.html.twig', [
             'banque' => $banque,
         ]);
     }
@@ -72,7 +72,7 @@ class BanqueController extends AbstractController
             return $this->redirectToRoute('banque_index');
         }
 
-        return $this->render('banque/edit.html.twig', [
+        return $this->render('admin/banque/edit.html.twig', [
             'banque' => $banque,
             'form' => $form->createView(),
         ]);

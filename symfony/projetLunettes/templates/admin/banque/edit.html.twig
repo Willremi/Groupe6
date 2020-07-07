@@ -5,9 +5,9 @@
 {% block body %}
     <h1>Edit Banque</h1>
 
-    {{ include('banque/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('admin/banque/_form.html.twig', {'button_label': 'Update'}) }}
 
     <a href="{{ path('banque_index') }}">back to list</a>
 
-    {{ include('banque/_delete_form.html.twig') }}
+    {{ include('admin/banque/_delete_form.html.twig') }}
 {% endblock %}
