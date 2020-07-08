@@ -9,7 +9,7 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="{{ path('home') }}">Lunettes</a>
+  <a class="navbar-brand" href="{{ path('home') }}">SP Lunettes</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -19,17 +19,19 @@
       <li class="nav-item active">
         <a class="nav-link" href="{{ path('home') }}">Accueil <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-            <a class="nav-link" href="{{ path('lunettes_index') }}" >Lunettes</a>
-      </li>
       <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Lunettes</a>
     <div class="dropdown-menu">
-      <a class="dropdown-item" href="{{ path('couleur_index') }}">Liste des couleurs</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
+      <a class="dropdown-item" href="{{ path('lunettes_index') }}">Liste des lunettes</a>
+    {% if is_granted('ROLE_ADMIN') %}
       <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Separated link</a>
+      <a class="dropdown-item" href="{{ path('couleur_index') }}">Liste des couleurs</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="{{ path('type_index') }}">Liste des types</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="{{ path('tva_index') }}">Liste des TVA</a>
+    {% endif %}
+      
     </div>
   </li>
       <li class="nav-item">
