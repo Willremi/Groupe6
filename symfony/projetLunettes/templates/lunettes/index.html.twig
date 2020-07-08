@@ -3,8 +3,9 @@
 {% block title %}Lunettes index{% endblock %}
 
 {% block body %}
+    <div class="container">
     <h1>Lunettes index</h1>
-
+    
     <table class="table">
         <thead>
             <tr>
@@ -51,4 +52,5 @@
     {% if is_granted('ROLE_ADMIN') %}
         <a href="{{ path('lunettes_new') }}">Create new</a>
     {% endif %}
+    </div>
 {% endblock %}
