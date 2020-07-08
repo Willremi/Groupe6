@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/tva")
+ * @Route("/admin/tva")
  */
 class TvaController extends AbstractController
 {
@@ -20,7 +20,7 @@ class TvaController extends AbstractController
      */
     public function index(TvaRepository $tvaRepository): Response
     {
-        return $this->render('tva/index.html.twig', [
+        return $this->render('admin/tva/index.html.twig', [
             'tvas' => $tvaRepository->findAll(),
         ]);
     }
@@ -42,7 +42,7 @@ class TvaController extends AbstractController
             return $this->redirectToRoute('tva_index');
         }
 
-        return $this->render('tva/new.html.twig', [
+        return $this->render('admin/tva/new.html.twig', [
             'tva' => $tva,
             'form' => $form->createView(),
         ]);
@@ -53,7 +53,7 @@ class TvaController extends AbstractController
      */
     public function show(Tva $tva): Response
     {
-        return $this->render('tva/show.html.twig', [
+        return $this->render('admin/tva/show.html.twig', [
             'tva' => $tva,
         ]);
     }
@@ -72,7 +72,7 @@ class TvaController extends AbstractController
             return $this->redirectToRoute('tva_index');
         }
 
-        return $this->render('tva/edit.html.twig', [
+        return $this->render('admin/tva/edit.html.twig', [
             'tva' => $tva,
             'form' => $form->createView(),
         ]);
