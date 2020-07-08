@@ -10,23 +10,21 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/admin/banque")
- */
+
 class BanqueController extends AbstractController
 {
     /**
-     * @Route("/", name="banque_index", methods={"GET"})
+     * @Route("/banque", name="banque_index", methods={"GET"})
      */
     public function index(BanqueRepository $banqueRepository): Response
     {
-        return $this->render('admin/banque/index.html.twig', [
+        return $this->render('banque/index.html.twig', [
             'banques' => $banqueRepository->findAll(),
         ]);
     }
 
     /**
-     * @Route("/new", name="banque_new", methods={"GET","POST"})
+     * @Route("/admin/banque/new", name="banque_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -49,11 +47,11 @@ class BanqueController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="banque_show", methods={"GET"})
+     * @Route("/banque/{id}", name="banque_show", methods={"GET"})
      */
     public function show(Banque $banque): Response
     {
-        return $this->render('admin/banque/show.html.twig', [
+        return $this->render('banque/show.html.twig', [
             'banque' => $banque,
         ]);
     }

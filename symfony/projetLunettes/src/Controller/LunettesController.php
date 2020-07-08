@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class LunettesController extends AbstractController
 {
     /**
-     * @Route("/lunettes", name="lunettes", methods={"GET"})
+     * @Route("/lunettes", name="lunettes_index", methods={"GET"})
      */
     public function index(LunettesRepository $lunettesRepository): Response
     {
