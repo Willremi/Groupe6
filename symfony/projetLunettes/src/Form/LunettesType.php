@@ -4,11 +4,13 @@ namespace App\Form;
 
 use App\Entity\Couleur;
 use App\Entity\Lunettes;
+use App\Entity\Type;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class LunettesType extends AbstractType
 {
@@ -35,6 +37,9 @@ class LunettesType extends AbstractType
                 'class' => Type::class, 
                 'choice_label' => 'nomType', 
                 'multiple' => false, 
+                'required' => false
+            ))
+            ->add('imageFile', FileType::class, array(
                 'required' => false
             ))
         ;

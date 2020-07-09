@@ -1,11 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}New Tva{% endblock %}
-
+{% block stylesheets %}
+    
+{% endblock %}
 {% block body %}
     <h1>Create new Tva</h1>
-
+    <div class="container">
     {{ include('admin/tva/_form.html.twig') }}
 
     <a href="{{ path('tva_index') }}">back to list</a>
+    </div>
 {% endblock %}

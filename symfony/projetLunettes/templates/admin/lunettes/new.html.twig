@@ -1,11 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}New Lunettes{% endblock %}
-
+{% block stylesheets %}
+    
+{% endblock %}
 {% block body %}
     <h1>Create new Lunettes</h1>
-
+    <div class="container">
     {{ include('admin/lunettes/_form.html.twig') }}
 
     <a href="{{ path('lunettes_index') }}">back to list</a>
+    </div>
 {% endblock %}
