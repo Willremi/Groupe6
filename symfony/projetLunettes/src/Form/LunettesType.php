@@ -31,6 +31,12 @@ class LunettesType extends AbstractType
                 'multiple' => false, 
                 'required' => false
             ))
+            ->add('type', EntityType::class, array(
+                'class' => Type::class, 
+                'choice_label' => 'nomType', 
+                'multiple' => false, 
+                'required' => false
+            ))
         ;
     }
 

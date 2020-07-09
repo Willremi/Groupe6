@@ -14,6 +14,7 @@
                 <th>Id</th>
                 <th>Nom</th>
                 <th>Couleur</th>
+                <th>Type</th>
                 <th>PrixLunettes</th>
                 <th>Description</th>
                 <th>Quantité</th>
@@ -31,6 +32,11 @@
 
                 {% if lunette.couleur %}
                     <td>{{ lunette.couleur.nomCouleur }}</td>
+                {% else %}
+                    <td></td>
+                {% endif %}
+                {% if lunette.type %}
+                    <td>{{ lunette.type.nomType }}</td>
                 {% else %}
                     <td></td>
                 {% endif %}
