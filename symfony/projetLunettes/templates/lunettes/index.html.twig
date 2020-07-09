@@ -5,10 +5,10 @@
     
 {% endblock %}
 {% block body %}
-    <div class="container">
+    
     <h1>Lunettes index</h1>
     
-    <table class="table">
+    <table class="table" id="lunettesIndex">
         <thead>
             <tr>
                 <th>Id</th>
@@ -71,5 +71,5 @@
     {% if is_granted('ROLE_ADMIN') %}
         <a href="{{ path('lunettes_new') }}">Create new</a>
     {% endif %}
-    </div>
+    
 {% endblock %}

@@ -86,6 +86,12 @@ class Lunettes
 	 */
     private $imageFile;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @var null|DateTime
+     */
+    private $updated_at;
+
     
     /**
 	 * @param File|null $imageFile
