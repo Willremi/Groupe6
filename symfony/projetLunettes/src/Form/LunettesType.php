@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Couleur;
 use App\Entity\Lunettes;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -24,6 +25,12 @@ class LunettesType extends AbstractType
             ->add('description')
             ->add('quantite')
             ->add('statut')
+            ->add('couleur', EntityType::class, array(
+                'class' => Couleur::class, 
+                'choice_label' => 'nomCouleur', 
+                'multiple' => false, 
+                'required' => false
+            ))
         ;
     }
 

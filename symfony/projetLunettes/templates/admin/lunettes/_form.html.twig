@@ -3,6 +3,7 @@
     {{ form_errors(form) }}
     {{ form_label(form.nom, 'Nom des Lunettes ', {'label_attr': {'class': 'foo'}}) }}
     {{ form_widget(form.nom) }}
+    {{ form_row(form.couleur) }}
     {{ form_row(form.prixLunettes) }}
     {{ form_row(form.description) }}
     {{ form_row(form.quantite) }}
