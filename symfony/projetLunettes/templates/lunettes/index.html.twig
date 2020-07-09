@@ -32,19 +32,19 @@
                 <td>{{ lunette.nom }}</td>
 
                 {% if lunette.couleur %}
-                    <td>{{ lunette.couleur.nomCouleur }}</td>
+                    <td>{{ lunette.couleur.nom }}</td>
                 {% else %}
                     <td></td>
                 {% endif %}
                 {% if lunette.type %}
-                    <td>{{ lunette.type.nomType }}</td>
+                    <td>{{ lunette.type.nom }}</td>
                 {% else %}
                     <td></td>
                 {% endif %}
 
                 <td>{{ lunette.description }}</td>
 
-                <td><img class="lunettePhoto" src='{{ vich_uploader_asset(lunette) }}' alt="image"></td>
+                <td><img class="lunettesPhoto" src="{{ vich_uploader_asset(lunette) }}" alt="image"></td>
                 <td>{{ lunette.prixLunettes }}</td>
                 <td>{{ lunette.quantite }}</td>
                 <td>{{ lunette.statut ? 'Yes' : 'No' }}</td>

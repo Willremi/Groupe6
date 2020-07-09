@@ -17,6 +17,7 @@ use Exception;
  * @ORM\Entity(repositoryClass=LunettesRepository::class)
  * @ORM\Entity
  * @ORM\Table(name="lunettes")
+ * @Vich\Uploadable()
  */
 class Lunettes
 {
@@ -91,7 +92,7 @@ class Lunettes
 	 *
 	 * @throws Exception
 	 */
-		public function setImageFile( ?File $imageFile ): void {
+	public function setImageFile( ?File $imageFile ): void {
 			$this->imageFile = $imageFile;
 			if($this->imageFile instanceof UploadedFile){
 				$this->updated_at = new \DateTime('now');
@@ -219,18 +220,6 @@ class Lunettes
         return $this;
     }
 
-   
-
-    /**
-     * Get @Assert\Image(mimeTypes={"image/jpeg", "image/jpg", "image/png"})
-     *
-     * @return  File|null
-     */ 
-    public function getImageFile()
-    {
-        return $this->imageFile;
-    }
-
     public function getPhoto(): ?string
     {
         return $this->photo;
@@ -241,6 +230,16 @@ class Lunettes
         $this->photo = $photo;
 
         return $this;
+    }
+
+    /**
+     * Get @Assert\Image(mimeTypes={"image/jpeg", "image/jpg", "image/png"})
+     *
+     * @return  File|null
+     */ 
+    public function getImageFile()
+    {
+        return $this->imageFile;
     }
 
 }

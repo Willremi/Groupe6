@@ -29,13 +29,13 @@ class LunettesType extends AbstractType
             ->add('statut')
             ->add('couleur', EntityType::class, array(
                 'class' => Couleur::class, 
-                'choice_label' => 'nomCouleur', 
+                'choice_label' => 'nom', 
                 'multiple' => false, 
                 'required' => false
             ))
             ->add('type', EntityType::class, array(
                 'class' => Type::class, 
-                'choice_label' => 'nomType', 
+                'choice_label' => 'nom', 
                 'multiple' => false, 
                 'required' => false
             ))
