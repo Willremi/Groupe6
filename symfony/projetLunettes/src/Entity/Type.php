@@ -34,6 +34,11 @@ class Type
      */
     private $lunettes;
 
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $prixTva;
+
     public function __construct()
     {
         $this->lunettes = new ArrayCollection();
@@ -98,4 +103,6 @@ class Type
 
         return $this;
     }
+
+    
 }

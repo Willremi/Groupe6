@@ -27,6 +27,11 @@ class Tva
      */
     private $statut;
 
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $prixTva;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +57,18 @@ class Tva
     public function setStatut(bool $statut): self
     {
         $this->statut = $statut;
+
+        return $this;
+    }
+
+    public function getPrixTva(): ?float
+    {
+        return $this->prixTva;
+    }
+
+    public function setPrixTva(float $prixTva): self
+    {
+        $this->prixTva = $prixTva;
 
         return $this;
     }

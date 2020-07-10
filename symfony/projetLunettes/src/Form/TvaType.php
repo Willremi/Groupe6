@@ -13,6 +13,7 @@ class TvaType extends AbstractType
     {
         $builder
             ->add('nom')
+            ->add('prixTva')
             ->add('statut')
         ;
     }

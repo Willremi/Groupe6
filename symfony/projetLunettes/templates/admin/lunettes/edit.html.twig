@@ -7,7 +7,7 @@
 
     {{ include('admin/lunettes/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('lunettes_index') }}">back to list</a>
+    <a href="{{ path('lunettes_index') }}"><button class="btn btn-outline-success">back to list</button></a>
 
     {{ include('admin/lunettes/_delete_form.html.twig') }}
 {% endblock %}

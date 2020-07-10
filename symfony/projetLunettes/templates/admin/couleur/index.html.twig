@@ -25,8 +25,8 @@
                 <td>{{ couleur.nom }}</td>
                 <td>{{ couleur.statut ? 'Yes' : 'No' }}</td>
                 <td>
-                    <a href="{{ path('couleur_show', {'id': couleur.id}) }}">show</a>
-                    <a href="{{ path('couleur_edit', {'id': couleur.id}) }}">edit</a>
+                    <a href="{{ path('couleur_show', {'id': couleur.id}) }}"><button class="btn btn-outline-dark">Voir</button></a>
+                    <a href="{{ path('couleur_edit', {'id': couleur.id}) }}"><button class="btn btn-outline-dark">Edition</button></a>
                 </td>
             </tr>
         {% else %}

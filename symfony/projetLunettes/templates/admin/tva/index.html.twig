@@ -13,6 +13,7 @@
             <tr>
                 <th>Id</th>
                 <th>Nom</th>
+                <th>Prix</th>
                 <th>Statut</th>
                 <th>actions</th>
             </tr>
@@ -22,6 +23,7 @@
             <tr>
                 <td>{{ tva.id }}</td>
                 <td>{{ tva.nom }}</td>
+                <td>{{ tva.prixTva }}</td>
                 <td>{{ tva.statut ? 'Yes' : 'No' }}</td>
                 <td>
                     <a href="{{ path('tva_show', {'id': tva.id}) }}">show</a>

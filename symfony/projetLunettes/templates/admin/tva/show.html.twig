@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Tva{% endblock %}
-
+{% block stylesheets %}
+    
+{% endblock %}
 {% block body %}
     <h1>Tva</h1>
 
@@ -16,15 +18,19 @@
                 <td>{{ tva.nom }}</td>
             </tr>
             <tr>
+                <th>Nom</th>
+                <td>{{ tva.prixTva }}</td>
+            </tr>
+            <tr>
                 <th>Statut</th>
                 <td>{{ tva.statut ? 'Yes' : 'No' }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('tva_index') }}">back to list</a>
+    <a href="{{ path('tva_index') }}"><button class="btn btn-outline-success">back to list</button></a>
 
-    <a href="{{ path('tva_edit', {'id': tva.id}) }}">edit</a>
+    <a href="{{ path('tva_edit', {'id': tva.id}) }}"><button class="btn btn-outline-warning">edit</button></a>
 
     {{ include('admin/tva/_delete_form.html.twig') }}
 {% endblock %}

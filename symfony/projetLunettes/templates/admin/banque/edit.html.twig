@@ -7,7 +7,7 @@
 
     {{ include('admin/banque/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('banque_index') }}">back to list</a>
+    <a href="{{ path('banque_index') }}"><button class="btn btn-outline-success">back to list</button></a>
 
     {{ include('admin/banque/_delete_form.html.twig') }}
 {% endblock %}
