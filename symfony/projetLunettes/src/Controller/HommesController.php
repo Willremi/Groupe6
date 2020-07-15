@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Genre;
 use App\Entity\Lunettes;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,14 +16,17 @@ class HommesController extends AbstractController
      */
     public function index(Request $request, PaginatorInterface $paginator)
     {   
-        $donnees = $this->getDoctrine()->getRepository(Lunettes::class)->findBy([
-            'genre' => 1, 
+        $genre = $this->getDoctrine()->getRepository(Genre::class)->findBy([
+            'nomGenre' => 'homme'
         ]);
 
+        $donnees = $this->getDoctrine()->getRepository(Lunettes::class)->findBy([
+            'genre' => $genre, 
+        ]);
         $pagination = $paginator->paginate(
             $donnees, 
             $request->query->getInt('page', 1), 
-            2
+            4
         );
         return $this->render('hommes/index.html.twig', [
             'controller_name' => 'Lunettes pour hommes', 
