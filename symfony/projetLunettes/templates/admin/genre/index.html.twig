@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Genre index{% endblock %}
+{% block stylesheets %}
+    
+{% endblock %}
+{% block body %}
+    <h1>Genre index</h1>
+    <div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Genre</th>
+                <th>statut</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for genre in genres %}
+            <tr>
+                <td>{{ genre.id }}</td>
+                <td>{{ genre.nomGenre }}</td>
+                <td>{{ genre.statut ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('genre_show', {'id': genre.id}) }}"><button class="btn btn-outline-dark">Voir</button></a>
+                    <a href="{{ path('genre_edit', {'id': genre.id}) }}"><button class="btn btn-outline-dark">Edition</button></a>
+                </td>
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('genre_new') }}">Create new</a>
+    </div>
+{% endblock %}

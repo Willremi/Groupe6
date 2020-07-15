@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Couleur;
+use App\Entity\Genre;
 use App\Entity\Lunettes;
 use App\Entity\Type;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -36,6 +37,12 @@ class LunettesType extends AbstractType
             ->add('type', EntityType::class, array(
                 'class' => Type::class, 
                 'choice_label' => 'nom', 
+                'multiple' => false, 
+                'required' => false
+            ))
+            ->add('genre', EntityType::class, array(
+                'class' => Genre::class, 
+                'choice_label' => 'nomGenre', 
                 'multiple' => false, 
                 'required' => false
             ))

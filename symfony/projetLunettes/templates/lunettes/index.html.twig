@@ -15,17 +15,25 @@
                 <th>Nom</th>
                 <th>Couleur</th>
                 <th>Type</th>
+
+                {% if not is_granted('ROLE_ADMIN') %}
                 <th>Description</th>
+                {% endif %}
+
+                <th>Genre</th>
                 <th>Photo</th>
                 <th>PrixLunettes</th>
                 <th>Quantité</th>
+
                 {% if is_granted('ROLE_ADMIN') %}
                     <th>Statut</th>
                     <th>actions</th>
                 {% endif %}
+
             </tr>
         </thead>
         <tbody>
+        
         {% for lunette in lunettes %}
             <tr>
                 <td>{{ lunette.id }}</td>
@@ -41,13 +49,21 @@
                 {% else %}
                     <td></td>
                 {% endif %}
-
+                {% if not is_granted('ROLE_ADMIN') %}
+                
                 <td>{{ lunette.description }}</td>
+                {% endif %}
+                <td>{{ lunette.genre.nomGenre }}</td>
+                
 
                 <td><img class="lunettesPhoto" src="{{ vich_uploader_asset(lunette) }}" alt="image"></td>
                 <td>{{ lunette.prixLunettes }}</td>
                 <td>{{ lunette.quantite }}</td>
+
+                {% if is_granted('ROLE_ADMIN') %}
                 <td>{{ lunette.statut ? 'Yes' : 'No' }}</td>
+                {% endif %}
+
             {% if is_granted('ROLE_ADMIN') %}
                 <td>
                     <div class="row">
@@ -57,19 +73,21 @@
                     <a href="{{ path('lunettes_edit', {'id': lunette.id}) }}">
                         <button class="btn btn-outline-dark">Edition</button>
                     </a>
-                </td>
                 </div>
-            </tr>
+                </td>
             {% endif %}
+            </tr>
         {% else %}
             <tr>
                 <td colspan="6">no records found</td>
             </tr>
+    
+        
+    
         {% endfor %}
         </tbody>
     </table>
     {% if is_granted('ROLE_ADMIN') %}
         <a href="{{ path('lunettes_new') }}">Create new</a>
     {% endif %}
-    
 {% endblock %}

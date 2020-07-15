@@ -24,8 +24,8 @@
                 <td>{{ type.nom }}</td>
                 <td>{{ type.statut ? 'Yes' : 'No' }}</td>
                 <td>
-                    <a href="{{ path('type_show', {'id': type.id}) }}">show</a>
-                    <a href="{{ path('type_edit', {'id': type.id}) }}">edit</a>
+                    <a href="{{ path('type_show', {'id': type.id}) }}"><button class="btn btn-outline-dark">Voir</button></a>
+                    <a href="{{ path('type_edit', {'id': type.id}) }}"><button class="btn btn-outline-dark">Edition</button></a>
                 </td>
             </tr>
         {% else %}

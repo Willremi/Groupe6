@@ -92,6 +92,11 @@ class Lunettes
      */
     private $updated_at;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Genre::class, inversedBy="lunettes")
+     */
+    private $genre;
+
     
     /**
 	 * @param File|null $imageFile
@@ -99,12 +104,12 @@ class Lunettes
 	 * @throws Exception
 	 */
 	public function setImageFile( ?File $imageFile ): void {
-			$this->imageFile = $imageFile;
-			if($this->imageFile instanceof UploadedFile){
-				$this->updated_at = new \DateTime('now');
-			}
-			
-		}
+         			$this->imageFile = $imageFile;
+         			if($this->imageFile instanceof UploadedFile){
+         				$this->updated_at = new \DateTime('now');
+         			}
+         			
+         		}
 
     public function getId(): ?int
     {
@@ -226,6 +231,18 @@ class Lunettes
         return $this;
     }
 
+    public function getGenre(): ?Genre
+    {
+        return $this->genre;
+    }
+
+    public function setGenre(?Genre $genre): self
+    {
+        $this->genre = $genre;
+
+        return $this;
+    }
+
     public function getPhoto(): ?string
     {
         return $this->photo;
@@ -247,5 +264,7 @@ class Lunettes
     {
         return $this->imageFile;
     }
+
+    
 
 }
