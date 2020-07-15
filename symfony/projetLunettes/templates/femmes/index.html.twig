@@ -1,20 +1,38 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Femmes{% endblock %}
-
+{% block stylesheets %}
+    
+{% endblock %}
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/Remi/code/Formation/Groupe6/symfony/projetLunettes/src/Controller/FemmesController.php'|file_link(0) }}">src/Controller/FemmesController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/Remi/code/Formation/Groupe6/symfony/projetLunettes/templates/femmes/index.html.twig'|file_link(0) }}">templates/femmes/index.html.twig</a></code></li>
-    </ul>
+    <h1>{{ controller_name }}</h1>
+    <div class="card-deck">
+{% for pag in pagination %}
+<div class="card mb-4">
+    <img src="{{ vich_uploader_asset(pag) }}" class="card-img-top" alt="photo">
+    <div class="card-body">
+        <h5 class="card-title">
+        {{ pag.nom }}
+        </h5>
+        <hr>
+        <p class="card-text">
+        {{ pag.couleur.nom }}
+        </p>
+        <p class="card-text">
+        {{ pag.type.nom }}
+        </p>
+        <p class="card-text">
+        {{ pag.description }}
+        </p>
+        <p class="card-text">
+        {{ pag.prixLunettes }} €
+        </p>
+    </div>
+</div>
+{% endfor %}
+</div>
+<div class="pagination">
+    {{ knp_pagination_render(pagination) }}
 </div>
 {% endblock %}
