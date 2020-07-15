@@ -22,7 +22,7 @@ class HommesController extends AbstractController
         $pagination = $paginator->paginate(
             $donnees, 
             $request->query->getInt('page', 1), 
-            3
+            2
         );
         return $this->render('hommes/index.html.twig', [
             'controller_name' => 'Lunettes pour hommes', 
