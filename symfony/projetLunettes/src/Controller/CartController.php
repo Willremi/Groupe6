@@ -40,7 +40,7 @@ class CartController extends AbstractController
     }
 
     /**
-     * @route("/panier/add/{id}", name="cart_add")
+     * @Route("/panier/add/{id}", name="cart_add")
      */
     public function add($id, SessionInterface $session) {
          
@@ -54,6 +54,22 @@ class CartController extends AbstractController
 
         $session->set('panier', $panier);
 
-        dd($session->get('panier'));
+        return $this->redirectToRoute("cart_index");
+    }
+
+    /**
+     * @Route("/panier/remove/{id}", name="cart_remove")
+     */
+    public function remove($id, SessionInterface $session) {
+        $panier = $session->get('panier', []);
+
+        if(!empty($panier[$id])) {
+            unset($panier[$id]);
+        }
+
+        $session->set('panier', $panier);
+
+        return $this->redirectToRoute('cart_index');
+
     }
 }
