@@ -55,6 +55,7 @@ class CartController extends AbstractController
         $session->set('panier', $panier);
 
         return $this->redirectToRoute("cart_index");
+        // https://www.youtube.com/watch?v=_tWL-QDFuQ4 chap 6 30min54
     }
 
     /**
