@@ -7,32 +7,41 @@
 {% block body %}
 
     <h1>{{ controller_name }}</h1>
+<div class="container">
     <div class="card-deck">
-{% for pag in pagination %}
-<div class="card mb-4">
-    <img src="{{ vich_uploader_asset(pag) }}" class="card-img-top lunettesPhoto" alt="photo">
-    <div class="card-body">
-        <h5 class="card-title">
-        {{ pag.nom }}
-        </h5>
-        <hr>
-        <p class="card-text">
-        {{ pag.couleur.nom }}
-        </p>
-        <p class="card-text">
-        {{ pag.type.nom }}
-        </p>
-        <p class="card-text">
-        {{ pag.description }}
-        </p>
-        <p class="card-text">
-        {{ pag.prixLunettes }} €
-        </p>
+        {% for pag in pagination %}
+            <div class="card mb-4">
+                <img src="{{ vich_uploader_asset(pag) }}" class="card-img-top lunettesPhoto" alt="photo">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{ pag.nom }}
+                    </h5>
+                    <hr>
+                    <p class="card-text">
+                        {{ pag.couleur.nom }}
+                    </p>
+                    <p class="card-text">
+                        {{ pag.type.nom }}
+                    </p>
+                    <p class="card-text">
+                        {{ pag.description }}
+                    </p>
+                    <p class="card-text">
+                        {{ pag.prixLunettes }} €
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-success float-right">
+                        <i class="fas fa-shopping-cart mr-1"></i>
+                        Ajouter
+                    </a>
+                </div>
+            </div>
+{% endfor %}
+    </div>
+    <div class="pagination">
+        {{ knp_pagination_render(pagination) }}
     </div>
 </div>
-{% endfor %}
-</div>
-<div class="pagination">
-    {{ knp_pagination_render(pagination) }}
-</div>
+
 {% endblock %}
