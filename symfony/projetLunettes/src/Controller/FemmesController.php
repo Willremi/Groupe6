@@ -26,7 +26,7 @@ class FemmesController extends AbstractController
         $pagination = $paginator->paginate(
             $donnees, 
             $request->query->getInt('page', 1), 
-            4
+            3
         );
 
         return $this->render('femmes/index.html.twig', [
