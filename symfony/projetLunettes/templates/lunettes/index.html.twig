@@ -29,7 +29,7 @@
                     <th>Statut</th>
                     <th>actions</th>
                 {% endif %}
-
+                <th>Panier</th>
             </tr>
         </thead>
         <tbody>
@@ -76,6 +76,7 @@
                 </div>
                 </td>
             {% endif %}
+                <td><a href="{{ path('cart_add', {'id':lunette.id}) }}" class="btn btn-success"><i class="fas fa-shopping-cart mr-1"></i></a></td>
             </tr>
         {% else %}
             <tr>
