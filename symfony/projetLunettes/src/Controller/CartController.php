@@ -40,7 +40,7 @@ class CartController extends AbstractController
     }
 
     /**
-     * @Route("/panier/add/{id}", name="cart_add")
+     * @Route("/admin/panier/add/{id}", name="cart_add")
      */
     public function add($id, SessionInterface $session) {
          
@@ -59,7 +59,7 @@ class CartController extends AbstractController
     }
 
     /**
-     * @Route("/panier/remove/{id}", name="cart_remove")
+     * @Route("/admin/panier/remove/{id}", name="cart_remove")
      */
     public function remove($id, SessionInterface $session) {
         $panier = $session->get('panier', []);
