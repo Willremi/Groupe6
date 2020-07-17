@@ -10,10 +10,11 @@
             <h1>Votre panier</h1>
         </div>
         {% if items | length > 0 %}
-            <table class="table">
+            <table class="table" id="lunettesIndex">
                <thead>
                    <tr>
                        <th>Produit</th>
+                       <th>Photo</th>
                        <th>Prix</th>
                        <th>Quantité</th>
                        <th>Total</th>
@@ -24,6 +25,7 @@
                 {% for item in items %}
                     <tr>
                         <td>{{ item.lunettes.nom }}</td>
+                        <td><img class="lunettesPhoto" src="{{ vich_uploader_asset(item.lunettes) }}" alt="image"></td>
                         <td>{{ item.lunettes.prixLunettes }}</td>
                         <td>{{ item.quantity }}</td>
                         <td>{{ item.lunettes.prixLunettes * item.quantity }}</td>
@@ -37,7 +39,7 @@
                </tbody>
                <tfoot>
                     <tr>
-                        <td colspan="3" class="text-right">Total : </td>
+                        <td colspan="4" class="text-right">Total : </td>
                         <td>{{ total }}</td>
                         <td></td>
                     </tr>

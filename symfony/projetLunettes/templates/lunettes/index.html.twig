@@ -11,7 +11,7 @@
     <table class="table" id="lunettesIndex">
         <thead>
             <tr>
-                <th>Id</th>
+                {# <th>Id</th> #}
                 <th>Nom</th>
                 <th>Couleur</th>
                 <th>Type</th>
@@ -36,7 +36,7 @@
         
         {% for lunette in lunettes %}
             <tr>
-                <td>{{ lunette.id }}</td>
+                {# <td>{{ lunette.id }}</td> #}
                 <td>{{ lunette.nom }}</td>
 
                 {% if lunette.couleur %}
