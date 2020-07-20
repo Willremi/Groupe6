@@ -5,5 +5,10 @@
     
 {% endblock %}
 {% block body %}
-<h1>Dernières nouveautés du site</h1>
+<h1>{{ controller_name }}</h1>
+<div class="container">
+{% for pag in pagination %}
+    <p>{{ pag.nom }}</p>
+{% endfor %}
+</div>
 {% endblock %}
