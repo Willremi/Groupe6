@@ -15,7 +15,10 @@ class AfficheNewsLunettesController extends AbstractController
      */
     public function index(Request $request, PaginatorInterface $paginator)
     {   
-        $donnees = $this->getDoctrine()->getRepository(Lunettes::class)->findAll();
+        $donnees = $this->getDoctrine()->getRepository(Lunettes::class)->findBy(
+            [], 
+            ['id' => 'DESC']
+    );
         
         $apgination = $paginator->paginate(
             $donnees, 
