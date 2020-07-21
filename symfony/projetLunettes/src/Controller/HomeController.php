@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Contact;
+use App\Entity\Lunettes;
 use App\Form\ContactType;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,7 +15,7 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(Request $request, \Swift_Mailer $mailer)
+    public function index(Request $request, \Swift_Mailer $mailer, PaginatorInterface $paginator)
     {   
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
@@ -42,10 +44,21 @@ class HomeController extends AbstractController
             $this->addFlash('message', 'Votre message a été transmis, nous vous répondrons dans les meilleurs délais.'); 
         }
 
+        $donnees = $this->getDoctrine()->getRepository(Lunettes::class)->findBy(
+            [], 
+            ['id' => 'DESC']
+        );
+
+        $apgination = $paginator->paginate(
+            $donnees, 
+            $request->query->getInt('page', 1), 
+            3
+        );
 
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'form' => $form->createView(), 
+            'pagination' => $apgination, 
         ]);
     }
 }
