@@ -51,7 +51,7 @@ require 'src/api/api_select_serie.php';
               </li>  
             </ul>
             <div class="row">
-              <col-sm-12 class="col-md-12" id="result"></col-sm-12>
+              <div class="col-md-12" id="result"></div>
             </div>
              <!--voir note.md fin row -->
           </div>
