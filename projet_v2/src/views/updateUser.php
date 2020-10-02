@@ -7,7 +7,7 @@ $data = $user->selectByPseudo();
 ?>
 <div class="container-fluid">
     <h1>Modifier les informations de votre compte</h1>
-    
+    <a href="<?= $router->generate('compte') ?>"><button type="submit" class="btn btn-info">Retour vers Compte utilisateur</button></a>
     <form action="<?= $router->generate('updateUserInfo') ?>" method="post">
         <div class="form-row">
             <div class="col-md-4 mb-3">
@@ -61,5 +61,4 @@ $data = $user->selectByPseudo();
         <button class="btn btn-warning" type="submit">Modifier</button>
         <button class="btn btn-danger" type="reset">Annuler</button>
     </form>
-    
 </div>
