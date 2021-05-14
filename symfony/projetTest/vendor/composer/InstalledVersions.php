@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'aae40ec6f762cc12c222980cbb9578d0eb6bdaab',
+    'reference' => '513e58cfe44fdd4ab752dfb579298cdc607f9880',
     'name' => '__root__',
   ),
   'versions' => 
@@ -31,7 +31,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'aae40ec6f762cc12c222980cbb9578d0eb6bdaab',
+      'reference' => '513e58cfe44fdd4ab752dfb579298cdc607f9880',
     ),
     'composer/package-versions-deprecated' => 
     array (
@@ -404,8 +404,8 @@ private static $installed = array (
     array (
       'provided' => 
       array (
-        0 => '1.0',
-        1 => '1.0.0',
+        0 => '1.0.0',
+        1 => '1.0',
       ),
     ),
     'psr/simple-cache-implementation' => 
