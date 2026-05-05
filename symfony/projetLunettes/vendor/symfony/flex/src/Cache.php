@@ -30,7 +30,7 @@ class Cache extends BaseCache
     private $downloader;
     private $io;
 
-    public function setSymfonyRequire(string $symfonyRequire, RootPackageInterface $rootPackage, Downloader $downloader, IOInterface $io = null)
+    public function setSymfonyRequire(string $symfonyRequire, RootPackageInterface $rootPackage, Downloader $downloader, ?IOInterface $io = null)
     {
         $this->versionParser = new VersionParser();
         $this->symfonyRequire = $symfonyRequire;
@@ -75,6 +75,10 @@ class Cache extends BaseCache
                     continue;
                 }
 
+                if ('symfony/psr-http-message-bridge' === $name && 6.4 > $normalizedVersion) {
+                    continue;
+                }
+
                 $constraint = new Constraint('==', $normalizedVersion);
 
                 if ($rootConstraint && $rootConstraint->matches($constraint)) {
@@ -83,7 +87,7 @@ class Cache extends BaseCache
 
                 if (!$this->symfonyConstraints->matches($constraint)) {
                     if (null !== $this->io) {
-                        $this->io->writeError(sprintf('<info>Restricting packages listed in "symfony/symfony" to "%s"</>', $this->symfonyRequire));
+                        $this->io->writeError(\sprintf('<info>Restricting packages listed in "symfony/symfony" to "%s"</>', $this->symfonyRequire));
                         $this->io = null;
                     }
                     unset($versions[$version]);

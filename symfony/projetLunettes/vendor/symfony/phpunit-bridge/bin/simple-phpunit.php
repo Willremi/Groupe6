@@ -98,10 +98,8 @@ $passthruOrFail = function ($command) {
 };
 
 if (\PHP_VERSION_ID >= 80000) {
-    // PHP 8 requires PHPUnit 9.3+, PHP 8.1 requires PHPUnit 9.5+
-    $PHPUNIT_VERSION = $getEnvVar('SYMFONY_PHPUNIT_VERSION', '9.5') ?: '9.5';
+    $PHPUNIT_VERSION = $getEnvVar('SYMFONY_PHPUNIT_VERSION', '9.6') ?: '9.6';
 } elseif (\PHP_VERSION_ID >= 70200) {
-    // PHPUnit 8 requires PHP 7.2+
     $PHPUNIT_VERSION = $getEnvVar('SYMFONY_PHPUNIT_VERSION', '8.5') ?: '8.5';
 } else {
     $PHPUNIT_VERSION = $getEnvVar('SYMFONY_PHPUNIT_VERSION', '7.5') ?: '7.5';
@@ -137,6 +135,7 @@ $defaultEnvs = [
     'COMPOSER' => 'composer.json',
     'COMPOSER_VENDOR_DIR' => 'vendor',
     'COMPOSER_BIN_DIR' => 'bin',
+    'COMPOSER_NO_INTERACTION' => '1',
     'SYMFONY_SIMPLE_PHPUNIT_BIN_DIR' => __DIR__,
 ];
 
@@ -192,7 +191,7 @@ if (!file_exists("$PHPUNIT_DIR/$PHPUNIT_VERSION_DIR/phpunit") || $configurationH
     }
 
     $info = [];
-    foreach (explode("\n", `$COMPOSER info --no-ansi -a -n phpunit/phpunit "$PHPUNIT_VERSION.*"`) as $line) {
+    foreach (explode("\n", shell_exec("$COMPOSER info --no-ansi -a -n phpunit/phpunit \"$PHPUNIT_VERSION.*\"")) as $line) {
         $line = rtrim($line);
 
         if (!$info && preg_match('/^versions +: /', $line)) {
@@ -233,10 +232,10 @@ if (!file_exists("$PHPUNIT_DIR/$PHPUNIT_VERSION_DIR/phpunit") || $configurationH
     @copy("$PHPUNIT_VERSION_DIR/phpunit.xsd", 'phpunit.xsd');
     chdir("$PHPUNIT_VERSION_DIR");
     if ($SYMFONY_PHPUNIT_REMOVE) {
-        $passthruOrFail("$COMPOSER remove --no-update --no-interaction ".$SYMFONY_PHPUNIT_REMOVE);
+        $passthruOrFail("$COMPOSER remove --no-update ".$SYMFONY_PHPUNIT_REMOVE);
     }
     if ($SYMFONY_PHPUNIT_REQUIRE) {
-        $passthruOrFail("$COMPOSER require --no-update --no-interaction ".$SYMFONY_PHPUNIT_REQUIRE);
+        $passthruOrFail("$COMPOSER require --no-update ".$SYMFONY_PHPUNIT_REQUIRE);
     }
     if (5.1 <= $PHPUNIT_VERSION && $PHPUNIT_VERSION < 5.4) {
         $passthruOrFail("$COMPOSER require --no-update phpunit/phpunit-mock-objects \"~3.1.0\"");
@@ -267,7 +266,7 @@ if (!file_exists("$PHPUNIT_DIR/$PHPUNIT_VERSION_DIR/phpunit") || $configurationH
     putenv("COMPOSER_ROOT_VERSION=$PHPUNIT_VERSION.99");
     $q = '\\' === \DIRECTORY_SEPARATOR && \PHP_VERSION_ID < 80000 ? '"' : '';
     // --no-suggest is not in the list to keep compat with composer 1.0, which is shipped with Ubuntu 16.04LTS
-    $exit = proc_close(proc_open("$q$COMPOSER install --no-dev --prefer-dist --no-progress $q", [], $p, getcwd()));
+    $exit = proc_close(proc_open("$q$COMPOSER update --no-dev --prefer-dist --no-progress $q", [], $p, getcwd()));
     putenv('COMPOSER_ROOT_VERSION'.(false !== $prevRoot ? '='.$prevRoot : ''));
     if ($prevCacheDir) {
         putenv("COMPOSER_CACHE_DIR=$prevCacheDir");
@@ -373,7 +372,7 @@ if (isset($argv[1]) && is_dir($argv[1]) && !file_exists($argv[1].'/phpunit.xml.d
     }
 }
 
-$cmd[0] = sprintf('%s %s --colors=always', $PHP, escapeshellarg("$PHPUNIT_DIR/$PHPUNIT_VERSION_DIR/phpunit"));
+$cmd[0] = sprintf('%s %s --colors=%s', $PHP, escapeshellarg("$PHPUNIT_DIR/$PHPUNIT_VERSION_DIR/phpunit"), '' === $getEnvVar('NO_COLOR', '') ? 'always' : 'never');
 $cmd = str_replace('%', '%%', implode(' ', $cmd)).' %1$s';
 
 if ('\\' === \DIRECTORY_SEPARATOR) {
@@ -403,6 +402,9 @@ if ($components) {
         }
     }
 
+    $lastOutput = null;
+    $lastOutputTime = null;
+
     while ($runningProcs) {
         usleep(300000);
         $terminatedProcs = [];
@@ -412,6 +414,26 @@ if ($components) {
                 $terminatedProcs[$component] = $procStatus['exitcode'];
                 unset($runningProcs[$component]);
                 proc_close($proc);
+            }
+        }
+
+        if (!$terminatedProcs && 1 === count($runningProcs)) {
+            $component = key($runningProcs);
+
+            $output = file_get_contents("$component/phpunit.stdout");
+            $output .= file_get_contents("$component/phpunit.stderr");
+
+            if ($lastOutput !== $output) {
+                $lastOutput = $output;
+                $lastOutputTime = microtime(true);
+            } elseif (microtime(true) - $lastOutputTime > 60) {
+                echo "\033[41mTimeout\033[0m $component\n\n";
+
+                if ('\\' === \DIRECTORY_SEPARATOR) {
+                    exec(sprintf('taskkill /F /T /PID %d 2>&1', $procStatus['pid']), $output, $exitCode);
+                } else {
+                    proc_terminate(current($runningProcs));
+                }
             }
         }
 
@@ -440,7 +462,7 @@ if ($components) {
         {
         }
     }
-    array_splice($argv, 1, 0, ['--colors=always']);
+    array_splice($argv, 1, 0, ['--colors='.('' === $getEnvVar('NO_COLOR', '') ? 'always' : 'never')]);
     $_SERVER['argv'] = $argv;
     $_SERVER['argc'] = ++$argc;
     include "$PHPUNIT_DIR/$PHPUNIT_VERSION_DIR/phpunit";

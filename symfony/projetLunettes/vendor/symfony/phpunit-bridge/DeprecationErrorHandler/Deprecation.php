@@ -11,6 +11,7 @@
 
 namespace Symfony\Bridge\PhpUnit\DeprecationErrorHandler;
 
+use Doctrine\Deprecations\Deprecation as DoctrineDeprecation;
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\Metadata\Api\Groups;
@@ -40,6 +41,7 @@ class Deprecation
     private $originClass;
     private $originMethod;
     private $triggeringFile;
+    private $triggeringClass;
 
     /** @var string[] Absolute paths to vendor directories */
     private static $vendors;
@@ -60,9 +62,22 @@ class Deprecation
      */
     public function __construct($message, array $trace, $file, $languageDeprecation = false)
     {
-        if (isset($trace[2]['function']) && 'trigger_deprecation' === $trace[2]['function']) {
-            $file = $trace[2]['file'];
-            array_splice($trace, 1, 1);
+        if (DebugClassLoader::class === ($trace[2]['class'] ?? '')) {
+            $this->triggeringClass = $trace[2]['args'][0];
+        }
+
+        switch ($trace[2]['function'] ?? '') {
+            case 'trigger_deprecation':
+                $file = $trace[2]['file'];
+                array_splice($trace, 1, 1);
+                break;
+
+            case 'delegateTriggerToBackend':
+                if (DoctrineDeprecation::class === ($trace[2]['class'] ?? '')) {
+                    $file = $trace[3]['file'];
+                    array_splice($trace, 1, 2);
+                }
+                break;
         }
 
         $this->trace = $trace;
@@ -155,6 +170,26 @@ class Deprecation
         $class = $line['class'];
 
         return 'ReflectionMethod' === $class || 0 === strpos($class, 'PHPUnit\\');
+    }
+
+    /**
+     * @return bool
+     */
+    public function originatesFromDebugClassLoader()
+    {
+        return isset($this->triggeringClass);
+    }
+
+    /**
+     * @return string
+     */
+    public function triggeringClass()
+    {
+        if (null === $this->triggeringClass) {
+            throw new \LogicException('Check with originatesFromDebugClassLoader() before calling this method.');
+        }
+
+        return $this->triggeringClass;
     }
 
     /**
@@ -316,7 +351,7 @@ class Deprecation
             }
         }
 
-        throw new \RuntimeException(sprintf('No vendors found for path "%s".', $path));
+        throw new \RuntimeException(\sprintf('No vendors found for path "%s".', $path));
     }
 
     /**
@@ -339,6 +374,10 @@ class Deprecation
                         $loader = require $v.'/autoload.php';
                         $paths = self::addSourcePathsFromPrefixes(
                             array_merge($loader->getPrefixes(), $loader->getPrefixesPsr4()),
+                            $paths
+                        );
+                        $paths = self::addSourcePathsFromPrefixes(
+                            ['fallback' => $loader->getFallbackDirs(), 'fallback_psr4' => $loader->getFallbackDirsPsr4()],
                             $paths
                         );
                     }
@@ -402,7 +441,9 @@ class Deprecation
     {
         $exception = new \Exception($this->message);
         $reflection = new \ReflectionProperty($exception, 'trace');
-        $reflection->setAccessible(true);
+        if (\PHP_VERSION_ID < 80100) {
+            $reflection->setAccessible(true);
+        }
         $reflection->setValue($exception, $this->trace);
 
         return ($this->originatesFromAnObject() ? 'deprecation triggered by '.$this->originatingClass().'::'.$this->originatingMethod().":\n" : '')
