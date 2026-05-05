@@ -22,7 +22,7 @@ class PropelQuerySubscriber implements EventSubscriberInterface
             if ($event->options[PaginatorInterface::DISTINCT]) {
                 $countQuery->distinct();
             }
-            $event->count = intval($countQuery->count());
+            $event->count = (int) $countQuery->count();
             // process items
             $result = null;
             if ($event->count) {
@@ -46,7 +46,7 @@ class PropelQuerySubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            'knp_pager.items' => ['items', 0]
+            'knp_pager.items' => ['items', 0],
         ];
     }
 }

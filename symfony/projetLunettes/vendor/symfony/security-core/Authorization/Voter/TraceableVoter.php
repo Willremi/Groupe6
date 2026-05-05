@@ -22,22 +22,19 @@ use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
  *
  * @internal
  */
-class TraceableVoter implements VoterInterface
+class TraceableVoter implements CacheableVoterInterface
 {
-    private $voter;
-    private $eventDispatcher;
-
-    public function __construct(VoterInterface $voter, EventDispatcherInterface $eventDispatcher)
-    {
-        $this->voter = $voter;
-        $this->eventDispatcher = $eventDispatcher;
+    public function __construct(
+        private VoterInterface $voter,
+        private EventDispatcherInterface $eventDispatcher,
+    ) {
     }
 
-    public function vote(TokenInterface $token, $subject, array $attributes)
+    public function vote(TokenInterface $token, mixed $subject, array $attributes, ?Vote $vote = null): int
     {
-        $result = $this->voter->vote($token, $subject, $attributes);
+        $result = $this->voter->vote($token, $subject, $attributes, $vote);
 
-        $this->eventDispatcher->dispatch(new VoteEvent($this->voter, $subject, $attributes, $result), 'debug.security.authorization.vote');
+        $this->eventDispatcher->dispatch(new VoteEvent($this->voter, $subject, $attributes, $result, $vote->reasons ?? []), 'debug.security.authorization.vote');
 
         return $result;
     }
@@ -45,5 +42,15 @@ class TraceableVoter implements VoterInterface
     public function getDecoratedVoter(): VoterInterface
     {
         return $this->voter;
+    }
+
+    public function supportsAttribute(string $attribute): bool
+    {
+        return !$this->voter instanceof CacheableVoterInterface || $this->voter->supportsAttribute($attribute);
+    }
+
+    public function supportsType(string $subjectType): bool
+    {
+        return !$this->voter instanceof CacheableVoterInterface || $this->voter->supportsType($subjectType);
     }
 }

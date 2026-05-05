@@ -7,32 +7,22 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=BanqueRepository::class)
- */
+#[ORM\Entity(repositoryClass: BanqueRepository::class)]
 class Banque
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $nom;
+    #[ORM\Column(length: 255)]
+    private string $nom;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $statut;
+    #[ORM\Column]
+    private bool $statut;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="banque")
-     */
-    private $users;
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'banque')]
+    private Collection $users;
 
     public function __construct()
     {
@@ -44,7 +34,7 @@ class Banque
         return $this->id;
     }
 
-    public function getNom(): ?string
+    public function getNom(): string
     {
         return $this->nom;
     }
@@ -52,11 +42,10 @@ class Banque
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
-
         return $this;
     }
 
-    public function getStatut(): ?bool
+    public function isStatut(): bool
     {
         return $this->statut;
     }
@@ -64,13 +53,9 @@ class Banque
     public function setStatut(bool $statut): self
     {
         $this->statut = $statut;
-
         return $this;
     }
 
-    /**
-     * @return Collection|User[]
-     */
     public function getUsers(): Collection
     {
         return $this->users;
@@ -79,20 +64,17 @@ class Banque
     public function addUser(User $user): self
     {
         if (!$this->users->contains($user)) {
-            $this->users[] = $user;
+            $this->users->add($user);
             $user->addBanque($this);
         }
-
         return $this;
     }
 
     public function removeUser(User $user): self
     {
-        if ($this->users->contains($user)) {
-            $this->users->removeElement($user);
+        if ($this->users->removeElement($user)) {
             $user->removeBanque($this);
         }
-
         return $this;
     }
 }

@@ -11,7 +11,8 @@
 
 namespace Symfony\Bridge\Monolog\Handler\FingersCrossed;
 
-use Monolog\Handler\FingersCrossed\ErrorLevelActivationStrategy;
+use Monolog\Handler\FingersCrossed\ActivationStrategyInterface;
+use Monolog\LogRecord;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
@@ -20,30 +21,34 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
  *
  * @author Jordi Boggiano <j.boggiano@seld.be>
  * @author Fabien Potencier <fabien@symfony.com>
+ * @author Pierrick Vignand <pierrick.vignand@gmail.com>
+ *
+ * @deprecated since Symfony 7.4, use {@see HttpCodeActivationStrategy} instead
  */
-class NotFoundActivationStrategy extends ErrorLevelActivationStrategy
+final class NotFoundActivationStrategy implements ActivationStrategyInterface
 {
-    private $exclude;
-    private $requestStack;
+    private string $exclude;
 
-    public function __construct(RequestStack $requestStack, array $excludedUrls, $actionLevel)
-    {
-        parent::__construct($actionLevel);
+    public function __construct(
+        private RequestStack $requestStack,
+        array $excludedUrls,
+        private ActivationStrategyInterface $inner,
+    ) {
+        trigger_deprecation('symfony/monolog-bridge', '7.4', 'The "%s" class is deprecated, use "%s" instead.', __CLASS__, HttpCodeActivationStrategy::class);
 
-        $this->requestStack = $requestStack;
         $this->exclude = '{('.implode('|', $excludedUrls).')}i';
     }
 
-    public function isHandlerActivated(array $record): bool
+    public function isHandlerActivated(LogRecord $record): bool
     {
-        $isActivated = parent::isHandlerActivated($record);
+        $isActivated = $this->inner->isHandlerActivated($record);
 
         if (
             $isActivated
-            && isset($record['context']['exception'])
-            && $record['context']['exception'] instanceof HttpException
-            && 404 == $record['context']['exception']->getStatusCode()
-            && ($request = $this->requestStack->getMasterRequest())
+            && isset($record->context['exception'])
+            && $record->context['exception'] instanceof HttpException
+            && 404 == $record->context['exception']->getStatusCode()
+            && ($request = $this->requestStack->getMainRequest())
         ) {
             return !preg_match($this->exclude, $request->getPathInfo());
         }

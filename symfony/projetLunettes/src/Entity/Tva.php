@@ -5,39 +5,29 @@ namespace App\Entity;
 use App\Repository\TvaRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=TvaRepository::class)
- */
+#[ORM\Entity(repositoryClass: TvaRepository::class)]
 class Tva
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $nom;
+    #[ORM\Column(length: 255)]
+    private string $nom;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $statut;
+    #[ORM\Column]
+    private bool $statut;
 
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $prixTva;
+    #[ORM\Column]
+    private float $prixTva;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getNom(): ?string
+    public function getNom(): string
     {
         return $this->nom;
     }
@@ -45,11 +35,10 @@ class Tva
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
-
         return $this;
     }
 
-    public function getStatut(): ?bool
+    public function isStatut(): bool
     {
         return $this->statut;
     }
@@ -57,11 +46,10 @@ class Tva
     public function setStatut(bool $statut): self
     {
         $this->statut = $statut;
-
         return $this;
     }
 
-    public function getPrixTva(): ?float
+    public function getPrixTva(): float
     {
         return $this->prixTva;
     }
@@ -69,7 +57,6 @@ class Tva
     public function setPrixTva(float $prixTva): self
     {
         $this->prixTva = $prixTva;
-
         return $this;
     }
 }

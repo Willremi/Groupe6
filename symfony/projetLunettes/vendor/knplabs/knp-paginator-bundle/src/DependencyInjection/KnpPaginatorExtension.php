@@ -2,31 +2,28 @@
 
 namespace Knp\Bundle\PaginatorBundle\DependencyInjection;
 
+use Knp\Bundle\PaginatorBundle\EventListener\ExceptionListener;
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Component\DependencyInjection\Definition;
+use Symfony\Component\DependencyInjection\Extension\Extension;
+use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 
 final class KnpPaginatorExtension extends Extension
 {
-    /**
-     * Build the extension services.
-     *
-     * @param array<string, array<string, mixed>> $configs
-     */
     public function load(array $configs, ContainerBuilder $container): void
     {
         $processor = new Processor();
 
-        $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../../config'));
-        $loader->load('paginator.xml');
+        $loader = new PhpFileLoader($container, new FileLocator(__DIR__.'/../../config'));
+        $loader->load('paginator.php');
 
         if ($container->hasParameter('templating.engines')) {
             /** @var array<string> $engines */
             $engines = $container->getParameter('templating.engines');
             if (\in_array('php', $engines, true)) {
-                $loader->load('templating_php.xml');
+                $loader->load('templating_php.php');
             }
         }
 
@@ -34,10 +31,13 @@ final class KnpPaginatorExtension extends Extension
         $config = $processor->processConfiguration($configuration, $configs);
 
         $container->setParameter('knp_paginator.template.pagination', $config['template']['pagination']);
+        $container->setParameter('knp_paginator.template.rel_links', $config['template']['rel_links']);
         $container->setParameter('knp_paginator.template.filtration', $config['template']['filtration']);
         $container->setParameter('knp_paginator.template.sortable', $config['template']['sortable']);
         $container->setParameter('knp_paginator.page_range', $config['page_range']);
         $container->setParameter('knp_paginator.page_limit', $config['page_limit']);
+        $container->setParameter('knp_paginator.page_name', $config['default_options']['page_name']);
+        $container->setParameter('knp_paginator.remove_first_page_param', $config['remove_first_page_param']);
 
         $paginatorDef = $container->getDefinition('knp_paginator');
         $paginatorDef->addMethodCall('setDefaultPaginatorOptions', [[
@@ -50,5 +50,11 @@ final class KnpPaginatorExtension extends Extension
             'pageOutOfRange' => $config['default_options']['page_out_of_range'],
             'defaultLimit' => $config['default_options']['default_limit'],
         ]]);
+
+        if ($config['convert_exception']) {
+            $definition = new Definition(ExceptionListener::class);
+            $definition->addTag('kernel.event_listener', ['event' => 'kernel.exception']);
+            $container->setDefinition(ExceptionListener::class, $definition);
+        }
     }
 }

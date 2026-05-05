@@ -17,18 +17,16 @@ use Symfony\Component\Notifier\Transport\TransportInterface;
 
 /**
  * @author Fabien Potencier <fabien@symfony.com>
- *
- * @experimental in 5.1
  */
 abstract class AbstractChannel implements ChannelInterface
 {
     protected $transport;
     protected $bus;
 
-    public function __construct(TransportInterface $transport = null, MessageBusInterface $bus = null)
+    public function __construct(?TransportInterface $transport = null, ?MessageBusInterface $bus = null)
     {
         if (null === $transport && null === $bus) {
-            throw new LogicException(sprintf('"%s" needs a Transport or a Bus but both cannot be "null".', static::class));
+            throw new LogicException(\sprintf('"%s" needs a Transport or a Bus but both cannot be "null".', static::class));
         }
 
         $this->transport = $transport;

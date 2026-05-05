@@ -5,49 +5,35 @@ namespace App\Entity;
 use App\Repository\PanierRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=PanierRepository::class)
- */
+#[ORM\Entity(repositoryClass: PanierRepository::class)]
 class Panier
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $date;
+    #[ORM\Column]
+    private \DateTimeInterface $date;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $quantite;
+    #[ORM\Column(nullable: true)]
+    private ?int $quantite = null;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $statut;
+    #[ORM\Column]
+    private bool $statut;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Lunettes::class, inversedBy="paniers")
-     */
-    private $lunettes;
+    #[ORM\ManyToOne(targetEntity: Lunettes::class, inversedBy: 'paniers')]
+    private ?Lunettes $lunettes = null;
 
-    /**
-     * @ORM\OneToOne(targetEntity=Tva::class, cascade={"persist", "remove"})
-     */
-    private $tva;
+    #[ORM\OneToOne(targetEntity: Tva::class, cascade: ['persist', 'remove'])]
+    private ?Tva $tva = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getDate(): ?\DateTimeInterface
+    public function getDate(): \DateTimeInterface
     {
         return $this->date;
     }
@@ -55,7 +41,6 @@ class Panier
     public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
-
         return $this;
     }
 
@@ -67,11 +52,10 @@ class Panier
     public function setQuantite(?int $quantite): self
     {
         $this->quantite = $quantite;
-
         return $this;
     }
 
-    public function getStatut(): ?bool
+    public function isStatut(): bool
     {
         return $this->statut;
     }
@@ -79,7 +63,6 @@ class Panier
     public function setStatut(bool $statut): self
     {
         $this->statut = $statut;
-
         return $this;
     }
 
@@ -91,7 +74,6 @@ class Panier
     public function setLunettes(?Lunettes $lunettes): self
     {
         $this->lunettes = $lunettes;
-
         return $this;
     }
 
@@ -103,7 +85,6 @@ class Panier
     public function setTva(?Tva $tva): self
     {
         $this->tva = $tva;
-
         return $this;
     }
 }

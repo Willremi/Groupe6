@@ -2,6 +2,7 @@
 
 namespace Knp\Component\Pager\Event;
 
+use Knp\Component\Pager\ArgumentAccess\ArgumentAccessInterface;
 use Symfony\Contracts\EventDispatcher\Event;
 
 /**
@@ -11,53 +12,50 @@ final class ItemsEvent extends Event
 {
     /**
      * A target being paginated
-     *
-     * @var mixed
      */
-    public $target;
+    public mixed $target = null;
 
     /**
-     * List of options
-     *
-     * @var array
+     * @var array<string, mixed>
      */
-    public $options;
+    public array $options;
 
     /**
      * Items result
-     *
-     * @var mixed
      */
-    public $items;
+    public mixed $items = null;
 
     /**
      * Count result
-     *
-     * @var integer
      */
-    public $count;
+    public int $count;
 
-    private $offset;
-    private $limit;
-    private $customPaginationParams = [];
+    /**
+     * @var array<string, mixed>
+     */
+    private array $customPaginationParams = [];
 
-    public function __construct(int $offset, int $limit)
-    {
-        $this->offset = $offset;
-        $this->limit = $limit;
+    public function __construct(
+        private readonly int $offset,
+        private readonly int $limit,
+        private readonly ArgumentAccessInterface $argumentAccess
+    ) {
     }
 
-    public function setCustomPaginationParameter($name, $value): void
+    public function setCustomPaginationParameter(string $name, mixed $value): void
     {
         $this->customPaginationParams[$name] = $value;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getCustomPaginationParameters(): array
     {
         return $this->customPaginationParams;
     }
 
-    public function unsetCustomPaginationParameter($name): void
+    public function unsetCustomPaginationParameter(string $name): void
     {
         if (isset($this->customPaginationParams[$name])) {
             unset($this->customPaginationParams[$name]);
@@ -72,5 +70,10 @@ final class ItemsEvent extends Event
     public function getOffset(): int
     {
         return $this->offset;
+    }
+
+    public function getArgumentAccess(): ArgumentAccessInterface
+    {
+        return $this->argumentAccess;
     }
 }

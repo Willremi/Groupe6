@@ -11,17 +11,23 @@
 
 namespace Symfony\Bridge\Doctrine\PropertyInfo;
 
-use Doctrine\DBAL\Types\Type as DBALType;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\BigIntType;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Mapping\AssociationMapping;
 use Doctrine\ORM\Mapping\ClassMetadata;
-use Doctrine\ORM\Mapping\ClassMetadataInfo;
+use Doctrine\ORM\Mapping\EmbeddedClassMapping;
+use Doctrine\ORM\Mapping\FieldMapping;
+use Doctrine\ORM\Mapping\JoinColumnMapping;
 use Doctrine\ORM\Mapping\MappingException as OrmMappingException;
 use Doctrine\Persistence\Mapping\MappingException;
 use Symfony\Component\PropertyInfo\PropertyAccessExtractorInterface;
 use Symfony\Component\PropertyInfo\PropertyListExtractorInterface;
 use Symfony\Component\PropertyInfo\PropertyTypeExtractorInterface;
-use Symfony\Component\PropertyInfo\Type;
+use Symfony\Component\PropertyInfo\Type as LegacyType;
+use Symfony\Component\TypeInfo\Type;
+use Symfony\Component\TypeInfo\TypeIdentifier;
 
 /**
  * Extracts data using Doctrine ORM and ODM metadata.
@@ -30,23 +36,12 @@ use Symfony\Component\PropertyInfo\Type;
  */
 class DoctrineExtractor implements PropertyListExtractorInterface, PropertyTypeExtractorInterface, PropertyAccessExtractorInterface
 {
-    private $entityManager;
-    private $classMetadataFactory;
-    private static $useDeprecatedConstants;
-
-    public function __construct(EntityManagerInterface $entityManager)
-    {
-        $this->entityManager = $entityManager;
-
-        if (null === self::$useDeprecatedConstants) {
-            self::$useDeprecatedConstants = !class_exists(Types::class);
-        }
+    public function __construct(
+        private readonly EntityManagerInterface $entityManager,
+    ) {
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getProperties(string $class, array $context = [])
+    public function getProperties(string $class, array $context = []): ?array
     {
         if (null === $metadata = $this->getMetadata($class)) {
             return null;
@@ -54,10 +49,8 @@ class DoctrineExtractor implements PropertyListExtractorInterface, PropertyTypeE
 
         $properties = array_merge($metadata->getFieldNames(), $metadata->getAssociationNames());
 
-        if ($metadata instanceof ClassMetadataInfo && class_exists(\Doctrine\ORM\Mapping\Embedded::class) && $metadata->embeddedClasses) {
-            $properties = array_filter($properties, function ($property) {
-                return false === strpos($property, '.');
-            });
+        if ($metadata instanceof ClassMetadata && $metadata->embeddedClasses) {
+            $properties = array_filter($properties, fn ($property) => !str_contains($property, '.'));
 
             $properties = array_merge($properties, array_keys($metadata->embeddedClasses));
         }
@@ -65,10 +58,7 @@ class DoctrineExtractor implements PropertyListExtractorInterface, PropertyTypeE
         return $properties;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getTypes(string $class, string $property, array $context = [])
+    public function getType(string $class, string $property, array $context = []): ?Type
     {
         if (null === $metadata = $this->getMetadata($class)) {
             return null;
@@ -78,40 +68,37 @@ class DoctrineExtractor implements PropertyListExtractorInterface, PropertyTypeE
             $class = $metadata->getAssociationTargetClass($property);
 
             if ($metadata->isSingleValuedAssociation($property)) {
-                if ($metadata instanceof ClassMetadataInfo) {
+                if ($metadata instanceof ClassMetadata) {
                     $associationMapping = $metadata->getAssociationMapping($property);
-
                     $nullable = $this->isAssociationNullable($associationMapping);
                 } else {
                     $nullable = false;
                 }
 
-                return [new Type(Type::BUILTIN_TYPE_OBJECT, $nullable, $class)];
+                return $nullable ? Type::nullable(Type::object($class)) : Type::object($class);
             }
 
-            $collectionKeyType = Type::BUILTIN_TYPE_INT;
+            $collectionKeyType = TypeIdentifier::INT;
 
-            if ($metadata instanceof ClassMetadataInfo) {
+            if ($metadata instanceof ClassMetadata) {
                 $associationMapping = $metadata->getAssociationMapping($property);
 
-                if (isset($associationMapping['indexBy'])) {
-                    /** @var ClassMetadataInfo $subMetadata */
-                    $subMetadata = $this->entityManager ? $this->entityManager->getClassMetadata($associationMapping['targetEntity']) : $this->classMetadataFactory->getMetadataFor($associationMapping['targetEntity']);
+                if (self::getMappingValue($associationMapping, 'indexBy')) {
+                    $subMetadata = $this->entityManager->getClassMetadata(self::getMappingValue($associationMapping, 'targetEntity'));
 
                     // Check if indexBy value is a property
-                    $fieldName = $associationMapping['indexBy'];
+                    $fieldName = self::getMappingValue($associationMapping, 'indexBy');
                     if (null === ($typeOfField = $subMetadata->getTypeOfField($fieldName))) {
-                        $fieldName = $subMetadata->getFieldForColumn($associationMapping['indexBy']);
-                        //Not a property, maybe a column name?
+                        $fieldName = $subMetadata->getFieldForColumn(self::getMappingValue($associationMapping, 'indexBy'));
+                        // Not a property, maybe a column name?
                         if (null === ($typeOfField = $subMetadata->getTypeOfField($fieldName))) {
-                            //Maybe the column name is the association join column?
+                            // Maybe the column name is the association join column?
                             $associationMapping = $subMetadata->getAssociationMapping($fieldName);
 
-                            /** @var ClassMetadataInfo $subMetadata */
                             $indexProperty = $subMetadata->getSingleAssociationReferencedJoinColumnName($fieldName);
-                            $subMetadata = $this->entityManager ? $this->entityManager->getClassMetadata($associationMapping['targetEntity']) : $this->classMetadataFactory->getMetadataFor($associationMapping['targetEntity']);
+                            $subMetadata = $this->entityManager->getClassMetadata(self::getMappingValue($associationMapping, 'targetEntity'));
 
-                            //Not a property, maybe a column name?
+                            // Not a property, maybe a column name?
                             if (null === ($typeOfField = $subMetadata->getTypeOfField($indexProperty))) {
                                 $fieldName = $subMetadata->getFieldForColumn($indexProperty);
                                 $typeOfField = $subMetadata->getTypeOfField($fieldName);
@@ -119,89 +106,213 @@ class DoctrineExtractor implements PropertyListExtractorInterface, PropertyTypeE
                         }
                     }
 
-                    if (!$collectionKeyType = $this->getPhpType($typeOfField)) {
+                    if (!$collectionKeyType = $this->getTypeIdentifier($typeOfField)) {
                         return null;
                     }
                 }
             }
 
-            return [new Type(
-                Type::BUILTIN_TYPE_OBJECT,
+            return Type::collection(Type::object(Collection::class), Type::object($class), Type::builtin($collectionKeyType));
+        }
+
+        if ($metadata instanceof ClassMetadata && isset($metadata->embeddedClasses[$property])) {
+            return Type::object(self::getMappingValue($metadata->embeddedClasses[$property], 'class'));
+        }
+
+        if (!$metadata->hasField($property)) {
+            return null;
+        }
+
+        $typeOfField = $metadata->getTypeOfField($property);
+
+        if (!$typeIdentifier = $this->getTypeIdentifier($typeOfField)) {
+            return null;
+        }
+
+        $nullable = $metadata instanceof ClassMetadata && $metadata->isNullable($property);
+
+        // DBAL 4 has a special fallback strategy for BINGINT (int -> string)
+        if (Types::BIGINT === $typeOfField && !method_exists(BigIntType::class, 'getName')) {
+            return $nullable ? Type::nullable(Type::union(Type::int(), Type::string())) : Type::union(Type::int(), Type::string());
+        }
+
+        $enumType = null;
+
+        if (null !== $enumClass = self::getMappingValue($metadata->getFieldMapping($property), 'enumType') ?? null) {
+            $enumType = $nullable ? Type::nullable(Type::enum($enumClass)) : Type::enum($enumClass);
+        }
+
+        $builtinType = $nullable ? Type::nullable(Type::builtin($typeIdentifier)) : Type::builtin($typeIdentifier);
+
+        return match ($typeIdentifier) {
+            TypeIdentifier::OBJECT => match ($typeOfField) {
+                Types::DATE_MUTABLE, Types::DATETIME_MUTABLE, Types::DATETIMETZ_MUTABLE, 'vardatetime', Types::TIME_MUTABLE => $nullable ? Type::nullable(Type::object(\DateTime::class)) : Type::object(\DateTime::class),
+                Types::DATE_IMMUTABLE, Types::DATETIME_IMMUTABLE, Types::DATETIMETZ_IMMUTABLE, Types::TIME_IMMUTABLE => $nullable ? Type::nullable(Type::object(\DateTimeImmutable::class)) : Type::object(\DateTimeImmutable::class),
+                Types::DATEINTERVAL => $nullable ? Type::nullable(Type::object(\DateInterval::class)) : Type::object(\DateInterval::class),
+                default => $builtinType,
+            },
+            TypeIdentifier::ARRAY => match ($typeOfField) {
+                'array', 'json_array' => $enumType ? null : ($nullable ? Type::nullable(Type::array()) : Type::array()),
+                Types::SIMPLE_ARRAY => $nullable ? Type::nullable(Type::list($enumType ?? Type::string())) : Type::list($enumType ?? Type::string()),
+                default => $builtinType,
+            },
+            TypeIdentifier::INT, TypeIdentifier::STRING => $enumType ? $enumType : $builtinType,
+            default => $builtinType,
+        };
+    }
+
+    /**
+     * @deprecated since Symfony 7.3, use "getType" instead
+     */
+    public function getTypes(string $class, string $property, array $context = []): ?array
+    {
+        trigger_deprecation('symfony/property-info', '7.3', 'The "%s()" method is deprecated, use "%s::getType()" instead.', __METHOD__, self::class);
+
+        if (null === $metadata = $this->getMetadata($class)) {
+            return null;
+        }
+
+        if ($metadata->hasAssociation($property)) {
+            $class = $metadata->getAssociationTargetClass($property);
+
+            if ($metadata->isSingleValuedAssociation($property)) {
+                if ($metadata instanceof ClassMetadata) {
+                    $associationMapping = $metadata->getAssociationMapping($property);
+
+                    $nullable = $this->isAssociationNullable($associationMapping);
+                } else {
+                    $nullable = false;
+                }
+
+                return [new LegacyType(LegacyType::BUILTIN_TYPE_OBJECT, $nullable, $class)];
+            }
+
+            $collectionKeyType = LegacyType::BUILTIN_TYPE_INT;
+
+            if ($metadata instanceof ClassMetadata) {
+                $associationMapping = $metadata->getAssociationMapping($property);
+
+                if (self::getMappingValue($associationMapping, 'indexBy')) {
+                    $subMetadata = $this->entityManager->getClassMetadata(self::getMappingValue($associationMapping, 'targetEntity'));
+
+                    // Check if indexBy value is a property
+                    $fieldName = self::getMappingValue($associationMapping, 'indexBy');
+                    if (null === ($typeOfField = $subMetadata->getTypeOfField($fieldName))) {
+                        $fieldName = $subMetadata->getFieldForColumn(self::getMappingValue($associationMapping, 'indexBy'));
+                        // Not a property, maybe a column name?
+                        if (null === ($typeOfField = $subMetadata->getTypeOfField($fieldName))) {
+                            // Maybe the column name is the association join column?
+                            $associationMapping = $subMetadata->getAssociationMapping($fieldName);
+
+                            $indexProperty = $subMetadata->getSingleAssociationReferencedJoinColumnName($fieldName);
+                            $subMetadata = $this->entityManager->getClassMetadata(self::getMappingValue($associationMapping, 'targetEntity'));
+
+                            // Not a property, maybe a column name?
+                            if (null === ($typeOfField = $subMetadata->getTypeOfField($indexProperty))) {
+                                $fieldName = $subMetadata->getFieldForColumn($indexProperty);
+                                $typeOfField = $subMetadata->getTypeOfField($fieldName);
+                            }
+                        }
+                    }
+
+                    if (!$collectionKeyType = $this->getTypeIdentifierLegacy($typeOfField)) {
+                        return null;
+                    }
+                }
+            }
+
+            return [new LegacyType(
+                LegacyType::BUILTIN_TYPE_OBJECT,
                 false,
-                'Doctrine\Common\Collections\Collection',
+                Collection::class,
                 true,
-                new Type($collectionKeyType),
-                new Type(Type::BUILTIN_TYPE_OBJECT, false, $class)
+                new LegacyType($collectionKeyType),
+                new LegacyType(LegacyType::BUILTIN_TYPE_OBJECT, false, $class)
             )];
         }
 
-        if ($metadata instanceof ClassMetadataInfo && class_exists(\Doctrine\ORM\Mapping\Embedded::class) && isset($metadata->embeddedClasses[$property])) {
-            return [new Type(Type::BUILTIN_TYPE_OBJECT, false, $metadata->embeddedClasses[$property]['class'])];
+        if ($metadata instanceof ClassMetadata && isset($metadata->embeddedClasses[$property])) {
+            return [new LegacyType(LegacyType::BUILTIN_TYPE_OBJECT, false, self::getMappingValue($metadata->embeddedClasses[$property], 'class'))];
         }
 
         if ($metadata->hasField($property)) {
             $typeOfField = $metadata->getTypeOfField($property);
 
-            if (!$builtinType = $this->getPhpType($typeOfField)) {
+            if (!$builtinType = $this->getTypeIdentifierLegacy($typeOfField)) {
                 return null;
             }
 
-            $nullable = $metadata instanceof ClassMetadataInfo && $metadata->isNullable($property);
+            $nullable = $metadata instanceof ClassMetadata && $metadata->isNullable($property);
+
+            // DBAL 4 has a special fallback strategy for BINGINT (int -> string)
+            if (Types::BIGINT === $typeOfField && !method_exists(BigIntType::class, 'getName')) {
+                return [
+                    new LegacyType(LegacyType::BUILTIN_TYPE_INT, $nullable),
+                    new LegacyType(LegacyType::BUILTIN_TYPE_STRING, $nullable),
+                ];
+            }
+
+            $enumType = null;
+            if (null !== $enumClass = self::getMappingValue($metadata->getFieldMapping($property), 'enumType') ?? null) {
+                $enumType = new LegacyType(LegacyType::BUILTIN_TYPE_OBJECT, $nullable, $enumClass);
+            }
 
             switch ($builtinType) {
-                case Type::BUILTIN_TYPE_OBJECT:
+                case LegacyType::BUILTIN_TYPE_OBJECT:
                     switch ($typeOfField) {
-                        case self::$useDeprecatedConstants ? DBALType::DATE : Types::DATE_MUTABLE:
-                        // no break
-                        case self::$useDeprecatedConstants ? DBALType::DATETIME : Types::DATETIME_MUTABLE:
-                        // no break
-                        case self::$useDeprecatedConstants ? DBALType::DATETIMETZ : Types::DATETIMETZ_MUTABLE:
-                        // no break
+                        case Types::DATE_MUTABLE:
+                        case Types::DATETIME_MUTABLE:
+                        case Types::DATETIMETZ_MUTABLE:
                         case 'vardatetime':
-                        case self::$useDeprecatedConstants ? DBALType::TIME : Types::TIME_MUTABLE:
-                            return [new Type(Type::BUILTIN_TYPE_OBJECT, $nullable, 'DateTime')];
+                        case Types::TIME_MUTABLE:
+                            return [new LegacyType(LegacyType::BUILTIN_TYPE_OBJECT, $nullable, 'DateTime')];
 
-                        case 'date_immutable':
-                        case 'datetime_immutable':
-                        case 'datetimetz_immutable':
-                        case 'time_immutable':
-                            return [new Type(Type::BUILTIN_TYPE_OBJECT, $nullable, 'DateTimeImmutable')];
+                        case Types::DATE_IMMUTABLE:
+                        case Types::DATETIME_IMMUTABLE:
+                        case Types::DATETIMETZ_IMMUTABLE:
+                        case Types::TIME_IMMUTABLE:
+                            return [new LegacyType(LegacyType::BUILTIN_TYPE_OBJECT, $nullable, 'DateTimeImmutable')];
 
-                        case 'dateinterval':
-                            return [new Type(Type::BUILTIN_TYPE_OBJECT, $nullable, 'DateInterval')];
+                        case Types::DATEINTERVAL:
+                            return [new LegacyType(LegacyType::BUILTIN_TYPE_OBJECT, $nullable, 'DateInterval')];
                     }
 
                     break;
-                case Type::BUILTIN_TYPE_ARRAY:
+                case LegacyType::BUILTIN_TYPE_ARRAY:
                     switch ($typeOfField) {
-                        case self::$useDeprecatedConstants ? DBALType::TARRAY : Types::ARRAY:
-                        // no break
-                        case 'json_array':
-                            return [new Type(Type::BUILTIN_TYPE_ARRAY, $nullable, null, true)];
+                        case 'array':      // DBAL < 4
+                        case 'json_array': // DBAL < 3
+                            // return null if $enumType is set, because we can't determine if collectionKeyType is string or int
+                            if ($enumType) {
+                                return null;
+                            }
 
-                        case self::$useDeprecatedConstants ? DBALType::SIMPLE_ARRAY : Types::SIMPLE_ARRAY:
-                            return [new Type(Type::BUILTIN_TYPE_ARRAY, $nullable, null, true, new Type(Type::BUILTIN_TYPE_INT), new Type(Type::BUILTIN_TYPE_STRING))];
+                            return [new LegacyType(LegacyType::BUILTIN_TYPE_ARRAY, $nullable, null, true)];
+
+                        case Types::SIMPLE_ARRAY:
+                            return [new LegacyType(LegacyType::BUILTIN_TYPE_ARRAY, $nullable, null, true, new LegacyType(LegacyType::BUILTIN_TYPE_INT), $enumType ?? new LegacyType(LegacyType::BUILTIN_TYPE_STRING))];
                     }
+                    break;
+                case LegacyType::BUILTIN_TYPE_INT:
+                case LegacyType::BUILTIN_TYPE_STRING:
+                    if ($enumType) {
+                        return [$enumType];
+                    }
+                    break;
             }
 
-            return [new Type($builtinType, $nullable)];
+            return [new LegacyType($builtinType, $nullable)];
         }
 
         return null;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function isReadable(string $class, string $property, array $context = [])
+    public function isReadable(string $class, string $property, array $context = []): ?bool
     {
         return null;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function isWritable(string $class, string $property, array $context = [])
+    public function isWritable(string $class, string $property, array $context = []): ?bool
     {
         if (
             null === ($metadata = $this->getMetadata($class))
@@ -217,8 +328,8 @@ class DoctrineExtractor implements PropertyListExtractorInterface, PropertyTypeE
     private function getMetadata(string $class): ?ClassMetadata
     {
         try {
-            return $this->entityManager ? $this->entityManager->getClassMetadata($class) : $this->classMetadataFactory->getMetadataFor($class);
-        } catch (MappingException | OrmMappingException $exception) {
+            return $this->entityManager->getClassMetadata($class);
+        } catch (MappingException|OrmMappingException) {
             return null;
         }
     }
@@ -226,21 +337,23 @@ class DoctrineExtractor implements PropertyListExtractorInterface, PropertyTypeE
     /**
      * Determines whether an association is nullable.
      *
+     * @param array<string, mixed>|AssociationMapping $associationMapping
+     *
      * @see https://github.com/doctrine/doctrine2/blob/v2.5.4/lib/Doctrine/ORM/Tools/EntityGenerator.php#L1221-L1246
      */
-    private function isAssociationNullable(array $associationMapping): bool
+    private function isAssociationNullable(array|AssociationMapping $associationMapping): bool
     {
-        if (isset($associationMapping['id']) && $associationMapping['id']) {
+        if (self::getMappingValue($associationMapping, 'id')) {
             return false;
         }
 
-        if (!isset($associationMapping['joinColumns'])) {
+        if (!self::getMappingValue($associationMapping, 'joinColumns')) {
             return true;
         }
 
-        $joinColumns = $associationMapping['joinColumns'];
+        $joinColumns = self::getMappingValue($associationMapping, 'joinColumns');
         foreach ($joinColumns as $joinColumn) {
-            if (isset($joinColumn['nullable']) && !$joinColumn['nullable']) {
+            if (false === self::getMappingValue($joinColumn, 'nullable')) {
                 return false;
             }
         }
@@ -251,62 +364,76 @@ class DoctrineExtractor implements PropertyListExtractorInterface, PropertyTypeE
     /**
      * Gets the corresponding built-in PHP type.
      */
-    private function getPhpType(string $doctrineType): ?string
+    private function getTypeIdentifier(string $doctrineType): ?TypeIdentifier
     {
-        switch ($doctrineType) {
-            case self::$useDeprecatedConstants ? DBALType::SMALLINT : Types::SMALLINT:
-            // no break
-            case self::$useDeprecatedConstants ? DBALType::INTEGER : Types::INTEGER:
-                return Type::BUILTIN_TYPE_INT;
+        return match ($doctrineType) {
+            Types::SMALLINT,
+            Types::INTEGER => TypeIdentifier::INT,
+            Types::FLOAT => TypeIdentifier::FLOAT,
+            Types::BIGINT,
+            Types::STRING,
+            Types::TEXT,
+            Types::GUID,
+            Types::DECIMAL => TypeIdentifier::STRING,
+            Types::BOOLEAN => TypeIdentifier::BOOL,
+            Types::BLOB,
+            Types::BINARY => TypeIdentifier::RESOURCE,
+            'object', // DBAL < 4
+            Types::DATE_MUTABLE,
+            Types::DATETIME_MUTABLE,
+            Types::DATETIMETZ_MUTABLE,
+            'vardatetime',
+            Types::TIME_MUTABLE,
+            Types::DATE_IMMUTABLE,
+            Types::DATETIME_IMMUTABLE,
+            Types::DATETIMETZ_IMMUTABLE,
+            Types::TIME_IMMUTABLE,
+            Types::DATEINTERVAL => TypeIdentifier::OBJECT,
+            'array', // DBAL < 4
+            'json_array', // DBAL < 3
+            Types::SIMPLE_ARRAY => TypeIdentifier::ARRAY,
+            default => null,
+        };
+    }
 
-            case self::$useDeprecatedConstants ? DBALType::FLOAT : Types::FLOAT:
-                return Type::BUILTIN_TYPE_FLOAT;
+    private function getTypeIdentifierLegacy(string $doctrineType): ?string
+    {
+        return match ($doctrineType) {
+            Types::SMALLINT,
+            Types::INTEGER => LegacyType::BUILTIN_TYPE_INT,
+            Types::FLOAT => LegacyType::BUILTIN_TYPE_FLOAT,
+            Types::BIGINT,
+            Types::STRING,
+            Types::TEXT,
+            Types::GUID,
+            Types::DECIMAL => LegacyType::BUILTIN_TYPE_STRING,
+            Types::BOOLEAN => LegacyType::BUILTIN_TYPE_BOOL,
+            Types::BLOB,
+            Types::BINARY => LegacyType::BUILTIN_TYPE_RESOURCE,
+            'object', // DBAL < 4
+            Types::DATE_MUTABLE,
+            Types::DATETIME_MUTABLE,
+            Types::DATETIMETZ_MUTABLE,
+            'vardatetime',
+            Types::TIME_MUTABLE,
+            Types::DATE_IMMUTABLE,
+            Types::DATETIME_IMMUTABLE,
+            Types::DATETIMETZ_IMMUTABLE,
+            Types::TIME_IMMUTABLE,
+            Types::DATEINTERVAL => LegacyType::BUILTIN_TYPE_OBJECT,
+            'array', // DBAL < 4
+            'json_array', // DBAL < 3
+            Types::SIMPLE_ARRAY => LegacyType::BUILTIN_TYPE_ARRAY,
+            default => null,
+        };
+    }
 
-            case self::$useDeprecatedConstants ? DBALType::BIGINT : Types::BIGINT:
-            // no break
-            case self::$useDeprecatedConstants ? DBALType::STRING : Types::STRING:
-            // no break
-            case self::$useDeprecatedConstants ? DBALType::TEXT : Types::TEXT:
-            // no break
-            case self::$useDeprecatedConstants ? DBALType::GUID : Types::GUID:
-            // no break
-            case self::$useDeprecatedConstants ? DBALType::DECIMAL : Types::DECIMAL:
-                return Type::BUILTIN_TYPE_STRING;
-
-            case self::$useDeprecatedConstants ? DBALType::BOOLEAN : Types::BOOLEAN:
-                return Type::BUILTIN_TYPE_BOOL;
-
-            case self::$useDeprecatedConstants ? DBALType::BLOB : Types::BLOB:
-            // no break
-            case 'binary':
-                return Type::BUILTIN_TYPE_RESOURCE;
-
-            case self::$useDeprecatedConstants ? DBALType::OBJECT : Types::OBJECT:
-            // no break
-            case self::$useDeprecatedConstants ? DBALType::DATE : Types::DATE_MUTABLE:
-            // no break
-            case self::$useDeprecatedConstants ? DBALType::DATETIME : Types::DATETIME_MUTABLE:
-            // no break
-            case self::$useDeprecatedConstants ? DBALType::DATETIMETZ : Types::DATETIMETZ_MUTABLE:
-            // no break
-            case 'vardatetime':
-            case self::$useDeprecatedConstants ? DBALType::TIME : Types::TIME_MUTABLE:
-            // no break
-            case 'date_immutable':
-            case 'datetime_immutable':
-            case 'datetimetz_immutable':
-            case 'time_immutable':
-            case 'dateinterval':
-                return Type::BUILTIN_TYPE_OBJECT;
-
-            case self::$useDeprecatedConstants ? DBALType::TARRAY : Types::ARRAY:
-            // no break
-            case self::$useDeprecatedConstants ? DBALType::SIMPLE_ARRAY : Types::SIMPLE_ARRAY:
-            // no break
-            case 'json_array':
-                return Type::BUILTIN_TYPE_ARRAY;
+    private static function getMappingValue(array|AssociationMapping|EmbeddedClassMapping|FieldMapping|JoinColumnMapping $mapping, string $key): mixed
+    {
+        if ($mapping instanceof AssociationMapping || $mapping instanceof EmbeddedClassMapping || $mapping instanceof FieldMapping || $mapping instanceof JoinColumnMapping) {
+            return $mapping->$key ?? null;
         }
 
-        return null;
+        return $mapping[$key] ?? null;
     }
 }

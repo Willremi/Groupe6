@@ -7,32 +7,22 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=GenreRepository::class)
- */
+#[ORM\Entity(repositoryClass: GenreRepository::class)]
 class Genre
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-    private $nomGenre;
+    #[ORM\Column(length: 100)]
+    private string $nomGenre;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Lunettes::class, mappedBy="genre")
-     */
-    private $lunettes;
+    #[ORM\OneToMany(targetEntity: Lunettes::class, mappedBy: 'genre')]
+    private Collection $lunettes;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $statut;
+    #[ORM\Column]
+    private bool $statut;
 
     public function __construct()
     {
@@ -44,7 +34,7 @@ class Genre
         return $this->id;
     }
 
-    public function getNomGenre(): ?string
+    public function getNomGenre(): string
     {
         return $this->nomGenre;
     }
@@ -52,13 +42,9 @@ class Genre
     public function setNomGenre(string $nomGenre): self
     {
         $this->nomGenre = $nomGenre;
-
         return $this;
     }
 
-    /**
-     * @return Collection|Lunettes[]
-     */
     public function getLunettes(): Collection
     {
         return $this->lunettes;
@@ -67,27 +53,23 @@ class Genre
     public function addLunette(Lunettes $lunette): self
     {
         if (!$this->lunettes->contains($lunette)) {
-            $this->lunettes[] = $lunette;
+            $this->lunettes->add($lunette);
             $lunette->setGenre($this);
         }
-
         return $this;
     }
 
     public function removeLunette(Lunettes $lunette): self
     {
-        if ($this->lunettes->contains($lunette)) {
-            $this->lunettes->removeElement($lunette);
-            // set the owning side to null (unless already changed)
+        if ($this->lunettes->removeElement($lunette)) {
             if ($lunette->getGenre() === $this) {
                 $lunette->setGenre(null);
             }
         }
-
         return $this;
     }
 
-    public function getStatut(): ?bool
+    public function isStatut(): bool
     {
         return $this->statut;
     }
@@ -95,7 +77,6 @@ class Genre
     public function setStatut(bool $statut): self
     {
         $this->statut = $statut;
-
         return $this;
     }
 }

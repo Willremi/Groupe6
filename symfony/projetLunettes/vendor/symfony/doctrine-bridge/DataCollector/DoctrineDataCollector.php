@@ -11,10 +11,10 @@
 
 namespace Symfony\Bridge\Doctrine\DataCollector;
 
-use Doctrine\DBAL\Logging\DebugStack;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\Type;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Bridge\Doctrine\Middleware\Debug\DebugDataHolder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\DataCollector\DataCollector;
@@ -28,78 +28,64 @@ use Symfony\Component\VarDumper\Cloner\Stub;
  */
 class DoctrineDataCollector extends DataCollector
 {
-    private $registry;
-    private $connections;
-    private $managers;
+    private array $connections;
+    private array $managers;
 
-    /**
-     * @var DebugStack[]
-     */
-    private $loggers = [];
-
-    public function __construct(ManagerRegistry $registry)
-    {
-        $this->registry = $registry;
+    public function __construct(
+        private ManagerRegistry $registry,
+        private DebugDataHolder $debugDataHolder,
+    ) {
         $this->connections = $registry->getConnectionNames();
         $this->managers = $registry->getManagerNames();
     }
 
-    /**
-     * Adds the stack logger for a connection.
-     */
-    public function addLogger(string $name, DebugStack $logger)
+    public function collect(Request $request, Response $response, ?\Throwable $exception = null): void
     {
-        $this->loggers[$name] = $logger;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function collect(Request $request, Response $response, \Throwable $exception = null)
-    {
-        $queries = [];
-        foreach ($this->loggers as $name => $logger) {
-            $queries[$name] = $this->sanitizeQueries($name, $logger->queries);
-        }
-
         $this->data = [
-            'queries' => $queries,
+            'queries' => $this->collectQueries(),
             'connections' => $this->connections,
             'managers' => $this->managers,
         ];
     }
 
-    public function reset()
+    private function collectQueries(): array
     {
-        $this->data = [];
+        $queries = [];
 
-        foreach ($this->loggers as $logger) {
-            $logger->queries = [];
-            $logger->currentQuery = 0;
+        foreach ($this->debugDataHolder->getData() as $name => $data) {
+            $queries[$name] = $this->sanitizeQueries($name, $data);
         }
+
+        return $queries;
     }
 
-    public function getManagers()
+    public function reset(): void
+    {
+        $this->data = [];
+        $this->debugDataHolder->reset();
+    }
+
+    public function getManagers(): array
     {
         return $this->data['managers'];
     }
 
-    public function getConnections()
+    public function getConnections(): array
     {
         return $this->data['connections'];
     }
 
-    public function getQueryCount()
+    public function getQueryCount(): int
     {
         return array_sum(array_map('count', $this->data['queries']));
     }
 
-    public function getQueries()
+    public function getQueries(): array
     {
         return $this->data['queries'];
     }
 
-    public function getTime()
+    public function getTime(): float
     {
         $time = 0;
         foreach ($this->data['queries'] as $queries) {
@@ -111,18 +97,12 @@ class DoctrineDataCollector extends DataCollector
         return $time;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
+    public function getName(): string
     {
         return 'db';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    protected function getCasters()
+    protected function getCasters(): array
     {
         return parent::getCasters() + [
             ObjectParameter::class => static function (ObjectParameter $o, array $a, Stub $s): array {
@@ -146,7 +126,7 @@ class DoctrineDataCollector extends DataCollector
                     return [Caster::PREFIX_VIRTUAL.'__toString()' => (string) $o->getObject()];
                 }
 
-                return [Caster::PREFIX_VIRTUAL.'⚠' => sprintf('Object of class "%s" could not be converted to string.', $o->getClass())];
+                return [Caster::PREFIX_VIRTUAL.'⚠' => \sprintf('Object of class "%s" could not be converted to string.', $o->getClass())];
             },
         ];
     }
@@ -164,9 +144,7 @@ class DoctrineDataCollector extends DataCollector
     {
         $query['explainable'] = true;
         $query['runnable'] = true;
-        if (null === $query['params']) {
-            $query['params'] = [];
-        }
+        $query['params'] ??= [];
         if (!\is_array($query['params'])) {
             $query['params'] = [$query['params']];
         }
@@ -185,8 +163,7 @@ class DoctrineDataCollector extends DataCollector
                     $query['types'][$j] = $type->getBindingType();
                     try {
                         $param = $type->convertToDatabaseValue($param, $this->registry->getConnection($connectionName)->getDatabasePlatform());
-                    } catch (\TypeError $e) {
-                    } catch (ConversionException $e) {
+                    } catch (\TypeError|ConversionException) {
                     }
                 }
             }
@@ -213,7 +190,7 @@ class DoctrineDataCollector extends DataCollector
      * indicating if the original value was kept (allowing to use the sanitized
      * value to explain the query).
      */
-    private function sanitizeParam($var, ?\Throwable $error): array
+    private function sanitizeParam(mixed $var, ?\Throwable $error): array
     {
         if (\is_object($var)) {
             return [$o = new ObjectParameter($var, $error), false, $o->isStringable() && !$error];
@@ -237,7 +214,7 @@ class DoctrineDataCollector extends DataCollector
         }
 
         if (\is_resource($var)) {
-            return [sprintf('/* Resource(%s) */', get_resource_type($var)), false, false];
+            return [\sprintf('/* Resource(%s) */', get_resource_type($var)), false, false];
         }
 
         return [$var, true, true];

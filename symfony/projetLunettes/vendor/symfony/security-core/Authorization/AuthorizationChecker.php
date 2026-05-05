@@ -11,9 +11,15 @@
 
 namespace Symfony\Component\Security\Core\Authorization;
 
-use Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface;
+use Symfony\Component\Security\Core\Authentication\Token\AbstractToken;
+use Symfony\Component\Security\Core\Authentication\Token\NullToken;
+use Symfony\Component\Security\Core\Authentication\Token\OfflineTokenInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Symfony\Component\Security\Core\Exception\AuthenticationCredentialsNotFoundException;
+use Symfony\Component\Security\Core\User\UserInterface;
+
+// Help opcache.preload discover always-needed symbols
+class_exists(AbstractToken::class);
+class_exists(OfflineTokenInterface::class);
 
 /**
  * AuthorizationChecker is the main authorization point of the Security component.
@@ -23,42 +29,44 @@ use Symfony\Component\Security\Core\Exception\AuthenticationCredentialsNotFoundE
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class AuthorizationChecker implements AuthorizationCheckerInterface
+class AuthorizationChecker implements AuthorizationCheckerInterface, UserAuthorizationCheckerInterface
 {
-    private $tokenStorage;
-    private $accessDecisionManager;
-    private $authenticationManager;
-    private $alwaysAuthenticate;
-    private $exceptionOnNoToken;
+    private array $tokenStack = [];
+    private array $accessDecisionStack = [];
 
-    public function __construct(TokenStorageInterface $tokenStorage, AuthenticationManagerInterface $authenticationManager, AccessDecisionManagerInterface $accessDecisionManager, bool $alwaysAuthenticate = false, bool $exceptionOnNoToken = true)
-    {
-        $this->tokenStorage = $tokenStorage;
-        $this->authenticationManager = $authenticationManager;
-        $this->accessDecisionManager = $accessDecisionManager;
-        $this->alwaysAuthenticate = $alwaysAuthenticate;
-        $this->exceptionOnNoToken = $exceptionOnNoToken;
+    public function __construct(
+        private TokenStorageInterface $tokenStorage,
+        private AccessDecisionManagerInterface $accessDecisionManager,
+    ) {
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @throws AuthenticationCredentialsNotFoundException when the token storage has no authentication token and $exceptionOnNoToken is set to true
-     */
-    final public function isGranted($attribute, $subject = null): bool
+    final public function isGranted(mixed $attribute, mixed $subject = null, ?AccessDecision $accessDecision = null): bool
     {
-        if (null === ($token = $this->tokenStorage->getToken())) {
-            if ($this->exceptionOnNoToken) {
-                throw new AuthenticationCredentialsNotFoundException('The token storage contains no authentication token. One possible reason may be that there is no firewall configured for this URL.');
-            }
+        $token = end($this->tokenStack) ?: $this->tokenStorage->getToken();
 
-            return false;
+        if (!$token || !$token->getUser()) {
+            $token = new NullToken();
         }
+        $accessDecision ??= end($this->accessDecisionStack) ?: new AccessDecision();
+        $this->accessDecisionStack[] = $accessDecision;
 
-        if ($this->alwaysAuthenticate || !$token->isAuthenticated()) {
-            $this->tokenStorage->setToken($token = $this->authenticationManager->authenticate($token));
+        try {
+            return $accessDecision->isGranted = $this->accessDecisionManager->decide($token, [$attribute], $subject, $accessDecision);
+        } finally {
+            array_pop($this->accessDecisionStack);
         }
+    }
 
-        return $this->accessDecisionManager->decide($token, [$attribute], $subject);
+    final public function isGrantedForUser(UserInterface $user, mixed $attribute, mixed $subject = null, ?AccessDecision $accessDecision = null): bool
+    {
+        $token = new class($user->getRoles()) extends AbstractToken implements OfflineTokenInterface {};
+        $token->setUser($user);
+        $this->tokenStack[] = $token;
+
+        try {
+            return $this->isGranted($attribute, $subject, $accessDecision);
+        } finally {
+            array_pop($this->tokenStack);
+        }
     }
 }

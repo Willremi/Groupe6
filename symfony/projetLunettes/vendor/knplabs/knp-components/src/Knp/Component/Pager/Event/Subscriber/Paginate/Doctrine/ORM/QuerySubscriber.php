@@ -10,8 +10,8 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class QuerySubscriber implements EventSubscriberInterface
 {
-    const HINT_COUNT = 'knp_paginator.count';
-    const HINT_FETCH_JOIN_COLLECTION = 'knp_paginator.fetch_join_collection';
+    public const HINT_COUNT = 'knp_paginator.count';
+    public const HINT_FETCH_JOIN_COLLECTION = 'knp_paginator.fetch_join_collection';
 
     public function items(ItemsEvent $event): void
     {
@@ -20,10 +20,7 @@ class QuerySubscriber implements EventSubscriberInterface
         }
         $event->stopPropagation();
 
-        $useOutputWalkers = false;
-        if (isset($event->options['wrap-queries'])) {
-            $useOutputWalkers = $event->options['wrap-queries'];
-        }
+        $useOutputWalkers = $event->options['wrap-queries'] ?? false;
 
         $event->target
             ->setFirstResult($event->getOffset())
@@ -51,7 +48,7 @@ class QuerySubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            'knp_pager.items' => ['items', 0]
+            'knp_pager.items' => ['items', 0],
         ];
     }
 }

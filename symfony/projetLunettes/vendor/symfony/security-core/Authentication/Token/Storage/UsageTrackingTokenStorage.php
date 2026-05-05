@@ -12,6 +12,7 @@
 namespace Symfony\Component\Security\Core\Authentication\Token\Storage;
 
 use Psr\Container\ContainerInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Contracts\Service\ServiceSubscriberInterface;
@@ -23,39 +24,31 @@ use Symfony\Contracts\Service\ServiceSubscriberInterface;
  */
 final class UsageTrackingTokenStorage implements TokenStorageInterface, ServiceSubscriberInterface
 {
-    private $storage;
-    private $sessionLocator;
-    private $enableUsageTracking = false;
+    private bool $enableUsageTracking = false;
 
-    public function __construct(TokenStorageInterface $storage, ContainerInterface $sessionLocator)
-    {
-        $this->storage = $storage;
-        $this->sessionLocator = $sessionLocator;
+    public function __construct(
+        private TokenStorageInterface $storage,
+        private ContainerInterface $container,
+    ) {
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getToken(): ?TokenInterface
     {
-        if ($this->enableUsageTracking) {
+        if ($this->shouldTrackUsage()) {
             // increments the internal session usage index
-            $this->sessionLocator->get('session')->getMetadataBag();
+            $this->getSession()->getMetadataBag();
         }
 
         return $this->storage->getToken();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function setToken(TokenInterface $token = null): void
+    public function setToken(?TokenInterface $token = null): void
     {
         $this->storage->setToken($token);
 
-        if ($token && $this->enableUsageTracking) {
+        if ($token && $this->shouldTrackUsage()) {
             // increments the internal session usage index
-            $this->sessionLocator->get('session')->getMetadataBag();
+            $this->getSession()->getMetadataBag();
         }
     }
 
@@ -72,7 +65,17 @@ final class UsageTrackingTokenStorage implements TokenStorageInterface, ServiceS
     public static function getSubscribedServices(): array
     {
         return [
-            'session' => SessionInterface::class,
+            'request_stack' => RequestStack::class,
         ];
+    }
+
+    private function getSession(): SessionInterface
+    {
+        return $this->container->get('request_stack')->getSession();
+    }
+
+    private function shouldTrackUsage(): bool
+    {
+        return $this->enableUsageTracking && $this->container->get('request_stack')->getMainRequest();
     }
 }

@@ -7,81 +7,53 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-/**
- * @ORM\Entity(repositoryClass=UserRepository::class)
- * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
- */
-class User implements UserInterface
+#[ORM\Entity(repositoryClass: UserRepository::class)]
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="string", length=180, unique=true)
-     */
-    private $email;
+    #[ORM\Column(length: 180, unique: true)]
+    private ?string $email = null;
 
-    /**
-     * @ORM\Column(type="json")
-     */
-    private $roles = [];
+    #[ORM\Column(type: 'json')]
+    private array $roles = [];
 
-    /**
-     * @var string The hashed password
-     * @ORM\Column(type="string")
-     */
-    private $password;
+    #[ORM\Column]
+    private string $password;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $isVerified = false;
+    #[ORM\Column]
+    private bool $isVerified = false;
 
-    /**
-     * @ORM\Column(type="string", length=150)
-     */
-    private $nomUser;
+    #[ORM\Column(length: 150)]
+    private string $nomUser;
 
-    /**
-     * @ORM\Column(type="string", length=160)
-     */
-    private $prenomUser;
+    #[ORM\Column(length: 160)]
+    private string $prenomUser;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $adresseUser;
+    #[ORM\Column(length: 255)]
+    private string $adresseUser;
 
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-    private $cpUser;
+    #[ORM\Column(length: 100)]
+    private string $cpUser;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $villeUSer;
+    #[ORM\Column(length: 255)]
+    private string $villeUser;
 
-    /**
-     * @ORM\Column(type="string", length=15)
-     */
-    private $telephoneUser;
+    #[ORM\Column(length: 15)]
+    private string $telephoneUser;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $statut = 1;
+    #[ORM\Column]
+    private bool $statut = true;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Banque::class, inversedBy="users")
-     */
-    private $banque;
+    #[ORM\ManyToMany(targetEntity: Banque::class, inversedBy: 'users')]
+    private Collection $banque;
 
     public function __construct()
     {
@@ -101,70 +73,39 @@ class User implements UserInterface
     public function setEmail(string $email): self
     {
         $this->email = $email;
-
         return $this;
     }
 
-    /**
-     * A visual identifier that represents this user.
-     *
-     * @see UserInterface
-     */
-    public function getUsername(): string
+    public function getUserIdentifier(): string
     {
-        return (string) $this->email;
+        return $this->email ?? '';
     }
 
-    /**
-     * @see UserInterface
-     */
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
-
         return array_unique($roles);
     }
 
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
-
         return $this;
     }
 
-    /**
-     * @see UserInterface
-     */
     public function getPassword(): string
     {
-        return (string) $this->password;
+        return $this->password;
     }
 
     public function setPassword(string $password): self
     {
         $this->password = $password;
-
         return $this;
     }
 
-    /**
-     * @see UserInterface
-     */
-    public function getSalt()
-    {
-        // not needed when using the "bcrypt" algorithm in security.yaml
-    }
-
-    /**
-     * @see UserInterface
-     */
-    public function eraseCredentials()
-    {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
-    }
+    public function eraseCredentials(): void {}
 
     public function isVerified(): bool
     {
@@ -174,11 +115,10 @@ class User implements UserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
-
         return $this;
     }
 
-    public function getNomUser(): ?string
+    public function getNomUser(): string
     {
         return $this->nomUser;
     }
@@ -186,11 +126,10 @@ class User implements UserInterface
     public function setNomUser(string $nomUser): self
     {
         $this->nomUser = $nomUser;
-
         return $this;
     }
 
-    public function getPrenomUser(): ?string
+    public function getPrenomUser(): string
     {
         return $this->prenomUser;
     }
@@ -198,11 +137,10 @@ class User implements UserInterface
     public function setPrenomUser(string $prenomUser): self
     {
         $this->prenomUser = $prenomUser;
-
         return $this;
     }
 
-    public function getAdresseUser(): ?string
+    public function getAdresseUser(): string
     {
         return $this->adresseUser;
     }
@@ -210,11 +148,10 @@ class User implements UserInterface
     public function setAdresseUser(string $adresseUser): self
     {
         $this->adresseUser = $adresseUser;
-
         return $this;
     }
 
-    public function getCpUser(): ?string
+    public function getCpUser(): string
     {
         return $this->cpUser;
     }
@@ -222,23 +159,21 @@ class User implements UserInterface
     public function setCpUser(string $cpUser): self
     {
         $this->cpUser = $cpUser;
-
         return $this;
     }
 
-    public function getVilleUSer(): ?string
+    public function getVilleUser(): string
     {
-        return $this->villeUSer;
+        return $this->villeUser;
     }
 
-    public function setVilleUSer(string $villeUSer): self
+    public function setVilleUser(string $villeUser): self
     {
-        $this->villeUSer = $villeUSer;
-
+        $this->villeUser = $villeUser;
         return $this;
     }
 
-    public function getTelephoneUser(): ?string
+    public function getTelephoneUser(): string
     {
         return $this->telephoneUser;
     }
@@ -246,11 +181,10 @@ class User implements UserInterface
     public function setTelephoneUser(string $telephoneUser): self
     {
         $this->telephoneUser = $telephoneUser;
-
         return $this;
     }
 
-    public function getStatut(): ?bool
+    public function isStatut(): bool
     {
         return $this->statut;
     }
@@ -258,13 +192,9 @@ class User implements UserInterface
     public function setStatut(bool $statut): self
     {
         $this->statut = $statut;
-
         return $this;
     }
 
-    /**
-     * @return Collection|Banque[]
-     */
     public function getBanque(): Collection
     {
         return $this->banque;
@@ -273,18 +203,14 @@ class User implements UserInterface
     public function addBanque(Banque $banque): self
     {
         if (!$this->banque->contains($banque)) {
-            $this->banque[] = $banque;
+            $this->banque->add($banque);
         }
-
         return $this;
     }
 
     public function removeBanque(Banque $banque): self
     {
-        if ($this->banque->contains($banque)) {
-            $this->banque->removeElement($banque);
-        }
-
+        $this->banque->removeElement($banque);
         return $this;
     }
 }

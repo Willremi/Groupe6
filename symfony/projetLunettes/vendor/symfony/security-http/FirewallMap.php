@@ -14,6 +14,7 @@ namespace Symfony\Component\Security\Http;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestMatcherInterface;
 use Symfony\Component\Security\Http\Firewall\ExceptionListener;
+use Symfony\Component\Security\Http\Firewall\FirewallListenerInterface;
 use Symfony\Component\Security\Http\Firewall\LogoutListener;
 
 /**
@@ -24,17 +25,20 @@ use Symfony\Component\Security\Http\Firewall\LogoutListener;
  */
 class FirewallMap implements FirewallMapInterface
 {
-    private $map = [];
+    /**
+     * @var list<array{RequestMatcherInterface, list<callable|FirewallListenerInterface>, ExceptionListener|null, LogoutListener|null}>
+     */
+    private array $map = [];
 
-    public function add(RequestMatcherInterface $requestMatcher = null, array $listeners = [], ExceptionListener $exceptionListener = null, LogoutListener $logoutListener = null)
+    /**
+     * @param list<callable|FirewallListenerInterface> $listeners
+     */
+    public function add(?RequestMatcherInterface $requestMatcher = null, array $listeners = [], ?ExceptionListener $exceptionListener = null, ?LogoutListener $logoutListener = null): void
     {
         $this->map[] = [$requestMatcher, $listeners, $exceptionListener, $logoutListener];
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getListeners(Request $request)
+    public function getListeners(Request $request): array
     {
         foreach ($this->map as $elements) {
             if (null === $elements[0] || $elements[0]->matches($request)) {

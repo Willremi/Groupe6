@@ -24,47 +24,61 @@ use Symfony\Component\Security\Core\Role\RoleHierarchyInterface;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class ExpressionVoter implements VoterInterface
+class ExpressionVoter implements CacheableVoterInterface
 {
-    private $expressionLanguage;
-    private $trustResolver;
-    private $authChecker;
-    private $roleHierarchy;
+    public function __construct(
+        private ExpressionLanguage $expressionLanguage,
+        private ?AuthenticationTrustResolverInterface $trustResolver,
+        private AuthorizationCheckerInterface $authChecker,
+        private ?RoleHierarchyInterface $roleHierarchy = null,
+    ) {
+    }
 
-    public function __construct(ExpressionLanguage $expressionLanguage, AuthenticationTrustResolverInterface $trustResolver, AuthorizationCheckerInterface $authChecker, RoleHierarchyInterface $roleHierarchy = null)
+    public function supportsAttribute(string $attribute): bool
     {
-        $this->expressionLanguage = $expressionLanguage;
-        $this->trustResolver = $trustResolver;
-        $this->authChecker = $authChecker;
-        $this->roleHierarchy = $roleHierarchy;
+        return false;
+    }
+
+    public function supportsType(string $subjectType): bool
+    {
+        return true;
     }
 
     /**
-     * {@inheritdoc}
+     * @param Vote|null $vote Should be used to explain the vote
      */
-    public function vote(TokenInterface $token, $subject, array $attributes)
+    public function vote(TokenInterface $token, mixed $subject, array $attributes/* , ?Vote $vote = null */): int
     {
+        $vote = 3 < \func_num_args() ? func_get_arg(3) : null;
         $result = VoterInterface::ACCESS_ABSTAIN;
         $variables = null;
+        $failingExpressions = [];
         foreach ($attributes as $attribute) {
             if (!$attribute instanceof Expression) {
                 continue;
             }
 
-            if (null === $variables) {
-                $variables = $this->getVariables($token, $subject);
-            }
+            $variables ??= $this->getVariables($token, $subject);
 
             $result = VoterInterface::ACCESS_DENIED;
+
             if ($this->expressionLanguage->evaluate($attribute, $variables)) {
+                $vote?->addReason(\sprintf('Expression (%s) is true.', $attribute));
+
                 return VoterInterface::ACCESS_GRANTED;
             }
+
+            $failingExpressions[] = $attribute;
+        }
+
+        if ($failingExpressions) {
+            $vote?->addReason(\sprintf('Expression (%s) is false.', implode(') || (', $failingExpressions)));
         }
 
         return $result;
     }
 
-    private function getVariables(TokenInterface $token, $subject): array
+    private function getVariables(TokenInterface $token, mixed $subject): array
     {
         $roleNames = $token->getRoleNames();
 
@@ -78,9 +92,12 @@ class ExpressionVoter implements VoterInterface
             'object' => $subject,
             'subject' => $subject,
             'role_names' => $roleNames,
-            'trust_resolver' => $this->trustResolver,
             'auth_checker' => $this->authChecker,
         ];
+
+        if ($this->trustResolver) {
+            $variables['trust_resolver'] = $this->trustResolver;
+        }
 
         // this is mainly to propose a better experience when the expression is used
         // in an access control rule, as the developer does not know that it's going

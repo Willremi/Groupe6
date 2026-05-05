@@ -7,32 +7,22 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=CouleurRepository::class)
- */
+#[ORM\Entity(repositoryClass: CouleurRepository::class)]
 class Couleur
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="string", length=150)
-     */
-    private $nom;
+    #[ORM\Column(length: 150)]
+    private string $nom;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $statut;
+    #[ORM\Column]
+    private bool $statut;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Lunettes::class, mappedBy="couleur")
-     */
-    private $lunettes;
+    #[ORM\OneToMany(targetEntity: Lunettes::class, mappedBy: 'couleur')]
+    private Collection $lunettes;
 
     public function __construct()
     {
@@ -44,7 +34,7 @@ class Couleur
         return $this->id;
     }
 
-    public function getNom(): ?string
+    public function getNom(): string
     {
         return $this->nom;
     }
@@ -52,11 +42,10 @@ class Couleur
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
-
         return $this;
     }
 
-    public function getStatut(): ?bool
+    public function isStatut(): bool
     {
         return $this->statut;
     }
@@ -64,13 +53,9 @@ class Couleur
     public function setStatut(bool $statut): self
     {
         $this->statut = $statut;
-
         return $this;
     }
 
-    /**
-     * @return Collection|Lunettes[]
-     */
     public function getLunettes(): Collection
     {
         return $this->lunettes;
@@ -79,23 +64,19 @@ class Couleur
     public function addLunette(Lunettes $lunette): self
     {
         if (!$this->lunettes->contains($lunette)) {
-            $this->lunettes[] = $lunette;
+            $this->lunettes->add($lunette);
             $lunette->setCouleur($this);
         }
-
         return $this;
     }
 
     public function removeLunette(Lunettes $lunette): self
     {
-        if ($this->lunettes->contains($lunette)) {
-            $this->lunettes->removeElement($lunette);
-            // set the owning side to null (unless already changed)
+        if ($this->lunettes->removeElement($lunette)) {
             if ($lunette->getCouleur() === $this) {
                 $lunette->setCouleur(null);
             }
         }
-
         return $this;
     }
 }

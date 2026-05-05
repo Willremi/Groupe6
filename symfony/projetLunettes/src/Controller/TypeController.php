@@ -5,19 +5,16 @@ namespace App\Controller;
 use App\Entity\Type;
 use App\Form\TypeType;
 use App\Repository\TypeRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
-/**
- * @Route("/admin/type")
- */
+#[Route('/admin/type')]
 class TypeController extends AbstractController
 {
-    /**
-     * @Route("/", name="type_index", methods={"GET"})
-     */
+    #[Route('/', name: 'type_index', methods: ['GET'])]
     public function index(TypeRepository $typeRepository): Response
     {
         return $this->render('admin/type/index.html.twig', [
@@ -25,19 +22,16 @@ class TypeController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/new", name="type_new", methods={"GET","POST"})
-     */
-    public function new(Request $request): Response
+    #[Route('/new', name: 'type_new', methods: ['GET', 'POST'])]
+    public function new(Request $request, EntityManagerInterface $em): Response
     {
         $type = new Type();
         $form = $this->createForm(TypeType::class, $type);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($type);
-            $entityManager->flush();
+            $em->persist($type);
+            $em->flush();
 
             return $this->redirectToRoute('type_index');
         }
@@ -48,9 +42,7 @@ class TypeController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="type_show", methods={"GET"})
-     */
+    #[Route('/{id}', name: 'type_show', methods: ['GET'])]
     public function show(Type $type): Response
     {
         return $this->render('admin/type/show.html.twig', [
@@ -58,16 +50,14 @@ class TypeController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}/edit", name="type_edit", methods={"GET","POST"})
-     */
-    public function edit(Request $request, Type $type): Response
+    #[Route('/{id}/edit', name: 'type_edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, Type $type, EntityManagerInterface $em): Response
     {
         $form = $this->createForm(TypeType::class, $type);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $em->flush();
 
             return $this->redirectToRoute('type_index');
         }
@@ -78,15 +68,12 @@ class TypeController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="type_delete", methods={"DELETE"})
-     */
-    public function delete(Request $request, Type $type): Response
+    #[Route('/{id}', name: 'type_delete', methods: ['DELETE'])]
+    public function delete(Request $request, Type $type, EntityManagerInterface $em): Response
     {
         if ($this->isCsrfTokenValid('delete'.$type->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($type);
-            $entityManager->flush();
+            $em->remove($type);
+            $em->flush();
         }
 
         return $this->redirectToRoute('type_index');

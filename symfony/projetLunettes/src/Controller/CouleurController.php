@@ -5,19 +5,16 @@ namespace App\Controller;
 use App\Entity\Couleur;
 use App\Form\CouleurType;
 use App\Repository\CouleurRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
-/**
- * @Route("/admin/couleur")
- */
+#[Route('/admin/couleur')]
 class CouleurController extends AbstractController
 {
-    /**
-     * @Route("/", name="couleur_index", methods={"GET"})
-     */
+    #[Route('/', name: 'couleur_index', methods: ['GET'])]
     public function index(CouleurRepository $couleurRepository): Response
     {
         return $this->render('admin/couleur/index.html.twig', [
@@ -25,19 +22,16 @@ class CouleurController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/new", name="couleur_new", methods={"GET","POST"})
-     */
-    public function new(Request $request): Response
+    #[Route('/new', name: 'couleur_new', methods: ['GET', 'POST'])]
+    public function new(Request $request, EntityManagerInterface $em): Response
     {
         $couleur = new Couleur();
         $form = $this->createForm(CouleurType::class, $couleur);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($couleur);
-            $entityManager->flush();
+            $em->persist($couleur);
+            $em->flush();
 
             return $this->redirectToRoute('couleur_index');
         }
@@ -48,9 +42,7 @@ class CouleurController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="couleur_show", methods={"GET"})
-     */
+    #[Route('/{id}', name: 'couleur_show', methods: ['GET'])]
     public function show(Couleur $couleur): Response
     {
         return $this->render('admin/couleur/show.html.twig', [
@@ -58,16 +50,14 @@ class CouleurController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}/edit", name="couleur_edit", methods={"GET","POST"})
-     */
-    public function edit(Request $request, Couleur $couleur): Response
+    #[Route('/{id}/edit', name: 'couleur_edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, Couleur $couleur, EntityManagerInterface $em): Response
     {
         $form = $this->createForm(CouleurType::class, $couleur);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $em->flush();
 
             return $this->redirectToRoute('couleur_index');
         }
@@ -78,15 +68,12 @@ class CouleurController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="couleur_delete", methods={"DELETE"})
-     */
-    public function delete(Request $request, Couleur $couleur): Response
+    #[Route('/{id}', name: 'couleur_delete', methods: ['DELETE'])]
+    public function delete(Request $request, Couleur $couleur, EntityManagerInterface $em): Response
     {
         if ($this->isCsrfTokenValid('delete'.$couleur->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($couleur);
-            $entityManager->flush();
+            $em->remove($couleur);
+            $em->flush();
         }
 
         return $this->redirectToRoute('couleur_index');

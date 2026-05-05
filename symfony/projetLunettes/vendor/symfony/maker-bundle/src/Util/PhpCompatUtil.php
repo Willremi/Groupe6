@@ -12,7 +12,6 @@
 namespace Symfony\Bundle\MakerBundle\Util;
 
 use Symfony\Bundle\MakerBundle\FileManager;
-use Symfony\Component\HttpKernel\Kernel;
 
 /**
  * @author Jesse Rushlow <jr@rushlow.dev>
@@ -21,40 +20,15 @@ use Symfony\Component\HttpKernel\Kernel;
  */
 class PhpCompatUtil
 {
-    /** @var FileManager */
-    private $fileManager;
-
-    public function __construct(FileManager $fileManager)
+    public function __construct(private FileManager $fileManager)
     {
-        $this->fileManager = $fileManager;
-    }
-
-    public function canUseAttributes(): bool
-    {
-        $version = $this->getPhpVersion();
-
-        return version_compare($version, '8alpha', '>=') && Kernel::VERSION_ID >= 50200;
-    }
-
-    public function canUseTypedProperties(): bool
-    {
-        $version = $this->getPhpVersion();
-
-        return version_compare($version, '7.4', '>=');
-    }
-
-    public function canUseUnionTypes(): bool
-    {
-        $version = $this->getPhpVersion();
-
-        return version_compare($version, '8alpha', '>=');
     }
 
     protected function getPhpVersion(): string
     {
         $rootDirectory = $this->fileManager->getRootDirectory();
 
-        $composerLockPath = sprintf('%s/composer.lock', $rootDirectory);
+        $composerLockPath = \sprintf('%s/composer.lock', $rootDirectory);
 
         if (!$this->fileManager->fileExists($composerLockPath)) {
             return \PHP_VERSION;

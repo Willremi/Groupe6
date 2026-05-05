@@ -24,10 +24,13 @@ use Symfony\Component\Mime\RawMessage;
  */
 class RoundRobinTransport implements TransportInterface
 {
-    private $deadTransports;
-    private $transports = [];
-    private $retryPeriod;
-    private $cursor = -1;
+    /**
+     * @var \SplObjectStorage<TransportInterface, float>
+     */
+    private \SplObjectStorage $deadTransports;
+    private array $transports = [];
+    private int $retryPeriod;
+    private int $cursor = -1;
 
     /**
      * @param TransportInterface[] $transports
@@ -35,7 +38,7 @@ class RoundRobinTransport implements TransportInterface
     public function __construct(array $transports, int $retryPeriod = 60)
     {
         if (!$transports) {
-            throw new TransportException(sprintf('"%s" must have at least one transport configured.', static::class));
+            throw new TransportException(\sprintf('"%s" must have at least one transport configured.', static::class));
         }
 
         $this->transports = $transports;
@@ -43,17 +46,21 @@ class RoundRobinTransport implements TransportInterface
         $this->retryPeriod = $retryPeriod;
     }
 
-    public function send(RawMessage $message, Envelope $envelope = null): ?SentMessage
+    public function send(RawMessage $message, ?Envelope $envelope = null): ?SentMessage
     {
+        $exception = null;
+
         while ($transport = $this->getNextTransport()) {
             try {
-                return $transport->send($message, $envelope);
+                return $transport->send(clone $message, $envelope);
             } catch (TransportExceptionInterface $e) {
+                $exception ??= new TransportException('All transports failed.');
+                $exception->appendDebug(\sprintf("Transport \"%s\": %s\n", $transport, $e->getDebug()));
                 $this->deadTransports[$transport] = microtime(true);
             }
         }
 
-        throw new TransportException('All transports failed.');
+        throw $exception ?? new TransportException('No transports found.');
     }
 
     public function __toString(): string
@@ -79,7 +86,7 @@ class RoundRobinTransport implements TransportInterface
             }
 
             if ((microtime(true) - $this->deadTransports[$transport]) > $this->retryPeriod) {
-                $this->deadTransports->detach($transport);
+                unset($this->deadTransports[$transport]);
 
                 break;
             }
@@ -96,7 +103,7 @@ class RoundRobinTransport implements TransportInterface
 
     protected function isTransportDead(TransportInterface $transport): bool
     {
-        return $this->deadTransports->contains($transport);
+        return $this->deadTransports->offsetExists($transport);
     }
 
     protected function getInitialCursor(): int

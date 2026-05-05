@@ -13,9 +13,12 @@ namespace Symfony\Component\Form\Extension\Validator;
 
 use Symfony\Component\Form\AbstractExtension;
 use Symfony\Component\Form\Extension\Validator\Constraints\Form;
+use Symfony\Component\Form\FormRendererInterface;
+use Symfony\Component\Form\FormTypeGuesserInterface;
 use Symfony\Component\Validator\Constraints\Traverse;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Extension supporting the Symfony Validator component in forms.
@@ -24,33 +27,46 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  */
 class ValidatorExtension extends AbstractExtension
 {
-    private $validator;
+    private ValidatorInterface $validator;
+    private ?FormRendererInterface $formRenderer;
+    private ?TranslatorInterface $translator;
+    private bool $legacyErrorMessages;
 
-    public function __construct(ValidatorInterface $validator)
+    public function __construct(ValidatorInterface $validator, bool $legacyErrorMessages = true, ?FormRendererInterface $formRenderer = null, ?TranslatorInterface $translator = null)
     {
-        $metadata = $validator->getMetadataFor('Symfony\Component\Form\Form');
+        $this->legacyErrorMessages = $legacyErrorMessages;
+
+        /** @var ClassMetadata $metadata */
+        $metadata = $validator->getMetadataFor(\Symfony\Component\Form\Form::class);
+
+        $this->validator = $validator;
+        $this->formRenderer = $formRenderer;
+        $this->translator = $translator;
 
         // Register the form constraints in the validator programmatically.
         // This functionality is required when using the Form component without
         // the DIC, where the XML file is loaded automatically. Thus the following
         // code must be kept synchronized with validation.xml
 
-        /* @var $metadata ClassMetadata */
+        foreach ($metadata->getConstraints() as $constraint) {
+            if ($constraint instanceof Form) {
+                return;
+            }
+        }
+
         $metadata->addConstraint(new Form());
         $metadata->addConstraint(new Traverse(false));
-
-        $this->validator = $validator;
     }
 
-    public function loadTypeGuesser()
+    public function loadTypeGuesser(): ?FormTypeGuesserInterface
     {
         return new ValidatorTypeGuesser($this->validator);
     }
 
-    protected function loadTypeExtensions()
+    protected function loadTypeExtensions(): array
     {
         return [
-            new Type\FormTypeValidatorExtension($this->validator),
+            new Type\FormTypeValidatorExtension($this->validator, $this->legacyErrorMessages, $this->formRenderer, $this->translator),
             new Type\RepeatedTypeValidatorExtension(),
             new Type\SubmitTypeValidatorExtension(),
         ];

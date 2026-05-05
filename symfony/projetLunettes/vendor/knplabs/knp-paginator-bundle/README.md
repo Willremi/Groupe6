@@ -8,23 +8,20 @@ Generally this bundle is based on [Knp Pager component][knp_component_pager]. Th
 component introduces a different way of pagination handling. You can read more about the
 internal logic on the given documentation link.
 
-[![knpbundles.com](http://knpbundles.com/KnpLabs/KnpPaginatorBundle/badge-short)](http://knpbundles.com/KnpLabs/KnpPaginatorBundle)
-
 **Note:** Keep **knp-components** in sync with this bundle. If you want to use
 older version of KnpPaginatorBundle - use **v3.0** or **v4.X** tags in the repository which is
 suitable to paginate **ODM MongoDB** and **ORM 2.0** queries
 
 ## Latest updates
 
-For notes about the latest changes please read [`CHANGELOG`](https://github.com/KnpLabs/KnpPaginatorBundle/blob/master/CHANGELOG.md),
-for required changes in your code please read [`UPGRADE`](https://github.com/KnpLabs/KnpPaginatorBundle/blob/master/docs/upgrade.md)
-chapter of the documentation.
+For details regarding changes please read about the [releases](https://github.com/KnpLabs/KnpPaginatorBundle/releases).
 
 ## Requirements:
 
-- Knp Pager component `>=2.0`.
-- KnpPaginatorBundle's master is compatible with Symfony `>=4.4` versions.
-- Twig `>=2.0` version is required if you use twig templating engine.
+- Knp Pager component `>=4.4`.
+- KnpPaginatorBundle's master is compatible with Symfony `>=6.4` versions.
+- Twig `>=3.0` version is required if you use the Twig templating engine.
+- If you want to use the provided templates, you need the Translation component too.
 
 ## Features:
 
@@ -32,7 +29,7 @@ chapter of the documentation.
 - Can be customized in any way needed, etc.: pagination view, event subscribers.
 - Possibility to add custom filtering, sorting functionality depending on request parameters.
 - Separation of concerns, paginator is responsible for generating the pagination view only,
-pagination view - for representation purposes.
+  pagination view - for representation purposes.
 
 **Note:** using multiple paginators requires setting the **alias** in order to keep non
 conflicting parameters.
@@ -40,12 +37,11 @@ conflicting parameters.
 ## More detailed documentation:
 
 - Creating [custom pagination subscribers][doc_custom_pagination_subscriber]
-- [Extending pagination](#) class (todo, may require some refactoring)
 - [Customizing view][doc_templates] templates and arguments
 
 ## Installation and configuration:
 
-### Pretty simple with [Composer](http://packagist.org), run
+### Pretty simple with [Composer](https://packagist.org), run
 
 ```sh
 composer require knplabs/knp-paginator-bundle
@@ -71,12 +67,14 @@ public function registerBundles()
 
 ### Configuration example
 
-You can configure default query parameter names and templates
+You can configure default query parameter names and templates, and a few other options:
 
 #### YAML:
 ```yaml
 knp_paginator:
-    page_range: 5                       # number of links showed in the pagination menu (e.g: you have 10 pages, a page_range of 3, on the 5th page you'll see links to page 4, 5, 6)
+    convert_exception: false            # throw a 404 exception when an invalid page is requested
+    page_range: 5                       # number of links shown in the pagination menu (e.g: you have 10 pages, a page_range of 3, on the 5th page you'll see links to page 4, 5, 6)
+    remove_first_page_param: false      # remove the page query parameter from the first page link
     default_options:
         page_name: page                 # page query parameter name
         sort_field_name: sort           # sort field query parameter name
@@ -84,8 +82,11 @@ knp_paginator:
         distinct: true                  # ensure distinct results, useful when ORM queries are using GROUP BY statements
         filter_field_name: filterField  # filter field query parameter name
         filter_value_name: filterValue  # filter value query parameter name
+        page_out_of_range: ignore       # ignore, fix, or throwException when the page is out of range
+        default_limit: 10               # default number of items per page
     template:
         pagination: '@KnpPaginator/Pagination/sliding.html.twig'     # sliding pagination controls template
+        rel_links: '@KnpPaginator/Pagination/rel_links.html.twig'    # <link rel=...> tags template
         sortable: '@KnpPaginator/Pagination/sortable_link.html.twig' # sort link template
         filtration: '@KnpPaginator/Pagination/filtration.html.twig'  # filters template
 ```
@@ -100,17 +101,22 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigura
 return static function (ContainerConfigurator $configurator): void
 {
     $configurator->extension('knp_paginator', [
-        'page_range' => 5,                        // number of links showed in the pagination menu (e.g: you have 10 pages, a page_range of 3, on the 5th page you'll see links
+        'convert_exception' => false,             // throw a 404 exception when an invalid page is requested
+        'page_range' => 5,                        // number of links shown in the pagination menu (e.g: you have 10 pages, a page_range of 3, on the 5th page you'll see links
+        'remove_first_page_param' => false,       // remove the page query parameter from the first page link
         'default_options' => [
             'page_name' => 'page',                // page query parameter name
             'sort_field_name' => 'sort',          // sort field query parameter name
             'sort_direction_name' => 'direction', // sort direction query parameter name
             'distinct' => true,                   // ensure distinct results, useful when ORM queries are using GROUP BY statements
             'filter_field_name' => 'filterField', // filter field query parameter name
-            'filter_value_name' => 'filterValue'  // filter value query parameter name
+            'filter_value_name' => 'filterValue',  // filter value query parameter name
+            'page_out_of_range' => 'ignore',      // ignore, fix, or throwException when the page is out of range
+            'default_limit' => 10                 // default number of items per page
         ],
         'template' => [
             'pagination' => '@KnpPaginator/Pagination/sliding.html.twig',     // sliding pagination controls template
+            'rel_links' => '@KnpPaginator/Pagination/rel_links.html.twig',    // <link rel=...> tags template
             'sortable' => '@KnpPaginator/Pagination/sortable_link.html.twig', // sort link template
             'filtration' => '@KnpPaginator/Pagination/filtration.html.twig'   // filters template
         ]
@@ -133,6 +139,11 @@ That could be used out of the box in `knp_paginator.template.pagination` key:
 * `@KnpPaginator/Pagination/materialize_pagination.html.twig`
 * `@KnpPaginator/Pagination/tailwindcss_pagination.html.twig`
 * `@KnpPaginator/Pagination/uikit_v3_pagination.html.twig`
+
+#### Sample rel link tag template
+That could be used out of the box in `knp_paginator.template.rel_links` key:
+
+* `@KnpPaginator/Pagination/rel_links.html.twig` (by default)
 
 #### Additional sortable templates
 That could be used out of the box in `knp_paginator.template.sortable` key:
@@ -161,6 +172,7 @@ That could be used out of the box in `knp_paginator.template.filtration` key:
 Currently paginator can paginate:
 
 - `array`
+- `Doctrine\DBAL\Query\QueryBuilder`
 - `Doctrine\ORM\Query`
 - `Doctrine\ORM\QueryBuilder`
 - `Doctrine\ODM\MongoDB\Query\Query`
@@ -181,8 +193,8 @@ public function listAction(EntityManagerInterface $em, PaginatorInterface $pagin
 
     $pagination = $paginator->paginate(
         $query, /* query NOT result */
-        $request->query->getInt('page', 1), /*page number*/
-        10 /*limit per page*/
+        $request->query->getInt('page', 1), /* page number */
+        10 /* limit per page */
     );
 
     // parameters to template
@@ -191,6 +203,15 @@ public function listAction(EntityManagerInterface $em, PaginatorInterface $pagin
 ```
 
 ### View
+
+#### In `<head>`:
+
+```twig
+{# rel links for pagination #}
+{{ knp_pagination_rel_links(pagination) }}
+```
+
+#### In `<body>`:
 
 ```twig
 {# total items count #}
@@ -201,7 +222,7 @@ public function listAction(EntityManagerInterface $em, PaginatorInterface $pagin
     <tr>
         {# sorting of properties based on query components #}
         <th>{{ knp_pagination_sortable(pagination, 'Id', 'a.id') }}</th>
-        <th{% if pagination.isSorted('a.Title') %} class="sorted"{% endif %}>
+        <th{% if pagination.isSorted('a.title') %} class="sorted"{% endif %}>
             {{ knp_pagination_sortable(pagination, 'Title', 'a.title') }}
         </th>
         <th{% if pagination.isSorted(['a.date', 'a.time']) %} class="sorted"{% endif %}>
@@ -246,7 +267,7 @@ translationCount and translationParameters can be combined.
 
 ### Adding translation files
 You can also override translations by creating a translation file in the following name format: `domain.locale.format`.
-So, to create a translation file for this bundle you need to create for instance `KnpPaginatorBundle.tr.yaml` file under `project_root/translations/` 
+So, to create a translation file for this bundle you need to create for instance `KnpPaginatorBundle.tr.yaml` file under `project_root/translations/`
 and add your translations there:
 ```yaml
 label_previous: "Önceki"
@@ -313,13 +334,15 @@ framework:
 ```
 
 - If your locale is not available, create your own translation file in
-`translations/KnpPaginatorBundle.en.yml` (substitute "en" for your own language code if needed).
-Then add these lines:
+  `translations/KnpPaginatorBundle.en.yml` (substitute "en" for your own language code if needed).
+  Then add these lines:
 
 ```yaml
 label_next: Next
 label_previous: Previous
 ```
+
+- Note that `<rel>` links are only meaningful when using pagination, they are not relevant to sorting or filtering.
 
 ## Maintainers
 

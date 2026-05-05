@@ -19,10 +19,6 @@ class CallbackPagination
      */
     private $items;
 
-    /**
-     * @param callable $count
-     * @param callable $items
-     */
     public function __construct(callable $count, callable $items)
     {
         $this->count = $count;
@@ -34,8 +30,11 @@ class CallbackPagination
         return call_user_func($this->count);
     }
 
+    /**
+     * @return array<int, mixed>
+     */
     public function getPaginationItems(int $offset, int $limit): array
     {
-        return call_user_func_array($this->items, [$offset, $limit]);
+        return call_user_func($this->items, $offset, $limit);
     }
 }

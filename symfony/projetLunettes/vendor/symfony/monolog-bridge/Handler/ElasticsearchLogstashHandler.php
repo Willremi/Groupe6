@@ -16,10 +16,12 @@ use Monolog\Formatter\LogstashFormatter;
 use Monolog\Handler\AbstractHandler;
 use Monolog\Handler\FormattableHandlerTrait;
 use Monolog\Handler\ProcessableHandlerTrait;
-use Monolog\Logger;
+use Monolog\Level;
+use Monolog\LogRecord;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\Exception\ExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface;
 
 /**
  * Push logs directly to Elasticsearch and format them according to Logstash specification.
@@ -39,33 +41,36 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
  *
  * @author Grégoire Pineau <lyrixx@lyrixx.info>
  */
-class ElasticsearchLogstashHandler extends AbstractHandler
+final class ElasticsearchLogstashHandler extends AbstractHandler
 {
     use FormattableHandlerTrait;
     use ProcessableHandlerTrait;
 
-    private $endpoint;
-    private $index;
-    private $client;
-    private $responses;
+    private HttpClientInterface $client;
 
     /**
-     * @param string|int $level The minimum logging level at which this handler will be triggered
+     * @var \SplObjectStorage<ResponseInterface, null>
      */
-    public function __construct(string $endpoint = 'http://127.0.0.1:9200', string $index = 'monolog', HttpClientInterface $client = null, $level = Logger::DEBUG, bool $bubble = true)
-    {
-        if (!interface_exists(HttpClientInterface::class)) {
-            throw new \LogicException(sprintf('The "%s" handler needs an HTTP client. Try running "composer require symfony/http-client".', __CLASS__));
+    private \SplObjectStorage $responses;
+
+    public function __construct(
+        private string $endpoint = 'http://127.0.0.1:9200',
+        private string $index = 'monolog',
+        ?HttpClientInterface $client = null,
+        string|int|Level $level = Level::Debug,
+        bool $bubble = true,
+        private string $elasticsearchVersion = '1.0.0',
+    ) {
+        if (!$client && !class_exists(HttpClient::class)) {
+            throw new \LogicException(\sprintf('The "%s" handler needs an HTTP client. Try running "composer require symfony/http-client".', __CLASS__));
         }
 
         parent::__construct($level, $bubble);
-        $this->endpoint = $endpoint;
-        $this->index = $index;
         $this->client = $client ?: HttpClient::create(['timeout' => 1]);
         $this->responses = new \SplObjectStorage();
     }
 
-    public function handle(array $record): bool
+    public function handle(LogRecord $record): bool
     {
         if (!$this->isHandling($record)) {
             return false;
@@ -78,7 +83,7 @@ class ElasticsearchLogstashHandler extends AbstractHandler
 
     public function handleBatch(array $records): void
     {
-        $records = array_filter($records, [$this, 'isHandling']);
+        $records = array_filter($records, $this->isHandling(...));
 
         if ($records) {
             $this->sendToElasticsearch($records);
@@ -87,18 +92,27 @@ class ElasticsearchLogstashHandler extends AbstractHandler
 
     protected function getDefaultFormatter(): FormatterInterface
     {
-        // Monolog 1.X
-        if (\defined(LogstashFormatter::class.'::V1')) {
-            return new LogstashFormatter('application', null, null, 'ctxt_', LogstashFormatter::V1);
-        }
-
-        // Monolog 2.X
         return new LogstashFormatter('application');
     }
 
-    private function sendToElasticsearch(array $records)
+    private function sendToElasticsearch(array $records): void
     {
         $formatter = $this->getFormatter();
+
+        if (version_compare($this->elasticsearchVersion, '7', '>=')) {
+            $headers = json_encode([
+                'index' => [
+                    '_index' => $this->index,
+                ],
+            ]);
+        } else {
+            $headers = json_encode([
+                'index' => [
+                    '_index' => $this->index,
+                    '_type' => '_doc',
+                ],
+            ]);
+        }
 
         $body = '';
         foreach ($records as $record) {
@@ -106,12 +120,7 @@ class ElasticsearchLogstashHandler extends AbstractHandler
                 $record = $processor($record);
             }
 
-            $body .= json_encode([
-                'index' => [
-                    '_index' => $this->index,
-                    '_type' => '_doc',
-                ],
-            ]);
+            $body .= $headers;
             $body .= "\n";
             $body .= $formatter->format($record);
             $body .= "\n";
@@ -124,17 +133,17 @@ class ElasticsearchLogstashHandler extends AbstractHandler
             ],
         ]);
 
-        $this->responses->attach($response);
+        $this->responses[$response] = null;
 
         $this->wait(false);
     }
 
-    public function __sleep()
+    public function __serialize(): array
     {
         throw new \BadMethodCallException('Cannot serialize '.__CLASS__);
     }
 
-    public function __wakeup()
+    public function __unserialize(array $data): void
     {
         throw new \BadMethodCallException('Cannot unserialize '.__CLASS__);
     }
@@ -144,7 +153,7 @@ class ElasticsearchLogstashHandler extends AbstractHandler
         $this->wait(true);
     }
 
-    private function wait(bool $blocking)
+    private function wait(bool $blocking): void
     {
         foreach ($this->client->stream($this->responses, $blocking ? null : 0.0) as $response => $chunk) {
             try {
@@ -155,11 +164,11 @@ class ElasticsearchLogstashHandler extends AbstractHandler
                     continue;
                 }
                 if ($chunk->isLast()) {
-                    $this->responses->detach($response);
+                    unset($this->responses[$response]);
                 }
             } catch (ExceptionInterface $e) {
-                $this->responses->detach($response);
-                error_log(sprintf("Could not push logs to Elasticsearch:\n%s", (string) $e));
+                unset($this->responses[$response]);
+                error_log(\sprintf("Could not push logs to Elasticsearch:\n%s", (string) $e));
             }
         }
     }

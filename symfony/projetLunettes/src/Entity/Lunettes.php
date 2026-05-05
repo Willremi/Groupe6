@@ -11,120 +11,72 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
-use Exception;
 
-/**
- * @ORM\Entity(repositoryClass=LunettesRepository::class)
- * @ORM\Entity
- * @ORM\Table(name="lunettes")
- * @Vich\Uploadable()
- */
+#[ORM\Entity(repositoryClass: LunettesRepository::class)]
+#[ORM\Table(name: 'lunettes')]
+#[Vich\Uploadable]
 class Lunettes
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $prixLunettes;
+    #[ORM\Column(nullable: true)]
+    private ?int $prixLunettes = null;
 
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $description;
+    #[ORM\Column(type: 'text', nullable: true)]
+    private ?string $description = null;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $quantite;
+    #[ORM\Column(nullable: true)]
+    private ?int $quantite = null;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $statut;
+    #[ORM\Column]
+    private bool $statut;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $nom;
+    #[ORM\Column(length: 255)]
+    private string $nom;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Panier::class, mappedBy="lunettes")
-     */
-    private $paniers;
+    #[ORM\OneToMany(targetEntity: Panier::class, mappedBy: 'lunettes')]
+    private Collection $paniers;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Couleur::class, inversedBy="lunettes")
-     */
-    private $couleur;
+    #[ORM\ManyToOne(targetEntity: Couleur::class, inversedBy: 'lunettes')]
+    private ?Couleur $couleur = null;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Type::class, inversedBy="lunettes")
-     */
-    private $type;
+    #[ORM\ManyToOne(targetEntity: Type::class, inversedBy: 'lunettes')]
+    private ?Type $type = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $photo = null;
+
+    #[Assert\Image(mimeTypes: ['image/jpeg', 'image/jpg', 'image/png'])]
+    #[Vich\UploadableField(mapping: 'product_image', fileNameProperty: 'photo')]
+    private ?File $imageFile = null;
+
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    private ?DateTime $updated_at = null;
+
+    #[ORM\ManyToOne(targetEntity: Genre::class, inversedBy: 'lunettes')]
+    private ?Genre $genre = null;
 
     public function __construct()
     {
         $this->paniers = new ArrayCollection();
     }
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $photo;
-
-    /**
-	 * @var File|null
-	 * @Assert\Image(mimeTypes={"image/jpeg", "image/jpg", "image/png"})
-	 * @Vich\UploadableField(mapping="product_image", fileNameProperty="photo")
-	 *
-	 */
-    private $imageFile;
-
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     * @var null|DateTime
-     */
-    private $updated_at;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Genre::class, inversedBy="lunettes")
-     */
-    private $genre;
-
-    
-    /**
-	 * @param File|null $imageFile
-	 *
-	 * @throws Exception
-	 */
-	public function setImageFile( ?File $imageFile ): void {
-         			$this->imageFile = $imageFile;
-         			if($this->imageFile instanceof UploadedFile){
-         				$this->updated_at = new \DateTime('now');
-         			}
-         			
-         		}
-
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getPrixLunettes(): ?string
+    public function getPrixLunettes(): ?int
     {
         return $this->prixLunettes;
     }
 
-    public function setPrixLunettes(?string $prixLunettes): self
+    public function setPrixLunettes(?int $prixLunettes): self
     {
         $this->prixLunettes = $prixLunettes;
-
         return $this;
     }
 
@@ -136,7 +88,6 @@ class Lunettes
     public function setDescription(?string $description): self
     {
         $this->description = $description;
-
         return $this;
     }
 
@@ -148,11 +99,10 @@ class Lunettes
     public function setQuantite(?int $quantite): self
     {
         $this->quantite = $quantite;
-
         return $this;
     }
 
-    public function getStatut(): ?bool
+    public function isStatut(): bool
     {
         return $this->statut;
     }
@@ -160,11 +110,10 @@ class Lunettes
     public function setStatut(bool $statut): self
     {
         $this->statut = $statut;
-
         return $this;
     }
 
-    public function getNom(): ?string
+    public function getNom(): string
     {
         return $this->nom;
     }
@@ -172,13 +121,9 @@ class Lunettes
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
-
         return $this;
     }
 
-    /**
-     * @return Collection|Panier[]
-     */
     public function getPaniers(): Collection
     {
         return $this->paniers;
@@ -187,23 +132,19 @@ class Lunettes
     public function addPanier(Panier $panier): self
     {
         if (!$this->paniers->contains($panier)) {
-            $this->paniers[] = $panier;
+            $this->paniers->add($panier);
             $panier->setLunettes($this);
         }
-
         return $this;
     }
 
     public function removePanier(Panier $panier): self
     {
-        if ($this->paniers->contains($panier)) {
-            $this->paniers->removeElement($panier);
-            // set the owning side to null (unless already changed)
+        if ($this->paniers->removeElement($panier)) {
             if ($panier->getLunettes() === $this) {
                 $panier->setLunettes(null);
             }
         }
-
         return $this;
     }
 
@@ -215,7 +156,6 @@ class Lunettes
     public function setCouleur(?Couleur $couleur): self
     {
         $this->couleur = $couleur;
-
         return $this;
     }
 
@@ -227,7 +167,6 @@ class Lunettes
     public function setType(?Type $type): self
     {
         $this->type = $type;
-
         return $this;
     }
 
@@ -239,7 +178,6 @@ class Lunettes
     public function setGenre(?Genre $genre): self
     {
         $this->genre = $genre;
-
         return $this;
     }
 
@@ -251,20 +189,20 @@ class Lunettes
     public function setPhoto(?string $photo): self
     {
         $this->photo = $photo;
-
         return $this;
     }
 
-    /**
-     * Get @Assert\Image(mimeTypes={"image/jpeg", "image/jpg", "image/png"})
-     *
-     * @return  File|null
-     */ 
-    public function getImageFile()
+    public function getImageFile(): ?File
     {
         return $this->imageFile;
     }
 
-    
+    public function setImageFile(?File $imageFile): void
+    {
+        $this->imageFile = $imageFile;
 
+        if ($imageFile instanceof UploadedFile) {
+            $this->updated_at = new DateTime();
+        }
+    }
 }

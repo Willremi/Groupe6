@@ -28,10 +28,10 @@ class ValidateEnvPlaceholdersPass implements CompilerPassInterface
 {
     private const TYPE_FIXTURES = ['array' => [], 'bool' => false, 'float' => 0.0, 'int' => 0, 'string' => ''];
 
-    private $extensionConfig = [];
+    private array $extensionConfig = [];
 
     /**
-     * {@inheritdoc}
+     * @return void
      */
     public function process(ContainerBuilder $container)
     {
@@ -48,46 +48,33 @@ class ValidateEnvPlaceholdersPass implements CompilerPassInterface
 
         $defaultBag = new ParameterBag($resolvingBag->all());
         $envTypes = $resolvingBag->getProvidedTypes();
-        try {
-            foreach ($resolvingBag->getEnvPlaceholders() + $resolvingBag->getUnusedEnvPlaceholders() as $env => $placeholders) {
-                $values = [];
-                if (false === $i = strpos($env, ':')) {
-                    $default = $defaultBag->has("env($env)") ? $defaultBag->get("env($env)") : self::TYPE_FIXTURES['string'];
-                    $defaultType = null !== $default ? get_debug_type($default) : 'string';
-                    $values[$defaultType] = $default;
-                } else {
-                    $prefix = substr($env, 0, $i);
-                    foreach ($envTypes[$prefix] ?? ['string'] as $type) {
-                        $values[$type] = self::TYPE_FIXTURES[$type] ?? null;
-                    }
-                }
-                foreach ($placeholders as $placeholder) {
-                    BaseNode::setPlaceholder($placeholder, $values);
-                }
+        foreach ($resolvingBag->getEnvPlaceholders() + $resolvingBag->getUnusedEnvPlaceholders() as $env => $placeholders) {
+            $values = $this->getPlaceholderValues($env, $defaultBag, $envTypes);
+
+            foreach ($placeholders as $placeholder) {
+                BaseNode::setPlaceholder($placeholder, $values);
+            }
+        }
+
+        $processor = new Processor();
+
+        foreach ($extensions as $name => $extension) {
+            if (!($extension instanceof ConfigurationExtensionInterface || $extension instanceof ConfigurationInterface)
+                || !$config = array_filter($container->getExtensionConfig($name))
+            ) {
+                // this extension has no semantic configuration or was not called
+                continue;
             }
 
-            $processor = new Processor();
+            $config = $resolvingBag->resolveValue($config);
 
-            foreach ($extensions as $name => $extension) {
-                if (!($extension instanceof ConfigurationExtensionInterface || $extension instanceof ConfigurationInterface)
-                    || !$config = array_filter($container->getExtensionConfig($name))
-                ) {
-                    // this extension has no semantic configuration or was not called
-                    continue;
-                }
-
-                $config = $resolvingBag->resolveValue($config);
-
-                if ($extension instanceof ConfigurationInterface) {
-                    $configuration = $extension;
-                } elseif (null === $configuration = $extension->getConfiguration($config, $container)) {
-                    continue;
-                }
-
-                $this->extensionConfig[$name] = $processor->processConfiguration($configuration, $config);
+            if ($extension instanceof ConfigurationInterface) {
+                $configuration = $extension;
+            } elseif (null === $configuration = $extension->getConfiguration($config, $container)) {
+                continue;
             }
-        } finally {
-            BaseNode::resetPlaceholders();
+
+            $this->extensionConfig[$name] = $processor->processConfiguration($configuration, $config);
         }
 
         $resolvingBag->clearUnusedEnvPlaceholders();
@@ -103,5 +90,51 @@ class ValidateEnvPlaceholdersPass implements CompilerPassInterface
         } finally {
             $this->extensionConfig = [];
         }
+    }
+
+    /**
+     * @param array<string, list<string>> $envTypes
+     *
+     * @return array<string, mixed>
+     */
+    private function getPlaceholderValues(string $env, ParameterBag $defaultBag, array $envTypes): array
+    {
+        if (false === $i = strpos($env, ':')) {
+            [$default, $defaultType] = $this->getParameterDefaultAndDefaultType("env($env)", $defaultBag);
+
+            return [$defaultType => $default];
+        }
+
+        $prefix = substr($env, 0, $i);
+        if ('default' === $prefix) {
+            $parts = explode(':', $env);
+            array_shift($parts); // Remove 'default' prefix
+            $parameter = array_shift($parts); // Retrieve and remove parameter
+
+            [$defaultParameter, $defaultParameterType] = $this->getParameterDefaultAndDefaultType($parameter, $defaultBag);
+
+            return [
+                $defaultParameterType => $defaultParameter,
+                ...$this->getPlaceholderValues(implode(':', $parts), $defaultBag, $envTypes),
+            ];
+        }
+
+        $values = [];
+        foreach ($envTypes[$prefix] ?? ['string'] as $type) {
+            $values[$type] = self::TYPE_FIXTURES[$type] ?? null;
+        }
+
+        return $values;
+    }
+
+    /**
+     * @return array{0: string, 1: string}
+     */
+    private function getParameterDefaultAndDefaultType(string $name, ParameterBag $defaultBag): array
+    {
+        $default = $defaultBag->has($name) ? $defaultBag->get($name) : self::TYPE_FIXTURES['string'];
+        $defaultType = null !== $default ? get_debug_type($default) : 'string';
+
+        return [$default, $defaultType];
     }
 }

@@ -14,11 +14,9 @@ namespace Symfony\Component\Notifier;
 use Symfony\Component\Notifier\Transport\TransportInterface;
 
 /**
- * Interface for classes able to send SMS messages synchronous and/or asynchronous.
+ * Interface for classes able to send SMS messages synchronously and/or asynchronously.
  *
  * @author Fabien Potencier <fabien@symfony.com>
- *
- * @experimental in 5.1
  */
 interface TexterInterface extends TransportInterface
 {

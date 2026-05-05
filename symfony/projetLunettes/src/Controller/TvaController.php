@@ -5,19 +5,16 @@ namespace App\Controller;
 use App\Entity\Tva;
 use App\Form\TvaType;
 use App\Repository\TvaRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
-/**
- * @Route("/admin/tva")
- */
+#[Route('/admin/tva')]
 class TvaController extends AbstractController
 {
-    /**
-     * @Route("/", name="tva_index", methods={"GET"})
-     */
+    #[Route('/', name: 'tva_index', methods: ['GET'])]
     public function index(TvaRepository $tvaRepository): Response
     {
         return $this->render('admin/tva/index.html.twig', [
@@ -25,19 +22,16 @@ class TvaController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/new", name="tva_new", methods={"GET","POST"})
-     */
-    public function new(Request $request): Response
+    #[Route('/new', name: 'tva_new', methods: ['GET', 'POST'])]
+    public function new(Request $request, EntityManagerInterface $em): Response
     {
         $tva = new Tva();
         $form = $this->createForm(TvaType::class, $tva);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($tva);
-            $entityManager->flush();
+            $em->persist($tva);
+            $em->flush();
 
             return $this->redirectToRoute('tva_index');
         }
@@ -48,9 +42,7 @@ class TvaController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="tva_show", methods={"GET"})
-     */
+    #[Route('/{id}', name: 'tva_show', methods: ['GET'])]
     public function show(Tva $tva): Response
     {
         return $this->render('admin/tva/show.html.twig', [
@@ -58,16 +50,14 @@ class TvaController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}/edit", name="tva_edit", methods={"GET","POST"})
-     */
-    public function edit(Request $request, Tva $tva): Response
+    #[Route('/{id}/edit', name: 'tva_edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, Tva $tva, EntityManagerInterface $em): Response
     {
         $form = $this->createForm(TvaType::class, $tva);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $em->flush();
 
             return $this->redirectToRoute('tva_index');
         }
@@ -78,15 +68,12 @@ class TvaController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="tva_delete", methods={"DELETE"})
-     */
-    public function delete(Request $request, Tva $tva): Response
+    #[Route('/{id}', name: 'tva_delete', methods: ['DELETE'])]
+    public function delete(Request $request, Tva $tva, EntityManagerInterface $em): Response
     {
         if ($this->isCsrfTokenValid('delete'.$tva->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($tva);
-            $entityManager->flush();
+            $em->remove($tva);
+            $em->flush();
         }
 
         return $this->redirectToRoute('tva_index');

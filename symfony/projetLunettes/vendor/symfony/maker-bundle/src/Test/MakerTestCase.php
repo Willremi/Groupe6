@@ -12,46 +12,61 @@
 namespace Symfony\Bundle\MakerBundle\Test;
 
 use Composer\Semver\Semver;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Bundle\MakerBundle\MakerInterface;
-use Symfony\Bundle\MakerBundle\Str;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Process\Process;
 
+/**
+ * @method static iterable<array{0: MakerTestDetails}> getTestDetails()
+ */
 abstract class MakerTestCase extends TestCase
 {
-    /**
-     * @var KernelInterface
-     */
-    private $kernel;
+    private ?KernelInterface $kernel = null;
 
     /**
      * @dataProvider getTestDetails
+     *
+     * @return void
      */
+    #[DataProvider('getTestDetails')]
     public function testExecute(MakerTestDetails $makerTestDetails)
     {
         $this->executeMakerCommand($makerTestDetails);
     }
 
-    abstract public function getTestDetails();
-
     abstract protected function getMakerClass(): string;
 
+    /**
+     * @deprecated Since 1.66.0, use static::buildMakerTest() instead
+     */
     protected function createMakerTest(): MakerTestDetails
     {
+        trigger_deprecation('symfony/maker-bundle', '1.66.0', 'The "%s()" method is deprecated. Use "self::buildMakerTest()" instead.', __METHOD__, self::class);
+
         return new MakerTestDetails($this->getMakerInstance($this->getMakerClass()));
     }
 
+    protected static function buildMakerTest(): MakerTestDetails
+    {
+        return new MakerTestDetails();
+    }
+
+    /**
+     * @return void
+     */
     protected function executeMakerCommand(MakerTestDetails $testDetails)
     {
         if (!class_exists(Process::class)) {
             throw new \LogicException('The MakerTestCase cannot be run as the Process component is not installed. Try running "compose require --dev symfony/process".');
         }
 
-        if (!$testDetails->isSupportedByCurrentPhpVersion()) {
-            $this->markTestSkipped();
+        if ($testDetails->isTestSkipped() || !$testDetails->isSupportedByCurrentPhpVersion()) {
+            $this->markTestSkipped($testDetails->getSkippedTestMessage());
         }
 
+        $testDetails->setMaker($this->getMakerInstance($this->getMakerClass()));
         $testEnv = MakerTestEnvironment::create($testDetails);
 
         // prepare environment to test
@@ -73,29 +88,26 @@ abstract class MakerTestCase extends TestCase
         $files = $testEnv->getGeneratedFilesFromOutputText();
 
         foreach ($files as $file) {
-            $this->assertTrue($testEnv->fileExists($file), sprintf('The file "%s" does not exist after generation', $file));
+            $this->assertTrue($testEnv->fileExists($file), \sprintf('The file "%s" does not exist after generation', $file));
 
-            if ('.php' === substr($file, -4)) {
-                $csProcess = $testEnv->runPhpCSFixer($file);
-
-                $this->assertTrue($csProcess->isSuccessful(), sprintf(
-                    "File '%s' has a php-cs problem: %s\n",
-                    $file,
-                    $csProcess->getErrorOutput()."\n".$csProcess->getOutput()
-                ));
-            }
-
-            if ('.twig' === substr($file, -5)) {
+            if (str_ends_with($file, '.twig')) {
                 $csProcess = $testEnv->runTwigCSLint($file);
 
-                $this->assertTrue($csProcess->isSuccessful(), sprintf('File "%s" has a twig-cs problem: %s', $file, $csProcess->getErrorOutput()."\n".$csProcess->getOutput()));
+                $this->assertTrue($csProcess->isSuccessful(), \sprintf('File "%s" has a twig-cs problem: %s', $file, $csProcess->getErrorOutput()."\n".$csProcess->getOutput()));
             }
         }
     }
 
+    /**
+     * @return void
+     *
+     * @deprecated since symfony/maker-bundle 1.66.0
+     */
     protected function assertContainsCount(string $needle, string $haystack, int $count)
     {
-        $this->assertEquals(1, substr_count($haystack, $needle), sprintf('Found more than %d occurrences of "%s" in "%s"', $count, $needle, $haystack));
+        trigger_deprecation('symfony/maker-bundle', '1.66.0', 'The "%s()" method is deprecated.', __METHOD__, TestCase::class);
+
+        self::assertEquals(1, substr_count($haystack, $needle), \sprintf('Found more than %d occurrences of "%s" in "%s"', $count, $needle, $haystack));
     }
 
     private function getMakerInstance(string $makerClass): MakerInterface
@@ -105,10 +117,7 @@ abstract class MakerTestCase extends TestCase
             $this->kernel->boot();
         }
 
-        // a cheap way to guess the service id
-        $serviceId = $serviceId ?? sprintf('maker.maker.%s', Str::asSnakeCase((new \ReflectionClass($makerClass))->getShortName()));
-
-        return $this->kernel->getContainer()->get($serviceId);
+        return $this->kernel->getContainer()->get('maker_locator_for_tests')->get($makerClass);
     }
 
     protected function createKernel(): KernelInterface
@@ -122,8 +131,9 @@ abstract class MakerTestCase extends TestCase
             return true;
         }
 
-        $installedPackages = json_decode($testEnv->readFile('vendor/composer/installed.json'), true);
+        $installedPackages = json_decode($testEnv->readFile('vendor/composer/installed.json'), true, 512, \JSON_THROW_ON_ERROR);
         $packageVersions = [];
+
         foreach ($installedPackages['packages'] ?? $installedPackages as $installedPackage) {
             $packageVersions[$installedPackage['name']] = $installedPackage['version_normalized'];
         }
@@ -133,7 +143,7 @@ abstract class MakerTestCase extends TestCase
             $versionConstraint = $requiredPackageData['version_constraint'];
 
             if (!isset($packageVersions[$name])) {
-                throw new \Exception(sprintf('Package "%s" is required in the test project at version "%s" but it is not installed?', $name, $versionConstraint));
+                throw new \Exception(\sprintf('Package "%s" is required in the test project at version "%s" but it is not installed?', $name, $versionConstraint));
             }
 
             if (!Semver::satisfies($packageVersions[$name], $versionConstraint)) {
@@ -142,25 +152,5 @@ abstract class MakerTestCase extends TestCase
         }
 
         return true;
-    }
-
-    public static function assertStringContainsString(string $needle, string $haystack, string $message = ''): void
-    {
-        if (method_exists(TestCase::class, 'assertStringContainsString')) {
-            parent::assertStringContainsString($needle, $haystack, $message);
-        } else {
-            // legacy for older phpunit versions (e.g. older php version on CI)
-            self::assertContains($needle, $haystack, $message);
-        }
-    }
-
-    public static function assertStringNotContainsString(string $needle, string $haystack, string $message = ''): void
-    {
-        if (method_exists(TestCase::class, 'assertStringNotContainsString')) {
-            parent::assertStringNotContainsString($needle, $haystack, $message);
-        } else {
-            // legacy for older phpunit versions (e.g. older php version on CI)
-            self::assertNotContains($needle, $haystack, $message);
-        }
     }
 }

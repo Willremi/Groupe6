@@ -13,12 +13,12 @@ namespace Symfony\Component\Security\Http\Firewall;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
-use Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface;
+use Symfony\Component\Security\Core\Authentication\Token\NullToken;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Authorization\AccessDecision;
 use Symfony\Component\Security\Core\Authorization\AccessDecisionManagerInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\AuthenticatedVoter;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use Symfony\Component\Security\Core\Exception\AuthenticationCredentialsNotFoundException;
 use Symfony\Component\Security\Http\AccessMapInterface;
 use Symfony\Component\Security\Http\Event\LazyResponseEvent;
 
@@ -31,95 +31,62 @@ use Symfony\Component\Security\Http\Event\LazyResponseEvent;
  */
 class AccessListener extends AbstractListener
 {
-    public const PUBLIC_ACCESS = 'PUBLIC_ACCESS';
-
-    private $tokenStorage;
-    private $accessDecisionManager;
-    private $map;
-    private $authManager;
-    private $exceptionOnNoToken;
-
-    public function __construct(TokenStorageInterface $tokenStorage, AccessDecisionManagerInterface $accessDecisionManager, AccessMapInterface $map, AuthenticationManagerInterface $authManager, bool $exceptionOnNoToken = true)
-    {
-        $this->tokenStorage = $tokenStorage;
-        $this->accessDecisionManager = $accessDecisionManager;
-        $this->map = $map;
-        $this->authManager = $authManager;
-        $this->exceptionOnNoToken = $exceptionOnNoToken;
+    public function __construct(
+        private TokenStorageInterface $tokenStorage,
+        private AccessDecisionManagerInterface $accessDecisionManager,
+        private AccessMapInterface $map,
+        bool $exceptionOnNoToken = false,
+    ) {
+        if (false !== $exceptionOnNoToken) {
+            throw new \LogicException(\sprintf('Argument $exceptionOnNoToken of "%s()" must be set to "false".', __METHOD__));
+        }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supports(Request $request): ?bool
     {
         [$attributes] = $this->map->getPatterns($request);
         $request->attributes->set('_access_control_attributes', $attributes);
 
-        return $attributes && ([AuthenticatedVoter::IS_AUTHENTICATED_ANONYMOUSLY] !== $attributes && [self::PUBLIC_ACCESS] !== $attributes) ? true : null;
+        if ($attributes && [AuthenticatedVoter::PUBLIC_ACCESS] !== $attributes) {
+            return true;
+        }
+
+        return null;
     }
 
     /**
      * Handles access authorization.
      *
      * @throws AccessDeniedException
-     * @throws AuthenticationCredentialsNotFoundException when the token storage has no authentication token and $exceptionOnNoToken is set to true
      */
-    public function authenticate(RequestEvent $event)
+    public function authenticate(RequestEvent $event): void
     {
-        if (!$event instanceof LazyResponseEvent && null === ($token = $this->tokenStorage->getToken()) && $this->exceptionOnNoToken) {
-            throw new AuthenticationCredentialsNotFoundException('A Token was not found in the TokenStorage.');
-        }
-
         $request = $event->getRequest();
 
         $attributes = $request->attributes->get('_access_control_attributes');
         $request->attributes->remove('_access_control_attributes');
 
-        if (!$attributes || ([AuthenticatedVoter::IS_AUTHENTICATED_ANONYMOUSLY] === $attributes && $event instanceof LazyResponseEvent)) {
+        if (!$attributes || (
+            [AuthenticatedVoter::PUBLIC_ACCESS] === $attributes && $event instanceof LazyResponseEvent
+        )) {
             return;
         }
 
-        if ($event instanceof LazyResponseEvent) {
-            $token = $this->tokenStorage->getToken();
-        }
+        $token = $this->tokenStorage->getToken() ?? new NullToken();
+        $accessDecision = new AccessDecision();
 
-        if (null === $token) {
-            if ($this->exceptionOnNoToken) {
-                throw new AuthenticationCredentialsNotFoundException('A Token was not found in the TokenStorage.');
-            }
+        if (!$accessDecision->isGranted = $this->accessDecisionManager->decide($token, $attributes, $request, $accessDecision, true)) {
+            $e = new AccessDeniedException($accessDecision->getMessage());
+            $e->setAttributes($attributes);
+            $e->setSubject($request);
+            $e->setAccessDecision($accessDecision);
 
-            if ([AuthenticatedVoter::IS_AUTHENTICATED_ANONYMOUSLY] === $attributes) {
-                trigger_deprecation('symfony/security-http', '5.1', 'Using "IS_AUTHENTICATED_ANONYMOUSLY" in your access_control rules when using the authenticator Security system is deprecated, use "PUBLIC_ACCESS" instead.');
-
-                return;
-            }
-
-            if ([self::PUBLIC_ACCESS] !== $attributes) {
-                throw $this->createAccessDeniedException($request, $attributes);
-            }
-        }
-
-        if ([self::PUBLIC_ACCESS] === $attributes) {
-            return;
-        }
-
-        if (!$token->isAuthenticated()) {
-            $token = $this->authManager->authenticate($token);
-            $this->tokenStorage->setToken($token);
-        }
-
-        if (!$this->accessDecisionManager->decide($token, $attributes, $request, true)) {
-            throw $this->createAccessDeniedException($request, $attributes);
+            throw $e;
         }
     }
 
-    private function createAccessDeniedException(Request $request, array $attributes)
+    public static function getPriority(): int
     {
-        $exception = new AccessDeniedException();
-        $exception->setAttributes($attributes);
-        $exception->setSubject($request);
-
-        return $exception;
+        return -255;
     }
 }

@@ -18,7 +18,7 @@ class QuerySubscriber implements EventSubscriberInterface
         }
 
         $queryCount = clone $event->target;
-        $event->count = $queryCount->execute(null, Query::HYDRATE_PHPCR)->getRows()->count();
+        $event->count = iterator_count($queryCount->execute(null, Query::HYDRATE_PHPCR)->getRows());
 
         $query = $event->target;
         $query->setMaxResults($event->getLimit());
@@ -31,7 +31,7 @@ class QuerySubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            'knp_pager.items' => ['items', 0]
+            'knp_pager.items' => ['items', 0],
         ];
     }
 }

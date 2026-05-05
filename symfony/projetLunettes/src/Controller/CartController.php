@@ -5,22 +5,22 @@ namespace App\Controller;
 use App\Repository\LunettesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 
+#[Route('/panier')]
 class CartController extends AbstractController
 {
-    /**
-     * @Route("/panier", name="cart_index")
-     */
-    public function index(SessionInterface $session, LunettesRepository $lunettesRepository)
-    {   
+    #[Route('', name: 'cart_index')]
+    public function index(SessionInterface $session, LunettesRepository $lunettesRepository): Response
+    {
         $panier = $session->get('panier', []);
 
         $panierWithData = [];
 
         foreach ($panier as $id => $quantity) {
             $panierWithData[] = [
-                'lunettes' => $lunettesRepository->find($id), 
+                'lunettes' => $lunettesRepository->find($id),
                 'quantity' => $quantity
             ];
         }
@@ -29,24 +29,21 @@ class CartController extends AbstractController
 
         foreach ($panierWithData as $item) {
             $total += $item['lunettes']->getPrixLunettes() * $item['quantity'];
-
         }
 
         return $this->render('cart/index.html.twig', [
-            'controller_name' => 'CartController', 
-            'items' => $panierWithData, 
-            'total' => $total, 
+            'controller_name' => 'CartController',
+            'items' => $panierWithData,
+            'total' => $total,
         ]);
     }
 
-    /**
-     * @Route("/admin/panier/add/{id}", name="cart_add")
-     */
-    public function add($id, SessionInterface $session) {
-         
+    #[Route('/add/{id}', name: 'cart_add')]
+    public function add(int $id, SessionInterface $session): Response
+    {
         $panier = $session->get('panier', []);
 
-        if(!empty($panier[$id])) {
+        if (!empty($panier[$id])) {
             $panier[$id]++;
         } else {
             $panier[$id] = 1;
@@ -54,23 +51,20 @@ class CartController extends AbstractController
 
         $session->set('panier', $panier);
 
-        return $this->redirectToRoute("cart_index");
-        // https://www.youtube.com/watch?v=_tWL-QDFuQ4 chap 6 30min54
+        return $this->redirectToRoute('cart_index');
     }
 
-    /**
-     * @Route("/admin/panier/remove/{id}", name="cart_remove")
-     */
-    public function remove($id, SessionInterface $session) {
+    #[Route('/remove/{id}', name: 'cart_remove')]
+    public function remove(int $id, SessionInterface $session): Response
+    {
         $panier = $session->get('panier', []);
 
-        if(!empty($panier[$id])) {
+        if (!empty($panier[$id])) {
             unset($panier[$id]);
         }
 
         $session->set('panier', $panier);
 
         return $this->redirectToRoute('cart_index');
-
     }
 }

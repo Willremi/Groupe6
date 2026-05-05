@@ -9,9 +9,8 @@ class SortableSubscriber implements EventSubscriberInterface
 {
     /**
      * Lazy-load state tracker
-     * @var bool
      */
-    private $isLoaded = false;
+    private bool $isLoaded = false;
 
     public function before(BeforeEvent $event): void
     {
@@ -20,15 +19,15 @@ class SortableSubscriber implements EventSubscriberInterface
             return;
         }
 
-        $disp = $event->getEventDispatcher();
+        /** @var \Symfony\Component\EventDispatcher\EventDispatcherInterface $dispatcher */
+        $dispatcher = $event->getEventDispatcher();
         // hook all standard sortable subscribers
-        $request = $event->getRequest();
-        $disp->addSubscriber(new Doctrine\ORM\QuerySubscriber($request));
-        $disp->addSubscriber(new Doctrine\ODM\MongoDB\QuerySubscriber($request));
-        $disp->addSubscriber(new ElasticaQuerySubscriber($request));
-        $disp->addSubscriber(new PropelQuerySubscriber($request));
-        $disp->addSubscriber(new SolariumQuerySubscriber($request));
-        $disp->addSubscriber(new ArraySubscriber($request));
+        $dispatcher->addSubscriber(new Doctrine\ORM\QuerySubscriber());
+        $dispatcher->addSubscriber(new Doctrine\ODM\MongoDB\QuerySubscriber());
+        $dispatcher->addSubscriber(new ElasticaQuerySubscriber());
+        $dispatcher->addSubscriber(new PropelQuerySubscriber());
+        $dispatcher->addSubscriber(new SolariumQuerySubscriber());
+        $dispatcher->addSubscriber(new ArraySubscriber());
 
         $this->isLoaded = true;
     }
@@ -36,7 +35,7 @@ class SortableSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            'knp_pager.before' => ['before', 1]
+            'knp_pager.before' => ['before', 1],
         ];
     }
 }

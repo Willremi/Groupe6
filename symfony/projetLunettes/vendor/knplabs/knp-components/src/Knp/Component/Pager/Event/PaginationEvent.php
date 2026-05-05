@@ -12,25 +12,30 @@ final class PaginationEvent extends Event
 {
     /**
      * A target being paginated
-     *
-     * @var mixed
      */
-    public $target;
+    public mixed $target = null;
 
     /**
-     * List of options
-     *
-     * @var array
+     * @var array<string, mixed>
      */
-    public $options;
+    public array $options;
 
-    private $pagination;
+    /**
+     * @var PaginationInterface<int, mixed>
+     */
+    private PaginationInterface $pagination;
 
+    /**
+     * @param PaginationInterface<int, mixed> $pagination
+     */
     public function setPagination(PaginationInterface $pagination): void
     {
         $this->pagination = $pagination;
     }
 
+    /**
+     * @return PaginationInterface<int, mixed>
+     */
     public function getPagination(): PaginationInterface
     {
         return $this->pagination;

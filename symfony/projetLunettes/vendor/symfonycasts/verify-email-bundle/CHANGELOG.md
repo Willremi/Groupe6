@@ -3,6 +3,43 @@
 *We intend to follow [Semantic Versioning 2.0.0](https://semver.org/), if you 
 find a change that break's semver, please create an issue.*
 
+## [v1.17.0](https://github.com/symfonycasts/verify-email-bundle/releases/tag/v1.17.0)
+
+*March 16th, 2024*
+
+### Feature
+
+* [#165](https://github.com/symfonycasts/verify-email-bundle/pull/165) - UriSignerFactory to become internal in 2.x - *@jrushlow*
+* [#157](https://github.com/symfonycasts/verify-email-bundle/pull/157) - use `UriSigner::checkRequest()` to validate signatures using a `Request` object - *@jrushlow*
+
+## [v1.14.0](https://github.com/symfonycasts/verify-email-bundle/releases/tag/v1.14.0)
+
+*September 22nd, 2023*
+
+### Feature
+
+* Add Persian(Farsi) language by @BahmanMD in https://github.com/SymfonyCasts/verify-email-bundle/pull/134
+* [ci] handle future return types by @jrushlow in https://github.com/SymfonyCasts/verify-email-bundle/pull/137
+* Add el,mk tranlations by @zmakrevski in https://github.com/SymfonyCasts/verify-email-bundle/pull/146
+
+## [v1.13.0](https://github.com/symfonycasts/verify-email-bundle/releases/tag/v1.13.0)
+
+*January 4th, 2023*
+
+### Feature
+
+- [#131](https://github.com/symfonycasts/verify-email-bundle/pull/131) - Indonesian translation - *@priyadi*
+- [#130](https://github.com/symfonycasts/verify-email-bundle/pull/130) - Add Dutch translations to exceptions - *@brentlobbezoo*
+
+## [v1.12.0](https://github.com/symfonycasts/verify-email-bundle/releases/tag/v1.12.0)
+
+*October 4th, 2022*
+
+### Feature
+
+- [#127](https://github.com/symfonycasts/verify-email-bundle/pull/127) - [translations] additional Polish translations - *@Flower7C3*
+- [#125](https://github.com/symfonycasts/verify-email-bundle/pull/125) - drop symfony 4.4 support - *@jrushlow*
+
 ## [v1.11.0](https://github.com/symfonycasts/verify-email-bundle/releases/tag/v1.11.0)
 
 *July 12th, 2022*

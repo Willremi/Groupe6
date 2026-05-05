@@ -24,13 +24,10 @@ use Symfony\Contracts\Service\ResetInterface;
  */
 class TokenStorage implements TokenStorageInterface, ResetInterface
 {
-    private $token;
-    private $initializer;
+    private ?TokenInterface $token = null;
+    private ?\Closure $initializer = null;
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getToken()
+    public function getToken(): ?TokenInterface
     {
         if ($initializer = $this->initializer) {
             $this->initializer = null;
@@ -40,10 +37,7 @@ class TokenStorage implements TokenStorageInterface, ResetInterface
         return $this->token;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function setToken(TokenInterface $token = null)
+    public function setToken(?TokenInterface $token): void
     {
         if ($token) {
             // ensure any initializer is called
@@ -56,10 +50,10 @@ class TokenStorage implements TokenStorageInterface, ResetInterface
 
     public function setInitializer(?callable $initializer): void
     {
-        $this->initializer = $initializer;
+        $this->initializer = null === $initializer ? null : $initializer(...);
     }
 
-    public function reset()
+    public function reset(): void
     {
         $this->setToken(null);
     }

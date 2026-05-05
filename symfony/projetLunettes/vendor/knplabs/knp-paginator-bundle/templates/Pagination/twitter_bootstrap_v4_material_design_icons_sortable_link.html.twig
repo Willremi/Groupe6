@@ -9,7 +9,7 @@
  * @author Mike Stuebbe <mike.stuebbe@gmail.com>
  */
 #}
-<a{% for attr, value  in options %} {{ attr }}="{{ value }}"{% endfor %}>
+<a{% for attr, value in options %} {{ attr }}="{{ value }}"{% endfor %}>
     <span class="float-right">
         {% if sorted %}
             {% if direction == 'desc' %}
@@ -21,5 +21,5 @@
             <i class="material-icons">unfold_more</i>
         {% endif %}
     </span>
-    {{ title }}
+    {{- title -}}
 </a>
