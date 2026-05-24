@@ -173,13 +173,16 @@ $catalogue = new MessageCatalogue('nl', array (
     'Too many failed login attempts, please try again in %minutes% minute.' => 'Te veel onjuiste inlogpogingen, probeer het opnieuw over %minutes% minuut.',
     'Too many failed login attempts, please try again in %minutes% minutes.' => 'Te veel onjuiste inlogpogingen, probeer het opnieuw over %minutes% minuten.',
   ),
-  'VerifyEmailBundle+intl-icu' => 
+  'VerifyEmailBundle' => 
   array (
-    '%count% year|%count% years' => '{count, plural, =0 {0 jaar} one {1 jaar} other {# jaren}}',
-    '%count% month|%count% months' => '{count, plural, =0 {0 maanden} one {1 maand} other {# maanden}}',
-    '%count% day|%count% days' => '{count, plural, =0 {0 dagen} one {1 dag} other {# dagen}}',
-    '%count% hour|%count% hours' => '{count, plural, =0 {0 uur} one {1 uur} other {# uren}}',
-    '%count% minute|%count% minutes' => '{count, plural, =0 {0 minuten} one {1 minuut} other {# minuten}}',
+    '%count% year|%count% years' => '%count% jaar|%count% jaar',
+    '%count% month|%count% months' => '%count% maand|%count% maanden',
+    '%count% day|%count% days' => '%count% dag|%count% dagen',
+    '%count% hour|%count% hours' => '%count% uur|%count% uren',
+    '%count% minute|%count% minutes' => '%count% minuut|%count% minuten',
+    'The link to verify your email has expired. Please request a new link.' => 'De link om je e-mailadres te verifiëren is verlopen. Vraag een nieuwe link aan.',
+    'The link to verify your email is invalid. Please request a new link.' => 'De link om je e-mailadres te verifiëren is ongeldig. Vraag een nieuwe link aan.',
+    'The link to verify your email appears to be for a different account or email. Please request a new link.' => 'De link om je e-mailadres te verifiëren is voor een andere gebruiker of e-mailadres. Vraag een nieuwe link aan.',
   ),
 ));
 
