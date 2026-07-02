@@ -143,6 +143,10 @@ $catalogue = new MessageCatalogue('fr', array (
     'The image has too few pixels ({{ pixels }} pixels). Minimum amount expected is {{ min_pixels }} pixels.' => 'L’image comporte trop peu de pixels ({{ pixels }}). La quantité minimale attendue est de {{ min_pixels }} pixels.',
     'The image has too many pixels ({{ pixels }} pixels). Maximum amount expected is {{ max_pixels }} pixels.' => 'L’image contient trop de pixels ({{ pixels }}). La quantité maximale attendue est de {{ max_pixels }} pixels.',
     'This filename does not match the expected charset.' => 'Le nom de fichier ne correspond pas au jeu de caractères attendu.',
+    'This value is not valid XML.' => 'Cette valeur n\'est pas un XML valide.',
+    'This value does not conform to the expected XSD schema.' => 'Cette valeur n\'est pas conforme au schéma XSD attendu.',
+    'This XML payload is too large ({{ size }} bytes): it exceeds the limit of {{ limit }} bytes.' => 'Cette charge utile XML est trop volumineuse ({{ size }} octets) : elle dépasse la limite de {{ limit }} octets.',
+    'This value is not a valid cron expression.' => 'Cette valeur n\'est pas une expression cron valide.',
     'This form should not contain extra fields.' => 'Ce formulaire ne doit pas contenir de champs supplémentaires.',
     'The uploaded file was too large. Please try to upload a smaller file.' => 'Le fichier téléchargé est trop volumineux. Merci d\'essayer d\'envoyer un fichier plus petit.',
     'The CSRF token is invalid. Please try to resubmit the form.' => 'Le jeton CSRF est invalide. Veuillez renvoyer le formulaire.',
@@ -176,6 +180,7 @@ $catalogue = new MessageCatalogue('fr', array (
     'Please select a valid option.' => 'Veuillez sélectionner une option valide.',
     'Please select a valid range.' => 'Veuillez sélectionner une plage valide.',
     'Please enter a valid week.' => 'Veuillez entrer une semaine valide.',
+    'Please enter a valid UUID.' => 'Veuillez entrer un UUID valide.',
   ),
   'security' => 
   array (
@@ -364,6 +369,10 @@ $catalogueEn = new MessageCatalogue('en', array (
     'The image has too few pixels ({{ pixels }} pixels). Minimum amount expected is {{ min_pixels }} pixels.' => 'The image has too few pixels ({{ pixels }} pixels). Minimum amount expected is {{ min_pixels }} pixels.',
     'The image has too many pixels ({{ pixels }} pixels). Maximum amount expected is {{ max_pixels }} pixels.' => 'The image has too many pixels ({{ pixels }} pixels). Maximum amount expected is {{ max_pixels }} pixels.',
     'This filename does not match the expected charset.' => 'This filename does not match the expected charset.',
+    'This value is not valid XML.' => 'This value is not valid XML.',
+    'This value does not conform to the expected XSD schema.' => 'This value does not conform to the expected XSD schema.',
+    'This XML payload is too large ({{ size }} bytes): it exceeds the limit of {{ limit }} bytes.' => 'This XML payload is too large ({{ size }} bytes): it exceeds the limit of {{ limit }} bytes.',
+    'This value is not a valid cron expression.' => 'This value is not a valid cron expression.',
     'This form should not contain extra fields.' => 'This form should not contain extra fields.',
     'The uploaded file was too large. Please try to upload a smaller file.' => 'The uploaded file was too large. Please try to upload a smaller file.',
     'The CSRF token is invalid. Please try to resubmit the form.' => 'The CSRF token is invalid. Please try to resubmit the form.',
@@ -397,6 +406,7 @@ $catalogueEn = new MessageCatalogue('en', array (
     'Please select a valid option.' => 'Please select a valid option.',
     'Please select a valid range.' => 'Please select a valid range.',
     'Please enter a valid week.' => 'Please enter a valid week.',
+    'Please enter a valid UUID.' => 'Please enter a valid UUID.',
   ),
   'security' => 
   array (

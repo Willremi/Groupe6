@@ -742,6 +742,7 @@
         <argument key="doctrine.debug_data_holder" type="service" id="doctrine.debug_data_holder" on-invalid="ignore_uninitialized"/>
         <argument key="form.type.entity" type="service" id="form.type.entity" on-invalid="ignore_uninitialized"/>
         <argument key="security.token_storage" type="service" id="security.token_storage" on-invalid="ignore_uninitialized"/>
+        <argument key="security.logout_url_generator" type="service" id="security.logout_url_generator" on-invalid="ignore_uninitialized"/>
         <argument key="cache.security_expression_language" type="service" id="cache.security_expression_language" on-invalid="ignore_uninitialized"/>
         <argument key="cache.security_is_granted_attribute_expression_language" type="service" id="cache.security_is_granted_attribute_expression_language" on-invalid="ignore_uninitialized"/>
         <argument key="debug.security.firewall" type="service" id="debug.security.firewall" on-invalid="ignore_uninitialized"/>
@@ -826,6 +827,9 @@
         <argument key="security.token_storage" type="collection">
           <argument>disableUsageTracking</argument>
           <argument>setToken</argument>
+        </argument>
+        <argument key="security.logout_url_generator" type="collection">
+          <argument>?reset</argument>
         </argument>
         <argument key="cache.security_expression_language" type="collection">
           <argument>reset</argument>
@@ -5582,7 +5586,7 @@
     </service>
     <service id="security.untracked_token_storage" class="Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage"/>
     <service id="security.helper" class="Symfony\Bundle\SecurityBundle\Security">
-      <argument type="service" id=".service_locator.e_.xxAP"/>
+      <argument type="service" id=".service_locator.9Sbc0.x"/>
       <argument type="collection">
         <argument key="dev">null</argument>
         <argument key="main" type="service" id=".service_locator.KyQKQP2"/>
@@ -5675,6 +5679,7 @@
       <argument>null</argument>
     </service>
     <service id="security.logout_url_generator" class="Symfony\Component\Security\Http\Logout\LogoutUrlGenerator">
+      <tag name="kernel.reset" method="reset" on_invalid="ignore"/>
       <argument type="service" id="request_stack" on-invalid="null"/>
       <argument type="service" id="router.default" on-invalid="null"/>
       <argument type="service" id="security.token_storage" on-invalid="null"/>
@@ -6323,6 +6328,13 @@
       <argument type="collection">
         <argument key="security.firewall.map.context.dev" type="service_closure" id="security.firewall.map.context.dev"/>
         <argument key="security.firewall.map.context.main" type="service_closure" id="security.firewall.map.context.main"/>
+      </argument>
+    </service>
+    <service id=".service_locator.2RLBKUz" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="dev" type="service_closure" id="security.firewall.map.config.dev"/>
+        <argument key="main" type="service_closure" id="security.firewall.map.config.main"/>
       </argument>
     </service>
     <service id=".security.request_matcher.obhk0jm" class="Symfony\Component\HttpFoundation\RequestMatcher\PathRequestMatcher">
@@ -8560,7 +8572,7 @@
         <argument key="request_stack" type="service_closure" id="request_stack"/>
       </argument>
     </service>
-    <service id=".service_locator.e_.xxAP" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.9Sbc0.x" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="request_stack" type="service_closure" id="request_stack"/>
@@ -8569,6 +8581,7 @@
         <argument key="security.csrf.token_manager" type="service_closure" id="security.csrf.token_manager" on-invalid="ignore"/>
         <argument key="security.firewall.event_dispatcher_locator" type="service_closure" id="security.firewall.event_dispatcher_locator"/>
         <argument key="security.firewall.map" type="service_closure" id="security.firewall.map"/>
+        <argument key="security.firewall_config_locator" type="service_closure" id=".service_locator.2RLBKUz" on-invalid="ignore"/>
         <argument key="security.token_storage" type="service_closure" id="security.token_storage"/>
         <argument key="security.user_checker_locator" type="service_closure" id="security.user_checker_locator"/>
       </argument>
@@ -9732,6 +9745,7 @@
     <service id="security.authentication.session_strategy.main" alias="security.authentication.session_strategy"/>
     <service id="security.user_checker.main" alias="security.user_checker"/>
     <service id="security.firewall.context_locator" alias=".service_locator.zJyh7qS"/>
+    <service id="security.firewall_config_locator" alias=".service_locator.2RLBKUz"/>
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker"/>
     <service id="logger" alias="monolog.logger"/>
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger"/>
@@ -9848,6 +9862,6 @@
     <service id=".service_locator.dGUCsbe" alias=".service_locator.pToDJZH"/>
     <service id=".service_locator._kIAbz1" alias=".service_locator.TpoC7U9"/>
     <service id=".service_locator.hnz5ZNh" alias=".service_locator.0TACwl3"/>
-    <service id=".service_locator..Fs8Kd7" alias=".service_locator.e_.xxAP"/>
+    <service id=".service_locator.a1R_f7T" alias=".service_locator.9Sbc0.x"/>
   </services>
 </container>
